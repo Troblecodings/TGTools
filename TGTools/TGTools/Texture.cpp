@@ -1,13 +1,7 @@
 #include "Texture.hpp"
-#include "Util.hpp"
 
 namespace tgt::Texture {
 	
-	constexpr auto TEXTURE_EXTENSION = ".tgx";
-	constexpr auto TEXTURE_SUBFOLDER = "Textures";
-
-	const auto TEXTURE_PATH = fs::path(Util::RESOURCE_LOCATION).append(TEXTURE_SUBFOLDER);
-
 	const Result add(const char* path) {
 		if (*path == '\0')
 			return Result::BAD_ARGUMENTS;

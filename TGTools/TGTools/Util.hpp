@@ -8,12 +8,13 @@ namespace fs = std::filesystem;
 namespace tgt::Util {
 
 	constexpr auto RESOURCE_LOCATION = "./Resource";
+	constexpr auto JSON = ".json";
 
-	template<class T>
-	const fs::path getResource(fs::path resource, T name) {
+	template<class T, class U>
+	const fs::path getResource(fs::path resource, T name,  U extension = "") {
 		if (!fs::exists(resource))
 			fs::create_directories(resource);
-		return resource.append(name);
+		return resource.append(name).concat(extension);
 	}
 
 	template<class T, class U>

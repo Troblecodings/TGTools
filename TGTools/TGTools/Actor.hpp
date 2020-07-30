@@ -4,12 +4,11 @@
 #include <string>
 #include "Util.hpp"
 
-namespace tgt::Texture {
+namespace tgt::Actor {
 
-	constexpr auto TEXTURE_EXTENSION = ".tgx";
-	constexpr auto TEXTURE_SUBFOLDER = "Textures";
+	constexpr auto ACTOR_SUBFOLDER = "Actors";
 
-	const auto TEXTURE_PATH = fs::path(Util::RESOURCE_LOCATION).append(TEXTURE_SUBFOLDER);
+	const auto ACTOR_PATH = fs::path(Util::RESOURCE_LOCATION).append(ACTOR_SUBFOLDER);
 
 	const Result add(const char* path);
 
