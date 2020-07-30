@@ -7,7 +7,7 @@
 using namespace std;
 using namespace tgt;
 
-int main()
+int main(int count, char** args)
 {
 	auto result = Texture::add("");
 	cout << "Hello CMake. " << (int)result << endl;
