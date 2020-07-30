@@ -8,12 +8,19 @@ namespace tgt::Actor {
 
 	const Result add(const std::string& path) {
 		auto actor = Util::getResource(ACTOR_PATH, path, Util::JSON);
-
+		return Result::GENERAL;
 	}
 
-	const Result remove(const char* name);
+	const Result remove(const char* name) {
+		return Result::GENERAL;
+	}
 
-	const Result remove(const std::string& name);
 
-	const std::string list();
+	const Result remove(const std::string& name) {
+		return Result::GENERAL;
+	}
+
+	const std::string list() {
+		return std::string();
+	}
 }

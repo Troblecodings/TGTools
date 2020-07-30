@@ -10,11 +10,20 @@ namespace tgt::Util {
 	constexpr auto RESOURCE_LOCATION = "./Resource";
 	constexpr auto JSON = ".json";
 
+	template<class T>
+	const fs::path getResource(fs::path resource, T name) {
+		return getResource(resource, name, nullptr);
+	}
+
 	template<class T, class U>
-	const fs::path getResource(fs::path resource, T name,  U extension = "") {
+	const fs::path getResource(fs::path resource, T name,  U extension) {
 		if (!fs::exists(resource))
 			fs::create_directories(resource);
-		return resource.append(name).concat(extension);
+		if constexpr (std::is_null_pointer_v<U>) {
+			return resource.append(name);
+		} else {
+			return resource.append(name).concat(std::string(extension));
+		}
 	}
 
 	template<class T, class U>
