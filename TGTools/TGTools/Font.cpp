@@ -38,6 +38,6 @@ namespace tgt::Font {
 	}
 
 	const std::string list() {
-		return Util::collect(FONT_SUBFOLDER, [](fs::path path) { return path.extension() == FONT_EXTENSION; });
+		return Util::collect(FONT_PATH, [](fs::path path) { return path.extension() == FONT_EXTENSION; });
 	}
 }

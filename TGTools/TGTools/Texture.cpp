@@ -37,7 +37,7 @@ namespace tgt::Texture {
 	}
 
 	const std::string list() {
-		return Util::collect(TEXTURE_SUBFOLDER, [](fs::path path) { return path.extension() == TEXTURE_EXTENSION; });
+		return Util::collect(TEXTURE_PATH, [](fs::path path) { return path.extension() == TEXTURE_EXTENSION; });
 	}
 
 }

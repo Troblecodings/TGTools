@@ -17,9 +17,8 @@ namespace tgt::Util {
 	}
 
 	template<class T, class U>
-	const std::string collect(const T sub, const U lambda) {
-		fs::path directoryPath(Util::RESOURCE_LOCATION);
-		directoryPath.append(sub);
+	const std::string collect(const T path, const U lambda) {
+		fs::path directoryPath(path);
 		std::string result;
 		if (!fs::exists(directoryPath))
 			return result;
