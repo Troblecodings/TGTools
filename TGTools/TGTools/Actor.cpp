@@ -21,6 +21,6 @@ namespace tgt::Actor {
 	}
 
 	const std::string list() {
-		return std::string();
+		return Util::collect(ACTOR_PATH, Util::JSON_FILTER);
 	}
 }

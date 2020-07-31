@@ -10,6 +10,8 @@ namespace tgt::Util {
 	constexpr auto RESOURCE_LOCATION = "./Resource";
 	constexpr auto JSON = ".json";
 
+	constexpr auto JSON_FILTER = [](fs::path path) { return path.extension() == JSON; };
+
 	template<class T, class U>
 	const fs::path getResource(fs::path resource, T name,  U extension) {
 		if (!fs::exists(resource))
