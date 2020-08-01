@@ -20,11 +20,12 @@ script:
 jobs:
   include:
     - stage: deploy
-      script: cd ./TGTools/
-      script: mv libTGTools.a libTGTools-linux-x64.a
-      script: cd ../TGToolsConsole/
-      script: mv TGToolsConsole TGToolsConsole-linux-x64
-      script: cd ../
+      script: 
+        - cd ./TGTools/
+        - mv libTGTools.a libTGTools-linux-x64.a
+        - cd ../TGToolsConsole/
+        - mv TGToolsConsole TGToolsConsole-linux-x64
+        - cd ../
 
       deploy:
         provider: releases
@@ -35,3 +36,4 @@ jobs:
         skip_cleanup: true
         overwrite: true
         prerelease: true
+        branch: linux-pipeline
