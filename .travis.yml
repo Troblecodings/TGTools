@@ -36,4 +36,5 @@ jobs:
         skip_cleanup: true
         overwrite: true
         prerelease: true
-        branch: linux-pipeline
+        on:
+          branch: linux-pipeline
