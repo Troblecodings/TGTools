@@ -23,6 +23,7 @@ before_deploy:
   - cd ../TGToolsConsole/
   - mv TGToolsConsole TGToolsConsole-linux-x64
   - cd ../
+  - export BUILDNUM = $(( $TRAVIS_BUILD_NUMBER + $OFFSET" ))
 
 deploy:
   provider: releases
@@ -33,7 +34,7 @@ deploy:
   skip_cleanup: true
   overwrite: true
   prerelease: true
-  tag_name: $TRAVIS_BUILD_NUMBER
-  name: ($TRAVIS_BUILD_NUMBER + 7)
+  tag_name: 1.0.$BUILDNUM
+  name: 1.0.$BUILDNUM
   on:
     branch: linux-pipeline
