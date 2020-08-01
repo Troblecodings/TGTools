@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Map.hpp"
-#include "json.hpp"
+#include "../public/Map.hpp"
+#include "../public/json.hpp"
 #include <fstream>
-#include "Actor.hpp"
-#include "Font.hpp"
+#include "../public/Actor.hpp"
+#include "../public/Font.hpp"
 
 namespace tgt::Map {
 	

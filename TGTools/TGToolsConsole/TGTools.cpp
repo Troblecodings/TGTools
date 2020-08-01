@@ -2,7 +2,7 @@
 //
 
 #include "TGTools.h"
-#include <Texture.hpp>
+#include <public/Texture.hpp>
 
 using namespace std;
 using namespace tgt;
