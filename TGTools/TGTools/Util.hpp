@@ -2,6 +2,27 @@
 
 #include <string>
 #include <filesystem>
+#include <fstream>
+
+#define JSON_WRITE(path, json) std::ofstream output(path);\
+output << std::setw(4) << json << std::endl
+
+#define JSON_LOAD(path, json) std::ifstream input(path);\
+input >> json
+
+#define JSON_UPDATE(path, update) js::json json; \
+JSON_LOAD(map, json);\
+update \
+JSON_WRITE(map, json)
+
+
+#ifndef TGT_NO_STRING_CHECKS
+#define STRING_CHECKS_C(string) if(string == nullptr || *string == 0) return Result::BAD_ARGUMENTS
+#define STRING_CHECKS(string) if(string.empty()) return Result::BAD_ARGUMENTS
+#else
+#define STRING_CHECKS_C(string)
+#define STRING_CHECKS(string)
+#endif // !TGT_NO_STRING_CHECKS
 
 namespace fs = std::filesystem;
 

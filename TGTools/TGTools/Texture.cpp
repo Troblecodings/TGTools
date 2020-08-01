@@ -3,8 +3,7 @@
 namespace tgt::Texture {
 	
 	const Result add(const char* path) {
-		if (*path == '\0')
-			return Result::BAD_ARGUMENTS;
+		STRING_CHECKS_C(path);
 		const fs::path texturePath(path);
 
 		if (!fs::exists(texturePath))
@@ -18,14 +17,17 @@ namespace tgt::Texture {
 	}
 
 	const Result add(const std::string& path) {
+		STRING_CHECKS(path);
 		return add(path.c_str());
 	}
 
 	const Result remove(const char* name) {
+		STRING_CHECKS_C(name);
 		return remove(std::string(name));
 	}
 
 	const Result remove(const std::string& name) {
+		STRING_CHECKS(name);
 		// TODO
 		return Result::GENERAL;
 	}
