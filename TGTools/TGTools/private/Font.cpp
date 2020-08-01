@@ -1,4 +1,4 @@
-#include "Font.hpp"
+#include "../public/Font.hpp"
 
 namespace tgt::Font {
 

@@ -1,4 +1,4 @@
-#include "Texture.hpp"
+#include "../public/Texture.hpp"
 
 namespace tgt::Texture {
 	

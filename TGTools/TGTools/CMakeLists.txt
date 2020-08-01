@@ -1,9 +1,7 @@
-﻿# CMakeList.txt : CMake project for TGTools, include source and define
-# project specific logic here.
+﻿# CMakeList.txt : Top-level CMake project file, do global configuration
+# and include sub-projects here.
 #
 cmake_minimum_required (VERSION 3.8)
 
-# Add source to this project's library.
-add_library (TGTools STATIC "Texture.cpp" "Texture.hpp" "Result.hpp" "Util.hpp" "Font.cpp" "Font.hpp" "Actor.hpp" "Actor.cpp" "json.hpp" "Map.cpp" "Map.hpp")
-
-# TODO: Add tests and install targets if needed.
+# Include sub-projects.
+add_library (TGTools STATIC "private/Texture.cpp" "public/Texture.hpp" "public/Result.hpp" "public/Util.hpp" "private/Font.cpp" "public/Font.hpp" "public/Actor.hpp" "private/Actor.cpp" "public/json.hpp" "private/Map.cpp" "public/Map.hpp")
