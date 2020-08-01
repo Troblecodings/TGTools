@@ -37,4 +37,4 @@ deploy:
   tag_name: 1.0.$BUILDNUM
   name: 1.0.$BUILDNUM
   on:
-    branch: linux-pipeline
+    branch: master
