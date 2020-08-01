@@ -7,7 +7,7 @@
 #include "../public/Font.hpp"
 
 namespace tgt::Map {
-	
+
 	namespace js = nlohmann;
 
 	const Result create(const char* mapname) {
@@ -35,7 +35,7 @@ namespace tgt::Map {
 		STRING_CHECKS(mapname);
 
 		auto map = Util::getResource(MAP_PATH, mapname, Util::JSON);
-		if(!fs::remove(map))
+		if (!fs::remove(map))
 			return Result::DOES_NOT_EXIST;
 
 		return Result::SUCCESS;
@@ -94,9 +94,15 @@ namespace tgt::Map {
 		auto path = Util::getResource(Actor::ACTOR_PATH, name, Util::JSON).string();
 		auto path2 = Util::getResource(Font::FONT_PATH, name, Util::JSON).string();
 
-		JSON_UPDATE(map, json.erase(std::remove_if(json.begin(), json.end(), [=](std::string str) { return str == path || str == path2; })););
-		
-		return Result::GENERAL;
+
+		JSON_UPDATE(map, {
+			auto predicate = std::remove_if(json.begin(), json.end(), [=](std::string str) { return str == path || str == path2; });
+			if (predicate == json.end()) 
+				return Result::DOES_NOT_EXIST;
+			json.erase(predicate);
+		});
+
+		return Result::SUCCESS;
 	}
 
 	const Result remove(const std::string& mapname, const std::string& name) {
