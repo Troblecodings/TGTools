@@ -33,5 +33,7 @@ deploy:
   skip_cleanup: true
   overwrite: true
   prerelease: true
+  tag_name: $TRAVIS_BUILD_NUMBER
+  name: $TRAVIS_BUILD_NUMBER
   on:
     branch: linux-pipeline
