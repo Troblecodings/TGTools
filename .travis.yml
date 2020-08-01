@@ -30,7 +30,7 @@ deploy:
   file:
     - "./TGToolsConsole/TGToolsConsole-linux-x64"
     - "./TGTools/libTGTools-linux-x64.a"
-  cleanup: false
+  skip_cleanup: true
   overwrite: true
   prerelease: true
   on:
