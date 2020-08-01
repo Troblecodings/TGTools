@@ -3,6 +3,8 @@ os: linux
 compiler: clang
 dist: bionic
 
+if: NOT tag IS present
+
 before_install:
   - sudo apt-get update
   - sudo apt-get -y -V install build-essential libc++-10-dev libc++abi-10-dev libllvm-10-ocaml-dev libllvm10 llvm-10 llvm-10-dev llvm-10-doc llvm-10-examples llvm-10-runtime clang-10 clang-tools-10 clang-10-doc libclang-common-10-dev libclang-10-dev libclang1-10 clang-format-10
@@ -14,3 +16,22 @@ before_script:
 
 script:
   - cmake --build ./
+
+jobs:
+  include:
+    - stage: deploy
+      script: cd ./TGTools/
+      script: mv libTGTools.a libTGTools-linux-x64.a
+      script: cd ../TGToolsConsole/
+      script: mv TGToolsConsole TGToolsConsole-linux-x64
+      script: cd ../
+
+      deploy:
+        provider: releases
+        api_key: $API_KEY
+        file:
+          - "./TGToolsConsole/TGToolsConsole-linux-x64"
+          - "./TGTools/libTGTools-linux-x64.a"
+        skip_cleanup: true
+        overwrite: true
+        prerelease: true
