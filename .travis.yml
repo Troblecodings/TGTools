@@ -23,7 +23,7 @@ before_deploy:
   - cd ../TGToolsConsole/
   - mv TGToolsConsole TGToolsConsole-linux-x64
   - cd ../
-  - export BUILDNUM=$(( $TRAVIS_BUILD_NUMBER + $OFFSET" ))
+  - export BUILDNUM=$(( $TRAVIS_BUILD_NUMBER + $OFFSET ))
 
 deploy:
   provider: releases
