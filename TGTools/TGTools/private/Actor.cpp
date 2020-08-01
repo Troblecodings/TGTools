@@ -1,5 +1,5 @@
-#include "Actor.hpp"
-#include "json.hpp"
+#include "../public/Actor.hpp"
+#include "../public/json.hpp"
 
 namespace tgt::Actor {
 
