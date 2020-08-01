@@ -34,6 +34,6 @@ deploy:
   overwrite: true
   prerelease: true
   tag_name: $TRAVIS_BUILD_NUMBER
-  name: $TRAVIS_BUILD_NUMBER
+  name: ($TRAVIS_BUILD_NUMBER + 7)
   on:
     branch: linux-pipeline
