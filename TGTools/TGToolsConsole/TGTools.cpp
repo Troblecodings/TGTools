@@ -10,16 +10,29 @@ using namespace tgt;
 const std::string subcommands[] = { "map", "actor", "texture", "font" };
 
 typedef Result (*command)(int count, char**);
-const command commandhandle = {
-	[](int count, char** input) { return Result::SUCCESS; }
+constexpr command commandhandle[] = {
+	[](int count, char** input) { return Result::GENERAL; },
+	[](int count, char** input) { return Result::GENERAL; },
+	[](int count, char** input) { return Result::GENERAL; },
+	[](int count, char** input) { return Result::GENERAL; }
 };
+
+constexpr auto sizecommand = sizeof(subcommands) / sizeof(subcommands[0]);
+constexpr auto sizehandles = sizeof(commandhandle) / sizeof(commandhandle[0]);
+
+// Compile time check for dumb people like me
+static_assert(sizehandles == sizecommand, "Subcommand size and handler size are not equal!");
+
+static Result exec(int count, char** args) {
+	args[]
+}
 
 int main(int count, char** args)
 {
 	if (count == 0) {
 		// TODO console mode
 	} else {
-		constexpr size_t size = sizeof(subcommands) / sizeof(subcommands[0]);
+		return (int)exec(count, args);
 	}
 	auto result = Texture::add("");
 	cout << "Hello CMake. " << (int)result << endl;
