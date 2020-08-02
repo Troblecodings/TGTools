@@ -6,9 +6,9 @@
 
 namespace tgt::Map {
 
-	constexpr auto MAP_SUBFOLDER = "Actors";
+	constexpr auto MAP_SUBFOLDER = "Maps";
 
-	const auto MAP_PATH = fs::path(MAP_SUBFOLDER).append(MAP_SUBFOLDER);
+	const auto MAP_PATH = fs::path(Util::RESOURCE_LOCATION).append(MAP_SUBFOLDER);
 
 	const Result create(const char* mapname);
 
