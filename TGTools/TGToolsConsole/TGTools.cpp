@@ -7,6 +7,7 @@
 #include <public/Map.hpp>
 #include <public/Font.hpp>
 #include <map>
+#include <vector>
 #include <sstream>
 
 using namespace std;
