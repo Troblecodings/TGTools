@@ -3,32 +3,78 @@
 
 #include <iostream>
 #include <public/Texture.hpp>
+#include <public/Actor.hpp>
+#include <public/Map.hpp>
+#include <public/Font.hpp>
+#include <map>
 
 using namespace std;
 using namespace tgt;
 
-const std::string subcommands[] = { "map", "actor", "texture", "font" };
+typedef Result(*commandhandle)(char** args);
 
-typedef Result (*command)(int count, char**);
-constexpr command commandhandle[] = {
-	[](int count, char** input) { return Result::GENERAL; },
-	[](int count, char** input) { return Result::GENERAL; },
-	[](int count, char** input) { return Result::GENERAL; },
-	[](int count, char** input) { return Result::GENERAL; }
+struct Command{
+	size_t count;
+	commandhandle handle;
 };
 
-constexpr auto sizecommand = sizeof(subcommands) / sizeof(subcommands[0]);
-constexpr auto sizehandles = sizeof(commandhandle) / sizeof(commandhandle[0]);
-
-// Compile time check for dumb people like me
-static_assert(sizehandles == sizecommand, "Subcommand size and handler size are not equal!");
+const std::map<std::string, std::map<std::string, Command>> commands =
+{
+	{ 
+		"actor", {
+			{ "add", { 2, [](auto args) { return Actor::add(args[0], args[1]); } } },
+			{ "remove", { 1, [](auto args) { return Actor::remove(args[0]); } } },
+			{ "list", { 0, [](auto args) { std::cout << Actor::list() << std::endl; return Result::SUCCESS; } } }
+		}
+	},
+	{
+		"map", {
+			{ "create", {1, [](auto args) { return Map::create(args[0]); } } },
+			{ "delete", {1, [](auto args) { return Map::remove(args[0]); } } },
+			{ "list", { 0, [](auto args) { std::cout << Map::list() << std::endl; return Result::SUCCESS; } } },
+			{ "add", {2, [](auto args) { return Map::add(args[0], args[1]); } } },
+			{ "remove", {2, [](auto args) { return Map::remove(args[0], args[1]); } } },
+			{ "make", {1, [](auto args) { return Map::make(args[0]); } } }
+		}
+	}, 
+	{
+		"texture", {
+			{ "add", {1, [](auto args) { return Texture::add(args[0]); } } },
+			{ "remove", {1, [](auto args) { return Texture::remove(args[0]); } } },
+			{ "list", { 0, [](auto args) { std::cout << Texture::list() << std::endl; return Result::SUCCESS; } } }
+		}
+	},
+	{
+		"font", {
+			{ "add", {1, [](auto args) { return Font::add(args[0]); } } },
+			{ "remove", {1, [](auto args) { return Font::remove(args[0]); } } },
+			{ "list", { 0, [](auto args) { std::cout << Font::list() << std::endl; return Result::SUCCESS; } } }
+		}
+	}
+};
 
 static Result exec(int count, char** args) {
-	args[]
+	if (count < 2) return Result::BAD_ARGUMENTS;
+
+	const std::string subcommand = args[0];
+	const auto listitr = commands.find(subcommand);
+	if (listitr == commands.end()) return Result::BAD_ARGUMENTS;
+	const auto& list = listitr->second;
+
+	const std::string subsubcommand = args[1];
+	const auto commanditr = list.find(subcommand);
+	if (commanditr == list.end()) return Result::BAD_ARGUMENTS;
+	const auto& command = commanditr->second;
+
+	// Forward ptr
+	count -= 2;
+	args += 2;
+
+	if (count < command.count) return Result::BAD_ARGUMENTS;
+	return command.handle(args);
 }
 
-int main(int count, char** args)
-{
+int main(int count, char** args) {
 	if (count == 0) {
 		// TODO console mode
 	} else {
