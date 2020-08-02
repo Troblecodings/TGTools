@@ -1,5 +1,3 @@
-#pragma once
-
 #include "../public/Map.hpp"
 #include "../public/json.hpp"
 #include <fstream>
