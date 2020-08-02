@@ -99,7 +99,7 @@ int main(int count, const char** args) {
 
 			const Result result = exec(count, args);
 			if (result != Result::SUCCESS)
-				std::cout << "Error (" << (int)result << ")!" << std::endl;
+				std::cout << "Error " << (int)result << std::endl;
 
 			delete[] args;
 		}
