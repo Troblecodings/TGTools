@@ -108,4 +108,12 @@ namespace tgt::Map {
 		STRING_CHECKS(name);
 		return remove(mapname.c_str(), name.c_str());
 	}
+
+	const bool checkDependent(const std::string& dependency) {
+		return Util::find(MAP_PATH, [=](auto& directory) {
+			js::json json;
+			JSON_LOAD(directory.path(), json);
+			return json.contains(str);
+		});
+	}
 }

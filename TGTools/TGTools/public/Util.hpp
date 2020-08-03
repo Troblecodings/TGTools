@@ -66,4 +66,13 @@ namespace tgt::Util {
 		result.shrink_to_fit();
 		return result;
 	}
+
+	template<class T, class U>
+	const bool find(const T path, const U lambda) {
+		fs::directory_iterator directory(directoryPath);
+		for (auto& entry : directory)
+			if (lambda(entry))
+				return true;
+		return false;
+	}
 }

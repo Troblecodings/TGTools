@@ -1,5 +1,6 @@
 #include "../public/Actor.hpp"
 #include "../public/json.hpp"
+#include "../public/Map.hpp"
 
 namespace tgt::Actor {
 
@@ -34,7 +35,8 @@ namespace tgt::Actor {
 
 		auto actor = Util::getResource(ACTOR_PATH, name, Util::JSON);
 
-		// TODO Dependency check
+		if (Map::checkDependent(actor.string()))
+			return Result::DEPENDENT;
 
 		if (!fs::remove(actor))
 			return Result::DOES_NOT_EXIST;

@@ -1,6 +1,10 @@
 #include "../public/Font.hpp"
+#include "../public/Map.hpp"
+#include "../public/json.hpp"
 
 namespace tgt::Font {
+
+	namespace js = nlohmann;
 
 	const Result add(const char* path) {
 		STRING_CHECKS_C(path);
@@ -29,8 +33,16 @@ namespace tgt::Font {
 
 	const Result remove(const std::string& name) {
 		STRING_CHECKS(name);
-		// TODO
-		return Result::GENERAL;
+
+		auto font = Util::getResource(FONT_PATH, name, FONT_EXTENSION);
+
+		if (Map::checkDependent(font.string()))
+			return Result::DEPENDENT;
+
+		if (!fs::remove(font))
+			return Result::DOES_NOT_EXIST;
+
+		return Result::SUCCESS;
 	}
 
 	const std::string list() {
