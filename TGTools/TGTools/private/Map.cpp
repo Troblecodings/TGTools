@@ -58,7 +58,13 @@ namespace tgt::Map {
 	const Result add(const char* mapname, const char* name) {
 		STRING_CHECKS_C(mapname);
 		STRING_CHECKS_C(name);
+		return add(std::string(mapname), std::string(name));
+	}
 
+	const Result add(const std::string& mapname, const std::string& name) {
+		STRING_CHECKS(mapname);
+		STRING_CHECKS(name);
+		
 		auto map = Util::getResource(MAP_PATH, mapname, Util::JSON);
 		if (!fs::exists(map))
 			return Result::DOES_NOT_EXIST;
@@ -75,15 +81,16 @@ namespace tgt::Map {
 		return Result::SUCCESS;
 	}
 
-	const Result add(const std::string& mapname, const std::string& name) {
-		STRING_CHECKS(mapname);
-		STRING_CHECKS(name);
-		return add(mapname.c_str(), name.c_str());
-	}
-
 	const Result remove(const char* mapname, const char* name) {
 		STRING_CHECKS_C(mapname);
 		STRING_CHECKS_C(name);
+
+		return remove(std::string(mapname), std::string(name));
+	}
+
+	const Result remove(const std::string& mapname, const std::string& name) {
+		STRING_CHECKS(mapname);
+		STRING_CHECKS(name);
 
 		auto map = Util::getResource(MAP_PATH, mapname, Util::JSON);
 		if (!fs::exists(map))
@@ -95,18 +102,12 @@ namespace tgt::Map {
 
 		JSON_UPDATE(map, {
 			auto predicate = std::remove_if(json.begin(), json.end(), [=](std::string str) { return str == path || str == path2; });
-			if (predicate == json.end()) 
+			if (predicate == json.end())
 				return Result::DOES_NOT_EXIST;
 			json.erase(predicate);
-		});
+			});
 
 		return Result::SUCCESS;
-	}
-
-	const Result remove(const std::string& mapname, const std::string& name) {
-		STRING_CHECKS(mapname);
-		STRING_CHECKS(name);
-		return remove(mapname.c_str(), name.c_str());
 	}
 
 	const bool checkDependent(const std::string& dependency) {

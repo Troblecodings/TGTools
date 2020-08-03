@@ -8,6 +8,11 @@ namespace tgt::Font {
 
 	const Result add(const char* path) {
 		STRING_CHECKS_C(path);
+		return add(std::string(path));
+	}
+
+	const Result add(const std::string& path) {
+		STRING_CHECKS(path);
 		const fs::path texturePath(path);
 
 		if (!fs::exists(texturePath))
@@ -19,11 +24,6 @@ namespace tgt::Font {
 
 		//TODO auto generation
 		return Result::SUCCESS;
-	}
-
-	const Result add(const std::string& path) {
-		STRING_CHECKS(path);
-		return add(path.c_str());
 	}
 
 	const Result remove(const char* name) {
