@@ -11,9 +11,9 @@ output << std::setw(4) << json << std::endl
 input >> json
 
 #define JSON_UPDATE(path, update) js::json json; \
-JSON_LOAD(map, json);\
+JSON_LOAD(path, json);\
 update \
-JSON_WRITE(map, json)
+JSON_WRITE(path, json)
 
 
 #ifndef TGT_NO_STRING_CHECKS
@@ -69,7 +69,7 @@ namespace tgt::Util {
 
 	template<class T, class U>
 	const bool find(const T path, const U lambda) {
-		fs::directory_iterator directory(directoryPath);
+		fs::directory_iterator directory(path);
 		for (auto& entry : directory)
 			if (lambda(entry))
 				return true;

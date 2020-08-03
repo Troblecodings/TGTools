@@ -19,4 +19,9 @@ namespace tgt::Actor {
 	const Result remove(const std::string& name);
 
 	const std::string list();
+
+	const Result change(const std::string& name, const std::string& key, const std::string& value);
+
+	const Result change(const char* name, const char* key, const char* value);
+
 }

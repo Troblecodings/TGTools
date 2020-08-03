@@ -113,7 +113,7 @@ namespace tgt::Map {
 		return Util::find(MAP_PATH, [=](auto& directory) {
 			js::json json;
 			JSON_LOAD(directory.path(), json);
-			return json.contains(str);
+			return json.contains(dependency);
 		});
 	}
 }
