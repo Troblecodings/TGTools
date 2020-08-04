@@ -1,7 +1,7 @@
 #include "../public/Texture.hpp"
 
 namespace tgt::Texture {
-	
+
 	const Result add(const char* path) {
 		STRING_CHECKS_C(path);
 		const fs::path texturePath(path);
@@ -9,8 +9,8 @@ namespace tgt::Texture {
 		if (!fs::exists(texturePath))
 			return Result::DOES_NOT_EXIST;
 
-		auto resourceLocation = Util::getResource(TEXTURE_PATH, texturePath.stem().concat(TEXTURE_EXTENSION).string());
-		if(!fs::copy_file(texturePath, resourceLocation)) // Failing if destination exists
+		auto resourceLocation = Util::getResource(TEXTURE_PATH, texturePath.stem().string(), TEXTURE_EXTENSION);
+		if (!fs::copy_file(texturePath, resourceLocation)) // Failing if destination exists
 			return Result::ALREADY_EXISTS;
 
 		return Result::SUCCESS;
@@ -28,8 +28,15 @@ namespace tgt::Texture {
 
 	const Result remove(const std::string& name) {
 		STRING_CHECKS(name);
-		// TODO
-		return Result::GENERAL;
+
+		auto path = Util::getResource(TEXTURE_PATH, name, TEXTURE_EXTENSION);
+
+		// TODO Dependencie checks
+
+		if (!fs::remove(path))
+			return Result::DOES_NOT_EXIST;
+
+		return Result::SUCCESS;
 	}
 
 	const std::string list() {
