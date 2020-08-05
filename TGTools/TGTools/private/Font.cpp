@@ -35,16 +35,16 @@ namespace tgt::Font {
 		if (!stbtt_PackBegin(&packedcontext, buffer, PWIDTH, PHEIGHT, 0, STRIDE, 0))
 			return Result::GENERAL;
 
-		std::ifstream input(resourceLocation, std::iostream::binary | std::iostream::ate | std::iostream::in);
+		std::ifstream input(resourceLocation, std::ios_base::binary | std::ios_base::ate | std::ios_base::in);
 		auto size = (size_t)input.tellg();
 		uint8_t* fontData = new uint8_t[size];
 
 		Util::scope_exit fexit([=]() { delete[] fontData; });
 
-		input.seekg(0, std::iostream::_Seekbeg);
+		input.seekg(0, std::ios_base::beg);
 		input.read((char*)fontData, size);
 
-		stbtt_PackSetOversampling(&packedcontext, 1, 1);
+		stbtt_PackSetOversampling(&packedcontext, 2, 2);
 
 		stbtt_packedchar* packedchars = new stbtt_packedchar[DIFF];
 		if (!stbtt_PackFontRange(&packedcontext, fontData, 0, HEIGHT, START_CHAR, DIFF, packedchars))
@@ -54,8 +54,23 @@ namespace tgt::Font {
 
 		const auto texturelocation = Util::getResource(Texture::TEXTURE_PATH, resourceLocation.stem().string(), Texture::TEXTURE_EXTENSION).string();
 
-		if(!stbi_write_png(texturelocation.c_str(), PWIDTH, PHEIGHT, STRIDE, buffer, PWIDTH))
+		uint8_t* finalbuffer = new uint8_t[BUFFERSIZE * 4];
+
+		Util::scope_exit bexit([=]() { delete[] finalbuffer; });
+
+		for (size_t x = 0; x < BUFFERSIZE; x++) {
+			auto value = buffer[x];
+			auto index = x * 4;
+			finalbuffer[index] = value;
+			finalbuffer[index + 1] = value;
+			finalbuffer[index + 2] = value;
+			finalbuffer[index + 3] = value;
+		}
+
+		if(!stbi_write_png(texturelocation.c_str(), PWIDTH, PHEIGHT, 4, finalbuffer, PWIDTH))
 			return Result::GENERAL;
+
+		// TODO write other files font files
 
 		return Result::SUCCESS;
 	}
