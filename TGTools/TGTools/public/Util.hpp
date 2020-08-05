@@ -33,6 +33,19 @@ namespace tgt::Util {
 
 	constexpr auto JSON_FILTER = [](fs::path path) { return path.extension() == JSON; };
 
+	// We all love Andrei Alexandrescu
+	template <typename T>
+	class scope_exit {
+	
+	private:
+		T lambda;
+
+	public:
+		scope_exit(T x) : lambda{ x } {}
+		~scope_exit() { lambda(); }
+	};
+
+
 	template<class T, class U>
 	const fs::path getResource(fs::path resource, T name,  U extension) {
 		if (!fs::exists(resource))

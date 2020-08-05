@@ -70,11 +70,8 @@ namespace tgt::Map {
 			return Result::DOES_NOT_EXIST;
 
 		auto path = Util::getResource(Actor::ACTOR_PATH, name, Util::JSON);
-		if (!fs::exists(path)) {
-			path = Util::getResource(Font::FONT_PATH, name, Util::JSON);
-			if (!fs::exists(path))
-				return Result::DOES_NOT_EXIST;
-		}
+		if (!fs::exists(path))
+			return Result::DOES_NOT_EXIST;
 
 		JSON_UPDATE(map, json += path.string(););
 
@@ -97,11 +94,9 @@ namespace tgt::Map {
 			return Result::DOES_NOT_EXIST;
 
 		auto path = Util::getResource(Actor::ACTOR_PATH, name, Util::JSON).string();
-		auto path2 = Util::getResource(Font::FONT_PATH, name, Util::JSON).string();
-
 
 		JSON_UPDATE(map, {
-			auto predicate = std::remove_if(json.begin(), json.end(), [=](std::string str) { return str == path || str == path2; });
+			auto predicate = std::remove(json.begin(), json.end(), path);
 			if (predicate == json.end())
 				return Result::DOES_NOT_EXIST;
 			json.erase(predicate);
