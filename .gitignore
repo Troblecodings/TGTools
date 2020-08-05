@@ -32,3 +32,4 @@
 *.app
 /TGTools/out/build
 /TGTools/.vs
+/.vs

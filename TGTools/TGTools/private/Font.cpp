@@ -27,13 +27,12 @@ namespace tgt::Font {
 
 		constexpr auto BUFFERSIZE = STRIDE * PHEIGHT * PWIDTH;
 
-
 		uint8_t* buffer = new uint8_t[BUFFERSIZE];
 
 		Util::scope_exit exit([=]() { delete[] buffer; });
 
 		stbtt_pack_context packedcontext;
-		if (!stbtt_PackBegin(&packedcontext, buffer, PWIDTH, PHEIGHT, STRIDE, 0, 0))
+		if (!stbtt_PackBegin(&packedcontext, buffer, PWIDTH, PHEIGHT, 0, STRIDE, 0))
 			return Result::GENERAL;
 
 		std::ifstream input(resourceLocation, std::iostream::binary | std::iostream::ate | std::iostream::in);
@@ -55,7 +54,7 @@ namespace tgt::Font {
 
 		const auto texturelocation = Util::getResource(Texture::TEXTURE_PATH, resourceLocation.stem().string(), Texture::TEXTURE_EXTENSION).string();
 
-		if(!stbi_write_png(texturelocation.c_str(), PWIDTH, PHEIGHT, STRIDE, buffer, 1))
+		if(!stbi_write_png(texturelocation.c_str(), PWIDTH, PHEIGHT, STRIDE, buffer, PWIDTH))
 			return Result::GENERAL;
 
 		return Result::SUCCESS;
