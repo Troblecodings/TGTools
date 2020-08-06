@@ -67,7 +67,7 @@ namespace tgt::Font {
 			finalbuffer[index + 3] = value;
 		}
 
-		if(!stbi_write_png(texturelocation.c_str(), PWIDTH, PHEIGHT, 4, finalbuffer, PWIDTH))
+		if(!stbi_write_png(texturelocation.c_str(), PWIDTH, PHEIGHT, 4, finalbuffer, PWIDTH * 4))
 			return Result::GENERAL;
 
 		// TODO write other files font files
