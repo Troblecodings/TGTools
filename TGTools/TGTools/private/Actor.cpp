@@ -61,6 +61,6 @@ namespace tgt::Actor {
 			return Result::DOES_NOT_EXIST;
 
 		JSON_UPDATE(actor, json[key] = value;);
-		return Result::GENERAL;
+		return Result::SUCCESS;
 	}
 }
