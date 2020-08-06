@@ -7,7 +7,7 @@
 namespace tgt::Font {
 
 	constexpr auto FONT_SUBFOLDER = "Font";
-	constexpr auto FONT_EXTENSION = ".ttf";
+	constexpr auto FONT_EXTENSION = ".tgf";
 
 	const auto FONT_PATH = fs::path(Util::RESOURCE_LOCATION).append(FONT_SUBFOLDER);
 

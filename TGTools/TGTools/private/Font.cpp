@@ -18,7 +18,16 @@ namespace tgt::Font {
 		return add(std::string(path));
 	}
 
-	static const Result generatefontbitmap(const fs::path& resourceLocation) {
+	constexpr auto TGF_HEADER_VERSION = 1;
+
+	struct TGFHeader {
+		uint32_t version = TGF_HEADER_VERSION;
+		uint32_t textureindex = 0; //reserved
+		uint32_t startindex;
+		uint32_t count;
+	};
+
+	static const Result generatefontbitmap(const fs::path& font, const std::string& resourceLocation, const std::string& texture) {
 		constexpr auto START_CHAR = 33, END_CHAR = 126, DIFF = END_CHAR - START_CHAR;
 		constexpr auto STRIDE = 1, WIDTH = 64, HEIGHT = 64;
 
@@ -35,7 +44,7 @@ namespace tgt::Font {
 		if (!stbtt_PackBegin(&packedcontext, buffer, PWIDTH, PHEIGHT, 0, STRIDE, 0))
 			return Result::GENERAL;
 
-		std::ifstream input(resourceLocation, std::ios_base::binary | std::ios_base::ate | std::ios_base::in);
+		std::ifstream input(font, std::ios_base::binary | std::ios_base::ate | std::ios_base::in);
 		auto size = (size_t)input.tellg();
 		uint8_t* fontData = new uint8_t[size];
 
@@ -52,7 +61,6 @@ namespace tgt::Font {
 
 		stbtt_PackEnd(&packedcontext);
 
-		const auto texturelocation = Util::getResource(Texture::TEXTURE_PATH, resourceLocation.stem().string(), Texture::TEXTURE_EXTENSION).string();
 
 		uint8_t* finalbuffer = new uint8_t[BUFFERSIZE * 4];
 
@@ -67,11 +75,19 @@ namespace tgt::Font {
 			finalbuffer[index + 3] = value;
 		}
 
-		if(!stbi_write_png(texturelocation.c_str(), PWIDTH, PHEIGHT, 4, finalbuffer, PWIDTH * 4))
+		if(!stbi_write_png(texture.c_str(), PWIDTH, PHEIGHT, 4, finalbuffer, PWIDTH * 4))
 			return Result::GENERAL;
 
-		// TODO write other files font files
+		FILE* file = fopen(resourceLocation.c_str(), "wb");
+		if (!file)
+			return Result::GENERAL;
+		TGFHeader header;
+		header.startindex = START_CHAR;
+		header.count = DIFF;
 
+		fwrite(&header, sizeof(TGFHeader), 1, file);
+		fwrite(packedchars, sizeof(stbtt_packedchar), DIFF, file);
+		fclose(file);
 		return Result::SUCCESS;
 	}
 
@@ -82,13 +98,14 @@ namespace tgt::Font {
 		if (!fs::exists(fontPath))
 			return Result::DOES_NOT_EXIST;
 
-		auto resourceLocation = Util::getResource(FONT_PATH, fontPath.filename().string());
-		if (!fs::copy_file(fontPath, resourceLocation)) // Failing if destination exists
-			return Result::ALREADY_EXISTS;
+		const auto fontName = fontPath.stem().string();
+		const auto resourceLocation = Util::getResource(FONT_PATH, fontName, FONT_EXTENSION).string();
+		const auto texturelocation = Util::getResource(Texture::TEXTURE_PATH, fontName, Texture::TEXTURE_EXTENSION).string();
 
-		auto result = generatefontbitmap(resourceLocation);
+		auto result = generatefontbitmap(fontPath, resourceLocation, texturelocation);
 		if (result != Result::SUCCESS) {
 			fs::remove(resourceLocation);
+			fs::remove(texturelocation);
 			return result;
 		}
 		return Result::SUCCESS;
@@ -102,9 +119,10 @@ namespace tgt::Font {
 	const Result remove(const std::string& name) {
 		STRING_CHECKS(name);
 
-		auto font = Util::getResource(FONT_PATH, name, FONT_EXTENSION);
+		const auto font = Util::getResource(FONT_PATH, name, FONT_EXTENSION);
+		const auto texture = Util::getResource(Texture::TEXTURE_PATH, name, Texture::TEXTURE_EXTENSION).string();
 
-		if (!fs::remove(font))
+		if (!fs::remove(font) && !fs::remove(texture))
 			return Result::DOES_NOT_EXIST;
 
 		return Result::SUCCESS;
