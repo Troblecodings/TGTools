@@ -9,7 +9,7 @@ namespace tgt::Material {
 	const Result add(const char* name, const char* texture, int color) {
 		STRING_CHECKS_C(name);
 		STRING_CHECKS_C(texture);
-		return add(std::string (name), std::string (texture), color);
+		return add(std::string(name), std::string(texture), color);
 	}
 
 	const Result add(std::string& name, std::string& texture, int color) {
@@ -44,11 +44,11 @@ namespace tgt::Material {
 	const Result remove(std::string& name) {
 		STRING_CHECKS(name);
 
-		auto path = Util::getResource(MATERIAL_PATH, Util::JSON_FILTER);
+		auto path = Util::getResource(MATERIAL_PATH, name, Util::JSON);
 
 		if (!fs::remove(path))
 			Result::DOES_NOT_EXIST;
 
-			return Result::SUCCESS;
+		return Result::SUCCESS;
 	}
 }
