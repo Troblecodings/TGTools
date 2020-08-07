@@ -3,8 +3,11 @@
 #include "Result.hpp"
 #include <string>
 #include "Util.hpp"
+#include "../public/json.hpp"
 
 namespace tgt::Actor {
+
+	namespace js = nlohmann;
 
 	constexpr auto ACTOR_SUBFOLDER = "Actors";
 
