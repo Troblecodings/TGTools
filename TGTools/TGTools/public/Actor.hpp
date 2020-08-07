@@ -24,16 +24,14 @@ namespace tgt::Actor {
 	const std::string list();
 
 	template<class T>
-	constexpr bool _validJson = std::is_arithmetic_v<T> || std::is_same_v<T, std::string> || std::is_same_v<T, const std::string> 
-		|| std::is_same_v<T, char*> || std::is_same_v<T,const char*>;
+	constexpr bool _validString = std::is_same_v<T, std::string> || std::is_same_v<T, const std::string>
+		|| std::is_same_v<T, char*> || std::is_same_v<T, const char*>;
 
-	template<class T, std::enable_if_t<_validJson<T>, int> = 0>
-	const Result change(const char* name, const char* key, T value) {
-		return change<T>(std::string(name), std::string(key), value);
-	}
+	template<class T>
+	constexpr bool _validJson = std::is_arithmetic_v<T> || _validString<T>;
 	
-	template<class T, std::enable_if_t<_validJson<T>, int> = 0>
-	const Result change(const std::string& name, const std::string& key, T value) {
+	template<class T, class U, std::enable_if_t<_validJson<T> && _validString<U>, int> = 0>
+	const Result change(const U name, const U key, T value) {
 		auto actor = Util::getResource(ACTOR_PATH, name, Util::JSON);
 		if (!fs::exists(actor))
 			return Result::DOES_NOT_EXIST;
