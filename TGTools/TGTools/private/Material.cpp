@@ -47,7 +47,7 @@ namespace tgt::Material {
 		auto path = Util::getResource(MATERIAL_PATH, name, Util::JSON);
 
 		if (!fs::remove(path))
-			Result::DOES_NOT_EXIST;
+			return Result::DOES_NOT_EXIST;
 
 		return Result::SUCCESS;
 	}
