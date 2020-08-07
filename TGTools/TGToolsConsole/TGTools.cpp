@@ -16,28 +16,29 @@ using namespace tgt;
 
 typedef Result(*commandhandle)(int count, const char** args);
 
-struct Command{
+struct Command {
 	size_t count;
 	commandhandle handle;
 };
 
 static Result actorchange(int count, const char** inputs) {
-	const auto value = inputs[2];
-
-	auto convertint = stoi(value);
-	if (uncaught_exceptions() == 0)
-		return Actor::change(inputs[0], inputs[1], convertint);
-
-	auto convertfloat = stof(value);
-	if (uncaught_exceptions() == 0)
-		return Actor::change(inputs[0], inputs[1], convertfloat);
-
-	return Actor::change(inputs[0], inputs[1], value);
+	const std::string value = inputs[2];
+	try {
+		if (value.find('.') == UINT64_MAX) {
+			auto convertint = stoi(value);
+			return Actor::change(inputs[0], inputs[1], convertint);
+		} else {
+			auto convertfloat = stof(value);
+			return Actor::change(inputs[0], inputs[1], convertfloat);
+		}
+	} catch (const std::exception&) {
+		return Actor::change(inputs[0], inputs[1], value);
+	}
 }
 
 const std::map<std::string, std::map<std::string, Command>> commands =
 {
-	{ 
+	{
 		"actor", {
 			{ "add", { 2, [](int count, auto args) { return Actor::add(args[0], args[1]); } } },
 			{ "remove", { 1, [](int count, auto args) { return Actor::remove(args[0]); } } },
@@ -54,7 +55,7 @@ const std::map<std::string, std::map<std::string, Command>> commands =
 			{ "remove", {2, [](int count, auto args) { return Map::remove(args[0], args[1]); } } },
 			{ "make", {1, [](int count, auto args) { return Map::make(args[0]); } } }
 		}
-	}, 
+	},
 	{
 		"texture", {
 			{ "add", {1, [](int count, auto args) { return Texture::add(args[0]); } } },
