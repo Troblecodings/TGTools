@@ -20,8 +20,23 @@ namespace tgt::Actor {
 
 	const std::string list();
 
-	const Result change(const std::string& name, const std::string& key, const std::string& value);
+	template<class T>
+	constexpr bool _validJson = std::is_arithmetic_v<T> || std::is_same_v<T, std::string> || std::is_same_v<T, const std::string> 
+		|| std::is_same_v<T, char*> || std::is_same_v<T,const char*>;
 
-	const Result change(const char* name, const char* key, const char* value);
+	template<class T, std::enable_if_t<_validJson<T>, int> = 0>
+	const Result change(const char* name, const char* key, T value) {
+		return change<T>(std::string(name), std::string(key), value);
+	}
+	
+	template<class T, std::enable_if_t<_validJson<T>, int> = 0>
+	const Result change(const std::string& name, const std::string& key, T value) {
+		auto actor = Util::getResource(ACTOR_PATH, name, Util::JSON);
+		if (!fs::exists(actor))
+			return Result::DOES_NOT_EXIST;
+
+		JSON_UPDATE(actor, json[key] = value;);
+		return Result::SUCCESS;
+	}
 
 }
