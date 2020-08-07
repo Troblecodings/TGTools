@@ -15,3 +15,4 @@ This is the toolsystem project of the TGEngine, replacing the former ShaderTool.
 | Name           | Link                                       | License                                                                   |
 | -------------- | ------------------------------------------ | ------------------------------------------------------------------------- |
 | Json (nlohman) | [Github](https://github.com/nlohmann/json) | [MIT](https://raw.githubusercontent.com/nlohmann/json/master/LICENSE.MIT) |
+| Stb (nothings) | [Github](https://github.com/nothings/stb/) | [MIT](https://github.com/nothings/stb/blob/master/LICENSE) |

@@ -7,6 +7,7 @@
 namespace tgt::Map {
 
 	constexpr auto MAP_SUBFOLDER = "Maps";
+	constexpr auto MAP_EXTENSION = ".tgr";
 
 	const auto MAP_PATH = fs::path(Util::RESOURCE_LOCATION).append(MAP_SUBFOLDER);
 
@@ -31,4 +32,6 @@ namespace tgt::Map {
 	const Result remove(const char* mapname, const char* name);
 
 	const Result remove(const std::string& mapname, const std::string& name);
+
+	const bool checkDependent(const std::string& dependency);
 }
