@@ -11,9 +11,9 @@ output << std::setw(4) << json << std::endl
 input >> json
 
 #define JSON_UPDATE(path, update) js::json json; \
-JSON_LOAD(map, json);\
+JSON_LOAD(path, json);\
 update \
-JSON_WRITE(map, json)
+JSON_WRITE(path, json)
 
 
 #ifndef TGT_NO_STRING_CHECKS
@@ -32,6 +32,19 @@ namespace tgt::Util {
 	constexpr auto JSON = ".json";
 
 	constexpr auto JSON_FILTER = [](fs::path path) { return path.extension() == JSON; };
+
+	// We all love Andrei Alexandrescu
+	template <typename T>
+	class scope_exit {
+	
+	private:
+		T lambda;
+
+	public:
+		scope_exit(T x) : lambda{ x } {}
+		~scope_exit() { lambda(); }
+	};
+
 
 	template<class T, class U>
 	const fs::path getResource(fs::path resource, T name,  U extension) {
@@ -65,5 +78,14 @@ namespace tgt::Util {
 		}
 		result.shrink_to_fit();
 		return result;
+	}
+
+	template<class T, class U>
+	const bool find(const T path, const U lambda) {
+		fs::directory_iterator directory(path);
+		for (auto& entry : directory)
+			if (lambda(entry))
+				return true;
+		return false;
 	}
 }
