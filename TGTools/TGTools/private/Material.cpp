@@ -6,13 +6,13 @@ namespace tgt::Material {
 
 	namespace js = nlohmann;
 
-	const Result add(const char* name, const char* texture, int color) {
+	const Result add(const char* name, const char* texture, const int color) {
 		STRING_CHECKS_C(name);
 		STRING_CHECKS_C(texture);
 		return add(std::string(name), std::string(texture), color);
 	}
 
-	const Result add(std::string& name, std::string& texture, int color) {
+	const Result add(const std::string& name, const std::string& texture, const int color) {
 		STRING_CHECKS(name);
 		STRING_CHECKS(texture);
 
@@ -41,7 +41,7 @@ namespace tgt::Material {
 		return remove(std::string(name));
 	}
 
-	const Result remove(std::string& name) {
+	const Result remove(const std::string& name) {
 		STRING_CHECKS(name);
 
 		auto path = Util::getResource(MATERIAL_PATH, name, Util::JSON);
