@@ -9,49 +9,66 @@
 #include <map>
 #include <vector>
 #include <sstream>
+#include <exception>
 #include <iterator>
 
 using namespace std;
 using namespace tgt;
 
-typedef Result(*commandhandle)(const char** args);
+typedef Result(*commandhandle)(int count, const char** args);
 
-struct Command{
+struct Command {
 	size_t count;
 	commandhandle handle;
 };
 
+static Result actorchange(int count, const char** inputs) {
+	const std::string value = inputs[2];
+	try {
+		if (value.find('.') == UINT64_MAX) {
+			auto convertint = stoi(value);
+			return Actor::change(inputs[0], inputs[1], convertint);
+		} else {
+			auto convertfloat = stof(value);
+			return Actor::change(inputs[0], inputs[1], convertfloat);
+		}
+	} catch (const std::exception&) {
+		return Actor::change(inputs[0], inputs[1], value);
+	}
+}
+
 const std::map<std::string, std::map<std::string, Command>> commands =
 {
-	{ 
+	{
 		"actor", {
-			{ "add", { 2, [](auto args) { return Actor::add(args[0], args[1]); } } },
-			{ "remove", { 1, [](auto args) { return Actor::remove(args[0]); } } },
-			{ "list", { 0, [](auto args) { std::cout << Actor::list() << std::endl; return Result::SUCCESS; } } }
+			{ "add", { 2, [](int count, auto args) { return Actor::add(args[0], args[1]); } } },
+			{ "remove", { 1, [](int count, auto args) { return Actor::remove(args[0]); } } },
+			{ "list", { 0, [](int count, auto args) { std::cout << Actor::list() << std::endl; return Result::SUCCESS; } } },
+			{ "change", { 3, actorchange } }
 		}
 	},
 	{
 		"map", {
-			{ "create", {1, [](auto args) { return Map::create(args[0]); } } },
-			{ "delete", {1, [](auto args) { return Map::remove(args[0]); } } },
-			{ "list", { 0, [](auto args) { std::cout << Map::list() << std::endl; return Result::SUCCESS; } } },
-			{ "add", {2, [](auto args) { return Map::add(args[0], args[1]); } } },
-			{ "remove", {2, [](auto args) { return Map::remove(args[0], args[1]); } } },
-			{ "make", {1, [](auto args) { return Map::make(args[0]); } } }
+			{ "create", {1, [](int count, auto args) { return Map::create(args[0]); } } },
+			{ "delete", {1, [](int count, auto args) { return Map::remove(args[0]); } } },
+			{ "list", { 0, [](int count, auto args) { std::cout << Map::list() << std::endl; return Result::SUCCESS; } } },
+			{ "add", {2, [](int count, auto args) { return Map::add(args[0], args[1]); } } },
+			{ "remove", {2, [](int count, auto args) { return Map::remove(args[0], args[1]); } } },
+			{ "make", {1, [](int count, auto args) { return Map::make(args[0]); } } }
 		}
-	}, 
+	},
 	{
 		"texture", {
-			{ "add", {1, [](auto args) { return Texture::add(args[0]); } } },
-			{ "remove", {1, [](auto args) { return Texture::remove(args[0]); } } },
-			{ "list", { 0, [](auto args) { std::cout << Texture::list() << std::endl; return Result::SUCCESS; } } }
+			{ "add", {1, [](int count, auto args) { return Texture::add(args[0]); } } },
+			{ "remove", {1, [](int count, auto args) { return Texture::remove(args[0]); } } },
+			{ "list", { 0, [](int count, auto args) { std::cout << Texture::list() << std::endl; return Result::SUCCESS; } } }
 		}
 	},
 	{
 		"font", {
-			{ "add", {1, [](auto args) { return Font::add(args[0]); } } },
-			{ "remove", {1, [](auto args) { return Font::remove(args[0]); } } },
-			{ "list", { 0, [](auto args) { std::cout << Font::list() << std::endl; return Result::SUCCESS; } } }
+			{ "add", {1, [](int count, auto args) { return Font::add(args[0]); } } },
+			{ "remove", {1, [](int count, auto args) { return Font::remove(args[0]); } } },
+			{ "list", { 0, [](int count, auto args) { std::cout << Font::list() << std::endl; return Result::SUCCESS; } } }
 		}
 	}
 };
@@ -72,9 +89,8 @@ static Result exec(int count, const char** args) {
 	// Forward ptr
 	count -= 2;
 	args += 2;
-
 	if (count < command.count) return Result::BAD_ARGUMENTS;
-	return command.handle(args);
+	return command.handle(count, args);
 }
 
 int main(int count, const char** args) {

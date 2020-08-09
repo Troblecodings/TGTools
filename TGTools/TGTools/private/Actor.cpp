@@ -51,16 +51,4 @@ namespace tgt::Actor {
 		return Util::collect(ACTOR_PATH, Util::JSON_FILTER);
 	}
 
-	const Result change(const char* name, const char* key, const char* value) {
-		return change(std::string(name), std::string(key), std::string(value));
-	}
-
-	const Result change(const std::string& name, const std::string& key, const std::string& value) {
-		auto actor = Util::getResource(ACTOR_PATH, name, Util::JSON);
-		if (!fs::exists(actor))
-			return Result::DOES_NOT_EXIST;
-
-		JSON_UPDATE(actor, json[key] = value;);
-		return Result::SUCCESS;
-	}
 }
