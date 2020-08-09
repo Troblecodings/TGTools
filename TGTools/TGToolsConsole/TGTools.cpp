@@ -10,6 +10,7 @@
 #include <vector>
 #include <sstream>
 #include <exception>
+#include <iterator>
 
 using namespace std;
 using namespace tgt;
