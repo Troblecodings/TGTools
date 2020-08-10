@@ -36,7 +36,7 @@ namespace tgt::Texture {
 		if (Util::find(Material::MATERIAL_PATH, [=](auto& directory) {
 			nlohmann::json json;
 			JSON_LOAD(directory.path(), json);
-			return json[Material::TEXTURE_PROPERTY] == path;
+			return json[Material::TEXTURE_PROPERTY].get<std::string>() == path;
 		})) return Result::DEPENDENT;
 
 		if (!fs::remove(path))
