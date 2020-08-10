@@ -15,6 +15,7 @@ namespace tgt::Map {
 
 	const Result create(const std::string& mapname) {
 		STRING_CHECKS(mapname);
+		STRING_SYNTAX_CHECK(mapname);
 
 		auto map = Util::getResource(MAP_PATH, mapname, Util::JSON);
 		if (fs::exists(map))
