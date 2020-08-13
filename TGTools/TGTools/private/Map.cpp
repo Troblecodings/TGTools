@@ -23,7 +23,12 @@ namespace tgt::Map {
 		if (fs::exists(map))
 			return Result::ALREADY_EXISTS;
 
-		JSON_WRITE(map, js::json::array());
+		js::json json;
+		json[ACTOR_PROPERTY] = js::json::array();
+		json[MATERIAL_PROPERTY] = js::json::array();
+		json[TEXTURE_PROPERTY] = js::json::array();
+
+		JSON_WRITE(map, json);
 		return Result::SUCCESS;
 	}
 
@@ -63,7 +68,6 @@ namespace tgt::Map {
 		if (!fp)
 			return Result::GENERAL;
 
-		fwrite()
 		// TODO this is going to hurt
 
 		return Result::GENERAL;
@@ -90,15 +94,14 @@ namespace tgt::Map {
 		js::json actor;
 		JSON_LOAD(path, actor);
 
+		auto materialPath = actor[Actor::MATERIAL_PROPERTY].get<std::string>();
 		js::json material;
-		JSON_LOAD(actor[Actor::MATERIAL_PROPERTY].get<std::string>(), material);
-
-		js::json texture;
-		JSON_LOAD(material[Material].get<std::string>(), texture);
+		JSON_LOAD(materialPath, material);
 
 		JSON_UPDATE(map, {
 			json[ACTOR_PROPERTY] += path.string(); 
-			json[] += path.string();
+			json[MATERIAL_PROPERTY] += materialPath;
+			json[TEXTURE_PROPERTY] += material[Material::TEXTURE_PROPERTY].get<std::string>();
 		});
 		return Result::SUCCESS;
 	}
