@@ -1,4 +1,6 @@
 #include "../public/Texture.hpp"
+#include "../public/Material.hpp"
+#include "../public/json.hpp"
 
 namespace tgt::Texture {
 
@@ -31,7 +33,11 @@ namespace tgt::Texture {
 
 		auto path = Util::getResource(TEXTURE_PATH, name, TEXTURE_EXTENSION);
 
-		// TODO Dependencie checks
+		if (Util::find(Material::MATERIAL_PATH, [=](auto& directory) {
+			nlohmann::json json;
+			JSON_LOAD(directory.path(), json);
+			return json[Material::TEXTURE_PROPERTY].get<std::string>() == path;
+		})) return Result::DEPENDENT;
 
 		if (!fs::remove(path))
 			return Result::DOES_NOT_EXIST;

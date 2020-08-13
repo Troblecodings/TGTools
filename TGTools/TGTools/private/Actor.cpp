@@ -16,6 +16,7 @@ namespace tgt::Actor {
 	const Result add(const std::string& name, const std::string& material) {
 		STRING_CHECKS(name);
 		STRING_CHECKS(material);
+		STRING_SYNTAX_CHECK(name);
 
 		auto actor = Util::getResource(ACTOR_PATH, name, Util::JSON);
 		if (fs::exists(actor))

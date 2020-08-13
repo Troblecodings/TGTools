@@ -15,6 +15,7 @@ JSON_LOAD(path, json);\
 update \
 JSON_WRITE(path, json)
 
+#define STRING_SYNTAX_CHECK(string) for (char x : string) if (x < 48 || (x > 57 && x < 65) || (x > 90 && x < 97) || x > 122) return Result::BAD_STRING;
 
 #ifndef TGT_NO_STRING_CHECKS
 #define STRING_CHECKS_C(string) if(string == nullptr || *string == 0) return Result::BAD_ARGUMENTS
