@@ -6,9 +6,11 @@
 
 namespace tgt::Material {
 
-	constexpr auto DEFAULT_COLOR = 0xFFFFFFFF;
-
 	constexpr auto MATERIAL_SUBFOLDER = "Materials";
+
+	constexpr auto DEFAULT_COLOR = 0xFFFFFFFF;
+	constexpr auto TEXTURE_PROPERTY = "texture";
+	constexpr auto COLOR_PROPERTY = "color";
 
 	const auto MATERIAL_PATH = fs::path(Util::RESOURCE_LOCATION).append(MATERIAL_SUBFOLDER);
 
