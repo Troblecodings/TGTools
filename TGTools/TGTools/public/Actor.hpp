@@ -11,6 +11,8 @@ namespace tgt::Actor {
 
 	constexpr auto ACTOR_SUBFOLDER = "Actors";
 
+	constexpr auto MATERIAL_PROPERTY = "material";
+
 	const auto ACTOR_PATH = fs::path(Util::RESOURCE_LOCATION).append(ACTOR_SUBFOLDER);
 
 	const Result add(const char* name, const char* material);

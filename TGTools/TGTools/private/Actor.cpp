@@ -1,6 +1,7 @@
 #include "../public/Actor.hpp"
 #include "../public/json.hpp"
 #include "../public/Map.hpp"
+#include "../public/Material.hpp"
 
 namespace tgt::Actor {
 
@@ -20,10 +21,12 @@ namespace tgt::Actor {
 		if (fs::exists(actor))
 			return Result::ALREADY_EXISTS;
 
-		// TODO Check if material exists
+		auto materialpath = Util::getResource(Material::MATERIAL_PATH, material, Util::JSON);
+		if (!fs::exists(materialpath))
+			return Result::DOES_NOT_EXIST;
 
 		js::json json;
-		json["materialName"] = material;
+		json[MATERIAL_PROPERTY] = materialpath;
 
 		JSON_WRITE(actor, json);
 

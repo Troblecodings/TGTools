@@ -3,6 +3,8 @@
 #include <fstream>
 #include "../public/Actor.hpp"
 #include "../public/Font.hpp"
+#include "../public/Texture.hpp"
+#include "../public/Material.hpp"
 
 namespace tgt::Map {
 
@@ -51,7 +53,18 @@ namespace tgt::Map {
 	const Result make(const std::string& mapname) {
 		STRING_CHECKS(mapname);
 
+		auto mapjson = Util::getResource(MAP_PATH, mapname, Util::JSON);
+		if (!fs::exists(mapjson))
+			return Result::DOES_NOT_EXIST;
+
+		auto map = Util::getResource(MAP_PATH, mapname, MAP_EXTENSION).string();
+		FILE* fp = fopen(map.c_str(), "w");
+		if (!fp)
+			return Result::GENERAL;
+
+		fwrite()
 		// TODO this is going to hurt
+
 		return Result::GENERAL;
 	}
 
@@ -72,9 +85,20 @@ namespace tgt::Map {
 		auto path = Util::getResource(Actor::ACTOR_PATH, name, Util::JSON);
 		if (!fs::exists(path))
 			return Result::DOES_NOT_EXIST;
+		
+		js::json actor;
+		JSON_LOAD(path, actor);
 
-		JSON_UPDATE(map, json += path.string(););
+		js::json material;
+		JSON_LOAD(actor[Actor::MATERIAL_PROPERTY].get<std::string>(), material);
 
+		js::json texture;
+		JSON_LOAD(material[Material].get<std::string>(), texture);
+
+		JSON_UPDATE(map, {
+			json[ACTOR_PROPERTY] += path.string(); 
+			json[] += path.string();
+		});
 		return Result::SUCCESS;
 	}
 
