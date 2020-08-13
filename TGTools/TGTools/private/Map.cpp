@@ -56,18 +56,37 @@ namespace tgt::Map {
 		return make(std::string(mapname));
 	}
 
+#define CHECK_RESULT(statement) auto result = statement; if(result != Result::SUCCESS) return result
+
+	static void textureToMapFile(FILE* fp, const js::json& map) {
+		auto textureList = map[TEXTURE_PROPERTY];
+		auto size = textureList.size();
+		fwrite(&size, sizeof(uint32_t), 1, fp);
+		for (const auto& texturePath : textureList) {
+			const uint8_t* data = Util::readFile(texturePath.get<std::string>(), &size);
+			fwrite(&size, sizeof(size_t), 1, fp);
+			fwrite(data, sizeof(uint8_t), size, fp);
+		}
+	}
+
 	const Result make(const std::string& mapname) {
 		STRING_CHECKS(mapname);
 
-		auto mapjson = Util::getResource(MAP_PATH, mapname, Util::JSON);
-		if (!fs::exists(mapjson))
+		auto mapPath = Util::getResource(MAP_PATH, mapname, Util::JSON);
+		if (!fs::exists(mapPath))
 			return Result::DOES_NOT_EXIST;
+
+		js::json mapJson;
+		JSON_LOAD(mapPath, mapJson);
 
 		auto map = Util::getResource(MAP_PATH, mapname, MAP_EXTENSION).string();
 		FILE* fp = fopen(map.c_str(), "w");
 		if (!fp)
 			return Result::GENERAL;
 
+		Util::scope_exit onexit([=]() { fclose(fp); });
+
+		textureToMapFile(fp, mapJson);
 		// TODO this is going to hurt
 
 		return Result::GENERAL;

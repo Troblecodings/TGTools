@@ -44,14 +44,8 @@ namespace tgt::Font {
 		if (!stbtt_PackBegin(&packedcontext, buffer, PWIDTH, PHEIGHT, 0, STRIDE, 0))
 			return Result::GENERAL;
 
-		std::ifstream input(font, std::ios_base::binary | std::ios_base::ate | std::ios_base::in);
-		auto size = (size_t)input.tellg();
-		uint8_t* fontData = new uint8_t[size];
-
+		auto fontData = Util::readFile(font.string());
 		Util::scope_exit fexit([=]() { delete[] fontData; });
-
-		input.seekg(0, std::ios_base::beg);
-		input.read((char*)fontData, size);
 
 		stbtt_PackSetOversampling(&packedcontext, 2, 2);
 

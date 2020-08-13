@@ -69,6 +69,18 @@ namespace tgt::Util {
 		return getResource(resource, name, nullptr);
 	}
 
+
+	inline const uint8_t* readFile(std::string& name, size_t* sizeptr = nullptr) {
+		std::ifstream input(name, std::ios_base::binary | std::ios_base::ate | std::ios_base::in);
+		auto size = (size_t)input.tellg();
+		if (sizeptr != nullptr)
+			*sizeptr = size;
+		uint8_t* data = new uint8_t[size];
+		input.seekg(0, std::ios_base::beg);
+		input.read((char*)data, size);
+		return data;
+	}
+
 	template<class T, class U>
 	const std::string collect(const T path, const U lambda) {
 		fs::path directoryPath(path);
