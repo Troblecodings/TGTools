@@ -15,6 +15,12 @@ JSON_LOAD(path, json);\
 update \
 JSON_WRITE(path, json)
 
+#define REMOVE_IF_FOUND(name, jobj, needle) auto name##json = jobj;\
+	auto name##pred = std::remove(name##json.begin(), name##json.end(), path);\
+	auto name##found = name##pred == name##json.end();\
+	if (name##found)\
+		name##json.erase(name##pred)
+
 #define STRING_SYNTAX_CHECK(string) for (char x : string) if (x < 48 || (x > 57 && x < 65) || (x > 90 && x < 97) || x > 122) return Result::BAD_STRING;
 
 #ifndef TGT_NO_STRING_CHECKS

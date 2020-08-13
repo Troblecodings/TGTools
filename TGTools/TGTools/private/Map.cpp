@@ -122,12 +122,19 @@ namespace tgt::Map {
 			return Result::DOES_NOT_EXIST;
 
 		auto path = Util::getResource(Actor::ACTOR_PATH, name, Util::JSON).string();
+		js::json actor;
+		JSON_LOAD(path, actor);
+
+		auto materialPath = actor[Actor::MATERIAL_PROPERTY].get<std::string>();
+		js::json material;
+		JSON_LOAD(materialPath, material);
 
 		JSON_UPDATE(map, {
-			auto predicate = std::remove(json.begin(), json.end(), path);
-			if (predicate == json.end())
+			REMOVE_IF_FOUND(actor, json[ACTOR_PROPERTY], path);
+		    REMOVE_IF_FOUND(material, json[ACTOR_PROPERTY], materialPath);
+		    REMOVE_IF_FOUND(texture, json[ACTOR_PROPERTY], material[Material::TEXTURE_PROPERTY].get<std::string>());
+			if (!(actorfound || materialfound || texturefound))
 				return Result::DOES_NOT_EXIST;
-			json.erase(predicate);
 			});
 
 		return Result::SUCCESS;
