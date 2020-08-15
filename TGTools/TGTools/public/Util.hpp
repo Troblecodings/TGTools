@@ -31,6 +31,8 @@ JSON_WRITE(path, json)
 #define STRING_CHECKS(string)
 #endif // !TGT_NO_STRING_CHECKS
 
+#define ID_OF(iter, pred) std::distance(iter.begin(), std::find(iter.begin(), iter.end(), pred))
+
 namespace fs = std::filesystem;
 
 namespace tgt::Util {

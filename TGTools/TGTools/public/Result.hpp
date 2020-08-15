@@ -7,5 +7,6 @@ enum class Result {
 	DOES_NOT_EXIST,
 	DEPENDENT,
 	GENERAL,
-	BAD_STRING
+	BAD_STRING,
+	JSON_FAIL
 };

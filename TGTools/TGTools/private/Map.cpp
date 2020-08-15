@@ -5,6 +5,7 @@
 #include "../public/Font.hpp"
 #include "../public/Texture.hpp"
 #include "../public/Material.hpp"
+#include <algorithm>
 
 namespace tgt::Map {
 
@@ -56,7 +57,7 @@ namespace tgt::Map {
 		return make(std::string(mapname));
 	}
 
-#define CHECK_RESULT(statement) auto result = statement; if(result != Result::SUCCESS) return result
+#define CHECK_RESULT(statement) result = statement; if(result != Result::SUCCESS) return result
 
 	static void textureToMapFile(FILE* fp, const js::json& map) {
 		auto textureList = map[TEXTURE_PROPERTY];
@@ -67,6 +68,27 @@ namespace tgt::Map {
 			fwrite(&size, sizeof(size_t), 1, fp);
 			fwrite(data, sizeof(uint8_t), size, fp);
 		}
+	}
+
+	static Result materialToMapFile(FILE* fp, const js::json& map) {
+		auto materialList = map[MATERIAL_PROPERTY];
+		auto textureList = map[TEXTURE_PROPERTY];
+		auto size = materialList.size();
+		fwrite(&size, sizeof(uint32_t), 1, fp);
+		for (const auto& jsonPath : materialList) {
+			js::json json;
+			JSON_LOAD(jsonPath.get<std::string>(), json);
+			for (auto& [key, value] : json.items())
+				if (std::none_of(Material::SUPPORTED_PROPERTIES.begin(), Material::SUPPORTED_PROPERTIES.end(), [=](auto x) { return key == x; }))
+					return Result::JSON_FAIL;
+			uint32_t textureID = ID_OF(textureList, json[Material::TEXTURE_PROPERTY].get<std::string>());
+			fwrite(&Material::TEXTURE_ID, 1, 1, fp);
+			fwrite(&textureID, sizeof(uint32_t), 1, fp);
+			fwrite(&Material::COLOR_ID, 1, 1, fp);
+			auto color = json[Material::COLOR_PROPERTY].get<uint32_t>();
+			fwrite(&color, sizeof(uint32_t), 1, fp);
+		}
+		return Result::SUCCESS;
 	}
 
 	const Result make(const std::string& mapname) {
@@ -84,7 +106,8 @@ namespace tgt::Map {
 		if (!fp)
 			return Result::GENERAL;
 
-		Util::scope_exit onexit([=]() { fclose(fp); });
+		Result result;
+		Util::scope_exit onexit([=, rs = &result]() { fclose(fp); if(*rs != Result::SUCCESS) fs::remove(map); });
 
 		textureToMapFile(fp, mapJson);
 		// TODO this is going to hurt

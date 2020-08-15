@@ -12,6 +12,10 @@ namespace tgt::Material {
 	constexpr auto TEXTURE_PROPERTY = "texture";
 	constexpr auto COLOR_PROPERTY = "color";
 
+	constexpr std::array SUPPORTED_PROPERTIES = { TEXTURE_PROPERTY, COLOR_PROPERTY };
+	constexpr auto TEXTURE_ID = ID_OF(SUPPORTED_PROPERTIES, TEXTURE_PROPERTY);
+	constexpr auto COLOR_ID = ID_OF(SUPPORTED_PROPERTIES, COLOR_PROPERTY);
+
 	const auto MATERIAL_PATH = fs::path(Util::RESOURCE_LOCATION).append(MATERIAL_SUBFOLDER);
 
 	const Result add(const char* name, const char* texture, int color = DEFAULT_COLOR);
