@@ -12,6 +12,7 @@ namespace tgt::Map {
 	constexpr auto TEXTURE_PROPERTY = "textures";
 	constexpr auto ACTOR_PROPERTY = "actors";
 	constexpr auto MATERIAL_PROPERTY = "materials";
+	constexpr auto FONT_PROPERTY = "fonts";
 
 	const auto MAP_PATH = fs::path(Util::RESOURCE_LOCATION).append(MAP_SUBFOLDER);
 
