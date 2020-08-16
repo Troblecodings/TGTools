@@ -10,8 +10,26 @@ namespace tgt::Actor {
 	namespace js = nlohmann;
 
 	constexpr auto ACTOR_SUBFOLDER = "Actors";
+	constexpr auto ACTOR_EXTENSION = "tgmdl";
 
+	constexpr auto MATRIX_PROPERTY = "matrix";
+	constexpr auto ANIMATION_PROPERTY = "animationIndex";
+	constexpr auto DYNAMIK_TRANSFORM_PROPERTY = "transformIndex";
 	constexpr auto MATERIAL_PROPERTY = "material";
+	constexpr auto LAYER_PROPERTY = "layer";
+
+	constexpr std::array SUPPORTED_PROPERTIES = { MATRIX_PROPERTY, ANIMATION_PROPERTY, 
+		DYNAMIK_TRANSFORM_PROPERTY, MATERIAL_PROPERTY, LAYER_PROPERTY };
+
+	struct ActorData {
+		float    matrix[16];
+		uint32_t animationIndex;
+		uint32_t transformIndex;
+		uint32_t material;
+		uint32_t layer;
+		uint32_t instanceCount;
+		uint32_t instanceOffset;
+	};
 
 	const auto ACTOR_PATH = fs::path(Util::RESOURCE_LOCATION).append(ACTOR_SUBFOLDER);
 
@@ -37,6 +55,9 @@ namespace tgt::Actor {
 		auto actor = Util::getResource(ACTOR_PATH, name, Util::JSON);
 		if (!fs::exists(actor))
 			return Result::DOES_NOT_EXIST;
+
+		if (std::find(SUPPORTED_PROPERTIES.begin(), SUPPORTED_PROPERTIES.end(), key) == SUPPORTED_PROPERTIES.end())
+			return Result::UNSUPPORTED;
 
 		JSON_UPDATE(actor, json[key] = value;);
 		return Result::SUCCESS;

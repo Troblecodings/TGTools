@@ -8,5 +8,5 @@ enum class Result {
 	DEPENDENT,
 	GENERAL,
 	BAD_STRING,
-	JSON_FAIL
+	UNSUPPORTED
 };

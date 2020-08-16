@@ -86,18 +86,6 @@ namespace tgt::Map {
 		return Result::SUCCESS;
 	}
 
-	struct ActorData {
-		float    matrix[16];
-		uint32_t animationIndex;
-		uint32_t transformIndex;
-		uint32_t material;
-		uint32_t layer;
-		uint32_t instanceCount;
-		uint32_t instanceOffset;
-		uint32_t indexCount;
-		uint32_t vertexCount;
-	};
-
 	const Result make(const std::string& mapname) {
 		STRING_CHECKS(mapname);
 
