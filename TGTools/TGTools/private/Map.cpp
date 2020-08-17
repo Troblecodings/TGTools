@@ -143,7 +143,7 @@ namespace tgt::Map {
 			json[TEXTURE_PROPERTY] += material[Material::TEXTURE_PROPERTY].get<std::string>();
 			auto fontPath = Util::getResource(Font::FONT_PATH, name, Font::FONT_EXTENSION);
 			if(fs::exists(fontPath))
-				json[FONT_PROPERTY] += materialPath;
+				json[FONT_PROPERTY] += fontPath;
 		});
 		return Result::SUCCESS;
 	}

@@ -4,6 +4,7 @@
 #include <string>
 #include "Util.hpp"
 #include "../public/json.hpp"
+#include <array>
 
 namespace tgt::Actor {
 
