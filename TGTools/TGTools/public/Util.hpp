@@ -4,11 +4,11 @@
 #include <filesystem>
 #include <fstream>
 
-#define JSON_WRITE(path, json) std::ofstream output(path);\
-output << std::setw(4) << json << std::endl
+#define JSON_WRITE(path, json) std::ofstream path##Output(path);\
+path##Output << std::setw(4) << json << std::endl
 
-#define JSON_LOAD(path, json) std::ifstream input(path);\
-input >> json
+#define JSON_LOAD(path, json) std::ifstream path##Input(path);\
+path##Input >> json
 
 #define JSON_UPDATE(path, update) js::json json; \
 JSON_LOAD(path, json);\

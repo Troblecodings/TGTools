@@ -77,7 +77,8 @@ namespace tgt::Map {
 		fwrite(&size, sizeof(uint32_t), 1, fp);
 		for (const auto& jsonPath : materialList) {
 			js::json json;
-			JSON_LOAD(jsonPath.get<std::string>(), json);
+			auto materialPath = jsonPath.get<std::string>();
+			JSON_LOAD(materialPath, json);
 			uint32_t textureID = ID_OF(textureList, json[Material::TEXTURE_PROPERTY].get<std::string>());
 			fwrite(&textureID, sizeof(uint32_t), 1, fp);
 			auto color = json[Material::COLOR_PROPERTY].get<uint32_t>();
@@ -188,7 +189,8 @@ namespace tgt::Map {
 	const bool checkDependent(const std::string& dependency) {
 		return Util::find(MAP_PATH, [=](auto& directory) {
 			js::json json;
-			JSON_LOAD(directory.path(), json);
+			const auto path = directory.path();
+			JSON_LOAD(path, json);
 			return json.contains(dependency);
 		});
 	}

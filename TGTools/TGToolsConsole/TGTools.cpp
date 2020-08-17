@@ -109,7 +109,7 @@ int main(int count, const char** args) {
 			std::vector<std::string> results(std::istream_iterator<std::string>{iss},
 				std::istream_iterator<std::string>());
 
-			const int count = results.size();
+			const size_t count = results.size();
 			args = new const char* [count];
 			for (size_t i = 0; i < count; i++)
 				args[i] = results[i].c_str();
