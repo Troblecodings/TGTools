@@ -4,8 +4,6 @@
 
 namespace tgt::Material {
 
-	namespace js = nlohmann;
-
 	const Result add(const char* name, const char* texture, const int color) {
 		STRING_CHECKS_C(name);
 		STRING_CHECKS_C(texture);

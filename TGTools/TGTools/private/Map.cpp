@@ -9,8 +9,6 @@
 
 namespace tgt::Map {
 
-	namespace js = nlohmann;
-
 	const Result create(const char* mapname) {
 		STRING_CHECKS_C(mapname);
 		return create(std::string(mapname));

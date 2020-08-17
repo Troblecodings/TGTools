@@ -3,12 +3,9 @@
 #include "Result.hpp"
 #include <string>
 #include "Util.hpp"
-#include "../public/json.hpp"
 #include <array>
 
 namespace tgt::Actor {
-
-	namespace js = nlohmann;
 
 	constexpr auto ACTOR_SUBFOLDER = "Actors";
 	constexpr auto ACTOR_EXTENSION = "tgmdl";
@@ -47,7 +44,7 @@ namespace tgt::Actor {
 	template<class T, class U, class V, 
 		typename = std::enable_if_t<Util::_validJson<T> && Util::_validString<V> && Util::_validString<U>>>
 	const Result change(V actorname, U key, T value) {
-		auto actor = Util::getResource(ACTOR_PATH, name, Util::JSON);
+		auto actor = Util::getResource(ACTOR_PATH, actorname, Util::JSON);
 		return Util::change(actor, key, value, SUPPORTED_PROPERTIES);
 	}
 	const Result _dataHeader(const std::string& name, ActorData* data);

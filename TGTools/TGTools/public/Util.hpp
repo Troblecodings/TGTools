@@ -3,6 +3,7 @@
 #include <string>
 #include <filesystem>
 #include <fstream>
+#include "../public/json.hpp"
 
 #define JSON_WRITE(path, json) std::ofstream path##Output(path);\
 path##Output << std::setw(4) << json << std::endl
@@ -35,6 +36,7 @@ JSON_WRITE(path, json)
 #define ID_OF_P(iter, pred) std::distance(iter.begin(), std::find_if(iter.begin(), iter.end(), pred))
 
 namespace fs = std::filesystem;
+namespace js = nlohmann;
 
 namespace tgt::Util {
 

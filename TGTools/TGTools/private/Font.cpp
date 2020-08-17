@@ -11,8 +11,6 @@
 
 namespace tgt::Font {
 
-	namespace js = nlohmann;
-
 	const Result add(const char* path) {
 		STRING_CHECKS_C(path);
 		return add(std::string(path));

@@ -5,8 +5,6 @@
 
 namespace tgt::Actor {
 
-	namespace js = nlohmann;
-
 	const Result add(const char* name, const char* material) {
 		STRING_CHECKS_C(name);
 		STRING_CHECKS_C(material);

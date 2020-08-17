@@ -3,8 +3,6 @@
 
 namespace tgt::Shader {
 
-	namespace js = nlohmann;
-
 	const Result add(const char* name, ShaderType type) {
 		STRING_CHECKS_C(name);
 		return add(std::string(name), type);
