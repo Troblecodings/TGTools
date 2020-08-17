@@ -189,9 +189,8 @@ namespace tgt::Map {
 	const bool checkDependent(const std::string& dependency) {
 		return Util::find(MAP_PATH, [=](auto& directory) {
 			js::json json;
-			const auto path = directory.path();
-			JSON_LOAD(path, json);
-			return json.contains(dependency);
+			JSON_LOAD(directory, json);
+			return json[ACTOR_PROPERTY].contains(dependency);
 		});
 	}
 }

@@ -55,4 +55,25 @@ namespace tgt::Actor {
 		return Util::collect(ACTOR_PATH, Util::JSON_FILTER);
 	}
 
+	const Result _dataHeader(const std::string& name, ActorData* data) {
+		auto actor = Util::getResource(ACTOR_PATH, name, Util::JSON);
+		if (!fs::exists(actor))
+			return Result::DOES_NOT_EXIST;
+
+		js::json json;
+		JSON_LOAD(actor, json);
+
+		auto jsmatrix = json[MATRIX_PROPERTY];
+		for (size_t i = 0; i < 16; i++) {
+			auto x = jsmatrix[i].get<float>();
+			data->matrix[i] = x;
+		}
+		data->animationIndex = json[ANIMATION_PROPERTY];
+		data->transformIndex = json[DYNAMIK_TRANSFORM_PROPERTY];
+		data->material = json[MATERIAL_PROPERTY];
+		data->layer = json[LAYER_PROPERTY];
+		data->instanceSize = 0; // TODO
+		data->instanceOffset = 0;
+		return Result::SUCCESS;
+	}
 }
