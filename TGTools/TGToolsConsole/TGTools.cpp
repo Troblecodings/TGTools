@@ -114,7 +114,7 @@ int main(int count, const char** args) {
 			for (size_t i = 0; i < count; i++)
 				args[i] = results[i].c_str();
 
-			const Result result = exec(count, args);
+			const Result result = exec((int)count, args);
 			if (result != Result::SUCCESS)
 				std::cout << "Error (" << (int)result << ")!" << std::endl;
 

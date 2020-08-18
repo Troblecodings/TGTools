@@ -33,10 +33,11 @@ namespace tgt::Texture {
 
 		auto path = Util::getResource(TEXTURE_PATH, name, TEXTURE_EXTENSION).string();
 
-		if (Util::find(Material::MATERIAL_PATH, [=](auto& directory) {
+		if (Util::find(Material::MATERIAL_PATH, [=](auto directory) {
 			nlohmann::json json;
 			JSON_LOAD(directory, json);
-			return json[Material::TEXTURE_PROPERTY].get<std::string>() == path;
+			auto foundpath = json[Material::TEXTURE_PROPERTY].get<std::string>();
+			return foundpath == path;
 		})) return Result::DEPENDENT;
 
 		if (!fs::remove(path))

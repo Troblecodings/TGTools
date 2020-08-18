@@ -118,7 +118,7 @@ namespace tgt::Util {
 		return data;
 	}
 
-	template<class T, class U, typename = std::enable_if_t<_validPath<T> && std::is_invocable_r_v<bool, U, T>>>
+	template<class T, class U, typename = std::enable_if_t<_validPath<T> && std::is_invocable_r_v<bool, U, fs::path>>>
 	const std::string collect(T path, U lambda) {
 		fs::path directoryPath(path);
 		std::string result;
@@ -136,7 +136,7 @@ namespace tgt::Util {
 		return result;
 	}
 
-	template<class T, class U, typename = std::enable_if_t<_validPath<T> && std::is_invocable_r_v<bool, U, T>>>
+	template<class T, class U, typename = std::enable_if_t<_validPath<T> && std::is_invocable_r_v<bool, U, fs::path>>>
 	const bool find(const T path, const U lambda) {
 		fs::directory_iterator directory(path);
 		for (auto& entry : directory)
