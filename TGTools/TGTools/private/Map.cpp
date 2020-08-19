@@ -85,6 +85,17 @@ namespace tgt::Map {
 		return Result::SUCCESS;
 	}
 
+	static Result actorToMapFile(FILE* fp, const js::json& map) {
+		auto actorlist = map[ACTOR_PROPERTY];
+		auto size = actorlist.size();
+		fwrite(&size, sizeof(uint32_t), 1, fp);
+		for (const auto& jsonPath : actorlist) {
+			Actor::ActorData data;
+			Actor::_dataHeader(jsonPath, &data);
+			fwrite(&data, sizeof(data), 1, fp);
+		}
+	}
+
 	const Result make(const std::string& mapname) {
 		STRING_CHECKS(mapname);
 

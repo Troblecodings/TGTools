@@ -53,13 +53,12 @@ namespace tgt::Actor {
 		return Util::collect(ACTOR_PATH, Util::JSON_FILTER);
 	}
 
-	const Result _dataHeader(const std::string& name, ActorData* data) {
-		auto actor = Util::getResource(ACTOR_PATH, name, Util::JSON);
-		if (!fs::exists(actor))
+	const Result _dataHeader(const fs::path& name, ActorData* data) {
+		if (!fs::exists(name))
 			return Result::DOES_NOT_EXIST;
 
 		js::json json;
-		JSON_LOAD(actor, json);
+		JSON_LOAD(name, json);
 
 		auto jsmatrix = json[MATRIX_PROPERTY];
 		for (size_t i = 0; i < 16; i++) {

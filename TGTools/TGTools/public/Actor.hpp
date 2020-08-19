@@ -47,6 +47,6 @@ namespace tgt::Actor {
 		auto actor = Util::getResource(ACTOR_PATH, actorname, Util::JSON);
 		return Util::change(actor, key, value, SUPPORTED_PROPERTIES);
 	}
-	const Result _dataHeader(const std::string& name, ActorData* data);
+	const Result _dataHeader(const fs::path& name, ActorData* data);
 
 }
