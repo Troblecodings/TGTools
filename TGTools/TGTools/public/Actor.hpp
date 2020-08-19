@@ -55,17 +55,16 @@ namespace tgt::Actor {
 
 	const Result _dataHeader(const fs::path& name, ActorData* data);
 
-	inline void setData(const void* data, const uint32_t byteSize, const std::string& name, const char extension[]) {
-		const auto pathToDataSet = Util::getResource(ACTOR_PATH, name, extension).string();
+	inline void setData(const void* data, const uint32_t byteSize, const std::string& name) {
+		const auto pathToDataSet = Util::getResource(ACTOR_PATH, name).string();
 		FILE* fp = fopen(pathToDataSet.c_str(), "wb");
 		fwrite(data, sizeof(uint8_t), byteSize, fp);
 		fclose(fp);
 	}
 
-	inline const Result getData(const void** data, const std::string& name, const char extension[]) {
-		const auto pathToDataSet = Util::getResource(ACTOR_PATH, name, extension).string();
-		if (!fs::exists(pathToDataSet))
+	inline const Result getData(const void** data, const fs::path& name, size_t* ptr = nullptr) {
+		if (!fs::exists(name))
 			return Result::DOES_NOT_EXIST;
-		*data = Util::readFile(pathToDataSet);
+		*data = Util::readFile(name.string(), ptr);
 	}
 }

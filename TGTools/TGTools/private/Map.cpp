@@ -57,7 +57,9 @@ namespace tgt::Map {
 
 #define CHECK_RESULT(statement) result = statement; if(result != Result::SUCCESS) return result
 
-#define WRITE_CHECK(fp) fwrite(&size, sizeof(uint32_t), UINT32_MAX, fp)
+#define WRITE_INT(fp, dt) fwrite(&dt, sizeof(uint32_t), 1, fp)
+#define WRITE_CHECK(fp) constexpr auto check = UINT32_MAX; fwrite(&check, sizeof(uint32_t), 1, fp)
+#define WRITE_SIZE(fp) WRITE_INT(fp, size)
 
 	static void textureToMapFile(FILE* fp, const js::json& map) {
 		auto textureList = map[TEXTURE_PROPERTY];
@@ -67,6 +69,7 @@ namespace tgt::Map {
 			const uint8_t* data = Util::readFile(texturePath.get<std::string>(), &size);
 			fwrite(&size, sizeof(size_t), 1, fp);
 			fwrite(data, sizeof(uint8_t), size, fp);
+			delete[] data;
 		}
 		WRITE_CHECK(fp);
 	}
@@ -75,15 +78,15 @@ namespace tgt::Map {
 		auto materialList = map[MATERIAL_PROPERTY];
 		auto textureList = map[TEXTURE_PROPERTY];
 		auto size = materialList.size();
-		fwrite(&size, sizeof(uint32_t), 1, fp);
+		WRITE_SIZE(fp);
 		for (const auto& jsonPath : materialList) {
 			js::json json;
 			auto materialPath = jsonPath.get<std::string>();
 			JSON_LOAD(materialPath, json);
 			uint32_t textureID = ID_OF(textureList, json[Material::TEXTURE_PROPERTY].get<std::string>());
-			fwrite(&textureID, sizeof(uint32_t), 1, fp);
+			WRITE_INT(fp, textureID);
 			auto color = json[Material::COLOR_PROPERTY].get<uint32_t>();
-			fwrite(&color, sizeof(uint32_t), 1, fp);
+			WRITE_INT(fp, color);
 		}
 		WRITE_CHECK(fp);
 		return Result::SUCCESS;
@@ -92,14 +95,28 @@ namespace tgt::Map {
 	static Result actorToMapFile(FILE* fp, const js::json& map) {
 		auto actorlist = map[ACTOR_PROPERTY];
 		auto size = actorlist.size();
-		fwrite(&size, sizeof(uint32_t), 1, fp);
+		WRITE_SIZE(fp);
 		for (const auto& jsonPath : actorlist) {
+			const std::string& stringPath = jsonPath;
+			fs::path stempath(stringPath);
+			stempath.replace_extension(Actor::ACTOR_VERTEX_EXTENSION);
+			uint8_t* vertexdataptr;
+			Result CHECK_RESULT(Actor::getData((void**)&vertexdataptr, stempath, &size));
+			WRITE_SIZE(fp);
+
 			Actor::ActorData data;
-			Result CHECK_RESULT(Actor::_dataHeader(jsonPath, &data));
+			CHECK_RESULT(Actor::_dataHeader(stringPath, &data));
 			fwrite(&data, sizeof(data), 1, fp);
+
+			fwrite(vertexdataptr, sizeof(uint8_t), size, fp);
+			delete[] vertexdataptr;
+
+			stempath.replace_extension(Actor::ACTOR_INDEX_EXTENSION);
+			CHECK_RESULT(Actor::getData((void**)&vertexdataptr, stempath, &size));
+			fwrite(&vertexdataptr, sizeof(uint32_t), data.indexDrawCount, fp);
+			delete[] vertexdataptr;
 		}
 		WRITE_CHECK(fp);
-
 	}
 
 	const Result make(const std::string& mapname) {
@@ -125,6 +142,17 @@ namespace tgt::Map {
 		CHECK_RESULT(materialToMapFile(fp, mapJson));
 
 		CHECK_RESULT(actorToMapFile(fp, mapJson));
+
+		// TODO
+		constexpr auto zero = 0ui32;
+		WRITE_INT(fp, zero);
+		WRITE_CHECK(fp);
+
+		WRITE_INT(fp, zero);
+		WRITE_CHECK(fp);
+
+		WRITE_INT(fp, zero);
+		WRITE_CHECK(fp);
 
 		return Result::GENERAL;
 	}
