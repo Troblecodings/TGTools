@@ -57,6 +57,8 @@ namespace tgt::Map {
 
 #define CHECK_RESULT(statement) result = statement; if(result != Result::SUCCESS) return result
 
+#define WRITE_CHECK(fp) fwrite(&size, sizeof(uint32_t), UINT32_MAX, fp)
+
 	static void textureToMapFile(FILE* fp, const js::json& map) {
 		auto textureList = map[TEXTURE_PROPERTY];
 		auto size = textureList.size();
@@ -66,6 +68,7 @@ namespace tgt::Map {
 			fwrite(&size, sizeof(size_t), 1, fp);
 			fwrite(data, sizeof(uint8_t), size, fp);
 		}
+		WRITE_CHECK(fp);
 	}
 
 	static Result materialToMapFile(FILE* fp, const js::json& map) {
@@ -82,6 +85,7 @@ namespace tgt::Map {
 			auto color = json[Material::COLOR_PROPERTY].get<uint32_t>();
 			fwrite(&color, sizeof(uint32_t), 1, fp);
 		}
+		WRITE_CHECK(fp);
 		return Result::SUCCESS;
 	}
 
@@ -91,9 +95,11 @@ namespace tgt::Map {
 		fwrite(&size, sizeof(uint32_t), 1, fp);
 		for (const auto& jsonPath : actorlist) {
 			Actor::ActorData data;
-			Actor::_dataHeader(jsonPath, &data);
+			Result CHECK_RESULT(Actor::_dataHeader(jsonPath, &data));
 			fwrite(&data, sizeof(data), 1, fp);
 		}
+		WRITE_CHECK(fp);
+
 	}
 
 	const Result make(const std::string& mapname) {
@@ -107,7 +113,7 @@ namespace tgt::Map {
 		JSON_LOAD(mapPath, mapJson);
 
 		auto map = Util::getResource(MAP_PATH, mapname, MAP_EXTENSION).string();
-		FILE* fp = fopen(map.c_str(), "w");
+		FILE* fp = fopen(map.c_str(), "wb");
 		if (!fp)
 			return Result::GENERAL;
 
@@ -117,6 +123,8 @@ namespace tgt::Map {
 		textureToMapFile(fp, mapJson);
 
 		CHECK_RESULT(materialToMapFile(fp, mapJson));
+
+		CHECK_RESULT(actorToMapFile(fp, mapJson));
 
 		return Result::GENERAL;
 	}

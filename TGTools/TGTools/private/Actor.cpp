@@ -71,6 +71,9 @@ namespace tgt::Actor {
 		data->layer = json[LAYER_PROPERTY];
 		data->instanceSize = 0; // TODO
 		data->instanceOffset = 0;
+		data->indexDrawCount = json[INDEX_COUNT];
+		data->vertexCount = json[VERTEX_COUNT];
 		return Result::SUCCESS;
 	}
+
 }
