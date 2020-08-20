@@ -58,7 +58,8 @@ namespace tgt::Map {
 #define CHECK_RESULT(statement) result = statement; if(result != Result::SUCCESS) return result
 
 #define WRITE_INT(fp, dt) fwrite(&dt, sizeof(uint32_t), 1, fp)
-#define WRITE_CHECK(fp) constexpr auto check = UINT32_MAX; fwrite(&check, sizeof(uint32_t), 1, fp)
+#define WRITE_CINT(fp, num) check = num; fwrite(&check, sizeof(uint32_t), 1, fp)
+#define WRITE_CHECK(fp) constexpr auto WRITE_CINT(fp, UINT32_MAX);
 #define WRITE_SIZE(fp) WRITE_INT(fp, size)
 
 	static void textureToMapFile(FILE* fp, const js::json& map) {
@@ -101,7 +102,7 @@ namespace tgt::Map {
 			fs::path stempath(stringPath);
 			stempath.replace_extension(Actor::ACTOR_VERTEX_EXTENSION);
 			uint8_t* vertexdataptr;
-			Result CHECK_RESULT(Actor::getData((void**)&vertexdataptr, stempath, &size));
+			Result CHECK_RESULT(Actor::getData((const void**)&vertexdataptr, stempath, &size));
 			WRITE_SIZE(fp);
 
 			Actor::ActorData data;
@@ -112,7 +113,7 @@ namespace tgt::Map {
 			delete[] vertexdataptr;
 
 			stempath.replace_extension(Actor::ACTOR_INDEX_EXTENSION);
-			CHECK_RESULT(Actor::getData((void**)&vertexdataptr, stempath, &size));
+			CHECK_RESULT(Actor::getData((const void**)&vertexdataptr, stempath, &size));
 			fwrite(&vertexdataptr, sizeof(uint32_t), data.indexDrawCount, fp);
 			delete[] vertexdataptr;
 		}
@@ -149,10 +150,10 @@ namespace tgt::Map {
 		WRITE_CHECK(fp);
 
 		WRITE_INT(fp, zero);
-		WRITE_CHECK(fp);
+		WRITE_INT(fp, check);
 
 		WRITE_INT(fp, zero);
-		WRITE_CHECK(fp);
+		WRITE_INT(fp, check);
 
 		return Result::GENERAL;
 	}
