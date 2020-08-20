@@ -145,7 +145,7 @@ namespace tgt::Map {
 		CHECK_RESULT(actorToMapFile(fp, mapJson));
 
 		// TODO
-		constexpr auto zero = 0ui32;
+		constexpr uint32_t zero = 0;
 		WRITE_INT(fp, zero);
 		WRITE_CHECK(fp);
 
