@@ -118,6 +118,8 @@ namespace tgt::Map {
 			delete[] vertexdataptr;
 		}
 		WRITE_CHECK(fp);
+
+		return Result::SUCCESS;
 	}
 
 	const Result make(const std::string& mapname) {

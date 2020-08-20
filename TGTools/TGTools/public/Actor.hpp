@@ -66,5 +66,6 @@ namespace tgt::Actor {
 		if (!fs::exists(name))
 			return Result::DOES_NOT_EXIST;
 		*data = Util::readFile(name.string(), ptr);
+		return Result::SUCCESS;
 	}
 }
