@@ -1,10 +1,9 @@
 #include "../public/Actor.hpp"
 #include "../public/json.hpp"
 #include "../public/Map.hpp"
+#include "../public/Material.hpp"
 
 namespace tgt::Actor {
-
-	namespace js = nlohmann;
 
 	const Result add(const char* name, const char* material) {
 		STRING_CHECKS_C(name);
@@ -21,10 +20,12 @@ namespace tgt::Actor {
 		if (fs::exists(actor))
 			return Result::ALREADY_EXISTS;
 
-		// TODO Check if material exists
+		auto materialpath = Util::getResource(Material::MATERIAL_PATH, material, Util::JSON);
+		if (!fs::exists(materialpath))
+			return Result::DOES_NOT_EXIST;
 
 		js::json json;
-		json["materialName"] = material;
+		json[MATERIAL_PROPERTY] = materialpath;
 
 		JSON_WRITE(actor, json);
 
@@ -50,6 +51,29 @@ namespace tgt::Actor {
 
 	const std::string list() {
 		return Util::collect(ACTOR_PATH, Util::JSON_FILTER);
+	}
+
+	const Result _dataHeader(const fs::path& name, ActorData* data) {
+		if (!fs::exists(name))
+			return Result::DOES_NOT_EXIST;
+
+		js::json json;
+		JSON_LOAD(name, json);
+
+		auto jsmatrix = json[MATRIX_PROPERTY];
+		for (size_t i = 0; i < 16; i++) {
+			auto x = jsmatrix[i].get<float>();
+			data->matrix[i] = x;
+		}
+		data->animationIndex = json[ANIMATION_PROPERTY];
+		data->transformIndex = json[DYNAMIK_TRANSFORM_PROPERTY];
+		data->material = json[MATERIAL_PROPERTY];
+		data->layer = json[LAYER_PROPERTY];
+		data->instanceSize = 0; // TODO
+		data->instanceOffset = 0;
+		data->indexDrawCount = json[INDEX_COUNT];
+		data->vertexCount = json[VERTEX_COUNT];
+		return Result::SUCCESS;
 	}
 
 }

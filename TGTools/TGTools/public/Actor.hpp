@@ -3,13 +3,36 @@
 #include "Result.hpp"
 #include <string>
 #include "Util.hpp"
-#include "../public/json.hpp"
+#include <array>
 
 namespace tgt::Actor {
 
-	namespace js = nlohmann;
-
 	constexpr auto ACTOR_SUBFOLDER = "Actors";
+	constexpr auto ACTOR_VERTEX_EXTENSION = "tgvmdl";
+	constexpr auto ACTOR_INDEX_EXTENSION = "tgimdl";
+
+	constexpr auto MATRIX_PROPERTY = "matrix";
+	constexpr auto ANIMATION_PROPERTY = "animationIndex";
+	constexpr auto DYNAMIK_TRANSFORM_PROPERTY = "transformIndex";
+	constexpr auto MATERIAL_PROPERTY = "material";
+	constexpr auto LAYER_PROPERTY = "layer";
+	constexpr auto INDEX_COUNT = "indexDrawCount";
+	constexpr auto VERTEX_COUNT = "vertexCount";
+
+	constexpr std::array SUPPORTED_PROPERTIES = { MATRIX_PROPERTY, ANIMATION_PROPERTY, 
+		DYNAMIK_TRANSFORM_PROPERTY, MATERIAL_PROPERTY, LAYER_PROPERTY, INDEX_COUNT, VERTEX_COUNT };
+
+	struct ActorData {
+		float    matrix[16];
+		uint32_t animationIndex;
+		uint32_t transformIndex;
+		uint32_t material;
+		uint32_t layer;
+		uint32_t instanceSize;
+		uint32_t instanceOffset;
+		uint32_t indexDrawCount;
+		uint32_t vertexCount;
+	};
 
 	const auto ACTOR_PATH = fs::path(Util::RESOURCE_LOCATION).append(ACTOR_SUBFOLDER);
 
@@ -23,21 +46,26 @@ namespace tgt::Actor {
 
 	const std::string list();
 
-	template<class T>
-	constexpr bool _validString = std::is_same_v<T, std::string> || std::is_same_v<T, const std::string>
-		|| std::is_same_v<T, char*> || std::is_same_v<T, const char*>;
-
-	template<class T>
-	constexpr bool _validJson = std::is_arithmetic_v<T> || _validString<T>;
-	
-	template<class T, class U, std::enable_if_t<_validJson<T> && _validString<U>, int> = 0>
-	const Result change(const U name, const U key, T value) {
-		auto actor = Util::getResource(ACTOR_PATH, name, Util::JSON);
-		if (!fs::exists(actor))
-			return Result::DOES_NOT_EXIST;
-
-		JSON_UPDATE(actor, json[key] = value;);
-		return Result::SUCCESS;
+	template<class T, class U, class V, 
+		typename = std::enable_if_t<Util::_validJson<T> && Util::_validString<V> && Util::_validString<U>>>
+	const Result change(V actorname, U key, T value) {
+		auto actor = Util::getResource(ACTOR_PATH, actorname, Util::JSON);
+		return Util::change(actor, key, value, SUPPORTED_PROPERTIES);
 	}
 
+	const Result _dataHeader(const fs::path& name, ActorData* data);
+
+	inline void setData(const void* data, const uint32_t byteSize, const std::string& name) {
+		const auto pathToDataSet = Util::getResource(ACTOR_PATH, name).string();
+		FILE* fp = fopen(pathToDataSet.c_str(), "wb");
+		fwrite(data, sizeof(uint8_t), byteSize, fp);
+		fclose(fp);
+	}
+
+	inline const Result getData(const void** data, const fs::path& name, size_t* ptr = nullptr) {
+		if (!fs::exists(name))
+			return Result::DOES_NOT_EXIST;
+		*data = Util::readFile(name.string(), ptr);
+		return Result::SUCCESS;
+	}
 }

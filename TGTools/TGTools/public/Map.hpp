@@ -9,6 +9,11 @@ namespace tgt::Map {
 	constexpr auto MAP_SUBFOLDER = "Maps";
 	constexpr auto MAP_EXTENSION = ".tgr";
 
+	constexpr auto TEXTURE_PROPERTY = "textures";
+	constexpr auto ACTOR_PROPERTY = "actors";
+	constexpr auto MATERIAL_PROPERTY = "materials";
+	constexpr auto FONT_PROPERTY = "fonts";
+
 	const auto MAP_PATH = fs::path(Util::RESOURCE_LOCATION).append(MAP_SUBFOLDER);
 
 	const Result create(const char* mapname);
