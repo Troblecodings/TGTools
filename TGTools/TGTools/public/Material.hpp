@@ -11,8 +11,8 @@ namespace tgt::Material {
 
 	constexpr auto DEFAULT_COLOR = 0xFFFFFFFF;
 
-	constexpr auto TEXTURE_PROPERTY("texture");
-	constexpr auto COLOR_PROPERTY("color");
+	constexpr auto TEXTURE_PROPERTY = "texture";
+	constexpr auto COLOR_PROPERTY = "color";
 
 	constexpr std::array SUPPORTED_PROPERTIES = { TEXTURE_PROPERTY, COLOR_PROPERTY };
 
