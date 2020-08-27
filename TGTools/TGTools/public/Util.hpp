@@ -73,7 +73,7 @@ namespace tgt::Util {
 	};
 
 	template<class T, class U, class S, typename = std::enable_if_t<_validJson<T>&& _validString<U>>>
-	const Result change(fs::path path, U key, T value, S supported) {
+	inline const Result change(fs::path path, const U& key, const T& value, const S& supported) {
 		if (!fs::exists(path))
 			return Result::DOES_NOT_EXIST;
 
@@ -91,7 +91,7 @@ namespace tgt::Util {
 
 	template<class T, class U, class P, typename = std::enable_if_t<_validPath<P> &&
 		_validString<T> && (_validString<U> || std::is_null_pointer_v<U>)>>
-	const fs::path getResource(P resource, T name,  U extension) {
+	inline const fs::path getResource(P resource, const T& name, const U& extension) {
 		if (!fs::exists(resource))
 			fs::create_directories(resource);
 		if constexpr (std::is_null_pointer_v<U>) {
@@ -102,12 +102,12 @@ namespace tgt::Util {
 	}
 
 	template<class T, class P, typename = std::enable_if_t<_validPath<P> && _validString<T>>>
-	const fs::path getResource(P resource, T name) {
+	inline const fs::path getResource(P resource, const T& name) {
 		return getResource(resource, name, nullptr);
 	}
 
 
-	inline const uint8_t* readFile(std::string name, size_t* sizeptr = nullptr) {
+	inline const uint8_t* readFile(const std::string& name, size_t* sizeptr = nullptr) {
 		std::ifstream input(name, std::ios_base::binary | std::ios_base::ate | std::ios_base::in);
 		auto size = (size_t)input.tellg();
 		if (sizeptr != nullptr)
@@ -119,13 +119,12 @@ namespace tgt::Util {
 	}
 
 	template<class T, class U, typename = std::enable_if_t<_validPath<T> && std::is_invocable_r_v<bool, U, fs::path>>>
-	const std::string collect(T path, U lambda) {
-		fs::path directoryPath(path);
+	inline const std::string collect(const T& path, U lambda) {
 		std::string result;
-		if (!fs::exists(directoryPath))
+		if (!fs::exists(path))
 			return result;
 		result.reserve(1000);
-		fs::directory_iterator directory(directoryPath);
+		fs::directory_iterator directory(path);
 		for (auto& entry : directory) {
 			auto path = entry.path();
 			if (entry.is_regular_file() && lambda(path)) {
@@ -137,7 +136,7 @@ namespace tgt::Util {
 	}
 
 	template<class T, class U, typename = std::enable_if_t<_validPath<T> && std::is_invocable_r_v<bool, U, fs::path>>>
-	const bool find(const T path, const U lambda) {
+	inline const bool find(const T& path, const U lambda) {
 		fs::directory_iterator directory(path);
 		for (auto& entry : directory)
 			if (lambda(entry.path()))

@@ -6,6 +6,7 @@
 #include <public/Actor.hpp>
 #include <public/Map.hpp>
 #include <public/Font.hpp>
+#include <public/Model.hpp>
 #include <map>
 #include <vector>
 #include <sstream>
@@ -39,6 +40,11 @@ static Result actorchange(int count, const char** inputs) {
 
 const std::map<std::string, std::map<std::string, Command>> commands =
 {
+	{
+		"model", {
+			{ "load", { 1, [](int count, auto args) { return Model::loadGltf(args[0]); } } }
+		}
+	},
 	{
 		"actor", {
 			{ "add", { 2, [](int count, auto args) { return Actor::add(args[0], args[1]); } } },
