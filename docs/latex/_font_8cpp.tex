@@ -1,0 +1,71 @@
+\hypertarget{_font_8cpp}{}\doxysection{T\+G\+Tools/\+T\+G\+Tools/private/\+Font.cpp File Reference}
+\label{_font_8cpp}\index{TGTools/TGTools/private/Font.cpp@{TGTools/TGTools/private/Font.cpp}}
+{\ttfamily \#include \char`\"{}../public/\+Font.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../public/json.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../public/\+Texture.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../../stb/stb\+\_\+rect\+\_\+pack.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../../stb/stb\+\_\+truetype.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../../stb/stb\+\_\+image\+\_\+write.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+Include dependency graph for Font.\+cpp\+:
+% FIG 0
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structtgt_1_1_font_1_1_t_g_f_header}{tgt\+::\+Font\+::\+T\+G\+F\+Header}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacetgt}{tgt}}
+\item 
+ \mbox{\hyperlink{namespacetgt_1_1_font}{tgt\+::\+Font}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_font_8cpp_afaa2f2d0d9d6726cfae6da070e736347}{S\+T\+B\+\_\+\+T\+R\+U\+E\+T\+Y\+P\+E\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}}
+\item 
+\#define \mbox{\hyperlink{_font_8cpp_a0791e69f0dcd58efa795dd50eb8c6cd0}{S\+T\+B\+\_\+\+R\+E\+C\+T\+\_\+\+P\+A\+C\+K\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}}
+\item 
+\#define \mbox{\hyperlink{_font_8cpp_aefe397a94e8feddc652f92ef40ce9597}{S\+T\+B\+\_\+\+I\+M\+A\+G\+E\+\_\+\+W\+R\+I\+T\+E\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_font_a3d498c5f00f43d6517d4aea89d5efbb6}{tgt\+::\+Font\+::add}} (const char $\ast$path)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_font_a83ff63c7e15f3d3e2977e1acdf9ec059}{tgt\+::\+Font\+::add}} (const std\+::string \&path)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_font_a8456a56f6150efca2e9df4723467efaf}{tgt\+::\+Font\+::remove}} (const char $\ast$name)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_font_a465158a8ad8a56476984777df099724a}{tgt\+::\+Font\+::remove}} (const std\+::string \&name)
+\item 
+const std\+::string \mbox{\hyperlink{namespacetgt_1_1_font_ae898840ea76282cecc64f9b883c72180}{tgt\+::\+Font\+::list}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_font_afd064b6c46abe1130e69e1224e1f0064}{tgt\+::\+Font\+::\+T\+G\+F\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+V\+E\+R\+S\+I\+ON}} = 1
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_font_8cpp_aefe397a94e8feddc652f92ef40ce9597}\label{_font_8cpp_aefe397a94e8feddc652f92ef40ce9597}} 
+\index{Font.cpp@{Font.cpp}!STB\_IMAGE\_WRITE\_IMPLEMENTATION@{STB\_IMAGE\_WRITE\_IMPLEMENTATION}}
+\index{STB\_IMAGE\_WRITE\_IMPLEMENTATION@{STB\_IMAGE\_WRITE\_IMPLEMENTATION}!Font.cpp@{Font.cpp}}
+\doxysubsubsection{\texorpdfstring{STB\_IMAGE\_WRITE\_IMPLEMENTATION}{STB\_IMAGE\_WRITE\_IMPLEMENTATION}}
+{\footnotesize\ttfamily \#define S\+T\+B\+\_\+\+I\+M\+A\+G\+E\+\_\+\+W\+R\+I\+T\+E\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}
+
+\mbox{\Hypertarget{_font_8cpp_a0791e69f0dcd58efa795dd50eb8c6cd0}\label{_font_8cpp_a0791e69f0dcd58efa795dd50eb8c6cd0}} 
+\index{Font.cpp@{Font.cpp}!STB\_RECT\_PACK\_IMPLEMENTATION@{STB\_RECT\_PACK\_IMPLEMENTATION}}
+\index{STB\_RECT\_PACK\_IMPLEMENTATION@{STB\_RECT\_PACK\_IMPLEMENTATION}!Font.cpp@{Font.cpp}}
+\doxysubsubsection{\texorpdfstring{STB\_RECT\_PACK\_IMPLEMENTATION}{STB\_RECT\_PACK\_IMPLEMENTATION}}
+{\footnotesize\ttfamily \#define S\+T\+B\+\_\+\+R\+E\+C\+T\+\_\+\+P\+A\+C\+K\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}
+
+\mbox{\Hypertarget{_font_8cpp_afaa2f2d0d9d6726cfae6da070e736347}\label{_font_8cpp_afaa2f2d0d9d6726cfae6da070e736347}} 
+\index{Font.cpp@{Font.cpp}!STB\_TRUETYPE\_IMPLEMENTATION@{STB\_TRUETYPE\_IMPLEMENTATION}}
+\index{STB\_TRUETYPE\_IMPLEMENTATION@{STB\_TRUETYPE\_IMPLEMENTATION}!Font.cpp@{Font.cpp}}
+\doxysubsubsection{\texorpdfstring{STB\_TRUETYPE\_IMPLEMENTATION}{STB\_TRUETYPE\_IMPLEMENTATION}}
+{\footnotesize\ttfamily \#define S\+T\+B\+\_\+\+T\+R\+U\+E\+T\+Y\+P\+E\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}
+

@@ -1,0 +1,26 @@
+digraph "nlohmann::detail::binary_reader::sax_parse"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="nlohmann::detail::binary\l_reader::sax_parse",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="nlohmann::basic_json\l::from_bson",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a4e02793f2691aa29ab7cb69fddafbf5c",tooltip="Create a JSON value from an input in BSON format."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="nlohmann::basic_json\l::from_bson",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#ae2612581e4788ddffc2f45d5e4cc04fc",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="nlohmann::basic_json\l::from_cbor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a44dd5635fb2da4710f6cd6e42b72773f",tooltip="create a JSON value from an input in CBOR format"];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="nlohmann::basic_json\l::from_cbor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a188755c8cda27e2afb03c016c14125d8",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="nlohmann::basic_json\l::from_msgpack",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#adbcab52fca1e25b3311ef14e71a57590",tooltip="create a JSON value from an input in MessagePack format"];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="nlohmann::basic_json\l::from_msgpack",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a0d69d3102639759d5202a6f764760d23",tooltip=" "];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="nlohmann::basic_json\l::from_ubjson",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#aa81f62db69978b90ff701f05c72e03a7",tooltip="create a JSON value from an input in UBJSON format"];
+  Node8 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="nlohmann::basic_json\l::from_ubjson",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#ab6eeda23c34cee79d8d72f1a8691a8de",tooltip=" "];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="nlohmann::basic_json\l::sax_parse",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a12b382c6407da5543827ce4b24bb5008",tooltip="generate SAX events"];
+}

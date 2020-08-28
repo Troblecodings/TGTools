@@ -1,0 +1,52 @@
+digraph "nlohmann::basic_json::diff"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="nlohmann::basic_json\l::diff",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="creates a diff as a JSON patch"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="nlohmann::basic_json\l::begin",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a23b495b4c282e4afacf382f5b49af7c7",tooltip="returns an iterator to the first element"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="nlohmann::basic_json\l::cbegin",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#ae508c13e3ad6ce445bcaf24a2bc7d039",tooltip="returns a const iterator to the first element"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="nlohmann::basic_json\l::cend",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a3017cf0f1a4673e904e34cfef62e7758",tooltip="returns a const iterator to one past the last element"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="nlohmann::basic_json::end",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a931267ec3f09eb67e4382f321b2c52bc",tooltip="returns an iterator to one past the last element"];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="nlohmann::basic_json\l::find",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#acdf9b3aab82dcf443dd91ca5ec06b80c",tooltip="find an element in a JSON object"];
+  Node6 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="nlohmann::basic_json\l::is_object",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a57e8411a770a6263d6d8f2116c37f3aa",tooltip="return whether value is an object"];
+  Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="nlohmann::basic_json\l::insert",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#aeb86e8478e20d95970a8b61ff01dce3b",tooltip="inserts element"];
+  Node8 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="nlohmann::detail::invalid\l_iterator::create",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1invalid__iterator.html#a4e849260a3caa1b288c7e619130c6c09",tooltip=" "];
+  Node9 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="nlohmann::detail::exception\l::name",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1exception.html#abf41a7e9178356314082284e6cfea278",tooltip=" "];
+  Node10 -> Node11 [color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="nlohmann::to_string",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespacenlohmann.html#a6ce645a0b8717757e096a5b5773b7a16",tooltip="user-defined to_string function for JSON values"];
+  Node8 -> Node12 [color="midnightblue",fontsize="10",style="solid"];
+  Node12 [label="nlohmann::detail::type\l_error::create",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1type__error.html#aecc083aea4b698c33d042670ba50c10f",tooltip=" "];
+  Node12 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 -> Node13 [color="midnightblue",fontsize="10",style="solid"];
+  Node13 [label="nlohmann::basic_json\l::insert_iterator",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#ab5c8034e997c5b852b92bdc6a3f70994",tooltip=" "];
+  Node8 -> Node14 [color="midnightblue",fontsize="10",style="solid"];
+  Node14 [label="nlohmann::basic_json\l::is_array",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#ab5b70d60a636b9c5e10f6c8caac60b9e",tooltip="return whether value is an array"];
+  Node8 -> Node15 [color="midnightblue",fontsize="10",style="solid"];
+  Node15 [label="nlohmann::basic_json\l::type_name",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a459dbfcd47bd632ca82ca8ff8db278c8",tooltip="return the type as string"];
+  Node1 -> Node16 [color="midnightblue",fontsize="10",style="solid"];
+  Node16 [label="nlohmann::basic_json\l::object",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a9a4df356e05415438fadf8a15e583903",tooltip="explicitly create an object from an initializer list"];
+  Node1 -> Node17 [color="midnightblue",fontsize="10",style="solid"];
+  Node17 [label="nlohmann::basic_json\l::push_back",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#ab9e0253c92736db021840105d374c4c4",tooltip="add an object to an array"];
+  Node17 -> Node12 [color="midnightblue",fontsize="10",style="solid"];
+  Node17 -> Node14 [color="midnightblue",fontsize="10",style="solid"];
+  Node17 -> Node18 [color="midnightblue",fontsize="10",style="solid"];
+  Node18 [label="nlohmann::basic_json\l::is_null",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#aedc7afad96292b5ab61a2e0ad3067f5f",tooltip="return whether value is null"];
+  Node17 -> Node15 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node19 [color="midnightblue",fontsize="10",style="solid"];
+  Node19 [label="nlohmann::basic_json\l::size",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a33c7c8638bb0b12e6d1b69d8106dd2e0",tooltip="returns the number of elements"];
+  Node1 -> Node11 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node20 [color="midnightblue",fontsize="10",style="solid"];
+  Node20 [label="nlohmann::basic_json\l::type",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a5b7c4b35a0ad9f97474912a08965d7ad",tooltip="return the type of the JSON value (explicit)"];
+}

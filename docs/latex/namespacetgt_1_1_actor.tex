@@ -1,0 +1,210 @@
+\hypertarget{namespacetgt_1_1_actor}{}\doxysection{tgt\+::Actor Namespace Reference}
+\label{namespacetgt_1_1_actor}\index{tgt::Actor@{tgt::Actor}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structtgt_1_1_actor_1_1_actor_data}{Actor\+Data}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_actor_a7d53091315a652167b0d7d1f15ba3056}{add}} (const char $\ast$name, const char $\ast$material)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_actor_a816b60d2cc57a64b05c81541779c3b35}{add}} (const std\+::string \&name, const std\+::string \&material)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_actor_a37d00302726c723d3f1405ba0d155246}{remove}} (const char $\ast$name)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_actor_ad78eb0c8eeb21a99b90118fa7511a8af}{remove}} (const std\+::string \&name)
+\item 
+const std\+::string \mbox{\hyperlink{namespacetgt_1_1_actor_a6198e42f177d33e1b3310ad0afda5d7c}{list}} ()
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_actor_abe8dbc1c8176e296ef7c7ecac6485e18}{\+\_\+data\+Header}} (const fs\+::path \&name, \mbox{\hyperlink{structtgt_1_1_actor_1_1_actor_data}{Actor\+Data}} $\ast$data)
+\item 
+{\footnotesize template$<$class T , class U , class V , typename  = std\+::enable\+\_\+if\+\_\+t$<$\+Util\+::\+\_\+valid\+Json$<$\+T$>$ \&\& Util\+::\+\_\+valid\+String$<$\+V$>$ \&\& Util\+::\+\_\+valid\+String$<$\+U$>$$>$$>$ }\\const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_actor_aa83f41e58c221cf8f58c9fe485463def}{change}} (V actorname, U key, T value)
+\item 
+void \mbox{\hyperlink{namespacetgt_1_1_actor_a906d2943aebf81cf52e131fa256c96d2}{set\+Data}} (const void $\ast$data, const uint32\+\_\+t byte\+Size, const std\+::string \&name)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_actor_a0fc36201da6c8463ec5a77ba60b88c68}{get\+Data}} (const void $\ast$$\ast$data, const fs\+::path \&name, size\+\_\+t $\ast$ptr=nullptr)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_actor_a1ba9b82d2615515f58fe15b021b0627e}{A\+C\+T\+O\+R\+\_\+\+S\+U\+B\+F\+O\+L\+D\+ER}} = \char`\"{}Actors\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_actor_a99bc8d75ef63426b17b2ce9f8b6b5b8c}{A\+C\+T\+O\+R\+\_\+\+V\+E\+R\+T\+E\+X\+\_\+\+E\+X\+T\+E\+N\+S\+I\+ON}} = \char`\"{}tgvmdl\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_actor_aa7086b2bc9565ab90a932182c5969655}{A\+C\+T\+O\+R\+\_\+\+I\+N\+D\+E\+X\+\_\+\+E\+X\+T\+E\+N\+S\+I\+ON}} = \char`\"{}tgimdl\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_actor_a3469b4930cb81d7da6c8eea595bf5ea9}{M\+A\+T\+R\+I\+X\+\_\+\+P\+R\+O\+P\+E\+R\+TY}} = \char`\"{}matrix\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_actor_a040f09e2e8b921578168a88e091b4ef4}{A\+N\+I\+M\+A\+T\+I\+O\+N\+\_\+\+P\+R\+O\+P\+E\+R\+TY}} = \char`\"{}animation\+Index\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_actor_a788924832569f4a5131596f0e2756b47}{D\+Y\+N\+A\+M\+I\+K\+\_\+\+T\+R\+A\+N\+S\+F\+O\+R\+M\+\_\+\+P\+R\+O\+P\+E\+R\+TY}} = \char`\"{}transform\+Index\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_actor_ae9f5049bf079f2b0f5e525bce4f2a016}{M\+A\+T\+E\+R\+I\+A\+L\+\_\+\+P\+R\+O\+P\+E\+R\+TY}} = \char`\"{}material\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_actor_ab6c0ded465cab582dcd4c069d5746aa9}{L\+A\+Y\+E\+R\+\_\+\+P\+R\+O\+P\+E\+R\+TY}} = \char`\"{}layer\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_actor_aadbcd7e1dd5a8a639c807e87199d70d7}{I\+N\+D\+E\+X\+\_\+\+C\+O\+U\+NT}} = \char`\"{}index\+Draw\+Count\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_actor_a5d2b26761b1beec6c3b38a6b1f8bb0bc}{V\+E\+R\+T\+E\+X\+\_\+\+C\+O\+U\+NT}} = \char`\"{}vertex\+Count\char`\"{}
+\item 
+constexpr std\+::array \mbox{\hyperlink{namespacetgt_1_1_actor_a66efece1b92921e7172fa7d1f7a216c8}{S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+P\+R\+O\+P\+E\+R\+T\+I\+ES}}
+\item 
+const auto \mbox{\hyperlink{namespacetgt_1_1_actor_a7807701a697c4d768651dd94ba29b218}{A\+C\+T\+O\+R\+\_\+\+P\+A\+TH}} = fs\+::path(\mbox{\hyperlink{namespacetgt_1_1_util_a06d4a40cb8b63cf86024b6843d61ca3f}{Util\+::\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+L\+O\+C\+A\+T\+I\+ON}}).append(\mbox{\hyperlink{namespacetgt_1_1_actor_a1ba9b82d2615515f58fe15b021b0627e}{A\+C\+T\+O\+R\+\_\+\+S\+U\+B\+F\+O\+L\+D\+ER}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacetgt_1_1_actor_abe8dbc1c8176e296ef7c7ecac6485e18}\label{namespacetgt_1_1_actor_abe8dbc1c8176e296ef7c7ecac6485e18}} 
+\index{tgt::Actor@{tgt::Actor}!\_dataHeader@{\_dataHeader}}
+\index{\_dataHeader@{\_dataHeader}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{\_dataHeader()}{\_dataHeader()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} tgt\+::\+Actor\+::\+\_\+data\+Header (\begin{DoxyParamCaption}\item[{const fs\+::path \&}]{name,  }\item[{\mbox{\hyperlink{structtgt_1_1_actor_1_1_actor_data}{Actor\+Data}} $\ast$}]{data }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacetgt_1_1_actor_a7d53091315a652167b0d7d1f15ba3056}\label{namespacetgt_1_1_actor_a7d53091315a652167b0d7d1f15ba3056}} 
+\index{tgt::Actor@{tgt::Actor}!add@{add}}
+\index{add@{add}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} tgt\+::\+Actor\+::add (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name,  }\item[{const char $\ast$}]{material }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 0
+\mbox{\Hypertarget{namespacetgt_1_1_actor_a816b60d2cc57a64b05c81541779c3b35}\label{namespacetgt_1_1_actor_a816b60d2cc57a64b05c81541779c3b35}} 
+\index{tgt::Actor@{tgt::Actor}!add@{add}}
+\index{add@{add}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} tgt\+::\+Actor\+::add (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{material }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{namespacetgt_1_1_actor_aa83f41e58c221cf8f58c9fe485463def}\label{namespacetgt_1_1_actor_aa83f41e58c221cf8f58c9fe485463def}} 
+\index{tgt::Actor@{tgt::Actor}!change@{change}}
+\index{change@{change}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{change()}{change()}}
+{\footnotesize\ttfamily template$<$class T , class U , class V , typename  = std\+::enable\+\_\+if\+\_\+t$<$\+Util\+::\+\_\+valid\+Json$<$\+T$>$ \&\& Util\+::\+\_\+valid\+String$<$\+V$>$ \&\& Util\+::\+\_\+valid\+String$<$\+U$>$$>$$>$ \\
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} tgt\+::\+Actor\+::change (\begin{DoxyParamCaption}\item[{V}]{actorname,  }\item[{U}]{key,  }\item[{T}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{namespacetgt_1_1_actor_a0fc36201da6c8463ec5a77ba60b88c68}\label{namespacetgt_1_1_actor_a0fc36201da6c8463ec5a77ba60b88c68}} 
+\index{tgt::Actor@{tgt::Actor}!getData@{getData}}
+\index{getData@{getData}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{getData()}{getData()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} tgt\+::\+Actor\+::get\+Data (\begin{DoxyParamCaption}\item[{const void $\ast$$\ast$}]{data,  }\item[{const fs\+::path \&}]{name,  }\item[{size\+\_\+t $\ast$}]{ptr = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{namespacetgt_1_1_actor_a6198e42f177d33e1b3310ad0afda5d7c}\label{namespacetgt_1_1_actor_a6198e42f177d33e1b3310ad0afda5d7c}} 
+\index{tgt::Actor@{tgt::Actor}!list@{list}}
+\index{list@{list}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{list()}{list()}}
+{\footnotesize\ttfamily const std\+::string tgt\+::\+Actor\+::list (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{namespacetgt_1_1_actor_a37d00302726c723d3f1405ba0d155246}\label{namespacetgt_1_1_actor_a37d00302726c723d3f1405ba0d155246}} 
+\index{tgt::Actor@{tgt::Actor}!remove@{remove}}
+\index{remove@{remove}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} tgt\+::\+Actor\+::remove (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{namespacetgt_1_1_actor_ad78eb0c8eeb21a99b90118fa7511a8af}\label{namespacetgt_1_1_actor_ad78eb0c8eeb21a99b90118fa7511a8af}} 
+\index{tgt::Actor@{tgt::Actor}!remove@{remove}}
+\index{remove@{remove}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} tgt\+::\+Actor\+::remove (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{namespacetgt_1_1_actor_a906d2943aebf81cf52e131fa256c96d2}\label{namespacetgt_1_1_actor_a906d2943aebf81cf52e131fa256c96d2}} 
+\index{tgt::Actor@{tgt::Actor}!setData@{setData}}
+\index{setData@{setData}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{setData()}{setData()}}
+{\footnotesize\ttfamily void tgt\+::\+Actor\+::set\+Data (\begin{DoxyParamCaption}\item[{const void $\ast$}]{data,  }\item[{const uint32\+\_\+t}]{byte\+Size,  }\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+% FIG 7
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacetgt_1_1_actor_aa7086b2bc9565ab90a932182c5969655}\label{namespacetgt_1_1_actor_aa7086b2bc9565ab90a932182c5969655}} 
+\index{tgt::Actor@{tgt::Actor}!ACTOR\_INDEX\_EXTENSION@{ACTOR\_INDEX\_EXTENSION}}
+\index{ACTOR\_INDEX\_EXTENSION@{ACTOR\_INDEX\_EXTENSION}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{ACTOR\_INDEX\_EXTENSION}{ACTOR\_INDEX\_EXTENSION}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Actor\+::\+A\+C\+T\+O\+R\+\_\+\+I\+N\+D\+E\+X\+\_\+\+E\+X\+T\+E\+N\+S\+I\+ON = \char`\"{}tgimdl\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_actor_a7807701a697c4d768651dd94ba29b218}\label{namespacetgt_1_1_actor_a7807701a697c4d768651dd94ba29b218}} 
+\index{tgt::Actor@{tgt::Actor}!ACTOR\_PATH@{ACTOR\_PATH}}
+\index{ACTOR\_PATH@{ACTOR\_PATH}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{ACTOR\_PATH}{ACTOR\_PATH}}
+{\footnotesize\ttfamily const auto tgt\+::\+Actor\+::\+A\+C\+T\+O\+R\+\_\+\+P\+A\+TH = fs\+::path(\mbox{\hyperlink{namespacetgt_1_1_util_a06d4a40cb8b63cf86024b6843d61ca3f}{Util\+::\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+L\+O\+C\+A\+T\+I\+ON}}).append(\mbox{\hyperlink{namespacetgt_1_1_actor_a1ba9b82d2615515f58fe15b021b0627e}{A\+C\+T\+O\+R\+\_\+\+S\+U\+B\+F\+O\+L\+D\+ER}})}
+
+\mbox{\Hypertarget{namespacetgt_1_1_actor_a1ba9b82d2615515f58fe15b021b0627e}\label{namespacetgt_1_1_actor_a1ba9b82d2615515f58fe15b021b0627e}} 
+\index{tgt::Actor@{tgt::Actor}!ACTOR\_SUBFOLDER@{ACTOR\_SUBFOLDER}}
+\index{ACTOR\_SUBFOLDER@{ACTOR\_SUBFOLDER}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{ACTOR\_SUBFOLDER}{ACTOR\_SUBFOLDER}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Actor\+::\+A\+C\+T\+O\+R\+\_\+\+S\+U\+B\+F\+O\+L\+D\+ER = \char`\"{}Actors\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_actor_a99bc8d75ef63426b17b2ce9f8b6b5b8c}\label{namespacetgt_1_1_actor_a99bc8d75ef63426b17b2ce9f8b6b5b8c}} 
+\index{tgt::Actor@{tgt::Actor}!ACTOR\_VERTEX\_EXTENSION@{ACTOR\_VERTEX\_EXTENSION}}
+\index{ACTOR\_VERTEX\_EXTENSION@{ACTOR\_VERTEX\_EXTENSION}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{ACTOR\_VERTEX\_EXTENSION}{ACTOR\_VERTEX\_EXTENSION}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Actor\+::\+A\+C\+T\+O\+R\+\_\+\+V\+E\+R\+T\+E\+X\+\_\+\+E\+X\+T\+E\+N\+S\+I\+ON = \char`\"{}tgvmdl\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_actor_a040f09e2e8b921578168a88e091b4ef4}\label{namespacetgt_1_1_actor_a040f09e2e8b921578168a88e091b4ef4}} 
+\index{tgt::Actor@{tgt::Actor}!ANIMATION\_PROPERTY@{ANIMATION\_PROPERTY}}
+\index{ANIMATION\_PROPERTY@{ANIMATION\_PROPERTY}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{ANIMATION\_PROPERTY}{ANIMATION\_PROPERTY}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Actor\+::\+A\+N\+I\+M\+A\+T\+I\+O\+N\+\_\+\+P\+R\+O\+P\+E\+R\+TY = \char`\"{}animation\+Index\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_actor_a788924832569f4a5131596f0e2756b47}\label{namespacetgt_1_1_actor_a788924832569f4a5131596f0e2756b47}} 
+\index{tgt::Actor@{tgt::Actor}!DYNAMIK\_TRANSFORM\_PROPERTY@{DYNAMIK\_TRANSFORM\_PROPERTY}}
+\index{DYNAMIK\_TRANSFORM\_PROPERTY@{DYNAMIK\_TRANSFORM\_PROPERTY}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{DYNAMIK\_TRANSFORM\_PROPERTY}{DYNAMIK\_TRANSFORM\_PROPERTY}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Actor\+::\+D\+Y\+N\+A\+M\+I\+K\+\_\+\+T\+R\+A\+N\+S\+F\+O\+R\+M\+\_\+\+P\+R\+O\+P\+E\+R\+TY = \char`\"{}transform\+Index\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_actor_aadbcd7e1dd5a8a639c807e87199d70d7}\label{namespacetgt_1_1_actor_aadbcd7e1dd5a8a639c807e87199d70d7}} 
+\index{tgt::Actor@{tgt::Actor}!INDEX\_COUNT@{INDEX\_COUNT}}
+\index{INDEX\_COUNT@{INDEX\_COUNT}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{INDEX\_COUNT}{INDEX\_COUNT}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Actor\+::\+I\+N\+D\+E\+X\+\_\+\+C\+O\+U\+NT = \char`\"{}index\+Draw\+Count\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_actor_ab6c0ded465cab582dcd4c069d5746aa9}\label{namespacetgt_1_1_actor_ab6c0ded465cab582dcd4c069d5746aa9}} 
+\index{tgt::Actor@{tgt::Actor}!LAYER\_PROPERTY@{LAYER\_PROPERTY}}
+\index{LAYER\_PROPERTY@{LAYER\_PROPERTY}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{LAYER\_PROPERTY}{LAYER\_PROPERTY}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Actor\+::\+L\+A\+Y\+E\+R\+\_\+\+P\+R\+O\+P\+E\+R\+TY = \char`\"{}layer\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_actor_ae9f5049bf079f2b0f5e525bce4f2a016}\label{namespacetgt_1_1_actor_ae9f5049bf079f2b0f5e525bce4f2a016}} 
+\index{tgt::Actor@{tgt::Actor}!MATERIAL\_PROPERTY@{MATERIAL\_PROPERTY}}
+\index{MATERIAL\_PROPERTY@{MATERIAL\_PROPERTY}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{MATERIAL\_PROPERTY}{MATERIAL\_PROPERTY}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Actor\+::\+M\+A\+T\+E\+R\+I\+A\+L\+\_\+\+P\+R\+O\+P\+E\+R\+TY = \char`\"{}material\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_actor_a3469b4930cb81d7da6c8eea595bf5ea9}\label{namespacetgt_1_1_actor_a3469b4930cb81d7da6c8eea595bf5ea9}} 
+\index{tgt::Actor@{tgt::Actor}!MATRIX\_PROPERTY@{MATRIX\_PROPERTY}}
+\index{MATRIX\_PROPERTY@{MATRIX\_PROPERTY}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{MATRIX\_PROPERTY}{MATRIX\_PROPERTY}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Actor\+::\+M\+A\+T\+R\+I\+X\+\_\+\+P\+R\+O\+P\+E\+R\+TY = \char`\"{}matrix\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_actor_a66efece1b92921e7172fa7d1f7a216c8}\label{namespacetgt_1_1_actor_a66efece1b92921e7172fa7d1f7a216c8}} 
+\index{tgt::Actor@{tgt::Actor}!SUPPORTED\_PROPERTIES@{SUPPORTED\_PROPERTIES}}
+\index{SUPPORTED\_PROPERTIES@{SUPPORTED\_PROPERTIES}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{SUPPORTED\_PROPERTIES}{SUPPORTED\_PROPERTIES}}
+{\footnotesize\ttfamily constexpr std\+::array tgt\+::\+Actor\+::\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+P\+R\+O\+P\+E\+R\+T\+I\+ES\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{ \mbox{\hyperlink{namespacetgt_1_1_actor_a3469b4930cb81d7da6c8eea595bf5ea9}{MATRIX\_PROPERTY}}, \mbox{\hyperlink{namespacetgt_1_1_actor_a040f09e2e8b921578168a88e091b4ef4}{ANIMATION\_PROPERTY}}, }
+\DoxyCodeLine{        \mbox{\hyperlink{namespacetgt_1_1_actor_a788924832569f4a5131596f0e2756b47}{DYNAMIK\_TRANSFORM\_PROPERTY}}, \mbox{\hyperlink{namespacetgt_1_1_actor_ae9f5049bf079f2b0f5e525bce4f2a016}{MATERIAL\_PROPERTY}}, \mbox{\hyperlink{namespacetgt_1_1_actor_ab6c0ded465cab582dcd4c069d5746aa9}{LAYER\_PROPERTY}}, \mbox{\hyperlink{namespacetgt_1_1_actor_aadbcd7e1dd5a8a639c807e87199d70d7}{INDEX\_COUNT}}, \mbox{\hyperlink{namespacetgt_1_1_actor_a5d2b26761b1beec6c3b38a6b1f8bb0bc}{VERTEX\_COUNT}} \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacetgt_1_1_actor_a5d2b26761b1beec6c3b38a6b1f8bb0bc}\label{namespacetgt_1_1_actor_a5d2b26761b1beec6c3b38a6b1f8bb0bc}} 
+\index{tgt::Actor@{tgt::Actor}!VERTEX\_COUNT@{VERTEX\_COUNT}}
+\index{VERTEX\_COUNT@{VERTEX\_COUNT}!tgt::Actor@{tgt::Actor}}
+\doxysubsubsection{\texorpdfstring{VERTEX\_COUNT}{VERTEX\_COUNT}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Actor\+::\+V\+E\+R\+T\+E\+X\+\_\+\+C\+O\+U\+NT = \char`\"{}vertex\+Count\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
