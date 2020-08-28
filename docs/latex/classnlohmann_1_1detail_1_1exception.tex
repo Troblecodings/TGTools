@@ -1,0 +1,110 @@
+\hypertarget{classnlohmann_1_1detail_1_1exception}{}\doxysection{nlohmann\+::detail\+::exception Class Reference}
+\label{classnlohmann_1_1detail_1_1exception}\index{nlohmann::detail::exception@{nlohmann::detail::exception}}
+
+
+general exception of the \mbox{\hyperlink{classnlohmann_1_1basic__json}{basic\+\_\+json}} class  
+
+
+
+
+{\ttfamily \#include $<$json.\+hpp$>$}
+
+
+
+Inheritance diagram for nlohmann\+::detail\+::exception\+:
+% FIG 0
+
+
+Collaboration diagram for nlohmann\+::detail\+::exception\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{json_8hpp_a5f2aaec3b681d0a72f7d6e90b70cdcd1}{J\+S\+O\+N\+\_\+\+H\+E\+D\+L\+E\+Y\+\_\+\+R\+E\+T\+U\+R\+N\+S\+\_\+\+N\+O\+N\+\_\+\+N\+U\+LL}} const char $\ast$ \mbox{\hyperlink{classnlohmann_1_1detail_1_1exception_a2ecff34cee144f843644a252a07cdadc}{what}} () const noexcept override
+\begin{DoxyCompactList}\small\item\em returns the explanatory string \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{classnlohmann_1_1detail_1_1exception_a0d4589a3fb54e81646d986c05efa3b9a}{id}}
+\begin{DoxyCompactList}\small\item\em the id of the exception \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classnlohmann_1_1detail_1_1exception_ae323ad0d53bc724414c2233164e65657}{exception}} (int id\+\_\+, const char $\ast$what\+\_\+arg)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classnlohmann_1_1detail_1_1exception_abf41a7e9178356314082284e6cfea278}{name}} (const std\+::string \&ename, int id\+\_\+)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+general exception of the \mbox{\hyperlink{classnlohmann_1_1basic__json}{basic\+\_\+json}} class 
+
+This class is an extension of {\ttfamily std\+::exception} objects with a member {\itshape id} for exception ids. It is used as the base class for all exceptions thrown by the \mbox{\hyperlink{classnlohmann_1_1basic__json}{basic\+\_\+json}} class. This class can hence be used as \char`\"{}wildcard\char`\"{} to catch exceptions.
+
+Subclasses\+:
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{classnlohmann_1_1detail_1_1parse__error}{parse\+\_\+error}} for exceptions indicating a parse error
+\item \mbox{\hyperlink{classnlohmann_1_1detail_1_1invalid__iterator}{invalid\+\_\+iterator}} for exceptions indicating errors with iterators
+\item \mbox{\hyperlink{classnlohmann_1_1detail_1_1type__error}{type\+\_\+error}} for exceptions indicating executing a member function with a wrong type
+\item \mbox{\hyperlink{classnlohmann_1_1detail_1_1out__of__range}{out\+\_\+of\+\_\+range}} for exceptions indicating access out of the defined range
+\item \mbox{\hyperlink{classnlohmann_1_1detail_1_1other__error}{other\+\_\+error}} for exceptions indicating other library errors
+\end{DoxyItemize}
+
+@liveexample\{The following code shows how arbitrary library exceptions can be caught.,exception\}
+
+\begin{DoxySince}{Since}
+version 3.\+0.\+0 
+\end{DoxySince}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1exception_ae323ad0d53bc724414c2233164e65657}\label{classnlohmann_1_1detail_1_1exception_ae323ad0d53bc724414c2233164e65657}} 
+\index{nlohmann::detail::exception@{nlohmann::detail::exception}!exception@{exception}}
+\index{exception@{exception}!nlohmann::detail::exception@{nlohmann::detail::exception}}
+\doxysubsubsection{\texorpdfstring{exception()}{exception()}}
+{\footnotesize\ttfamily nlohmann\+::detail\+::exception\+::exception (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+,  }\item[{const char $\ast$}]{what\+\_\+arg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1exception_abf41a7e9178356314082284e6cfea278}\label{classnlohmann_1_1detail_1_1exception_abf41a7e9178356314082284e6cfea278}} 
+\index{nlohmann::detail::exception@{nlohmann::detail::exception}!name@{name}}
+\index{name@{name}!nlohmann::detail::exception@{nlohmann::detail::exception}}
+\doxysubsubsection{\texorpdfstring{name()}{name()}}
+{\footnotesize\ttfamily static std\+::string nlohmann\+::detail\+::exception\+::name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{ename,  }\item[{int}]{id\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1exception_a2ecff34cee144f843644a252a07cdadc}\label{classnlohmann_1_1detail_1_1exception_a2ecff34cee144f843644a252a07cdadc}} 
+\index{nlohmann::detail::exception@{nlohmann::detail::exception}!what@{what}}
+\index{what@{what}!nlohmann::detail::exception@{nlohmann::detail::exception}}
+\doxysubsubsection{\texorpdfstring{what()}{what()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{json_8hpp_a5f2aaec3b681d0a72f7d6e90b70cdcd1}{J\+S\+O\+N\+\_\+\+H\+E\+D\+L\+E\+Y\+\_\+\+R\+E\+T\+U\+R\+N\+S\+\_\+\+N\+O\+N\+\_\+\+N\+U\+LL}} const char$\ast$ nlohmann\+::detail\+::exception\+::what (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [noexcept]}}
+
+
+
+returns the explanatory string 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1exception_a0d4589a3fb54e81646d986c05efa3b9a}\label{classnlohmann_1_1detail_1_1exception_a0d4589a3fb54e81646d986c05efa3b9a}} 
+\index{nlohmann::detail::exception@{nlohmann::detail::exception}!id@{id}}
+\index{id@{id}!nlohmann::detail::exception@{nlohmann::detail::exception}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily const int nlohmann\+::detail\+::exception\+::id}
+
+
+
+the id of the exception 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+T\+G\+Tools/\+T\+G\+Tools/public/\mbox{\hyperlink{json_8hpp}{json.\+hpp}}\end{DoxyCompactItemize}
