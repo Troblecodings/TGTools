@@ -4,6 +4,6 @@
 [submodule "glslang"]
 	path = glslang
 	url = https://github.com/KhronosGroup/glslang
-[submodule "glslang"]
+[submodule "tinygltf"]
 	path = tinygltf
 	url = https://github.com/syoyo/tinygltf
