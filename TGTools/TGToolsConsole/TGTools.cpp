@@ -6,6 +6,7 @@
 #include <public/Actor.hpp>
 #include <public/Map.hpp>
 #include <public/Font.hpp>
+#include <public/Shader.hpp>
 #include <map>
 #include <vector>
 #include <sstream>
@@ -69,6 +70,11 @@ const std::map<std::string, std::map<std::string, Command>> commands =
 			{ "add", {1, [](int count, auto args) { return Font::add(args[0]); } } },
 			{ "remove", {1, [](int count, auto args) { return Font::remove(args[0]); } } },
 			{ "list", { 0, [](int count, auto args) { std::cout << Font::list() << std::endl; return Result::SUCCESS; } } }
+		}
+	},
+	{
+		"shader", {
+			{"add", {2, [](int count, auto args) {return Shader::add(args[0], (Shader::ShaderType) std::stoi(args[1])); }}}
 		}
 	}
 };

@@ -16,6 +16,20 @@ namespace tgt::Shader {
 		if (fs::exists(path) && fs::exists(shader))
 			return Result::ALREADY_EXISTS;
 
+		glslang::InitializeProcess();
+		
+		TBuiltInResource Resource;
+		glslang::TShader Shader(type); 
+		auto file = Util::readFile(path.string());
+		Shader.setStrings((const char *const *) (&file), 1);
+		Shader.setEnvInput(glslang::EShSourceGlsl, type, glslang::EShClientVulkan, 100);
+		Shader.setEnvClient(glslang::EShClientVulkan, glslang::EShTargetVulkan_1_0);
+		Shader.setEnvTarget(glslang::EShTargetSpv, glslang::EShTargetSpv_1_3);
+		Shader.parse(&Resource, 460, true, EShMessages::EShMsgVulkanRules);
+		printf(Shader.getInfoLog());
+
+		glslang::FinalizeProcess();
+
 		js::json json;
 		json["shaderName"] = name;
 		json["shaderType"] = type;
@@ -24,7 +38,6 @@ namespace tgt::Shader {
 
 		JSON_WRITE(shader, json);
 		
-		std::ofstream fileStream(path, std::ios_base::out);
 
 		return Result::SUCCESS;
 	}
