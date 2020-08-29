@@ -3,7 +3,7 @@
 #include "Result.hpp"
 #include <string>
 #include "Util.hpp"
-#include "../../../glslang/glslang/Public/ShaderLang.h"
+#include <glslang/Public/ShaderLang.h>
 
 namespace tgt::Shader {
 
