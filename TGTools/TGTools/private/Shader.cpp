@@ -19,6 +19,7 @@ namespace tgt::Shader {
 		glslang::InitializeProcess();
 		
 		TBuiltInResource Resource;
+
 		glslang::TShader Shader(type); 
 		auto file = Util::readFile(path.string());
 		Shader.setStrings((const char *const *) (&file), 1);
