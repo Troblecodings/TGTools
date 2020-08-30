@@ -3,9 +3,10 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-project ("TGTools")
+project ("TGTools" LANGUAGES CXX)
 set (CMAKE_CXX_STANDARD 20)
 
 # Include sub-projects.
+add_subdirectory ("../glslang" "glslang")
 add_subdirectory ("TGTools")
 add_subdirectory ("TGToolsConsole")
