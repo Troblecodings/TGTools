@@ -17,14 +17,10 @@ namespace tgt::Model {
 	static void recursive(const tinygltf::Model& model, const tinygltf::Node& node) {
 		const tinygltf::Mesh& mesh = model.meshes[node.mesh];
 
-		// Sort array for material number
-		std::sort(mesh.primitives.begin(), mesh.primitives.end(), [](const auto& primitive1, const auto& primitive2) {
-			return primitive1.material > primitive2.material; });
-
 		uint32_t count = 0;
-		int lastmaterial = 0;
+		int lastmaterial = -1;
 		std::string actorname;
-		for (auto& primitive : mesh.primitives) {
+		for (const auto& primitive : mesh.primitives) {
 			if (lastmaterial != primitive.material) {
 				lastmaterial = primitive.material;
 				const std::string materialname = model.materials[lastmaterial].name;
@@ -33,6 +29,7 @@ namespace tgt::Model {
 				Actor::add(actorname, materialname);
 			}
 			const tinygltf::Accessor& accessor = model.accessors[primitive.indices];
+			const tinygltf::BufferView& bufferView = model.bufferViews[accessor.bufferView];
 		}
 
 		for (const auto nodeid : node.children) {
