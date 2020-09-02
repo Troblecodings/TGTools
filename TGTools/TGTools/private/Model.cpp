@@ -2,6 +2,7 @@
 
 #include "../public/Texture.hpp"
 #include "../public/Material.hpp"
+#include "../public/Actor.hpp"
 
 #define TINYGLTF_IMPLEMENTATION
 #define TINYGLTF_USE_CPP14
@@ -13,8 +14,34 @@ namespace tgt::Model {
 
 #define getName(text) text.name.empty() ? fs::path(text.uri).stem().string() : text.name
 
-	const Result loadGltf(const std::string& path) {
+	static void recursive(const tinygltf::Model& model, const tinygltf::Node& node) {
+		const tinygltf::Mesh& mesh = model.meshes[node.mesh];
 
+		// Sort array for material number
+		std::sort(mesh.primitives.begin(), mesh.primitives.end(), [](const auto& primitive1, const auto& primitive2) {
+			return primitive1.material > primitive2.material; });
+
+		uint32_t count = 0;
+		int lastmaterial = 0;
+		std::string actorname;
+		for (auto& primitive : mesh.primitives) {
+			if (lastmaterial != primitive.material) {
+				lastmaterial = primitive.material;
+				const std::string materialname = model.materials[lastmaterial].name;
+				actorname = mesh.name + std::to_string(count);
+				count++;
+				Actor::add(actorname, materialname);
+			}
+			const tinygltf::Accessor& accessor = model.accessors[primitive.indices];
+		}
+
+		for (const auto nodeid : node.children) {
+			const tinygltf::Node& newnode = model.nodes[nodeid];
+			recursive(model, newnode);
+		}
+	}
+
+	const Result loadGltf(const std::string& path) {
 		tinygltf::Model model;
 		tinygltf::TinyGLTF loader;
 		std::string error;
@@ -40,14 +67,14 @@ namespace tgt::Model {
 				continue;
 			}
 
-			auto& image = model.images[texture.source];
+			const tinygltf::Image& image = model.images[texture.source];
 
 			if (image.as_is) { //TODO
 				printf("Warning 'as is' not implemented, continuing!");
 				continue;
 			}
 
-			auto textureName = getName(image);
+			const auto textureName = getName(image);
 			if (!image.image.empty()) {
 				auto texturePath = Util::getResource(Texture::TEXTURE_PATH, textureName, Texture::TEXTURE_EXTENSION).string();
 				if (fs::exists(texturePath))
@@ -81,7 +108,7 @@ namespace tgt::Model {
 				printf("Warning texture has no source!");
 				continue;
 			}
-			
+
 			const auto& image = model.images[texture.source];
 			const auto textureName = getName(image);
 
@@ -90,6 +117,11 @@ namespace tgt::Model {
 				printf("Warning couldn't add Material! Error %i!", (int)result);
 		}
 
+		tinygltf::Scene& scene = model.scenes[model.defaultScene];
+		for (int i : scene.nodes) {
+			tinygltf::Node& node = model.nodes[i];
+			recursive(model, node);
+		}
 		return Result::SUCCESS;
 	}
 
