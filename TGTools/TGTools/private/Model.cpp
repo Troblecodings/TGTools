@@ -14,7 +14,7 @@ namespace tgt::Model {
 
 #define getName(text) text.name.empty() ? fs::path(text.uri).stem().string() : text.name
 
-	static void recursive(const tinygltf::Model& model, const tinygltf::Node& node) {
+	static void recursive(const tinygltf::Model& model, const tinygltf::Node& node, const std::string& map = nullptr) {
 		const tinygltf::Mesh& mesh = model.meshes[node.mesh];
 
 		uint32_t count = 0;
@@ -34,11 +34,11 @@ namespace tgt::Model {
 
 		for (const auto nodeid : node.children) {
 			const tinygltf::Node& newnode = model.nodes[nodeid];
-			recursive(model, newnode);
+			recursive(model, newnode, map);
 		}
 	}
 
-	const Result loadGltf(const std::string& path) {
+	const Result loadGltf(const std::string& path, const std::string& map = nullptr) {
 		tinygltf::Model model;
 		tinygltf::TinyGLTF loader;
 		std::string error;
@@ -117,7 +117,7 @@ namespace tgt::Model {
 		tinygltf::Scene& scene = model.scenes[model.defaultScene];
 		for (int i : scene.nodes) {
 			tinygltf::Node& node = model.nodes[i];
-			recursive(model, node);
+			recursive(model, node, map);
 		}
 		return Result::SUCCESS;
 	}
