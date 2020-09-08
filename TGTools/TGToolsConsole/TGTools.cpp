@@ -25,16 +25,16 @@ struct Command {
 
 static Result actorchange(int count, const char** inputs) {
 	const std::string value = inputs[2];
-	try {
-		if (value.find('.') == UINT64_MAX) {
-			auto convertint = stoi(value);
-			return Actor::change(inputs[0], inputs[1], convertint);
-		} else {
-			auto convertfloat = stof(value);
-			return Actor::change(inputs[0], inputs[1], convertfloat);
-		}
-	} catch (const std::exception&) {
-		return Actor::change(inputs[0], inputs[1], value);
+	if (value.find('.') == UINT64_MAX) {
+		auto convertint = stoi(value);
+		if (convertint == 0)
+			return Actor::change(inputs[0], inputs[1], value);
+		return Actor::change(inputs[0], inputs[1], convertint);
+	} else {
+		auto convertfloat = stof(value);
+		if (convertfloat == 0.0f)
+			return Actor::change(inputs[0], inputs[1], value);
+		return Actor::change(inputs[0], inputs[1], convertfloat);
 	}
 }
 
