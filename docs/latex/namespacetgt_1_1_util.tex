@@ -1,0 +1,155 @@
+\hypertarget{namespacetgt_1_1_util}{}\doxysection{tgt\+::Util Namespace Reference}
+\label{namespacetgt_1_1_util}\index{tgt::Util@{tgt::Util}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classtgt_1_1_util_1_1scope__exit}{scope\+\_\+exit}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T , class U , class S , typename  = std\+::enable\+\_\+if\+\_\+t$<$\+\_\+valid\+Json$<$\+T$>$\&\& \+\_\+valid\+String$<$\+U$>$$>$$>$ }\\const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_util_ae68cda983421450a0e694f2e827fd10a}{change}} (fs\+::path path, U key, T value, S supported)
+\item 
+{\footnotesize template$<$class T , class U , class P , typename  = std\+::enable\+\_\+if\+\_\+t$<$\+\_\+valid\+Path$<$\+P$>$ \&\&		\+\_\+valid\+String$<$\+T$>$ \&\& (\+\_\+valid\+String$<$\+U$>$ $\vert$$\vert$ std\+::is\+\_\+null\+\_\+pointer\+\_\+v$<$\+U$>$)$>$$>$ }\\const fs\+::path \mbox{\hyperlink{namespacetgt_1_1_util_a7b35e27282551b04fb6b053a928ef175}{get\+Resource}} (P resource, T name, U extension)
+\item 
+{\footnotesize template$<$class T , class P , typename  = std\+::enable\+\_\+if\+\_\+t$<$\+\_\+valid\+Path$<$\+P$>$ \&\& \+\_\+valid\+String$<$\+T$>$$>$$>$ }\\const fs\+::path \mbox{\hyperlink{namespacetgt_1_1_util_a8dbd4a57d2e657434c936a98b9544e35}{get\+Resource}} (P resource, T name)
+\item 
+const uint8\+\_\+t $\ast$ \mbox{\hyperlink{namespacetgt_1_1_util_a1f33ccf8e5743b79f419424c3fb07d35}{read\+File}} (std\+::string name, size\+\_\+t $\ast$sizeptr=nullptr)
+\item 
+{\footnotesize template$<$class T , class U , typename  = std\+::enable\+\_\+if\+\_\+t$<$\+\_\+valid\+Path$<$\+T$>$ \&\& std\+::is\+\_\+invocable\+\_\+r\+\_\+v$<$bool, U, fs\+::path$>$$>$$>$ }\\const std\+::string \mbox{\hyperlink{namespacetgt_1_1_util_a039a3c1faf310c1209d935725ba01a03}{collect}} (T path, U lambda)
+\item 
+{\footnotesize template$<$class T , class U , typename  = std\+::enable\+\_\+if\+\_\+t$<$\+\_\+valid\+Path$<$\+T$>$ \&\& std\+::is\+\_\+invocable\+\_\+r\+\_\+v$<$bool, U, fs\+::path$>$$>$$>$ }\\const bool \mbox{\hyperlink{namespacetgt_1_1_util_a38d841da2a23d75b2de5ed17a135edcb}{find}} (const T path, const U lambda)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_util_a06d4a40cb8b63cf86024b6843d61ca3f}{R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+L\+O\+C\+A\+T\+I\+ON}} = \char`\"{}./Resource\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_util_a2ab1809ae796dee54b4bdf39e8d14f35}{J\+S\+ON}} = \char`\"{}.json\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_util_a907b520f25257d3910c09a331246deea}{J\+S\+O\+N\+\_\+\+F\+I\+L\+T\+ER}} = \mbox{[}$\,$\mbox{]}(fs\+::path path) \{ return path.\+extension() == \mbox{\hyperlink{namespacetgt_1_1_util_a2ab1809ae796dee54b4bdf39e8d14f35}{J\+S\+ON}}; \}
+\item 
+{\footnotesize template$<$class T , class... U$>$ }\\constexpr bool \mbox{\hyperlink{namespacetgt_1_1_util_affbf18407cff9fcf0a12810043885ef6}{\+\_\+is\+Any\+Of}} = std\+::disjunction\+\_\+v$<$std\+::is\+\_\+same$<$T, U$>$...$>$
+\item 
+{\footnotesize template$<$class T $>$ }\\constexpr bool \mbox{\hyperlink{namespacetgt_1_1_util_acd24ea882210a2809145290fc0f8bad0}{\+\_\+valid\+String}} = \mbox{\hyperlink{namespacetgt_1_1_util_affbf18407cff9fcf0a12810043885ef6}{\+\_\+is\+Any\+Of}}$<$T, std\+::string, const std\+::string, char$\ast$, const char$\ast$, char$\ast$ const, const char$\ast$ const$>$
+\item 
+{\footnotesize template$<$class T $>$ }\\constexpr bool \mbox{\hyperlink{namespacetgt_1_1_util_a21dfa9bcd9286882f873646a2c776d74}{\+\_\+valid\+Path}} = \mbox{\hyperlink{namespacetgt_1_1_util_affbf18407cff9fcf0a12810043885ef6}{\+\_\+is\+Any\+Of}}$<$T, fs\+::path, const fs\+::path$>$
+\item 
+{\footnotesize template$<$class T $>$ }\\constexpr bool \mbox{\hyperlink{namespacetgt_1_1_util_a444ed218050bbf71f20c2f87db551b8a}{\+\_\+valid\+Path\+String}} = \mbox{\hyperlink{namespacetgt_1_1_util_a21dfa9bcd9286882f873646a2c776d74}{\+\_\+valid\+Path}}$<$T$>$ $\vert$$\vert$ \mbox{\hyperlink{namespacetgt_1_1_util_acd24ea882210a2809145290fc0f8bad0}{\+\_\+valid\+String}}$<$T$>$
+\item 
+{\footnotesize template$<$class T $>$ }\\constexpr bool \mbox{\hyperlink{namespacetgt_1_1_util_adc8586f01b6358542500b5cae0b3e0a7}{\+\_\+valid\+Json}} = std\+::is\+\_\+arithmetic\+\_\+v$<$T$>$ $\vert$$\vert$ \mbox{\hyperlink{namespacetgt_1_1_util_acd24ea882210a2809145290fc0f8bad0}{\+\_\+valid\+String}}$<$T$>$
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacetgt_1_1_util_ae68cda983421450a0e694f2e827fd10a}\label{namespacetgt_1_1_util_ae68cda983421450a0e694f2e827fd10a}} 
+\index{tgt::Util@{tgt::Util}!change@{change}}
+\index{change@{change}!tgt::Util@{tgt::Util}}
+\doxysubsubsection{\texorpdfstring{change()}{change()}}
+{\footnotesize\ttfamily template$<$class T , class U , class S , typename  = std\+::enable\+\_\+if\+\_\+t$<$\+\_\+valid\+Json$<$\+T$>$\&\& \+\_\+valid\+String$<$\+U$>$$>$$>$ \\
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} tgt\+::\+Util\+::change (\begin{DoxyParamCaption}\item[{fs\+::path}]{path,  }\item[{U}]{key,  }\item[{T}]{value,  }\item[{S}]{supported }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 0
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{namespacetgt_1_1_util_a039a3c1faf310c1209d935725ba01a03}\label{namespacetgt_1_1_util_a039a3c1faf310c1209d935725ba01a03}} 
+\index{tgt::Util@{tgt::Util}!collect@{collect}}
+\index{collect@{collect}!tgt::Util@{tgt::Util}}
+\doxysubsubsection{\texorpdfstring{collect()}{collect()}}
+{\footnotesize\ttfamily template$<$class T , class U , typename  = std\+::enable\+\_\+if\+\_\+t$<$\+\_\+valid\+Path$<$\+T$>$ \&\& std\+::is\+\_\+invocable\+\_\+r\+\_\+v$<$bool, U, fs\+::path$>$$>$$>$ \\
+const std\+::string tgt\+::\+Util\+::collect (\begin{DoxyParamCaption}\item[{T}]{path,  }\item[{U}]{lambda }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{namespacetgt_1_1_util_a38d841da2a23d75b2de5ed17a135edcb}\label{namespacetgt_1_1_util_a38d841da2a23d75b2de5ed17a135edcb}} 
+\index{tgt::Util@{tgt::Util}!find@{find}}
+\index{find@{find}!tgt::Util@{tgt::Util}}
+\doxysubsubsection{\texorpdfstring{find()}{find()}}
+{\footnotesize\ttfamily template$<$class T , class U , typename  = std\+::enable\+\_\+if\+\_\+t$<$\+\_\+valid\+Path$<$\+T$>$ \&\& std\+::is\+\_\+invocable\+\_\+r\+\_\+v$<$bool, U, fs\+::path$>$$>$$>$ \\
+const bool tgt\+::\+Util\+::find (\begin{DoxyParamCaption}\item[{const T}]{path,  }\item[{const U}]{lambda }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{namespacetgt_1_1_util_a8dbd4a57d2e657434c936a98b9544e35}\label{namespacetgt_1_1_util_a8dbd4a57d2e657434c936a98b9544e35}} 
+\index{tgt::Util@{tgt::Util}!getResource@{getResource}}
+\index{getResource@{getResource}!tgt::Util@{tgt::Util}}
+\doxysubsubsection{\texorpdfstring{getResource()}{getResource()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T , class P , typename  = std\+::enable\+\_\+if\+\_\+t$<$\+\_\+valid\+Path$<$\+P$>$ \&\& \+\_\+valid\+String$<$\+T$>$$>$$>$ \\
+const fs\+::path tgt\+::\+Util\+::get\+Resource (\begin{DoxyParamCaption}\item[{P}]{resource,  }\item[{T}]{name }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{namespacetgt_1_1_util_a7b35e27282551b04fb6b053a928ef175}\label{namespacetgt_1_1_util_a7b35e27282551b04fb6b053a928ef175}} 
+\index{tgt::Util@{tgt::Util}!getResource@{getResource}}
+\index{getResource@{getResource}!tgt::Util@{tgt::Util}}
+\doxysubsubsection{\texorpdfstring{getResource()}{getResource()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T , class U , class P , typename  = std\+::enable\+\_\+if\+\_\+t$<$\+\_\+valid\+Path$<$\+P$>$ \&\&		\+\_\+valid\+String$<$\+T$>$ \&\& (\+\_\+valid\+String$<$\+U$>$ $\vert$$\vert$ std\+::is\+\_\+null\+\_\+pointer\+\_\+v$<$\+U$>$)$>$$>$ \\
+const fs\+::path tgt\+::\+Util\+::get\+Resource (\begin{DoxyParamCaption}\item[{P}]{resource,  }\item[{T}]{name,  }\item[{U}]{extension }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{namespacetgt_1_1_util_a1f33ccf8e5743b79f419424c3fb07d35}\label{namespacetgt_1_1_util_a1f33ccf8e5743b79f419424c3fb07d35}} 
+\index{tgt::Util@{tgt::Util}!readFile@{readFile}}
+\index{readFile@{readFile}!tgt::Util@{tgt::Util}}
+\doxysubsubsection{\texorpdfstring{readFile()}{readFile()}}
+{\footnotesize\ttfamily const uint8\+\_\+t$\ast$ tgt\+::\+Util\+::read\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{size\+\_\+t $\ast$}]{sizeptr = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+% FIG 6
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacetgt_1_1_util_affbf18407cff9fcf0a12810043885ef6}\label{namespacetgt_1_1_util_affbf18407cff9fcf0a12810043885ef6}} 
+\index{tgt::Util@{tgt::Util}!\_isAnyOf@{\_isAnyOf}}
+\index{\_isAnyOf@{\_isAnyOf}!tgt::Util@{tgt::Util}}
+\doxysubsubsection{\texorpdfstring{\_isAnyOf}{\_isAnyOf}}
+{\footnotesize\ttfamily template$<$class T , class... U$>$ \\
+constexpr bool tgt\+::\+Util\+::\+\_\+is\+Any\+Of = std\+::disjunction\+\_\+v$<$std\+::is\+\_\+same$<$T, U$>$...$>$\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_util_adc8586f01b6358542500b5cae0b3e0a7}\label{namespacetgt_1_1_util_adc8586f01b6358542500b5cae0b3e0a7}} 
+\index{tgt::Util@{tgt::Util}!\_validJson@{\_validJson}}
+\index{\_validJson@{\_validJson}!tgt::Util@{tgt::Util}}
+\doxysubsubsection{\texorpdfstring{\_validJson}{\_validJson}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+constexpr bool tgt\+::\+Util\+::\+\_\+valid\+Json = std\+::is\+\_\+arithmetic\+\_\+v$<$T$>$ $\vert$$\vert$ \mbox{\hyperlink{namespacetgt_1_1_util_acd24ea882210a2809145290fc0f8bad0}{\+\_\+valid\+String}}$<$T$>$\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_util_a21dfa9bcd9286882f873646a2c776d74}\label{namespacetgt_1_1_util_a21dfa9bcd9286882f873646a2c776d74}} 
+\index{tgt::Util@{tgt::Util}!\_validPath@{\_validPath}}
+\index{\_validPath@{\_validPath}!tgt::Util@{tgt::Util}}
+\doxysubsubsection{\texorpdfstring{\_validPath}{\_validPath}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+constexpr bool tgt\+::\+Util\+::\+\_\+valid\+Path = \mbox{\hyperlink{namespacetgt_1_1_util_affbf18407cff9fcf0a12810043885ef6}{\+\_\+is\+Any\+Of}}$<$T, fs\+::path, const fs\+::path$>$\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_util_a444ed218050bbf71f20c2f87db551b8a}\label{namespacetgt_1_1_util_a444ed218050bbf71f20c2f87db551b8a}} 
+\index{tgt::Util@{tgt::Util}!\_validPathString@{\_validPathString}}
+\index{\_validPathString@{\_validPathString}!tgt::Util@{tgt::Util}}
+\doxysubsubsection{\texorpdfstring{\_validPathString}{\_validPathString}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+constexpr bool tgt\+::\+Util\+::\+\_\+valid\+Path\+String = \mbox{\hyperlink{namespacetgt_1_1_util_a21dfa9bcd9286882f873646a2c776d74}{\+\_\+valid\+Path}}$<$T$>$ $\vert$$\vert$ \mbox{\hyperlink{namespacetgt_1_1_util_acd24ea882210a2809145290fc0f8bad0}{\+\_\+valid\+String}}$<$T$>$\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_util_acd24ea882210a2809145290fc0f8bad0}\label{namespacetgt_1_1_util_acd24ea882210a2809145290fc0f8bad0}} 
+\index{tgt::Util@{tgt::Util}!\_validString@{\_validString}}
+\index{\_validString@{\_validString}!tgt::Util@{tgt::Util}}
+\doxysubsubsection{\texorpdfstring{\_validString}{\_validString}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+constexpr bool tgt\+::\+Util\+::\+\_\+valid\+String = \mbox{\hyperlink{namespacetgt_1_1_util_affbf18407cff9fcf0a12810043885ef6}{\+\_\+is\+Any\+Of}}$<$T, std\+::string, const std\+::string, char$\ast$, const char$\ast$, char$\ast$ const, const char$\ast$ const$>$\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_util_a2ab1809ae796dee54b4bdf39e8d14f35}\label{namespacetgt_1_1_util_a2ab1809ae796dee54b4bdf39e8d14f35}} 
+\index{tgt::Util@{tgt::Util}!JSON@{JSON}}
+\index{JSON@{JSON}!tgt::Util@{tgt::Util}}
+\doxysubsubsection{\texorpdfstring{JSON}{JSON}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Util\+::\+J\+S\+ON = \char`\"{}.json\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_util_a907b520f25257d3910c09a331246deea}\label{namespacetgt_1_1_util_a907b520f25257d3910c09a331246deea}} 
+\index{tgt::Util@{tgt::Util}!JSON\_FILTER@{JSON\_FILTER}}
+\index{JSON\_FILTER@{JSON\_FILTER}!tgt::Util@{tgt::Util}}
+\doxysubsubsection{\texorpdfstring{JSON\_FILTER}{JSON\_FILTER}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Util\+::\+J\+S\+O\+N\+\_\+\+F\+I\+L\+T\+ER = \mbox{[}$\,$\mbox{]}(fs\+::path path) \{ return path.\+extension() == \mbox{\hyperlink{namespacetgt_1_1_util_a2ab1809ae796dee54b4bdf39e8d14f35}{J\+S\+ON}}; \}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_util_a06d4a40cb8b63cf86024b6843d61ca3f}\label{namespacetgt_1_1_util_a06d4a40cb8b63cf86024b6843d61ca3f}} 
+\index{tgt::Util@{tgt::Util}!RESOURCE\_LOCATION@{RESOURCE\_LOCATION}}
+\index{RESOURCE\_LOCATION@{RESOURCE\_LOCATION}!tgt::Util@{tgt::Util}}
+\doxysubsubsection{\texorpdfstring{RESOURCE\_LOCATION}{RESOURCE\_LOCATION}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Util\+::\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+L\+O\+C\+A\+T\+I\+ON = \char`\"{}./Resource\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+

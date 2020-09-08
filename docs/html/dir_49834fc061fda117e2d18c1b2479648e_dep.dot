@@ -1,0 +1,11 @@
+digraph "TGTools/TGTools/private" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_bf88feaac428e349fe610ee5a19437c5 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="TGTools" fontname="Helvetica", fontsize="10", URL="dir_bf88feaac428e349fe610ee5a19437c5.html"]
+  dir_49834fc061fda117e2d18c1b2479648e [shape=box, label="private", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_49834fc061fda117e2d18c1b2479648e.html"];
+  }
+  dir_76a06db44b06656fd9389f7394d55823 [shape=box label="public" URL="dir_76a06db44b06656fd9389f7394d55823.html"];
+  dir_49834fc061fda117e2d18c1b2479648e->dir_76a06db44b06656fd9389f7394d55823 [headlabel="21", labeldistance=1.5 headhref="dir_000002_000003.html"];
+}

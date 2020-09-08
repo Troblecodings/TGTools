@@ -1,0 +1,92 @@
+\hypertarget{_map_8cpp}{}\doxysection{T\+G\+Tools/\+T\+G\+Tools/private/\+Map.cpp File Reference}
+\label{_map_8cpp}\index{TGTools/TGTools/private/Map.cpp@{TGTools/TGTools/private/Map.cpp}}
+{\ttfamily \#include \char`\"{}../public/\+Map.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../public/json.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include \char`\"{}../public/\+Actor.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../public/\+Font.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../public/\+Texture.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../public/\+Material.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+Include dependency graph for Map.\+cpp\+:
+% FIG 0
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacetgt}{tgt}}
+\item 
+ \mbox{\hyperlink{namespacetgt_1_1_map}{tgt\+::\+Map}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_map_8cpp_a4ba04ae1fce446d70cba5fb7d5318ec3}{C\+H\+E\+C\+K\+\_\+\+R\+E\+S\+U\+LT}}(statement)~result = statement; if(result != Result\+::\+S\+U\+C\+C\+E\+SS) return result
+\item 
+\#define \mbox{\hyperlink{_map_8cpp_a09b672e8d07d1804e2accc2cf266f75a}{W\+R\+I\+T\+E\+\_\+\+I\+NT}}(fp,  dt)~fwrite(\&dt, sizeof(uint32\+\_\+t), 1, fp)
+\item 
+\#define \mbox{\hyperlink{_map_8cpp_ad9a5ce29a71bf6b60ca074eb1c8e0981}{W\+R\+I\+T\+E\+\_\+\+C\+I\+NT}}(fp,  num)~check = num; fwrite(\&check, sizeof(uint32\+\_\+t), 1, fp)
+\item 
+\#define \mbox{\hyperlink{_map_8cpp_ac12beaf2dc619287555656ca44d05dd9}{W\+R\+I\+T\+E\+\_\+\+C\+H\+E\+CK}}(fp)~constexpr auto \mbox{\hyperlink{_map_8cpp_ad9a5ce29a71bf6b60ca074eb1c8e0981}{W\+R\+I\+T\+E\+\_\+\+C\+I\+NT}}(fp, U\+I\+N\+T32\+\_\+\+M\+AX);
+\item 
+\#define \mbox{\hyperlink{_map_8cpp_a457a2ad682d993b412dfea63a83a4781}{W\+R\+I\+T\+E\+\_\+\+S\+I\+ZE}}(fp)~\mbox{\hyperlink{_map_8cpp_a09b672e8d07d1804e2accc2cf266f75a}{W\+R\+I\+T\+E\+\_\+\+I\+NT}}(fp, size)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_map_a32e3e12695ca247efa613a2d9f00a990}{tgt\+::\+Map\+::create}} (const char $\ast$mapname)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_map_ae7aca4f710c36d670c8c4ab4d30c731e}{tgt\+::\+Map\+::create}} (const std\+::string \&mapname)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_map_aeec8d102361f9dcaed9d79ce28e14012}{tgt\+::\+Map\+::remove}} (const char $\ast$mapname)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_map_adde93f4670248f670a099b3c62ad2329}{tgt\+::\+Map\+::remove}} (const std\+::string \&mapname)
+\item 
+const std\+::string \mbox{\hyperlink{namespacetgt_1_1_map_a5b771ef5c358c148a9d3c620599d5dbf}{tgt\+::\+Map\+::list}} ()
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_map_acb54689f1065880af72e935afe8489ab}{tgt\+::\+Map\+::make}} (const char $\ast$mapname)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_map_ae955f3e7f19a2015f8988c511547d239}{tgt\+::\+Map\+::make}} (const std\+::string \&mapname)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_map_a4a9a4dc04c24f3bf2118e5f3b9e24aab}{tgt\+::\+Map\+::add}} (const char $\ast$mapname, const char $\ast$name)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_map_ab5a5f5d6cf5fb69879c93beddb87757e}{tgt\+::\+Map\+::add}} (const std\+::string \&mapname, const std\+::string \&name)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_map_a43ce202ded45ad80f5448994f1b09ffa}{tgt\+::\+Map\+::remove}} (const char $\ast$mapname, const char $\ast$name)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_map_a637f53e92a89ea9f50522d9a9a9a2025}{tgt\+::\+Map\+::remove}} (const std\+::string \&mapname, const std\+::string \&name)
+\item 
+const bool \mbox{\hyperlink{namespacetgt_1_1_map_a901ee49b32df6ae8b38974e21d440396}{tgt\+::\+Map\+::check\+Dependent}} (const std\+::string \&dependency)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_map_8cpp_a4ba04ae1fce446d70cba5fb7d5318ec3}\label{_map_8cpp_a4ba04ae1fce446d70cba5fb7d5318ec3}} 
+\index{Map.cpp@{Map.cpp}!CHECK\_RESULT@{CHECK\_RESULT}}
+\index{CHECK\_RESULT@{CHECK\_RESULT}!Map.cpp@{Map.cpp}}
+\doxysubsubsection{\texorpdfstring{CHECK\_RESULT}{CHECK\_RESULT}}
+{\footnotesize\ttfamily \#define C\+H\+E\+C\+K\+\_\+\+R\+E\+S\+U\+LT(\begin{DoxyParamCaption}\item[{}]{statement }\end{DoxyParamCaption})~result = statement; if(result != Result\+::\+S\+U\+C\+C\+E\+SS) return result}
+
+\mbox{\Hypertarget{_map_8cpp_ac12beaf2dc619287555656ca44d05dd9}\label{_map_8cpp_ac12beaf2dc619287555656ca44d05dd9}} 
+\index{Map.cpp@{Map.cpp}!WRITE\_CHECK@{WRITE\_CHECK}}
+\index{WRITE\_CHECK@{WRITE\_CHECK}!Map.cpp@{Map.cpp}}
+\doxysubsubsection{\texorpdfstring{WRITE\_CHECK}{WRITE\_CHECK}}
+{\footnotesize\ttfamily \#define W\+R\+I\+T\+E\+\_\+\+C\+H\+E\+CK(\begin{DoxyParamCaption}\item[{}]{fp }\end{DoxyParamCaption})~constexpr auto \mbox{\hyperlink{_map_8cpp_ad9a5ce29a71bf6b60ca074eb1c8e0981}{W\+R\+I\+T\+E\+\_\+\+C\+I\+NT}}(fp, U\+I\+N\+T32\+\_\+\+M\+AX);}
+
+\mbox{\Hypertarget{_map_8cpp_ad9a5ce29a71bf6b60ca074eb1c8e0981}\label{_map_8cpp_ad9a5ce29a71bf6b60ca074eb1c8e0981}} 
+\index{Map.cpp@{Map.cpp}!WRITE\_CINT@{WRITE\_CINT}}
+\index{WRITE\_CINT@{WRITE\_CINT}!Map.cpp@{Map.cpp}}
+\doxysubsubsection{\texorpdfstring{WRITE\_CINT}{WRITE\_CINT}}
+{\footnotesize\ttfamily \#define W\+R\+I\+T\+E\+\_\+\+C\+I\+NT(\begin{DoxyParamCaption}\item[{}]{fp,  }\item[{}]{num }\end{DoxyParamCaption})~check = num; fwrite(\&check, sizeof(uint32\+\_\+t), 1, fp)}
+
+\mbox{\Hypertarget{_map_8cpp_a09b672e8d07d1804e2accc2cf266f75a}\label{_map_8cpp_a09b672e8d07d1804e2accc2cf266f75a}} 
+\index{Map.cpp@{Map.cpp}!WRITE\_INT@{WRITE\_INT}}
+\index{WRITE\_INT@{WRITE\_INT}!Map.cpp@{Map.cpp}}
+\doxysubsubsection{\texorpdfstring{WRITE\_INT}{WRITE\_INT}}
+{\footnotesize\ttfamily \#define W\+R\+I\+T\+E\+\_\+\+I\+NT(\begin{DoxyParamCaption}\item[{}]{fp,  }\item[{}]{dt }\end{DoxyParamCaption})~fwrite(\&dt, sizeof(uint32\+\_\+t), 1, fp)}
+
+\mbox{\Hypertarget{_map_8cpp_a457a2ad682d993b412dfea63a83a4781}\label{_map_8cpp_a457a2ad682d993b412dfea63a83a4781}} 
+\index{Map.cpp@{Map.cpp}!WRITE\_SIZE@{WRITE\_SIZE}}
+\index{WRITE\_SIZE@{WRITE\_SIZE}!Map.cpp@{Map.cpp}}
+\doxysubsubsection{\texorpdfstring{WRITE\_SIZE}{WRITE\_SIZE}}
+{\footnotesize\ttfamily \#define W\+R\+I\+T\+E\+\_\+\+S\+I\+ZE(\begin{DoxyParamCaption}\item[{}]{fp }\end{DoxyParamCaption})~\mbox{\hyperlink{_map_8cpp_a09b672e8d07d1804e2accc2cf266f75a}{W\+R\+I\+T\+E\+\_\+\+I\+NT}}(fp, size)}
+
