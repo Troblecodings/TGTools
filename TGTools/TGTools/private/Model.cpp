@@ -38,7 +38,7 @@ namespace tgt::Model {
 		}
 	}
 
-	const Result loadGltf(const std::string& path, const std::string& map = nullptr) {
+	const Result loadGltf(const std::string& path, const std::string& map) {
 		tinygltf::Model model;
 		tinygltf::TinyGLTF loader;
 		std::string error;

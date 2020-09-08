@@ -5,6 +5,6 @@
 
 namespace tgt::Model {
 
-	const Result loadGltf(const std::string& path);
+	const Result loadGltf(const std::string& path, const std::string& map = nullptr);
 
 }
