@@ -17,14 +17,13 @@ namespace tgt::Shader {
 			return Result::ALREADY_EXISTS;
 
 		js::json json;
-		json["shaderName"] = name;
 		json["shaderType"] = type;
-		//json["shaderInput"] = ;
-		//json["shaderOutput"] = ;
 
 		JSON_WRITE(shader, json);
 		
 		std::ofstream fileStream(path, std::ios_base::out);
+		fileStream << "void main() {\n\n}";
+		fileStream.close();
 
 		return Result::SUCCESS;
 	}

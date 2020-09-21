@@ -28,6 +28,10 @@ namespace tgt::Shader {
 
 	constexpr auto SHADER_EXTENSION = ".glsl";
 	constexpr auto SHADER_SUBFOLDER = "Shaders";
+	
+	constexpr auto SHADER_TYPE_PROPERTY = "shaderType";
+
+	constexpr std::array SUPPORTED_PROPERTIES = { SHADER_TYPE_PROPERTY };
 
 	const auto SHADER_PATH = fs::path(Util::RESOURCE_LOCATION).append(SHADER_SUBFOLDER);
 
