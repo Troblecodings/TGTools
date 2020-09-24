@@ -59,4 +59,22 @@ namespace tgt::Sampler {
 		return Util::change(Util::getResource(SAMPLER_PATH, name, Util::JSON), key, value, SUPPORTED_PROPERTIES);
 	}
 
+	struct SamplerInfo {
+		uint8_t umode;
+		uint8_t vmode;
+		uint8_t magfilter;
+		uint8_t minfilter;
+	};
+
+	inline const Result write(FILE* file, const js::json& jsonarray) {
+		Util::writeToFile(file, jsonarray, [=](const js::json& jsn) {
+			SamplerInfo samplerInfo;
+			samplerInfo.umode = (uint8_t)jsn[UMODE_PROPERTY].get<SamplerAddressMode>();
+			samplerInfo.vmode = (uint8_t)jsn[VMODE_PROPERTY].get<SamplerAddressMode>();
+			samplerInfo.magfilter = (uint8_t)jsn[MAG_FILTER_PROPERTY].get<SamplerFilter>();
+			samplerInfo.minfilter = (uint8_t)jsn[MIN_FILTER_PROPERTY].get<SamplerFilter>();
+			fwrite(&samplerInfo, 1, sizeof(SamplerInfo), file);
+		});
+	}
+
 }

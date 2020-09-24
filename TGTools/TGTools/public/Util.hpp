@@ -146,4 +146,22 @@ namespace tgt::Util {
 				return true;
 		return false;
 	}
+
+	template<class T, typename = std::enable_if_t<std::is_invocable_v<T, const js::json&>>>
+	inline const Result writeToFile(FILE* file, const js::json& jsonarray, T lambda) {
+		const auto size = jsonarray.size();
+		fwrite(&size, 1, sizeof(uint32_t), file);
+		for (const auto& jobject : jsonarray) {
+			const std::string& name = jobject.get<std::string>();
+			if (!fs::exists(name)) {
+				printf("Warning: %s does not exist!", name.c_str());
+				return Result::DOES_NOT_EXIST;
+			}
+			js::json json;
+			JSON_LOAD(name, json);
+			lambda(json);
+		}
+		constexpr auto end = 0xFFFFFFFF;
+		fwrite(&end, 1, sizeof(end), file);
+	}
 }
