@@ -75,6 +75,12 @@ namespace tgt::Util {
 		~scope_exit() { lambda(); }
 	};
 
+	template<class T, typename=std::enable_if_t<std::is_invocable_r_v<const Result, T, js::json&>>>
+	inline const Result jsonUpdatet(const fs::path& path, T lambda) {
+		JSON_UPDATE(path, const Result rst = lambda(json);  if (rst != Result::SUCCESS) return rst;);
+		return Result::SUCCESS;
+	}
+
 	template<class T, class U, class S, typename = std::enable_if_t<_validJson<T>&& _validString<U>>>
 	inline const Result change(fs::path path, const U& key, const T& value, const S& supported) {
 		if (!fs::exists(path))

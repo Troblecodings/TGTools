@@ -29,24 +29,4 @@ namespace tgt::Material {
 
 		return Result::SUCCESS;
 	}
-
-	const std::string list() {
-		return Util::collect(MATERIAL_PATH, Util::JSON_FILTER);
-	}
-
-	const Result remove(const char* name) {
-		STRING_CHECKS_C(name);
-		return remove(std::string(name));
-	}
-
-	const Result remove(const std::string& name) {
-		STRING_CHECKS(name);
-
-		auto path = Util::getResource(MATERIAL_PATH, name, Util::JSON);
-
-		if (!fs::remove(path))
-			return Result::DOES_NOT_EXIST;
-
-		return Result::SUCCESS;
-	}
 }

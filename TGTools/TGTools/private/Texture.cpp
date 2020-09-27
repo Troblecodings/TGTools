@@ -29,21 +29,12 @@ namespace tgt::Texture {
 	}
 
 	const Result remove(const std::string& name) {
-		STRING_CHECKS(name);
-
-		auto path = Util::getResource(TEXTURE_PATH, name, TEXTURE_EXTENSION).string();
-
-		if (Util::find(Material::MATERIAL_PATH, [=](auto directory) {
+		return Util::remove(TEXTURE_PATH, name, TEXTURE_EXTENSION, [](const fs::path& path) { return Util::find(Material::MATERIAL_PATH, [=](auto directory) {
 			nlohmann::json json;
 			JSON_LOAD(directory, json);
 			auto foundpath = json[Material::TEXTURE_PROPERTY].get<std::string>();
 			return foundpath == path;
-		})) return Result::DEPENDENT;
-
-		if (!fs::remove(path))
-			return Result::DOES_NOT_EXIST;
-
-		return Result::SUCCESS;
+		}); });
 	}
 
 	const std::string list() {

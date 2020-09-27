@@ -43,12 +43,7 @@ namespace tgt::Sampler {
 	}
 
 	inline const Result remove(const std::string& name) {
-		STRING_CHECKS(name);
-
-		auto path = Util::getResource(SAMPLER_PATH, name, Util::JSON);
-		if (!fs::remove(path))
-			return Result::DOES_NOT_EXIST;
-		return Result::SUCCESS;
+		return Util::remove(SAMPLER_PATH, name);
 	}
 
 	inline const std::string list() {

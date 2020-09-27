@@ -31,25 +31,6 @@ namespace tgt::Map {
 		return Result::SUCCESS;
 	}
 
-	const Result remove(const char* mapname) {
-		STRING_CHECKS_C(mapname);
-		return remove(std::string(mapname));
-	}
-
-	const Result remove(const std::string& mapname) {
-		STRING_CHECKS(mapname);
-
-		auto map = Util::getResource(MAP_PATH, mapname, Util::JSON);
-		if (!fs::remove(map))
-			return Result::DOES_NOT_EXIST;
-
-		return Result::SUCCESS;
-	}
-
-	const std::string list() {
-		return Util::collect(MAP_PATH, Util::JSON_FILTER);
-	}
-
 	const Result make(const char* mapname) {
 		STRING_CHECKS_C(mapname);
 		return make(std::string(mapname));

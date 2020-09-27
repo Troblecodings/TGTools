@@ -22,9 +22,11 @@ namespace tgt::Material {
 
 	const Result add(const std::string& name, const std::string& texture, const uint32_t color = DEFAULT_COLOR);
 
-	const std::string list();
+	inline const std::string list() {
+		return Util::collect(MATERIAL_PATH, Util::JSON_FILTER);
+	}
 
-	const Result remove(const char* name);
-
-	const Result remove(const std::string& name);
+	inline const Result remove(const std::string& name) {
+		return Util::remove(MATERIAL_PATH, name);
+	}
 }
