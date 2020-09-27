@@ -172,10 +172,10 @@ namespace tgt::Util {
 	}
 
 	template<class T, typename = std::enable_if_t<std::is_invocable_r_v<bool, T, const fs::path&> || std::is_null_pointer_v<T>>>
-	inline const Result remove(const fs::path& path, const std::string& name, const std::string& filter, T lambda) {
-		auto path = Util::getResource(path, name, filter);
+	inline const Result remove(const fs::path& parentpath, const std::string& name, const std::string& filter, T lambda) {
+		auto path = Util::getResource(parentpath, name, filter);
 
-		if constexpr (std::is_null_pointer_v<T>) {
+		if constexpr (!std::is_null_pointer_v<T>) {
 			if (lambda(path))
 				return Result::DEPENDENT;
 		}
