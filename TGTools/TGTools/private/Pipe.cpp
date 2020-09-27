@@ -30,15 +30,13 @@ namespace tgt::Pipe {
 		if (!fs::exists(shaderjsonpath))
 			return Result::DOES_NOT_EXIST;
 
-		Util::jsonUpdatet(pipepath, [=](js::json& json) {
+		return Util::jsonUpdatet(pipepath, [=](js::json& json) {
 			auto& shaderlist = json[SHADER_PROPERTY];
 			if (shaderlist.contains(shaderjsonpath))
 				return Result::ALREADY_EXISTS;
 			shaderlist += shaderjsonpath;
 			return Result::SUCCESS;
 		});
-
-		return Result::SUCCESS;
 	}
 
 	const Result removeShader(const std::string& name, const std::string& shadername) {
@@ -48,9 +46,9 @@ namespace tgt::Pipe {
 
 		const auto shaderjsonpath = Util::getResource(Shader::SHADER_PATH, name, Util::JSON).string();
 
-		Util::jsonUpdatet(pipepath, [=](js::json& json) {
+		return Util::jsonUpdatet(pipepath, [=](js::json& json) {
 			auto& shaderlist = json[SHADER_PROPERTY];
-			auto& iterator = std::remove(shaderlist.begin(), shaderlist.end(), shaderjsonpath);
+			auto iterator = std::remove(shaderlist.begin(), shaderlist.end(), shaderjsonpath);
 			if (iterator == shaderlist.end())
 				return Result::DOES_NOT_EXIST;;
 			shaderlist.erase(iterator);
