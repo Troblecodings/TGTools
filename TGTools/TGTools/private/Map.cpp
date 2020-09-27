@@ -31,25 +31,6 @@ namespace tgt::Map {
 		return Result::SUCCESS;
 	}
 
-	const Result remove(const char* mapname) {
-		STRING_CHECKS_C(mapname);
-		return remove(std::string(mapname));
-	}
-
-	const Result remove(const std::string& mapname) {
-		STRING_CHECKS(mapname);
-
-		auto map = Util::getResource(MAP_PATH, mapname, Util::JSON);
-		if (!fs::remove(map))
-			return Result::DOES_NOT_EXIST;
-
-		return Result::SUCCESS;
-	}
-
-	const std::string list() {
-		return Util::collect(MAP_PATH, Util::JSON_FILTER);
-	}
-
 	const Result make(const char* mapname) {
 		STRING_CHECKS_C(mapname);
 		return make(std::string(mapname));
@@ -103,19 +84,25 @@ namespace tgt::Map {
 			stempath.replace_extension(Actor::ACTOR_VERTEX_EXTENSION);
 			uint8_t* vertexdataptr;
 			Result CHECK_RESULT(Actor::getData((const void**)&vertexdataptr, stempath, &size));
+			Util::scope_exit onexit([=]() { delete[] vertexdataptr; });
 			WRITE_SIZE(fp);
 
 			Actor::ActorData data;
 			CHECK_RESULT(Actor::_dataHeader(stringPath, &data));
 			fwrite(&data, sizeof(data), 1, fp);
 
-			fwrite(vertexdataptr, sizeof(uint8_t), size, fp);
-			delete[] vertexdataptr;
-
+			uint8_t* indexptr;
+			size_t indexSize = 0;
 			stempath.replace_extension(Actor::ACTOR_INDEX_EXTENSION);
-			CHECK_RESULT(Actor::getData((const void**)&vertexdataptr, stempath, &size));
-			fwrite(&vertexdataptr, sizeof(uint32_t), data.indexDrawCount, fp);
-			delete[] vertexdataptr;
+			CHECK_RESULT(Actor::getData((const void**)&indexptr, stempath, &indexSize));
+
+			if (indexSize != sizeof(uint32_t) * data.indexDrawCount)
+				printf("Warning index size is greater then the actual draw count");
+
+			fwrite(&indexptr, sizeof(uint32_t), data.indexDrawCount, fp);
+			delete[] indexptr;
+
+			fwrite(vertexdataptr, sizeof(uint8_t), size, fp);
 		}
 		WRITE_CHECK(fp);
 

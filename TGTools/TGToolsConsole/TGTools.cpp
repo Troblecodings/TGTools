@@ -6,6 +6,7 @@
 #include <public/Actor.hpp>
 #include <public/Map.hpp>
 #include <public/Font.hpp>
+#include <public/Model.hpp>
 #include <map>
 #include <vector>
 #include <sstream>
@@ -24,21 +25,26 @@ struct Command {
 
 static Result actorchange(int count, const char** inputs) {
 	const std::string value = inputs[2];
-	try {
-		if (value.find('.') == UINT64_MAX) {
-			auto convertint = stoi(value);
-			return Actor::change(inputs[0], inputs[1], convertint);
-		} else {
-			auto convertfloat = stof(value);
-			return Actor::change(inputs[0], inputs[1], convertfloat);
-		}
-	} catch (const std::exception&) {
-		return Actor::change(inputs[0], inputs[1], value);
+	if (value.find('.') == UINT64_MAX) {
+		auto convertint = stoi(value);
+		if (convertint == 0)
+			return Actor::change(inputs[0], inputs[1], value);
+		return Actor::change(inputs[0], inputs[1], convertint);
+	} else {
+		auto convertfloat = stof(value);
+		if (convertfloat == 0.0f)
+			return Actor::change(inputs[0], inputs[1], value);
+		return Actor::change(inputs[0], inputs[1], convertfloat);
 	}
 }
 
 const std::map<std::string, std::map<std::string, Command>> commands =
 {
+	{
+		"model", {
+			{ "load", { 1, [](int count, auto args) { return Model::loadGltf(args[0]); } } }
+		}
+	},
 	{
 		"actor", {
 			{ "add", { 2, [](int count, auto args) { return Actor::add(args[0], args[1]); } } },

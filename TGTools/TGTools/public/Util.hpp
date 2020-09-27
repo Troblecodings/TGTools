@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Result.hpp"
 #include <string>
 #include <filesystem>
 #include <fstream>
@@ -24,12 +25,14 @@ JSON_WRITE(path, json)
 
 #define STRING_SYNTAX_CHECK(string) for (char x : string) if (x < 48 || (x > 57 && x < 65) || (x > 90 && x < 97) || x > 122) return Result::BAD_STRING;
 
-#ifndef TGT_NO_STRING_CHECKS
-#define STRING_CHECKS_C(string) if(string == nullptr || *string == 0) return Result::BAD_ARGUMENTS
-#define STRING_CHECKS(string) if(string.empty()) return Result::BAD_ARGUMENTS
+#ifndef TGT_NO_CHECKS
+#define STRING_CHECKS_C(string) if(string == nullptr || *string == 0) { printf("String check failed in (%s -> L%i)", __FILE__, __LINE__); return Result::BAD_ARGUMENTS;}
+#define STRING_CHECKS(string) if(string.empty()) { printf("String check failed in (%s -> L%i)", __FILE__, __LINE__); return Result::BAD_ARGUMENTS; }
+#define ENUM_CHECKS(enm, min, max) if(enm >= min && enm <= max) { printf("Enum check failed in (%s -> L%i)", __FILE__, __LINE__); return Result::BAD_ARGUMENTS; }
 #else
 #define STRING_CHECKS_C(string)
 #define STRING_CHECKS(string)
+#define ENUM_CHECKS(enm, min, max)
 #endif // !TGT_NO_STRING_CHECKS
 
 #define ID_OF(iter, pred) std::distance(iter.begin(), std::find(iter.begin(), iter.end(), pred))
@@ -72,8 +75,14 @@ namespace tgt::Util {
 		~scope_exit() { lambda(); }
 	};
 
+	template<class T, typename=std::enable_if_t<std::is_invocable_r_v<const Result, T, js::json&>>>
+	inline const Result jsonUpdatet(const fs::path& path, T lambda) {
+		JSON_UPDATE(path, const Result rst = lambda(json);  if (rst != Result::SUCCESS) return rst;);
+		return Result::SUCCESS;
+	}
+
 	template<class T, class U, class S, typename = std::enable_if_t<_validJson<T>&& _validString<U>>>
-	const Result change(fs::path path, U key, T value, S supported) {
+	inline const Result change(fs::path path, const U& key, const T& value, const S& supported) {
 		if (!fs::exists(path))
 			return Result::DOES_NOT_EXIST;
 
@@ -91,7 +100,7 @@ namespace tgt::Util {
 
 	template<class T, class U, class P, typename = std::enable_if_t<_validPath<P> &&
 		_validString<T> && (_validString<U> || std::is_null_pointer_v<U>)>>
-	const fs::path getResource(P resource, T name,  U extension) {
+	inline const fs::path getResource(P resource, const T& name, const U& extension) {
 		if (!fs::exists(resource))
 			fs::create_directories(resource);
 		if constexpr (std::is_null_pointer_v<U>) {
@@ -102,12 +111,12 @@ namespace tgt::Util {
 	}
 
 	template<class T, class P, typename = std::enable_if_t<_validPath<P> && _validString<T>>>
-	const fs::path getResource(P resource, T name) {
+	inline const fs::path getResource(P resource, const T& name) {
 		return getResource(resource, name, nullptr);
 	}
 
 
-	inline const uint8_t* readFile(std::string name, size_t* sizeptr = nullptr) {
+	inline const uint8_t* readFile(const std::string& name, size_t* sizeptr = nullptr) {
 		std::ifstream input(name, std::ios_base::binary | std::ios_base::ate | std::ios_base::in);
 		auto size = (size_t)input.tellg();
 		if (sizeptr != nullptr)
@@ -119,13 +128,12 @@ namespace tgt::Util {
 	}
 
 	template<class T, class U, typename = std::enable_if_t<_validPath<T> && std::is_invocable_r_v<bool, U, fs::path>>>
-	const std::string collect(T path, U lambda) {
-		fs::path directoryPath(path);
+	inline const std::string collect(const T& path, U lambda) {
 		std::string result;
-		if (!fs::exists(directoryPath))
+		if (!fs::exists(path))
 			return result;
 		result.reserve(1000);
-		fs::directory_iterator directory(directoryPath);
+		fs::directory_iterator directory(path);
 		for (auto& entry : directory) {
 			auto path = entry.path();
 			if (entry.is_regular_file() && lambda(path)) {
@@ -137,11 +145,53 @@ namespace tgt::Util {
 	}
 
 	template<class T, class U, typename = std::enable_if_t<_validPath<T> && std::is_invocable_r_v<bool, U, fs::path>>>
-	const bool find(const T path, const U lambda) {
+	inline const bool find(const T& path, const U lambda) {
 		fs::directory_iterator directory(path);
 		for (auto& entry : directory)
 			if (lambda(entry.path()))
 				return true;
 		return false;
+	}
+
+	template<class T, typename = std::enable_if_t<std::is_invocable_v<T, const js::json&>>>
+	inline const Result writeToFile(FILE* file, const js::json& jsonarray, T lambda) {
+		const auto size = jsonarray.size();
+		fwrite(&size, 1, sizeof(uint32_t), file);
+		for (const auto& jobject : jsonarray) {
+			const std::string& name = jobject.get<std::string>();
+			if (!fs::exists(name)) {
+				printf("Warning: %s does not exist!", name.c_str());
+				return Result::DOES_NOT_EXIST;
+			}
+			js::json json;
+			JSON_LOAD(name, json);
+			lambda(json);
+		}
+		constexpr auto end = 0xFFFFFFFF;
+		fwrite(&end, 1, sizeof(end), file);
+	}
+
+	template<class T, typename = std::enable_if_t<std::is_invocable_r_v<bool, T, const fs::path&> || std::is_null_pointer_v<T>>>
+	inline const Result remove(const fs::path& parentpath, const std::string& name, const std::string& filter, T lambda) {
+		auto path = Util::getResource(parentpath, name, filter);
+
+		if constexpr (!std::is_null_pointer_v<T>) {
+			if (lambda(path))
+				return Result::DEPENDENT;
+		}
+
+		if (!fs::remove(path))
+			return Result::DOES_NOT_EXIST;
+
+		return Result::SUCCESS;
+	}
+
+	template<class T, typename = std::enable_if_t<std::is_invocable_r_v<bool, T, const fs::path&>>>
+	inline const Result remove(const fs::path& path, const std::string& name, T lambda) {
+		return remove(path, name, Util::JSON, lambda);
+	}
+
+	inline const Result remove(const fs::path& path, const std::string& name) {
+		return remove(path, name, Util::JSON, nullptr);
 	}
 }

@@ -55,9 +55,9 @@ namespace tgt::Actor {
 
 	const Result _dataHeader(const fs::path& name, ActorData* data);
 
-	inline void setData(const void* data, const uint32_t byteSize, const std::string& name) {
+	inline void setData(const void* data, const uint32_t byteSize, const std::string& name, bool append = false) {
 		const auto pathToDataSet = Util::getResource(ACTOR_PATH, name).string();
-		FILE* fp = fopen(pathToDataSet.c_str(), "wb");
+		FILE* fp = fopen(pathToDataSet.c_str(), append ? "ab" : "wb");
 		fwrite(data, sizeof(uint8_t), byteSize, fp);
 		fclose(fp);
 	}

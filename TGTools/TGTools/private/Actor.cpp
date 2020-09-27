@@ -20,7 +20,7 @@ namespace tgt::Actor {
 		if (fs::exists(actor))
 			return Result::ALREADY_EXISTS;
 
-		auto materialpath = Util::getResource(Material::MATERIAL_PATH, material, Util::JSON);
+		auto materialpath = Util::getResource(Material::MATERIAL_PATH, material, Util::JSON).string();
 		if (!fs::exists(materialpath))
 			return Result::DOES_NOT_EXIST;
 

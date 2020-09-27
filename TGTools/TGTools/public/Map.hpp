@@ -20,11 +20,13 @@ namespace tgt::Map {
 
 	const Result create(const std::string& mapname);
 
-	const Result remove(const char* mapname);
+	inline const Result remove(const std::string& mapname) {
+		return Util::remove(MAP_PATH, mapname);
+	}
 
-	const Result remove(const std::string& mapname);
-
-	const std::string list();
+	inline const std::string list() {
+		return Util::collect(MAP_PATH, Util::JSON_FILTER);
+	}
 
 	const Result make(const char* mapname);
 
