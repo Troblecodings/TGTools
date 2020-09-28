@@ -11,11 +11,6 @@
 
 namespace tgt::Font {
 
-	const Result add(const char* path) {
-		STRING_CHECKS_C(path);
-		return add(std::string(path));
-	}
-
 	constexpr auto TGF_HEADER_VERSION = 1;
 
 	struct TGFHeader {
@@ -48,8 +43,10 @@ namespace tgt::Font {
 		stbtt_PackSetOversampling(&packedcontext, 2, 2);
 
 		stbtt_packedchar* packedchars = new stbtt_packedchar[DIFF];
-		if (!stbtt_PackFontRange(&packedcontext, fontData, 0, HEIGHT, START_CHAR, DIFF, packedchars))
+		if (!stbtt_PackFontRange(&packedcontext, fontData, 0, HEIGHT, START_CHAR, DIFF, packedchars)) {
+			delete[] packedchars;
 			return Result::GENERAL;
+		}
 
 		stbtt_PackEnd(&packedcontext);
 
@@ -103,24 +100,4 @@ namespace tgt::Font {
 		return Result::SUCCESS;
 	}
 
-	const Result remove(const char* name) {
-		STRING_CHECKS_C(name);
-		return remove(std::string(name));
-	}
-
-	const Result remove(const std::string& name) {
-		STRING_CHECKS(name);
-
-		const auto font = Util::getResource(FONT_PATH, name, FONT_EXTENSION);
-		const auto texture = Util::getResource(Texture::TEXTURE_PATH, name, Texture::TEXTURE_EXTENSION).string();
-
-		if (!fs::remove(font) && !fs::remove(texture))
-			return Result::DOES_NOT_EXIST;
-
-		return Result::SUCCESS;
-	}
-
-	const std::string list() {
-		return Util::collect(FONT_PATH, [](fs::path path) { return path.extension() == FONT_EXTENSION; });
-	}
 }

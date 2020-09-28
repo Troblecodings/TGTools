@@ -11,13 +11,21 @@ namespace tgt::Font {
 
 	const auto FONT_PATH = fs::path(Util::RESOURCE_LOCATION).append(FONT_SUBFOLDER);
 
-	const Result add(const char* path);
-
 	const Result add(const std::string& path);
 
-	const Result remove(const char* name);
+	inline const Result remove(const std::string& name) {
+		STRING_CHECKS(name);
 
-	const Result remove(const std::string& name);
+		const auto font = Util::getResource(FONT_PATH, name, FONT_EXTENSION);
+		const auto texture = Util::getResource(Texture::TEXTURE_PATH, name, Texture::TEXTURE_EXTENSION).string();
 
-	const std::string list();
+		if (!fs::remove(font) && !fs::remove(texture))
+			return Result::DOES_NOT_EXIST;
+
+		return Result::SUCCESS;
+	}
+
+	inline const std::string list() {
+		return Util::collect(FONT_PATH, [](fs::path path) { return path.extension() == FONT_EXTENSION; });
+	}
 }

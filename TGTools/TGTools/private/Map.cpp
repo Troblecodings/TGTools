@@ -9,11 +9,6 @@
 
 namespace tgt::Map {
 
-	const Result create(const char* mapname) {
-		STRING_CHECKS_C(mapname);
-		return create(std::string(mapname));
-	}
-
 	const Result create(const std::string& mapname) {
 		STRING_CHECKS(mapname);
 		STRING_SYNTAX_CHECK(mapname);
@@ -29,11 +24,6 @@ namespace tgt::Map {
 
 		JSON_WRITE(map, json);
 		return Result::SUCCESS;
-	}
-
-	const Result make(const char* mapname) {
-		STRING_CHECKS_C(mapname);
-		return make(std::string(mapname));
 	}
 
 #define CHECK_RESULT(statement) result = statement; if(result != Result::SUCCESS) return result
@@ -147,12 +137,6 @@ namespace tgt::Map {
 		return Result::GENERAL;
 	}
 
-	const Result add(const char* mapname, const char* name) {
-		STRING_CHECKS_C(mapname);
-		STRING_CHECKS_C(name);
-		return add(std::string(mapname), std::string(name));
-	}
-
 	const Result add(const std::string& mapname, const std::string& name) {
 		STRING_CHECKS(mapname);
 		STRING_CHECKS(name);
@@ -181,12 +165,6 @@ namespace tgt::Map {
 				json[FONT_PROPERTY] += fontPath;
 		});
 		return Result::SUCCESS;
-	}
-
-	const Result remove(const char* mapname, const char* name) {
-		STRING_CHECKS_C(mapname);
-		STRING_CHECKS_C(name);
-		return remove(std::string(mapname), std::string(name));
 	}
 
 	const Result remove(const std::string& mapname, const std::string& name) {
@@ -221,11 +199,4 @@ namespace tgt::Map {
 		return Result::SUCCESS;
 	}
 
-	const bool checkDependent(const std::string& dependency) {
-		return Util::find(MAP_PATH, [=](auto directory) {
-			js::json json;
-			JSON_LOAD(directory, json);
-			return json[ACTOR_PROPERTY].contains(dependency);
-		});
-	}
 }

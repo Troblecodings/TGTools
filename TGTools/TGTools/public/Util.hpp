@@ -66,7 +66,7 @@ namespace tgt::Util {
 	// We all love Andrei Alexandrescu
 	template <typename T, typename = std::enable_if_t<std::is_invocable_v<T>>>
 	class scope_exit {
-	
+
 	private:
 		T lambda;
 
@@ -75,7 +75,7 @@ namespace tgt::Util {
 		~scope_exit() { lambda(); }
 	};
 
-	template<class T, typename=std::enable_if_t<std::is_invocable_r_v<const Result, T, js::json&>>>
+	template<class T, typename = std::enable_if_t<std::is_invocable_r_v<const Result, T, js::json&>>>
 	inline const Result jsonUpdatet(const fs::path& path, T lambda) {
 		JSON_UPDATE(path, const Result rst = lambda(json);  if (rst != Result::SUCCESS) return rst;);
 		return Result::SUCCESS;
@@ -98,9 +98,9 @@ namespace tgt::Util {
 		return Result::SUCCESS;
 	}
 
-	template<class T, class U, class P, typename = std::enable_if_t<_validPath<P> &&
+	template<class T, class U, class P, typename = std::enable_if_t<_validPath<P>&&
 		_validString<T> && (_validString<U> || std::is_null_pointer_v<U>)>>
-	inline const fs::path getResource(P resource, const T& name, const U& extension) {
+		inline const fs::path getResource(P resource, const T& name, const U& extension) {
 		if (!fs::exists(resource))
 			fs::create_directories(resource);
 		if constexpr (std::is_null_pointer_v<U>) {
@@ -110,7 +110,7 @@ namespace tgt::Util {
 		}
 	}
 
-	template<class T, class P, typename = std::enable_if_t<_validPath<P> && _validString<T>>>
+	template<class T, class P, typename = std::enable_if_t<_validPath<P>&& _validString<T>>>
 	inline const fs::path getResource(P resource, const T& name) {
 		return getResource(resource, name, nullptr);
 	}
@@ -127,7 +127,7 @@ namespace tgt::Util {
 		return data;
 	}
 
-	template<class T, class U, typename = std::enable_if_t<_validPath<T> && std::is_invocable_r_v<bool, U, fs::path>>>
+	template<class T, class U, typename = std::enable_if_t<_validPath<T>&& std::is_invocable_r_v<bool, U, fs::path>>>
 	inline const std::string collect(const T& path, U lambda) {
 		std::string result;
 		if (!fs::exists(path))
@@ -144,7 +144,7 @@ namespace tgt::Util {
 		return result;
 	}
 
-	template<class T, class U, typename = std::enable_if_t<_validPath<T> && std::is_invocable_r_v<bool, U, fs::path>>>
+	template<class T, class U, typename = std::enable_if_t<_validPath<T>&& std::is_invocable_r_v<bool, U, fs::path>>>
 	inline const bool find(const T& path, const U lambda) {
 		fs::directory_iterator directory(path);
 		for (auto& entry : directory)
@@ -171,13 +171,19 @@ namespace tgt::Util {
 		fwrite(&end, 1, sizeof(end), file);
 	}
 
-	template<class T, typename = std::enable_if_t<std::is_invocable_r_v<bool, T, const fs::path&> || std::is_null_pointer_v<T>>>
+	template<class T, typename = std::enable_if_t<std::is_invocable_r_v<bool, T, const std::string&> ||
+		std::is_invocable_r_v<bool, T, const fs::path&> || std::is_null_pointer_v<T>>>
 	inline const Result remove(const fs::path& parentpath, const std::string& name, const std::string& filter, T lambda) {
 		auto path = Util::getResource(parentpath, name, filter);
 
 		if constexpr (!std::is_null_pointer_v<T>) {
-			if (lambda(path))
-				return Result::DEPENDENT;
+			if constexpr (std::is_invocable_r_v<bool, T, const std::string&>) {
+				if (lambda(path.string()))
+					return Result::DEPENDENT;
+			} else {
+				if (lambda(path))
+					return Result::DEPENDENT;
+			}
 		}
 
 		if (!fs::remove(path))
@@ -186,7 +192,8 @@ namespace tgt::Util {
 		return Result::SUCCESS;
 	}
 
-	template<class T, typename = std::enable_if_t<std::is_invocable_r_v<bool, T, const fs::path&>>>
+	template<class T, typename = std::enable_if_t<std::is_invocable_r_v<bool, T, const std::string&> ||
+		std::is_invocable_r_v<bool, T, const fs::path&>>>
 	inline const Result remove(const fs::path& path, const std::string& name, T lambda) {
 		return remove(path, name, Util::JSON, lambda);
 	}
