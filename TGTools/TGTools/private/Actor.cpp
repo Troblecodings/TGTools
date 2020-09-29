@@ -1,6 +1,5 @@
 #include "../public/Actor.hpp"
 #include "../public/json.hpp"
-#include "../public/Map.hpp"
 #include "../public/Material.hpp"
 
 namespace tgt::Actor {

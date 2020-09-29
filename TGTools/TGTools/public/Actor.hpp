@@ -4,6 +4,7 @@
 #include <string>
 #include "Util.hpp"
 #include <array>
+#include "../public/Map.hpp"
 
 namespace tgt::Actor {
 

@@ -55,7 +55,7 @@ namespace tgt::Map {
 			js::json json;
 			auto materialPath = jsonPath.get<std::string>();
 			JSON_LOAD(materialPath, json);
-			uint32_t textureID = ID_OF(textureList, json[Material::TEXTURE_PROPERTY].get<std::string>());
+			uint32_t textureID = (uint32_t)ID_OF(textureList, json[Material::TEXTURE_PROPERTY].get<std::string>());
 			WRITE_INT(fp, textureID);
 			auto color = json[Material::COLOR_PROPERTY].get<uint32_t>();
 			WRITE_INT(fp, color);

@@ -3,6 +3,7 @@
 #include "Result.hpp"
 #include <string>
 #include "Util.hpp"
+#include "Texture.hpp"
 
 namespace tgt::Font {
 

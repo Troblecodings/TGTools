@@ -1,6 +1,5 @@
 #include "../public/Font.hpp"
 #include "../public/json.hpp"
-#include "../public/Texture.hpp"
 #define STB_TRUETYPE_IMPLEMENTATION
 #define STB_RECT_PACK_IMPLEMENTATION
 #define STB_IMAGE_WRITE_IMPLEMENTATION
