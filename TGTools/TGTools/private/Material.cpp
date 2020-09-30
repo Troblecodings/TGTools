@@ -3,12 +3,6 @@
 
 namespace tgt::Material {
 
-	const Result add(const char* name, const char* texture, const uint32_t color) {
-		STRING_CHECKS_C(name);
-		STRING_CHECKS_C(texture);
-		return add(std::string(name), std::string(texture), color);
-	}
-
 	const Result add(const std::string& name, const std::string& texture, const uint32_t color) {
 		STRING_CHECKS(name);
 		STRING_CHECKS(texture);

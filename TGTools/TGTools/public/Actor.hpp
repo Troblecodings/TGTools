@@ -4,6 +4,7 @@
 #include <string>
 #include "Util.hpp"
 #include <array>
+#include "../public/Map.hpp"
 
 namespace tgt::Actor {
 
@@ -36,19 +37,19 @@ namespace tgt::Actor {
 
 	const auto ACTOR_PATH = fs::path(Util::RESOURCE_LOCATION).append(ACTOR_SUBFOLDER);
 
-	const Result add(const char* name, const char* material);
-
 	const Result add(const std::string& name, const std::string& material);
 
-	const Result remove(const char* name);
+	inline const Result remove(const std::string& name) {
+		return Util::remove(ACTOR_PATH, name, Map::checkDependent);
+	}
 
-	const Result remove(const std::string& name);
-
-	const std::string list();
+	inline const std::string list() {
+		return Util::collect(ACTOR_PATH, Util::JSON_FILTER);
+	}
 
 	template<class T, class U, class V, 
 		typename = std::enable_if_t<Util::_validJson<T> && Util::_validString<V> && Util::_validString<U>>>
-	const Result change(V actorname, U key, T value) {
+	inline const Result change(V actorname, U key, T value) {
 		auto actor = Util::getResource(ACTOR_PATH, actorname, Util::JSON);
 		return Util::change(actor, key, value, SUPPORTED_PROPERTIES);
 	}

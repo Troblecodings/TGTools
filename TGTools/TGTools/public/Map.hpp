@@ -16,8 +16,6 @@ namespace tgt::Map {
 
 	const auto MAP_PATH = fs::path(Util::RESOURCE_LOCATION).append(MAP_SUBFOLDER);
 
-	const Result create(const char* mapname);
-
 	const Result create(const std::string& mapname);
 
 	inline const Result remove(const std::string& mapname) {
@@ -28,17 +26,17 @@ namespace tgt::Map {
 		return Util::collect(MAP_PATH, Util::JSON_FILTER);
 	}
 
-	const Result make(const char* mapname);
-
 	const Result make(const std::string& mapname);
-
-	const Result add(const char* mapname, const char* name);
 
 	const Result add(const std::string& mapname, const std::string& name);
 
-	const Result remove(const char* mapname, const char* name);
-
 	const Result remove(const std::string& mapname, const std::string& name);
 
-	const bool checkDependent(const std::string& dependency);
+	inline const bool checkDependent(const std::string& dependency) {
+		return Util::find(MAP_PATH, [=](auto directory) {
+			js::json json;
+			JSON_LOAD(directory, json);
+			return json[ACTOR_PROPERTY].contains(dependency);
+		});
+	}
 }
