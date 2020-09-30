@@ -1,0 +1,12 @@
+digraph "tgt::Sampler::add"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="tgt::Sampler::add",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="tgt::Sampler::add",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/dc0/namespacetgt_1_1_sampler.html#a8ff6a9da39091f411a66527445a96fd7",tooltip=" "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="tgt::Util::getResource",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/d64/namespacetgt_1_1_util.html#a4e9af614fd94a21454841dedd4e88257",tooltip=" "];
+}

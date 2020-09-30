@@ -1,0 +1,70 @@
+\hypertarget{_pipe_8hpp}{}\doxysection{T\+G\+Tools/\+T\+G\+Tools/public/\+Pipe.hpp File Reference}
+\label{_pipe_8hpp}\index{TGTools/TGTools/public/Pipe.hpp@{TGTools/TGTools/public/Pipe.hpp}}
+{\ttfamily \#include \char`\"{}Util.\+hpp\char`\"{}}\newline
+Include dependency graph for Pipe.\+hpp\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacetgt}{tgt}}
+\item 
+ \mbox{\hyperlink{namespacetgt_1_1_pipe}{tgt\+::\+Pipe}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1}{tgt\+::\+Pipe\+::\+Cull\+Mode}} \{ \mbox{\hyperlink{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1ab50339a10e1de285ac99d4c3990b8693}{tgt\+::\+Pipe\+::\+Cull\+Mode\+::\+N\+O\+NE}} = 0, 
+\mbox{\hyperlink{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1aab79ac97384ef7697e672acabe565fa0}{tgt\+::\+Pipe\+::\+Cull\+Mode\+::\+F\+R\+O\+N\+T\+\_\+\+B\+IT}} = 1, 
+\mbox{\hyperlink{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1a21d96d91eec32023affaba99712cf8f4}{tgt\+::\+Pipe\+::\+Cull\+Mode\+::\+B\+A\+C\+K\+\_\+\+B\+IT}} = 2, 
+\mbox{\hyperlink{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1aca0e438cddda63061a0149241dc23ad1}{tgt\+::\+Pipe\+::\+Cull\+Mode\+::\+F\+R\+O\+N\+T\+\_\+\+A\+N\+D\+\_\+\+B\+A\+CK}} = 3
+ \}
+\item 
+enum \mbox{\hyperlink{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7}{tgt\+::\+Pipe\+::\+Polygon\+Mode}} \{ \mbox{\hyperlink{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7ae8225b11842409df543692aebed34fd1}{tgt\+::\+Pipe\+::\+Polygon\+Mode\+::\+F\+I\+LL}} = 0, 
+\mbox{\hyperlink{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7a17b8ef2c330f1430e00c9de5469fc7e7}{tgt\+::\+Pipe\+::\+Polygon\+Mode\+::\+L\+I\+NE}} = 1, 
+\mbox{\hyperlink{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7aaebdbcb765394d25d6a604589a890f82}{tgt\+::\+Pipe\+::\+Polygon\+Mode\+::\+P\+O\+I\+NT}} = 2
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_pipe_a4f88d46548c610b8d30d04360843f9f9}{tgt\+::\+Pipe\+::create}} (const std\+::string \&name, const Cull\+Mode cullmode, const Polygon\+Mode polygon\+Mode)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_pipe_a81e436a26b78ef45a4a6a48cf796888d}{tgt\+::\+Pipe\+::remove}} (const std\+::string \&name)
+\item 
+const std\+::string \mbox{\hyperlink{namespacetgt_1_1_pipe_a60634915fe49998391df6ea8743ab869}{tgt\+::\+Pipe\+::list}} ()
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_pipe_a8f802cf373e38946e675d765ee29d646}{tgt\+::\+Pipe\+::add\+Shader}} (const std\+::string \&name, const std\+::string \&shadername)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_pipe_a08f12f0bf5e9415886446edf34ed981e}{tgt\+::\+Pipe\+::remove\+Shader}} (const std\+::string \&name, const std\+::string \&shadername)
+\item 
+const bool \mbox{\hyperlink{namespacetgt_1_1_pipe_aeb9a695dbbf00e80e77bbb5ab70fcea1}{tgt\+::\+Pipe\+::check\+Dependent}} (const std\+::string \&dependency)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_pipe_a48fcb25f73a08581e6b5e2fda0c873b5}{tgt\+::\+Pipe\+::compile}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr Cull\+Mode \mbox{\hyperlink{namespacetgt_1_1_pipe_a49d7859bc48e51d1cf1a8b1f57855e71}{tgt\+::\+Pipe\+::\+C\+U\+L\+L\+M\+O\+D\+E\+\_\+\+M\+IN}} = Cull\+Mode\+::\+N\+O\+NE
+\item 
+constexpr Cull\+Mode \mbox{\hyperlink{namespacetgt_1_1_pipe_a8fc38749d63ab6289acd51e08604ae31}{tgt\+::\+Pipe\+::\+C\+U\+L\+L\+M\+O\+D\+E\+\_\+\+M\+AX}} = Cull\+Mode\+::\+F\+R\+O\+N\+T\+\_\+\+A\+N\+D\+\_\+\+B\+A\+CK
+\item 
+constexpr Polygon\+Mode \mbox{\hyperlink{namespacetgt_1_1_pipe_abd8ce651d61b07c25cd99184d5fbf3ed}{tgt\+::\+Pipe\+::\+P\+O\+L\+Y\+G\+O\+N\+M\+O\+D\+E\+\_\+\+M\+IN}} = Polygon\+Mode\+::\+F\+I\+LL
+\item 
+constexpr Polygon\+Mode \mbox{\hyperlink{namespacetgt_1_1_pipe_afc7281047ec2612890e7c3eba93bd111}{tgt\+::\+Pipe\+::\+P\+O\+L\+Y\+G\+O\+N\+M\+O\+D\+E\+\_\+\+M\+AX}} = Polygon\+Mode\+::\+P\+O\+I\+NT
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_pipe_a8edbd7a1af1b05a2a0c422560893db83}{tgt\+::\+Pipe\+::\+P\+I\+P\+E\+\_\+\+S\+U\+B\+F\+O\+L\+D\+ER}} = \char`\"{}Pipes\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_pipe_ad5085e0812a76daee1fbbb12c90741c9}{tgt\+::\+Pipe\+::\+C\+U\+L\+L\+M\+O\+D\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY}} = \char`\"{}cullmode\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_pipe_a0f7298df76f49503381627cb1faa6d2b}{tgt\+::\+Pipe\+::\+P\+O\+L\+Y\+G\+O\+N\+M\+O\+D\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY}} = \char`\"{}polygonmode\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_pipe_a3712feaa1ddbcb2470df16654f82dd16}{tgt\+::\+Pipe\+::\+S\+H\+A\+D\+E\+R\+\_\+\+P\+R\+O\+P\+E\+R\+TY}} = \char`\"{}shader\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_pipe_a4e47483ac707bc73e272c0462f0c61fe}{tgt\+::\+Pipe\+::\+I\+N\+P\+U\+T\+B\+I\+N\+D\+I\+N\+G\+S\+\_\+\+P\+R\+O\+P\+E\+R\+TY}} = \char`\"{}inputs\char`\"{}
+\item 
+constexpr std\+::array \mbox{\hyperlink{namespacetgt_1_1_pipe_a7d239464baeab0fa19388f729d759b22}{tgt\+::\+Pipe\+::\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+P\+R\+O\+P\+E\+R\+T\+I\+ES}} = \{ C\+U\+L\+L\+M\+O\+D\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY, P\+O\+L\+Y\+G\+O\+N\+M\+O\+D\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY, S\+H\+A\+D\+E\+R\+\_\+\+P\+R\+O\+P\+E\+R\+TY, I\+N\+P\+U\+T\+B\+I\+N\+D\+I\+N\+G\+S\+\_\+\+P\+R\+O\+P\+E\+R\+TY \}
+\item 
+const auto \mbox{\hyperlink{namespacetgt_1_1_pipe_aebc4bb1c36680d7ac0ab97b5a110f657}{tgt\+::\+Pipe\+::\+P\+I\+P\+E\+\_\+\+P\+A\+TH}} = fs\+::path(Util\+::\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+L\+O\+C\+A\+T\+I\+ON).append(P\+I\+P\+E\+\_\+\+S\+U\+B\+F\+O\+L\+D\+ER)
+\end{DoxyCompactItemize}

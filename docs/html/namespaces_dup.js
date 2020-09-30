@@ -1,6 +1,4 @@
 var namespaces_dup =
 [
-    [ "nlohmann", "namespacenlohmann.html", "namespacenlohmann" ],
-    [ "std", "namespacestd.html", null ],
-    [ "tgt", "namespacetgt.html", "namespacetgt" ]
+    [ "tgt", "d3/dc6/namespacetgt.html", "d3/dc6/namespacetgt" ]
 ];

@@ -1,0 +1,14 @@
+digraph "tgt::Map::remove"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="tgt::Map::remove",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="tgt::Font::add",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/db6/namespacetgt_1_1_font.html#a83ff63c7e15f3d3e2977e1acdf9ec059",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="tgt::Map::make",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/ded/namespacetgt_1_1_map.html#ae955f3e7f19a2015f8988c511547d239",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="tgt::Pipe::removeShader",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/dd1/namespacetgt_1_1_pipe.html#a08f12f0bf5e9415886446edf34ed981e",tooltip=" "];
+}

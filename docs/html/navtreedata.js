@@ -25,11 +25,10 @@
 var NAVTREE =
 [
   [ "TGTools", "index.html", [
-    [ "Deprecated List", "deprecated.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
-        [ "All", "namespacemembers.html", "namespacemembers_dup" ],
+        [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", null ],
         [ "Typedefs", "namespacemembers_type.html", null ],
@@ -39,23 +38,18 @@ var NAVTREE =
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
-      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ],
-        [ "Typedefs", "functions_type.html", null ],
-        [ "Enumerations", "functions_enum.html", null ],
-        [ "Related Functions", "functions_rela.html", null ]
+        [ "All", "functions.html", null ],
+        [ "Functions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
-        [ "All", "globals.html", "globals_dup" ],
-        [ "Functions", "globals_func.html", null ],
+        [ "All", "globals.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
-        [ "Macros", "globals_defs.html", "globals_defs" ]
+        [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
   ] ]
@@ -63,12 +57,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_actor_8cpp.html",
-"classnlohmann_1_1basic__json.html#a57e8411a770a6263d6d8f2116c37f3aa",
-"classnlohmann_1_1detail_1_1json__reverse__iterator.html#a9ab55987c05ec6427ad36082e351cc45",
-"functions_rela.html",
-"json_8hpp.html#a95b9c0445b989761a5ca49cf7e5b0f21",
-"structnlohmann_1_1detail_1_1is__complete__type.html"
+"annotated.html",
+"de/d2c/_map_8hpp.html#a1e7f9f795a84aaec9a20d618c13fdbe8"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

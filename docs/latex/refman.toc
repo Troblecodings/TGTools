@@ -1,0 +1,243 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Namespace Index}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Namespace List}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Class Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Class List}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}File Index}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}File List}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Namespace Documentation}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}tgt Namespace Reference}{7}{section.4.1}%
+\contentsline {section}{\numberline {4.2}tgt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Actor Namespace Reference}{7}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Function Documentation}{8}{subsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.1.1}\_dataHeader()}{8}{subsubsection.4.2.1.1}%
+\contentsline {subsubsection}{\numberline {4.2.1.2}add()}{8}{subsubsection.4.2.1.2}%
+\contentsline {subsubsection}{\numberline {4.2.1.3}change()}{8}{subsubsection.4.2.1.3}%
+\contentsline {subsubsection}{\numberline {4.2.1.4}getData()}{9}{subsubsection.4.2.1.4}%
+\contentsline {subsubsection}{\numberline {4.2.1.5}list()}{9}{subsubsection.4.2.1.5}%
+\contentsline {subsubsection}{\numberline {4.2.1.6}remove()}{9}{subsubsection.4.2.1.6}%
+\contentsline {subsubsection}{\numberline {4.2.1.7}setData()}{9}{subsubsection.4.2.1.7}%
+\contentsline {subsection}{\numberline {4.2.2}Variable Documentation}{9}{subsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.1}ACTOR\_INDEX\_EXTENSION}{9}{subsubsection.4.2.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2.2}ACTOR\_PATH}{9}{subsubsection.4.2.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.3}ACTOR\_SUBFOLDER}{10}{subsubsection.4.2.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.2.4}ACTOR\_VERTEX\_EXTENSION}{10}{subsubsection.4.2.2.4}%
+\contentsline {subsubsection}{\numberline {4.2.2.5}ANIMATION\_PROPERTY}{10}{subsubsection.4.2.2.5}%
+\contentsline {subsubsection}{\numberline {4.2.2.6}DYNAMIK\_TRANSFORM\_PROPERTY}{10}{subsubsection.4.2.2.6}%
+\contentsline {subsubsection}{\numberline {4.2.2.7}INDEX\_COUNT}{10}{subsubsection.4.2.2.7}%
+\contentsline {subsubsection}{\numberline {4.2.2.8}LAYER\_PROPERTY}{10}{subsubsection.4.2.2.8}%
+\contentsline {subsubsection}{\numberline {4.2.2.9}MATERIAL\_PROPERTY}{10}{subsubsection.4.2.2.9}%
+\contentsline {subsubsection}{\numberline {4.2.2.10}MATRIX\_PROPERTY}{10}{subsubsection.4.2.2.10}%
+\contentsline {subsubsection}{\numberline {4.2.2.11}SUPPORTED\_PROPERTIES}{11}{subsubsection.4.2.2.11}%
+\contentsline {subsubsection}{\numberline {4.2.2.12}VERTEX\_COUNT}{11}{subsubsection.4.2.2.12}%
+\contentsline {section}{\numberline {4.3}tgt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Font Namespace Reference}{11}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Function Documentation}{11}{subsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.1.1}add()}{11}{subsubsection.4.3.1.1}%
+\contentsline {subsubsection}{\numberline {4.3.1.2}generatefontbitmap()}{12}{subsubsection.4.3.1.2}%
+\contentsline {subsubsection}{\numberline {4.3.1.3}list()}{12}{subsubsection.4.3.1.3}%
+\contentsline {subsubsection}{\numberline {4.3.1.4}remove()}{12}{subsubsection.4.3.1.4}%
+\contentsline {subsection}{\numberline {4.3.2}Variable Documentation}{12}{subsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.1}FONT\_EXTENSION}{12}{subsubsection.4.3.2.1}%
+\contentsline {subsubsection}{\numberline {4.3.2.2}FONT\_PATH}{12}{subsubsection.4.3.2.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.3}FONT\_SUBFOLDER}{12}{subsubsection.4.3.2.3}%
+\contentsline {subsubsection}{\numberline {4.3.2.4}TGF\_HEADER\_VERSION}{13}{subsubsection.4.3.2.4}%
+\contentsline {section}{\numberline {4.4}tgt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Map Namespace Reference}{13}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Function Documentation}{13}{subsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.1.1}actorToMapFile()}{13}{subsubsection.4.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.4.1.2}add()}{13}{subsubsection.4.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.4.1.3}checkDependent()}{14}{subsubsection.4.4.1.3}%
+\contentsline {subsubsection}{\numberline {4.4.1.4}create()}{14}{subsubsection.4.4.1.4}%
+\contentsline {subsubsection}{\numberline {4.4.1.5}list()}{14}{subsubsection.4.4.1.5}%
+\contentsline {subsubsection}{\numberline {4.4.1.6}make()}{14}{subsubsection.4.4.1.6}%
+\contentsline {subsubsection}{\numberline {4.4.1.7}materialToMapFile()}{14}{subsubsection.4.4.1.7}%
+\contentsline {subsubsection}{\numberline {4.4.1.8}remove()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{14}{subsubsection.4.4.1.8}%
+\contentsline {subsubsection}{\numberline {4.4.1.9}remove()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{14}{subsubsection.4.4.1.9}%
+\contentsline {subsubsection}{\numberline {4.4.1.10}textureToMapFile()}{15}{subsubsection.4.4.1.10}%
+\contentsline {subsection}{\numberline {4.4.2}Variable Documentation}{15}{subsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.2.1}ACTOR\_PROPERTY}{15}{subsubsection.4.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.4.2.2}FONT\_PROPERTY}{15}{subsubsection.4.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.4.2.3}MAP\_EXTENSION}{15}{subsubsection.4.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.4.2.4}MAP\_PATH}{15}{subsubsection.4.4.2.4}%
+\contentsline {subsubsection}{\numberline {4.4.2.5}MAP\_SUBFOLDER}{15}{subsubsection.4.4.2.5}%
+\contentsline {subsubsection}{\numberline {4.4.2.6}MATERIAL\_PROPERTY}{15}{subsubsection.4.4.2.6}%
+\contentsline {subsubsection}{\numberline {4.4.2.7}TEXTURE\_PROPERTY}{16}{subsubsection.4.4.2.7}%
+\contentsline {section}{\numberline {4.5}tgt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Material Namespace Reference}{16}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Function Documentation}{16}{subsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.1.1}add()}{16}{subsubsection.4.5.1.1}%
+\contentsline {subsubsection}{\numberline {4.5.1.2}list()}{16}{subsubsection.4.5.1.2}%
+\contentsline {subsubsection}{\numberline {4.5.1.3}remove()}{16}{subsubsection.4.5.1.3}%
+\contentsline {subsection}{\numberline {4.5.2}Variable Documentation}{17}{subsection.4.5.2}%
+\contentsline {subsubsection}{\numberline {4.5.2.1}COLOR\_PROPERTY}{17}{subsubsection.4.5.2.1}%
+\contentsline {subsubsection}{\numberline {4.5.2.2}DEFAULT\_COLOR}{17}{subsubsection.4.5.2.2}%
+\contentsline {subsubsection}{\numberline {4.5.2.3}MATERIAL\_PATH}{17}{subsubsection.4.5.2.3}%
+\contentsline {subsubsection}{\numberline {4.5.2.4}MATERIAL\_SUBFOLDER}{17}{subsubsection.4.5.2.4}%
+\contentsline {subsubsection}{\numberline {4.5.2.5}SUPPORTED\_PROPERTIES}{17}{subsubsection.4.5.2.5}%
+\contentsline {subsubsection}{\numberline {4.5.2.6}TEXTURE\_PROPERTY}{17}{subsubsection.4.5.2.6}%
+\contentsline {section}{\numberline {4.6}tgt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Model Namespace Reference}{17}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Function Documentation}{18}{subsection.4.6.1}%
+\contentsline {subsubsection}{\numberline {4.6.1.1}loadGltf()}{18}{subsubsection.4.6.1.1}%
+\contentsline {subsubsection}{\numberline {4.6.1.2}recursive()}{18}{subsubsection.4.6.1.2}%
+\contentsline {section}{\numberline {4.7}tgt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Pipe Namespace Reference}{18}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}Enumeration Type Documentation}{19}{subsection.4.7.1}%
+\contentsline {subsubsection}{\numberline {4.7.1.1}CullMode}{19}{subsubsection.4.7.1.1}%
+\contentsline {subsubsection}{\numberline {4.7.1.2}PolygonMode}{19}{subsubsection.4.7.1.2}%
+\contentsline {subsection}{\numberline {4.7.2}Function Documentation}{19}{subsection.4.7.2}%
+\contentsline {subsubsection}{\numberline {4.7.2.1}addShader()}{19}{subsubsection.4.7.2.1}%
+\contentsline {section}{\numberline {4.8}tgt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Sampler Namespace Reference}{19}{section.4.8}%
+\contentsline {subsection}{\numberline {4.8.1}Enumeration Type Documentation}{20}{subsection.4.8.1}%
+\contentsline {subsubsection}{\numberline {4.8.1.1}SamplerAddressMode}{20}{subsubsection.4.8.1.1}%
+\contentsline {subsubsection}{\numberline {4.8.1.2}SamplerFilter}{21}{subsubsection.4.8.1.2}%
+\contentsline {subsection}{\numberline {4.8.2}Function Documentation}{21}{subsection.4.8.2}%
+\contentsline {subsubsection}{\numberline {4.8.2.1}add()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{21}{subsubsection.4.8.2.1}%
+\contentsline {subsubsection}{\numberline {4.8.2.2}add()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{21}{subsubsection.4.8.2.2}%
+\contentsline {subsubsection}{\numberline {4.8.2.3}change()}{21}{subsubsection.4.8.2.3}%
+\contentsline {subsubsection}{\numberline {4.8.2.4}list()}{21}{subsubsection.4.8.2.4}%
+\contentsline {subsubsection}{\numberline {4.8.2.5}remove()}{22}{subsubsection.4.8.2.5}%
+\contentsline {subsubsection}{\numberline {4.8.2.6}write()}{22}{subsubsection.4.8.2.6}%
+\contentsline {subsection}{\numberline {4.8.3}Variable Documentation}{22}{subsection.4.8.3}%
+\contentsline {subsubsection}{\numberline {4.8.3.1}MAG\_FILTER\_PROPERTY}{22}{subsubsection.4.8.3.1}%
+\contentsline {subsubsection}{\numberline {4.8.3.2}MIN\_FILTER\_PROPERTY}{22}{subsubsection.4.8.3.2}%
+\contentsline {subsubsection}{\numberline {4.8.3.3}SAMPLER\_ADDRESS\_MODE\_MAX}{22}{subsubsection.4.8.3.3}%
+\contentsline {subsubsection}{\numberline {4.8.3.4}SAMPLER\_ADDRESS\_MODE\_MIN}{22}{subsubsection.4.8.3.4}%
+\contentsline {subsubsection}{\numberline {4.8.3.5}SAMPLER\_FILTER\_MAX}{23}{subsubsection.4.8.3.5}%
+\contentsline {subsubsection}{\numberline {4.8.3.6}SAMPLER\_FILTER\_MIN}{23}{subsubsection.4.8.3.6}%
+\contentsline {subsubsection}{\numberline {4.8.3.7}SAMPLER\_PATH}{23}{subsubsection.4.8.3.7}%
+\contentsline {subsubsection}{\numberline {4.8.3.8}SAMPLER\_SUBFOLDER}{23}{subsubsection.4.8.3.8}%
+\contentsline {subsubsection}{\numberline {4.8.3.9}SUPPORTED\_PROPERTIES}{23}{subsubsection.4.8.3.9}%
+\contentsline {subsubsection}{\numberline {4.8.3.10}UMODE\_PROPERTY}{23}{subsubsection.4.8.3.10}%
+\contentsline {subsubsection}{\numberline {4.8.3.11}VMODE\_PROPERTY}{23}{subsubsection.4.8.3.11}%
+\contentsline {section}{\numberline {4.9}tgt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Shader Namespace Reference}{23}{section.4.9}%
+\contentsline {subsection}{\numberline {4.9.1}Typedef Documentation}{24}{subsection.4.9.1}%
+\contentsline {subsubsection}{\numberline {4.9.1.1}ShaderType}{24}{subsubsection.4.9.1.1}%
+\contentsline {subsection}{\numberline {4.9.2}Function Documentation}{24}{subsection.4.9.2}%
+\contentsline {subsubsection}{\numberline {4.9.2.1}add()}{24}{subsubsection.4.9.2.1}%
+\contentsline {subsubsection}{\numberline {4.9.2.2}list()}{24}{subsubsection.4.9.2.2}%
+\contentsline {subsubsection}{\numberline {4.9.2.3}remove()}{25}{subsubsection.4.9.2.3}%
+\contentsline {subsection}{\numberline {4.9.3}Variable Documentation}{25}{subsection.4.9.3}%
+\contentsline {subsubsection}{\numberline {4.9.3.1}SHADER\_EXTENSION}{25}{subsubsection.4.9.3.1}%
+\contentsline {subsubsection}{\numberline {4.9.3.2}SHADER\_PATH}{25}{subsubsection.4.9.3.2}%
+\contentsline {subsubsection}{\numberline {4.9.3.3}SHADER\_SUBFOLDER}{25}{subsubsection.4.9.3.3}%
+\contentsline {subsubsection}{\numberline {4.9.3.4}SHADER\_TYPE\_PROPERTY}{25}{subsubsection.4.9.3.4}%
+\contentsline {subsubsection}{\numberline {4.9.3.5}SUPPORTED\_PROPERTIES}{25}{subsubsection.4.9.3.5}%
+\contentsline {section}{\numberline {4.10}tgt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Shader\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Shader\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Input Namespace Reference}{25}{section.4.10}%
+\contentsline {subsection}{\numberline {4.10.1}Typedef Documentation}{26}{subsection.4.10.1}%
+\contentsline {subsubsection}{\numberline {4.10.1.1}ShaderInputStride}{26}{subsubsection.4.10.1.1}%
+\contentsline {subsection}{\numberline {4.10.2}Enumeration Type Documentation}{26}{subsection.4.10.2}%
+\contentsline {subsubsection}{\numberline {4.10.2.1}ShaderInputType}{26}{subsubsection.4.10.2.1}%
+\contentsline {subsection}{\numberline {4.10.3}Variable Documentation}{26}{subsection.4.10.3}%
+\contentsline {subsubsection}{\numberline {4.10.3.1}POS}{26}{subsubsection.4.10.3.1}%
+\contentsline {subsubsection}{\numberline {4.10.3.2}POS\_NOR}{27}{subsubsection.4.10.3.2}%
+\contentsline {subsubsection}{\numberline {4.10.3.3}POS\_NOR\_TEX}{27}{subsubsection.4.10.3.3}%
+\contentsline {subsubsection}{\numberline {4.10.3.4}POS\_TEX}{27}{subsubsection.4.10.3.4}%
+\contentsline {section}{\numberline {4.11}tgt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Texture Namespace Reference}{27}{section.4.11}%
+\contentsline {subsection}{\numberline {4.11.1}Function Documentation}{27}{subsection.4.11.1}%
+\contentsline {subsubsection}{\numberline {4.11.1.1}add()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{27}{subsubsection.4.11.1.1}%
+\contentsline {subsubsection}{\numberline {4.11.1.2}add()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{28}{subsubsection.4.11.1.2}%
+\contentsline {subsubsection}{\numberline {4.11.1.3}list()}{28}{subsubsection.4.11.1.3}%
+\contentsline {subsubsection}{\numberline {4.11.1.4}remove()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{28}{subsubsection.4.11.1.4}%
+\contentsline {subsubsection}{\numberline {4.11.1.5}remove()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{28}{subsubsection.4.11.1.5}%
+\contentsline {subsection}{\numberline {4.11.2}Variable Documentation}{28}{subsection.4.11.2}%
+\contentsline {subsubsection}{\numberline {4.11.2.1}TEXTURE\_EXTENSION}{28}{subsubsection.4.11.2.1}%
+\contentsline {subsubsection}{\numberline {4.11.2.2}TEXTURE\_PATH}{28}{subsubsection.4.11.2.2}%
+\contentsline {subsubsection}{\numberline {4.11.2.3}TEXTURE\_SUBFOLDER}{28}{subsubsection.4.11.2.3}%
+\contentsline {section}{\numberline {4.12}tgt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Util Namespace Reference}{29}{section.4.12}%
+\contentsline {subsection}{\numberline {4.12.1}Function Documentation}{29}{subsection.4.12.1}%
+\contentsline {subsubsection}{\numberline {4.12.1.1}change()}{30}{subsubsection.4.12.1.1}%
+\contentsline {subsubsection}{\numberline {4.12.1.2}collect()}{30}{subsubsection.4.12.1.2}%
+\contentsline {subsubsection}{\numberline {4.12.1.3}find()}{30}{subsubsection.4.12.1.3}%
+\contentsline {subsubsection}{\numberline {4.12.1.4}getResource()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{30}{subsubsection.4.12.1.4}%
+\contentsline {subsubsection}{\numberline {4.12.1.5}getResource()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{30}{subsubsection.4.12.1.5}%
+\contentsline {subsubsection}{\numberline {4.12.1.6}jsonUpdatet()}{31}{subsubsection.4.12.1.6}%
+\contentsline {subsubsection}{\numberline {4.12.1.7}readFile()}{31}{subsubsection.4.12.1.7}%
+\contentsline {subsubsection}{\numberline {4.12.1.8}remove()\hspace {0.1cm}{\footnotesize \ttfamily [1/3]}}{31}{subsubsection.4.12.1.8}%
+\contentsline {subsubsection}{\numberline {4.12.1.9}remove()\hspace {0.1cm}{\footnotesize \ttfamily [2/3]}}{31}{subsubsection.4.12.1.9}%
+\contentsline {subsubsection}{\numberline {4.12.1.10}remove()\hspace {0.1cm}{\footnotesize \ttfamily [3/3]}}{31}{subsubsection.4.12.1.10}%
+\contentsline {subsubsection}{\numberline {4.12.1.11}writeToFile()}{32}{subsubsection.4.12.1.11}%
+\contentsline {subsection}{\numberline {4.12.2}Variable Documentation}{32}{subsection.4.12.2}%
+\contentsline {subsubsection}{\numberline {4.12.2.1}\_isAnyOf}{32}{subsubsection.4.12.2.1}%
+\contentsline {subsubsection}{\numberline {4.12.2.2}\_validJson}{32}{subsubsection.4.12.2.2}%
+\contentsline {subsubsection}{\numberline {4.12.2.3}\_validPath}{32}{subsubsection.4.12.2.3}%
+\contentsline {subsubsection}{\numberline {4.12.2.4}\_validPathString}{32}{subsubsection.4.12.2.4}%
+\contentsline {subsubsection}{\numberline {4.12.2.5}\_validString}{32}{subsubsection.4.12.2.5}%
+\contentsline {subsubsection}{\numberline {4.12.2.6}JSON}{33}{subsubsection.4.12.2.6}%
+\contentsline {subsubsection}{\numberline {4.12.2.7}JSON\_FILTER}{33}{subsubsection.4.12.2.7}%
+\contentsline {subsubsection}{\numberline {4.12.2.8}RESOURCE\_LOCATION}{33}{subsubsection.4.12.2.8}%
+\contentsline {chapter}{\numberline {5}Class Documentation}{35}{chapter.5}%
+\contentsline {section}{\numberline {5.1}tgt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Actor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Actor\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Data Struct Reference}{35}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Member Data Documentation}{35}{subsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.1.1}animationIndex}{35}{subsubsection.5.1.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.1.2}indexDrawCount}{35}{subsubsection.5.1.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.1.3}instanceOffset}{36}{subsubsection.5.1.1.3}%
+\contentsline {subsubsection}{\numberline {5.1.1.4}instanceSize}{36}{subsubsection.5.1.1.4}%
+\contentsline {subsubsection}{\numberline {5.1.1.5}layer}{36}{subsubsection.5.1.1.5}%
+\contentsline {subsubsection}{\numberline {5.1.1.6}material}{36}{subsubsection.5.1.1.6}%
+\contentsline {subsubsection}{\numberline {5.1.1.7}matrix}{36}{subsubsection.5.1.1.7}%
+\contentsline {subsubsection}{\numberline {5.1.1.8}transformIndex}{36}{subsubsection.5.1.1.8}%
+\contentsline {subsubsection}{\numberline {5.1.1.9}vertexCount}{36}{subsubsection.5.1.1.9}%
+\contentsline {section}{\numberline {5.2}tgt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Sampler\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Sampler\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Info Struct Reference}{37}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Member Data Documentation}{37}{subsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.1.1}magfilter}{37}{subsubsection.5.2.1.1}%
+\contentsline {subsubsection}{\numberline {5.2.1.2}minfilter}{37}{subsubsection.5.2.1.2}%
+\contentsline {subsubsection}{\numberline {5.2.1.3}umode}{37}{subsubsection.5.2.1.3}%
+\contentsline {subsubsection}{\numberline {5.2.1.4}vmode}{37}{subsubsection.5.2.1.4}%
+\contentsline {section}{\numberline {5.3}tgt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Util\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::scope\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}exit$<$ T, typename $>$ Class Template Reference}{37}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Constructor \& Destructor Documentation}{38}{subsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.1.1}scope\_exit()}{38}{subsubsection.5.3.1.1}%
+\contentsline {subsubsection}{\numberline {5.3.1.2}$\sim $scope\_exit()}{38}{subsubsection.5.3.1.2}%
+\contentsline {section}{\numberline {5.4}tgt\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Font\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}F\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Header Struct Reference}{38}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Member Data Documentation}{38}{subsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.1.1}count}{38}{subsubsection.5.4.1.1}%
+\contentsline {subsubsection}{\numberline {5.4.1.2}startindex}{39}{subsubsection.5.4.1.2}%
+\contentsline {subsubsection}{\numberline {5.4.1.3}textureindex}{39}{subsubsection.5.4.1.3}%
+\contentsline {subsubsection}{\numberline {5.4.1.4}version}{39}{subsubsection.5.4.1.4}%
+\contentsline {chapter}{\numberline {6}File Documentation}{41}{chapter.6}%
+\contentsline {section}{\numberline {6.1}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}C\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Make\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Lists.txt File Reference}{41}{section.6.1}%
+\contentsline {section}{\numberline {6.2}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/private/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Actor.cpp File Reference}{41}{section.6.2}%
+\contentsline {section}{\numberline {6.3}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/private/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Font.cpp File Reference}{41}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Macro Definition Documentation}{42}{subsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.1.1}STB\_IMAGE\_WRITE\_IMPLEMENTATION}{42}{subsubsection.6.3.1.1}%
+\contentsline {subsubsection}{\numberline {6.3.1.2}STB\_RECT\_PACK\_IMPLEMENTATION}{42}{subsubsection.6.3.1.2}%
+\contentsline {subsubsection}{\numberline {6.3.1.3}STB\_TRUETYPE\_IMPLEMENTATION}{42}{subsubsection.6.3.1.3}%
+\contentsline {section}{\numberline {6.4}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/private/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Map.cpp File Reference}{43}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Macro Definition Documentation}{43}{subsection.6.4.1}%
+\contentsline {subsubsection}{\numberline {6.4.1.1}CHECK\_RESULT}{43}{subsubsection.6.4.1.1}%
+\contentsline {subsubsection}{\numberline {6.4.1.2}WRITE\_CHECK}{44}{subsubsection.6.4.1.2}%
+\contentsline {subsubsection}{\numberline {6.4.1.3}WRITE\_CINT}{44}{subsubsection.6.4.1.3}%
+\contentsline {subsubsection}{\numberline {6.4.1.4}WRITE\_INT}{44}{subsubsection.6.4.1.4}%
+\contentsline {subsubsection}{\numberline {6.4.1.5}WRITE\_SIZE}{44}{subsubsection.6.4.1.5}%
+\contentsline {section}{\numberline {6.5}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/private/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Material.cpp File Reference}{44}{section.6.5}%
+\contentsline {section}{\numberline {6.6}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/private/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Model.cpp File Reference}{45}{section.6.6}%
+\contentsline {subsection}{\numberline {6.6.1}Macro Definition Documentation}{45}{subsection.6.6.1}%
+\contentsline {subsubsection}{\numberline {6.6.1.1}getName}{45}{subsubsection.6.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.6.1.2}STB\_IMAGE\_IMPLEMENTATION}{45}{subsubsection.6.6.1.2}%
+\contentsline {subsubsection}{\numberline {6.6.1.3}TINYGLTF\_IMPLEMENTATION}{46}{subsubsection.6.6.1.3}%
+\contentsline {subsubsection}{\numberline {6.6.1.4}TINYGLTF\_NO\_INCLUDE\_JSON}{46}{subsubsection.6.6.1.4}%
+\contentsline {subsubsection}{\numberline {6.6.1.5}TINYGLTF\_USE\_CPP14}{46}{subsubsection.6.6.1.5}%
+\contentsline {section}{\numberline {6.7}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/private/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pipe.cpp File Reference}{46}{section.6.7}%
+\contentsline {section}{\numberline {6.8}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/private/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sampler.cpp File Reference}{46}{section.6.8}%
+\contentsline {section}{\numberline {6.9}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/private/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Shader.cpp File Reference}{47}{section.6.9}%
+\contentsline {section}{\numberline {6.10}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/private/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Texture.cpp File Reference}{47}{section.6.10}%
+\contentsline {section}{\numberline {6.11}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/public/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Actor.hpp File Reference}{48}{section.6.11}%
+\contentsline {section}{\numberline {6.12}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/public/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Font.hpp File Reference}{49}{section.6.12}%
+\contentsline {section}{\numberline {6.13}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/public/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Map.hpp File Reference}{49}{section.6.13}%
+\contentsline {section}{\numberline {6.14}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/public/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Material.hpp File Reference}{50}{section.6.14}%
+\contentsline {section}{\numberline {6.15}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/public/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Model.hpp File Reference}{50}{section.6.15}%
+\contentsline {section}{\numberline {6.16}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/public/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pipe.hpp File Reference}{51}{section.6.16}%
+\contentsline {section}{\numberline {6.17}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/public/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Result.hpp File Reference}{52}{section.6.17}%
+\contentsline {subsection}{\numberline {6.17.1}Enumeration Type Documentation}{52}{subsection.6.17.1}%
+\contentsline {subsubsection}{\numberline {6.17.1.1}Result}{52}{subsubsection.6.17.1.1}%
+\contentsline {section}{\numberline {6.18}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/public/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Sampler.hpp File Reference}{52}{section.6.18}%
+\contentsline {section}{\numberline {6.19}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/public/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Shader.hpp File Reference}{53}{section.6.19}%
+\contentsline {section}{\numberline {6.20}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/public/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Texture.hpp File Reference}{54}{section.6.20}%
+\contentsline {section}{\numberline {6.21}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}T\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}G\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Tools/public/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Util.hpp File Reference}{55}{section.6.21}%
+\contentsline {subsection}{\numberline {6.21.1}Macro Definition Documentation}{56}{subsection.6.21.1}%
+\contentsline {subsubsection}{\numberline {6.21.1.1}ENUM\_CHECKS}{56}{subsubsection.6.21.1.1}%
+\contentsline {subsubsection}{\numberline {6.21.1.2}ID\_OF}{57}{subsubsection.6.21.1.2}%
+\contentsline {subsubsection}{\numberline {6.21.1.3}ID\_OF\_P}{57}{subsubsection.6.21.1.3}%
+\contentsline {subsubsection}{\numberline {6.21.1.4}JSON\_LOAD}{57}{subsubsection.6.21.1.4}%
+\contentsline {subsubsection}{\numberline {6.21.1.5}JSON\_UPDATE}{57}{subsubsection.6.21.1.5}%
+\contentsline {subsubsection}{\numberline {6.21.1.6}JSON\_WRITE}{57}{subsubsection.6.21.1.6}%
+\contentsline {subsubsection}{\numberline {6.21.1.7}REMOVE\_IF\_FOUND}{58}{subsubsection.6.21.1.7}%
+\contentsline {subsubsection}{\numberline {6.21.1.8}STRING\_CHECKS}{58}{subsubsection.6.21.1.8}%
+\contentsline {subsubsection}{\numberline {6.21.1.9}STRING\_CHECKS\_C}{58}{subsubsection.6.21.1.9}%
+\contentsline {subsubsection}{\numberline {6.21.1.10}STRING\_SYNTAX\_CHECK}{58}{subsubsection.6.21.1.10}%
+\contentsline {chapter}{Index}{59}{section*.97}%

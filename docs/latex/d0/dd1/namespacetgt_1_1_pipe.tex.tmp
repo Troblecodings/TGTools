@@ -1,0 +1,233 @@
+\hypertarget{namespacetgt_1_1_pipe}{}\doxysection{tgt\+::Pipe Namespace Reference}
+\label{namespacetgt_1_1_pipe}\index{tgt::Pipe@{tgt::Pipe}}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1}{Cull\+Mode}} \{ \mbox{\hyperlink{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1ab50339a10e1de285ac99d4c3990b8693}{Cull\+Mode\+::\+N\+O\+NE}} = 0, 
+\mbox{\hyperlink{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1aab79ac97384ef7697e672acabe565fa0}{Cull\+Mode\+::\+F\+R\+O\+N\+T\+\_\+\+B\+IT}} = 1, 
+\mbox{\hyperlink{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1a21d96d91eec32023affaba99712cf8f4}{Cull\+Mode\+::\+B\+A\+C\+K\+\_\+\+B\+IT}} = 2, 
+\mbox{\hyperlink{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1aca0e438cddda63061a0149241dc23ad1}{Cull\+Mode\+::\+F\+R\+O\+N\+T\+\_\+\+A\+N\+D\+\_\+\+B\+A\+CK}} = 3
+ \}
+\item 
+enum \mbox{\hyperlink{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7}{Polygon\+Mode}} \{ \mbox{\hyperlink{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7ae8225b11842409df543692aebed34fd1}{Polygon\+Mode\+::\+F\+I\+LL}} = 0, 
+\mbox{\hyperlink{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7a17b8ef2c330f1430e00c9de5469fc7e7}{Polygon\+Mode\+::\+L\+I\+NE}} = 1, 
+\mbox{\hyperlink{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7aaebdbcb765394d25d6a604589a890f82}{Polygon\+Mode\+::\+P\+O\+I\+NT}} = 2
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_pipe_a4f88d46548c610b8d30d04360843f9f9}{create}} (const std\+::string \&name, const \mbox{\hyperlink{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1}{Cull\+Mode}} cullmode, const \mbox{\hyperlink{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7}{Polygon\+Mode}} polygon\+Mode)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_pipe_a8f802cf373e38946e675d765ee29d646}{add\+Shader}} (const std\+::string \&name, const std\+::string \&shadername)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_pipe_a08f12f0bf5e9415886446edf34ed981e}{remove\+Shader}} (const std\+::string \&name, const std\+::string \&shadername)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_pipe_a81e436a26b78ef45a4a6a48cf796888d}{remove}} (const std\+::string \&name)
+\item 
+const std\+::string \mbox{\hyperlink{namespacetgt_1_1_pipe_a60634915fe49998391df6ea8743ab869}{list}} ()
+\item 
+const bool \mbox{\hyperlink{namespacetgt_1_1_pipe_aeb9a695dbbf00e80e77bbb5ab70fcea1}{check\+Dependent}} (const std\+::string \&dependency)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_pipe_a48fcb25f73a08581e6b5e2fda0c873b5}{compile}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \mbox{\hyperlink{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1}{Cull\+Mode}} \mbox{\hyperlink{namespacetgt_1_1_pipe_a49d7859bc48e51d1cf1a8b1f57855e71}{C\+U\+L\+L\+M\+O\+D\+E\+\_\+\+M\+IN}} = Cull\+Mode\+::\+N\+O\+NE
+\item 
+constexpr \mbox{\hyperlink{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1}{Cull\+Mode}} \mbox{\hyperlink{namespacetgt_1_1_pipe_a8fc38749d63ab6289acd51e08604ae31}{C\+U\+L\+L\+M\+O\+D\+E\+\_\+\+M\+AX}} = \mbox{\hyperlink{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1ab50339a10e1de285ac99d4c3990b8693}{Cull\+Mode\+::\+F\+R\+O\+N\+T\+\_\+\+A\+N\+D\+\_\+\+B\+A\+CK}}
+\item 
+constexpr \mbox{\hyperlink{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7}{Polygon\+Mode}} \mbox{\hyperlink{namespacetgt_1_1_pipe_abd8ce651d61b07c25cd99184d5fbf3ed}{P\+O\+L\+Y\+G\+O\+N\+M\+O\+D\+E\+\_\+\+M\+IN}} = Polygon\+Mode\+::\+F\+I\+LL
+\item 
+constexpr \mbox{\hyperlink{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7}{Polygon\+Mode}} \mbox{\hyperlink{namespacetgt_1_1_pipe_afc7281047ec2612890e7c3eba93bd111}{P\+O\+L\+Y\+G\+O\+N\+M\+O\+D\+E\+\_\+\+M\+AX}} = \mbox{\hyperlink{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7ae8225b11842409df543692aebed34fd1}{Polygon\+Mode\+::\+P\+O\+I\+NT}}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_pipe_a8edbd7a1af1b05a2a0c422560893db83}{P\+I\+P\+E\+\_\+\+S\+U\+B\+F\+O\+L\+D\+ER}} = \char`\"{}Pipes\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_pipe_ad5085e0812a76daee1fbbb12c90741c9}{C\+U\+L\+L\+M\+O\+D\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY}} = \char`\"{}cullmode\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_pipe_a0f7298df76f49503381627cb1faa6d2b}{P\+O\+L\+Y\+G\+O\+N\+M\+O\+D\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY}} = \char`\"{}polygonmode\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_pipe_a3712feaa1ddbcb2470df16654f82dd16}{S\+H\+A\+D\+E\+R\+\_\+\+P\+R\+O\+P\+E\+R\+TY}} = \char`\"{}shader\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_pipe_a4e47483ac707bc73e272c0462f0c61fe}{I\+N\+P\+U\+T\+B\+I\+N\+D\+I\+N\+G\+S\+\_\+\+P\+R\+O\+P\+E\+R\+TY}} = \char`\"{}inputs\char`\"{}
+\item 
+constexpr std\+::array \mbox{\hyperlink{namespacetgt_1_1_pipe_a7d239464baeab0fa19388f729d759b22}{S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+P\+R\+O\+P\+E\+R\+T\+I\+ES}} = \{ \mbox{\hyperlink{namespacetgt_1_1_pipe_ad5085e0812a76daee1fbbb12c90741c9}{C\+U\+L\+L\+M\+O\+D\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY}}, \mbox{\hyperlink{namespacetgt_1_1_pipe_a0f7298df76f49503381627cb1faa6d2b}{P\+O\+L\+Y\+G\+O\+N\+M\+O\+D\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY}}, \mbox{\hyperlink{namespacetgt_1_1_pipe_a3712feaa1ddbcb2470df16654f82dd16}{S\+H\+A\+D\+E\+R\+\_\+\+P\+R\+O\+P\+E\+R\+TY}}, \mbox{\hyperlink{namespacetgt_1_1_pipe_a4e47483ac707bc73e272c0462f0c61fe}{I\+N\+P\+U\+T\+B\+I\+N\+D\+I\+N\+G\+S\+\_\+\+P\+R\+O\+P\+E\+R\+TY}} \}
+\item 
+const auto \mbox{\hyperlink{namespacetgt_1_1_pipe_aebc4bb1c36680d7ac0ab97b5a110f657}{P\+I\+P\+E\+\_\+\+P\+A\+TH}} = fs\+::path(\mbox{\hyperlink{namespacetgt_1_1_util_a06d4a40cb8b63cf86024b6843d61ca3f}{Util\+::\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+L\+O\+C\+A\+T\+I\+ON}}).append(\mbox{\hyperlink{namespacetgt_1_1_pipe_a8edbd7a1af1b05a2a0c422560893db83}{P\+I\+P\+E\+\_\+\+S\+U\+B\+F\+O\+L\+D\+ER}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1}\label{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1}} 
+\index{tgt::Pipe@{tgt::Pipe}!CullMode@{CullMode}}
+\index{CullMode@{CullMode}!tgt::Pipe@{tgt::Pipe}}
+\doxysubsubsection{\texorpdfstring{CullMode}{CullMode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1}{tgt\+::\+Pipe\+::\+Cull\+Mode}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NONE@{NONE}!tgt::Pipe@{tgt::Pipe}}\index{tgt::Pipe@{tgt::Pipe}!NONE@{NONE}}}\mbox{\Hypertarget{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1ab50339a10e1de285ac99d4c3990b8693}\label{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1ab50339a10e1de285ac99d4c3990b8693}} 
+N\+O\+NE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRONT\_BIT@{FRONT\_BIT}!tgt::Pipe@{tgt::Pipe}}\index{tgt::Pipe@{tgt::Pipe}!FRONT\_BIT@{FRONT\_BIT}}}\mbox{\Hypertarget{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1aab79ac97384ef7697e672acabe565fa0}\label{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1aab79ac97384ef7697e672acabe565fa0}} 
+F\+R\+O\+N\+T\+\_\+\+B\+IT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BACK\_BIT@{BACK\_BIT}!tgt::Pipe@{tgt::Pipe}}\index{tgt::Pipe@{tgt::Pipe}!BACK\_BIT@{BACK\_BIT}}}\mbox{\Hypertarget{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1a21d96d91eec32023affaba99712cf8f4}\label{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1a21d96d91eec32023affaba99712cf8f4}} 
+B\+A\+C\+K\+\_\+\+B\+IT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRONT\_AND\_BACK@{FRONT\_AND\_BACK}!tgt::Pipe@{tgt::Pipe}}\index{tgt::Pipe@{tgt::Pipe}!FRONT\_AND\_BACK@{FRONT\_AND\_BACK}}}\mbox{\Hypertarget{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1aca0e438cddda63061a0149241dc23ad1}\label{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1aca0e438cddda63061a0149241dc23ad1}} 
+F\+R\+O\+N\+T\+\_\+\+A\+N\+D\+\_\+\+B\+A\+CK&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7}\label{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7}} 
+\index{tgt::Pipe@{tgt::Pipe}!PolygonMode@{PolygonMode}}
+\index{PolygonMode@{PolygonMode}!tgt::Pipe@{tgt::Pipe}}
+\doxysubsubsection{\texorpdfstring{PolygonMode}{PolygonMode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7}{tgt\+::\+Pipe\+::\+Polygon\+Mode}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FILL@{FILL}!tgt::Pipe@{tgt::Pipe}}\index{tgt::Pipe@{tgt::Pipe}!FILL@{FILL}}}\mbox{\Hypertarget{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7ae8225b11842409df543692aebed34fd1}\label{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7ae8225b11842409df543692aebed34fd1}} 
+F\+I\+LL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINE@{LINE}!tgt::Pipe@{tgt::Pipe}}\index{tgt::Pipe@{tgt::Pipe}!LINE@{LINE}}}\mbox{\Hypertarget{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7a17b8ef2c330f1430e00c9de5469fc7e7}\label{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7a17b8ef2c330f1430e00c9de5469fc7e7}} 
+L\+I\+NE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{POINT@{POINT}!tgt::Pipe@{tgt::Pipe}}\index{tgt::Pipe@{tgt::Pipe}!POINT@{POINT}}}\mbox{\Hypertarget{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7aaebdbcb765394d25d6a604589a890f82}\label{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7aaebdbcb765394d25d6a604589a890f82}} 
+P\+O\+I\+NT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacetgt_1_1_pipe_a8f802cf373e38946e675d765ee29d646}\label{namespacetgt_1_1_pipe_a8f802cf373e38946e675d765ee29d646}} 
+\index{tgt::Pipe@{tgt::Pipe}!addShader@{addShader}}
+\index{addShader@{addShader}!tgt::Pipe@{tgt::Pipe}}
+\doxysubsubsection{\texorpdfstring{addShader()}{addShader()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} tgt\+::\+Pipe\+::add\+Shader (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{shadername }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 0
+\mbox{\Hypertarget{namespacetgt_1_1_pipe_aeb9a695dbbf00e80e77bbb5ab70fcea1}\label{namespacetgt_1_1_pipe_aeb9a695dbbf00e80e77bbb5ab70fcea1}} 
+\index{tgt::Pipe@{tgt::Pipe}!checkDependent@{checkDependent}}
+\index{checkDependent@{checkDependent}!tgt::Pipe@{tgt::Pipe}}
+\doxysubsubsection{\texorpdfstring{checkDependent()}{checkDependent()}}
+{\footnotesize\ttfamily const bool tgt\+::\+Pipe\+::check\+Dependent (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{dependency }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{namespacetgt_1_1_pipe_a48fcb25f73a08581e6b5e2fda0c873b5}\label{namespacetgt_1_1_pipe_a48fcb25f73a08581e6b5e2fda0c873b5}} 
+\index{tgt::Pipe@{tgt::Pipe}!compile@{compile}}
+\index{compile@{compile}!tgt::Pipe@{tgt::Pipe}}
+\doxysubsubsection{\texorpdfstring{compile()}{compile()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} tgt\+::\+Pipe\+::compile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacetgt_1_1_pipe_a4f88d46548c610b8d30d04360843f9f9}\label{namespacetgt_1_1_pipe_a4f88d46548c610b8d30d04360843f9f9}} 
+\index{tgt::Pipe@{tgt::Pipe}!create@{create}}
+\index{create@{create}!tgt::Pipe@{tgt::Pipe}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} tgt\+::\+Pipe\+::create (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const \mbox{\hyperlink{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1}{Cull\+Mode}}}]{cullmode,  }\item[{const \mbox{\hyperlink{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7}{Polygon\+Mode}}}]{polygon\+Mode }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{namespacetgt_1_1_pipe_a60634915fe49998391df6ea8743ab869}\label{namespacetgt_1_1_pipe_a60634915fe49998391df6ea8743ab869}} 
+\index{tgt::Pipe@{tgt::Pipe}!list@{list}}
+\index{list@{list}!tgt::Pipe@{tgt::Pipe}}
+\doxysubsubsection{\texorpdfstring{list()}{list()}}
+{\footnotesize\ttfamily const std\+::string tgt\+::\+Pipe\+::list (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{namespacetgt_1_1_pipe_a81e436a26b78ef45a4a6a48cf796888d}\label{namespacetgt_1_1_pipe_a81e436a26b78ef45a4a6a48cf796888d}} 
+\index{tgt::Pipe@{tgt::Pipe}!remove@{remove}}
+\index{remove@{remove}!tgt::Pipe@{tgt::Pipe}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} tgt\+::\+Pipe\+::remove (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{namespacetgt_1_1_pipe_a08f12f0bf5e9415886446edf34ed981e}\label{namespacetgt_1_1_pipe_a08f12f0bf5e9415886446edf34ed981e}} 
+\index{tgt::Pipe@{tgt::Pipe}!removeShader@{removeShader}}
+\index{removeShader@{removeShader}!tgt::Pipe@{tgt::Pipe}}
+\doxysubsubsection{\texorpdfstring{removeShader()}{removeShader()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} tgt\+::\+Pipe\+::remove\+Shader (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{shadername }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 6
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacetgt_1_1_pipe_a8fc38749d63ab6289acd51e08604ae31}\label{namespacetgt_1_1_pipe_a8fc38749d63ab6289acd51e08604ae31}} 
+\index{tgt::Pipe@{tgt::Pipe}!CULLMODE\_MAX@{CULLMODE\_MAX}}
+\index{CULLMODE\_MAX@{CULLMODE\_MAX}!tgt::Pipe@{tgt::Pipe}}
+\doxysubsubsection{\texorpdfstring{CULLMODE\_MAX}{CULLMODE\_MAX}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1}{Cull\+Mode}} tgt\+::\+Pipe\+::\+C\+U\+L\+L\+M\+O\+D\+E\+\_\+\+M\+AX = \mbox{\hyperlink{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1ab50339a10e1de285ac99d4c3990b8693}{Cull\+Mode\+::\+F\+R\+O\+N\+T\+\_\+\+A\+N\+D\+\_\+\+B\+A\+CK}}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_pipe_a49d7859bc48e51d1cf1a8b1f57855e71}\label{namespacetgt_1_1_pipe_a49d7859bc48e51d1cf1a8b1f57855e71}} 
+\index{tgt::Pipe@{tgt::Pipe}!CULLMODE\_MIN@{CULLMODE\_MIN}}
+\index{CULLMODE\_MIN@{CULLMODE\_MIN}!tgt::Pipe@{tgt::Pipe}}
+\doxysubsubsection{\texorpdfstring{CULLMODE\_MIN}{CULLMODE\_MIN}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{namespacetgt_1_1_pipe_a22583f8728bbf9161f86d3fbe53360c1}{Cull\+Mode}} tgt\+::\+Pipe\+::\+C\+U\+L\+L\+M\+O\+D\+E\+\_\+\+M\+IN = Cull\+Mode\+::\+N\+O\+NE\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_pipe_ad5085e0812a76daee1fbbb12c90741c9}\label{namespacetgt_1_1_pipe_ad5085e0812a76daee1fbbb12c90741c9}} 
+\index{tgt::Pipe@{tgt::Pipe}!CULLMODE\_PROPERTY@{CULLMODE\_PROPERTY}}
+\index{CULLMODE\_PROPERTY@{CULLMODE\_PROPERTY}!tgt::Pipe@{tgt::Pipe}}
+\doxysubsubsection{\texorpdfstring{CULLMODE\_PROPERTY}{CULLMODE\_PROPERTY}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Pipe\+::\+C\+U\+L\+L\+M\+O\+D\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY = \char`\"{}cullmode\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_pipe_a4e47483ac707bc73e272c0462f0c61fe}\label{namespacetgt_1_1_pipe_a4e47483ac707bc73e272c0462f0c61fe}} 
+\index{tgt::Pipe@{tgt::Pipe}!INPUTBINDINGS\_PROPERTY@{INPUTBINDINGS\_PROPERTY}}
+\index{INPUTBINDINGS\_PROPERTY@{INPUTBINDINGS\_PROPERTY}!tgt::Pipe@{tgt::Pipe}}
+\doxysubsubsection{\texorpdfstring{INPUTBINDINGS\_PROPERTY}{INPUTBINDINGS\_PROPERTY}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Pipe\+::\+I\+N\+P\+U\+T\+B\+I\+N\+D\+I\+N\+G\+S\+\_\+\+P\+R\+O\+P\+E\+R\+TY = \char`\"{}inputs\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_pipe_aebc4bb1c36680d7ac0ab97b5a110f657}\label{namespacetgt_1_1_pipe_aebc4bb1c36680d7ac0ab97b5a110f657}} 
+\index{tgt::Pipe@{tgt::Pipe}!PIPE\_PATH@{PIPE\_PATH}}
+\index{PIPE\_PATH@{PIPE\_PATH}!tgt::Pipe@{tgt::Pipe}}
+\doxysubsubsection{\texorpdfstring{PIPE\_PATH}{PIPE\_PATH}}
+{\footnotesize\ttfamily const auto tgt\+::\+Pipe\+::\+P\+I\+P\+E\+\_\+\+P\+A\+TH = fs\+::path(\mbox{\hyperlink{namespacetgt_1_1_util_a06d4a40cb8b63cf86024b6843d61ca3f}{Util\+::\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+L\+O\+C\+A\+T\+I\+ON}}).append(\mbox{\hyperlink{namespacetgt_1_1_pipe_a8edbd7a1af1b05a2a0c422560893db83}{P\+I\+P\+E\+\_\+\+S\+U\+B\+F\+O\+L\+D\+ER}})}
+
+\mbox{\Hypertarget{namespacetgt_1_1_pipe_a8edbd7a1af1b05a2a0c422560893db83}\label{namespacetgt_1_1_pipe_a8edbd7a1af1b05a2a0c422560893db83}} 
+\index{tgt::Pipe@{tgt::Pipe}!PIPE\_SUBFOLDER@{PIPE\_SUBFOLDER}}
+\index{PIPE\_SUBFOLDER@{PIPE\_SUBFOLDER}!tgt::Pipe@{tgt::Pipe}}
+\doxysubsubsection{\texorpdfstring{PIPE\_SUBFOLDER}{PIPE\_SUBFOLDER}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Pipe\+::\+P\+I\+P\+E\+\_\+\+S\+U\+B\+F\+O\+L\+D\+ER = \char`\"{}Pipes\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_pipe_afc7281047ec2612890e7c3eba93bd111}\label{namespacetgt_1_1_pipe_afc7281047ec2612890e7c3eba93bd111}} 
+\index{tgt::Pipe@{tgt::Pipe}!POLYGONMODE\_MAX@{POLYGONMODE\_MAX}}
+\index{POLYGONMODE\_MAX@{POLYGONMODE\_MAX}!tgt::Pipe@{tgt::Pipe}}
+\doxysubsubsection{\texorpdfstring{POLYGONMODE\_MAX}{POLYGONMODE\_MAX}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7}{Polygon\+Mode}} tgt\+::\+Pipe\+::\+P\+O\+L\+Y\+G\+O\+N\+M\+O\+D\+E\+\_\+\+M\+AX = \mbox{\hyperlink{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7ae8225b11842409df543692aebed34fd1}{Polygon\+Mode\+::\+P\+O\+I\+NT}}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_pipe_abd8ce651d61b07c25cd99184d5fbf3ed}\label{namespacetgt_1_1_pipe_abd8ce651d61b07c25cd99184d5fbf3ed}} 
+\index{tgt::Pipe@{tgt::Pipe}!POLYGONMODE\_MIN@{POLYGONMODE\_MIN}}
+\index{POLYGONMODE\_MIN@{POLYGONMODE\_MIN}!tgt::Pipe@{tgt::Pipe}}
+\doxysubsubsection{\texorpdfstring{POLYGONMODE\_MIN}{POLYGONMODE\_MIN}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{namespacetgt_1_1_pipe_a7a13b6dd459637fb54a527a767bca4f7}{Polygon\+Mode}} tgt\+::\+Pipe\+::\+P\+O\+L\+Y\+G\+O\+N\+M\+O\+D\+E\+\_\+\+M\+IN = Polygon\+Mode\+::\+F\+I\+LL\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_pipe_a0f7298df76f49503381627cb1faa6d2b}\label{namespacetgt_1_1_pipe_a0f7298df76f49503381627cb1faa6d2b}} 
+\index{tgt::Pipe@{tgt::Pipe}!POLYGONMODE\_PROPERTY@{POLYGONMODE\_PROPERTY}}
+\index{POLYGONMODE\_PROPERTY@{POLYGONMODE\_PROPERTY}!tgt::Pipe@{tgt::Pipe}}
+\doxysubsubsection{\texorpdfstring{POLYGONMODE\_PROPERTY}{POLYGONMODE\_PROPERTY}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Pipe\+::\+P\+O\+L\+Y\+G\+O\+N\+M\+O\+D\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY = \char`\"{}polygonmode\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_pipe_a3712feaa1ddbcb2470df16654f82dd16}\label{namespacetgt_1_1_pipe_a3712feaa1ddbcb2470df16654f82dd16}} 
+\index{tgt::Pipe@{tgt::Pipe}!SHADER\_PROPERTY@{SHADER\_PROPERTY}}
+\index{SHADER\_PROPERTY@{SHADER\_PROPERTY}!tgt::Pipe@{tgt::Pipe}}
+\doxysubsubsection{\texorpdfstring{SHADER\_PROPERTY}{SHADER\_PROPERTY}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Pipe\+::\+S\+H\+A\+D\+E\+R\+\_\+\+P\+R\+O\+P\+E\+R\+TY = \char`\"{}shader\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_pipe_a7d239464baeab0fa19388f729d759b22}\label{namespacetgt_1_1_pipe_a7d239464baeab0fa19388f729d759b22}} 
+\index{tgt::Pipe@{tgt::Pipe}!SUPPORTED\_PROPERTIES@{SUPPORTED\_PROPERTIES}}
+\index{SUPPORTED\_PROPERTIES@{SUPPORTED\_PROPERTIES}!tgt::Pipe@{tgt::Pipe}}
+\doxysubsubsection{\texorpdfstring{SUPPORTED\_PROPERTIES}{SUPPORTED\_PROPERTIES}}
+{\footnotesize\ttfamily constexpr std\+::array tgt\+::\+Pipe\+::\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+P\+R\+O\+P\+E\+R\+T\+I\+ES = \{ \mbox{\hyperlink{namespacetgt_1_1_pipe_ad5085e0812a76daee1fbbb12c90741c9}{C\+U\+L\+L\+M\+O\+D\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY}}, \mbox{\hyperlink{namespacetgt_1_1_pipe_a0f7298df76f49503381627cb1faa6d2b}{P\+O\+L\+Y\+G\+O\+N\+M\+O\+D\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY}}, \mbox{\hyperlink{namespacetgt_1_1_pipe_a3712feaa1ddbcb2470df16654f82dd16}{S\+H\+A\+D\+E\+R\+\_\+\+P\+R\+O\+P\+E\+R\+TY}}, \mbox{\hyperlink{namespacetgt_1_1_pipe_a4e47483ac707bc73e272c0462f0c61fe}{I\+N\+P\+U\+T\+B\+I\+N\+D\+I\+N\+G\+S\+\_\+\+P\+R\+O\+P\+E\+R\+TY}} \}\hspace{0.3cm}{\ttfamily [constexpr]}}
+

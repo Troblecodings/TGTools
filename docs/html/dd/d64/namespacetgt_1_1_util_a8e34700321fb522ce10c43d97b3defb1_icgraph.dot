@@ -1,0 +1,24 @@
+digraph "tgt::Util::collect"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="tgt::Util::collect",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="tgt::Texture::list",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/de3/namespacetgt_1_1_texture.html#a5c3e792bd4f5d7dc59b421678b247a50",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="tgt::Actor::list",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/dd7/namespacetgt_1_1_actor.html#a6198e42f177d33e1b3310ad0afda5d7c",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="tgt::Font::list",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/db6/namespacetgt_1_1_font.html#ae898840ea76282cecc64f9b883c72180",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="tgt::Map::list",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/ded/namespacetgt_1_1_map.html#a5b771ef5c358c148a9d3c620599d5dbf",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="tgt::Material::list",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/db2/namespacetgt_1_1_material.html#accd376183612b0bf14845a7f640652b6",tooltip=" "];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="tgt::Pipe::list",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/dd1/namespacetgt_1_1_pipe.html#a60634915fe49998391df6ea8743ab869",tooltip=" "];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="tgt::Sampler::list",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/dc0/namespacetgt_1_1_sampler.html#a37d4a63a1a8b6c7f63affcefb1f417d0",tooltip=" "];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="tgt::Shader::list",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d8f/namespacetgt_1_1_shader.html#aa4c9c66b4f0d0dd4466af3e0e57b08cf",tooltip=" "];
+}

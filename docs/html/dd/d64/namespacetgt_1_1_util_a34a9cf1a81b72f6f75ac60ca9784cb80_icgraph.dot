@@ -1,0 +1,22 @@
+digraph "tgt::Util::remove"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="tgt::Util::remove",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="tgt::Util::remove",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/d64/namespacetgt_1_1_util.html#a8079e6ec38b8a0e6d5593ec4a652b091",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="tgt::Map::remove",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/ded/namespacetgt_1_1_map.html#adde93f4670248f670a099b3c62ad2329",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="tgt::Texture::remove",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/de3/namespacetgt_1_1_texture.html#a95ef9969bed397fadc5cd49349f34dbd",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="tgt::Actor::remove",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/dd7/namespacetgt_1_1_actor.html#ad78eb0c8eeb21a99b90118fa7511a8af",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="tgt::Material::remove",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/db2/namespacetgt_1_1_material.html#afa27dfccdcf974676591ceb3c77b79ce",tooltip=" "];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="tgt::Pipe::remove",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/dd1/namespacetgt_1_1_pipe.html#a81e436a26b78ef45a4a6a48cf796888d",tooltip=" "];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="tgt::Sampler::remove",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/dc0/namespacetgt_1_1_sampler.html#aedeb3204934571f012ebb4aba552a437",tooltip=" "];
+}
