@@ -5,6 +5,7 @@
 #include <filesystem>
 #include <fstream>
 #include "../public/json.hpp"
+#include <array>
 
 #define JSON_WRITE(path, json) std::ofstream path##Output(path);\
 path##Output << std::setw(4) << json << std::endl
@@ -81,13 +82,13 @@ namespace tgt::Util {
 		return Result::SUCCESS;
 	}
 
-	template<class T, class U, class S, typename = std::enable_if_t<_validJson<T>&& _validString<U>>>
-	inline const Result change(fs::path path, const U& key, const T& value, const S& supported) {
+	template<class T, class U, size_t S, typename = std::enable_if_t<_validJson<T> && _validString<U>>>
+	inline const Result change(const fs::path& path, const std::string& key, const T& value, const std::array<U, S>& supported) {
 		if (!fs::exists(path))
 			return Result::DOES_NOT_EXIST;
 
 		if constexpr (std::is_pointer_v<U>) {
-			if (std::find_if(supported.begin(), supported.end(), [=](const char* x) { return strcmp(x, key) == 0; }) == supported.end())
+			if (std::find_if(supported.begin(), supported.end(), [=](const char* x) { return key.compare(x) == 0; }) == supported.end())
 				return Result::UNSUPPORTED;
 		} else {
 			if (std::find(supported.begin(), supported.end(), key) == supported.end())
@@ -98,9 +99,8 @@ namespace tgt::Util {
 		return Result::SUCCESS;
 	}
 
-	template<class T, class U, class P, typename = std::enable_if_t<_validPath<P>&&
-		_validString<T> && (_validString<U> || std::is_null_pointer_v<U>)>>
-		inline const fs::path getResource(P resource, const T& name, const U& extension) {
+	template<class U, typename = std::enable_if_t<_validString<U> || std::is_null_pointer_v<U>>>
+	inline const fs::path getResource(fs::path resource, const std::string& name, const U& extension) {
 		if (!fs::exists(resource))
 			fs::create_directories(resource);
 		if constexpr (std::is_null_pointer_v<U>) {
@@ -110,8 +110,7 @@ namespace tgt::Util {
 		}
 	}
 
-	template<class T, class P, typename = std::enable_if_t<_validPath<P>&& _validString<T>>>
-	inline const fs::path getResource(P resource, const T& name) {
+	inline const fs::path getResource(const fs::path& resource, const std::string& name) {
 		return getResource(resource, name, nullptr);
 	}
 
@@ -127,8 +126,8 @@ namespace tgt::Util {
 		return data;
 	}
 
-	template<class T, class U, typename = std::enable_if_t<_validPath<T>&& std::is_invocable_r_v<bool, U, fs::path>>>
-	inline const std::string collect(const T& path, U lambda) {
+	template<class U, typename = std::enable_if_t<std::is_invocable_r_v<bool, U, const fs::path&>>>
+	inline const std::string collect(const fs::path& path, U lambda) {
 		std::string result;
 		if (!fs::exists(path))
 			return result;
@@ -144,8 +143,8 @@ namespace tgt::Util {
 		return result;
 	}
 
-	template<class T, class U, typename = std::enable_if_t<_validPath<T>&& std::is_invocable_r_v<bool, U, fs::path>>>
-	inline const bool find(const T& path, const U lambda) {
+	template<class U, typename = std::enable_if_t<std::is_invocable_r_v<bool, U, const fs::path&>>>
+	inline const bool find(const fs::path& path, const U lambda) {
 		fs::directory_iterator directory(path);
 		for (auto& entry : directory)
 			if (lambda(entry.path()))
