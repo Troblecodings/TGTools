@@ -1,0 +1,65 @@
+\hypertarget{_shader_8hpp}{}\doxysection{T\+G\+Tools/\+T\+G\+Tools/public/\+Shader.hpp File Reference}
+\label{_shader_8hpp}\index{TGTools/TGTools/public/Shader.hpp@{TGTools/TGTools/public/Shader.hpp}}
+{\ttfamily \#include \char`\"{}Result.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \char`\"{}Util.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../../glslang/glslang/\+Public/\+Shader\+Lang.\+h\char`\"{}}\newline
+Include dependency graph for Shader.\+hpp\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacetgt}{tgt}}
+\item 
+ \mbox{\hyperlink{namespacetgt_1_1_shader}{tgt\+::\+Shader}}
+\item 
+ \mbox{\hyperlink{namespacetgt_1_1_shader_1_1_shader_input}{tgt\+::\+Shader\+::\+Shader\+Input}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespacetgt_1_1_shader_a81040ee2595730b54a0652e56494d98d}{tgt\+::\+Shader\+::\+Shader\+Type}} = E\+Sh\+Language
+\item 
+using \mbox{\hyperlink{namespacetgt_1_1_shader_1_1_shader_input_a7ca795f2e13246ff908902b3743e86da}{tgt\+::\+Shader\+::\+Shader\+Input\+::\+Shader\+Input\+Stride}} = uint32\+\_\+t
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacetgt_1_1_shader_1_1_shader_input_adbbee7d5d125498c428f43f40f766314}{tgt\+::\+Shader\+::\+Shader\+Input\+::\+Shader\+Input\+Type}} \{ \mbox{\hyperlink{namespacetgt_1_1_shader_1_1_shader_input_adbbee7d5d125498c428f43f40f766314a90b4ba73224408e82ade8a072a3712c1}{tgt\+::\+Shader\+::\+Shader\+Input\+::\+Shader\+Input\+Type\+::\+P\+O\+S\+I\+T\+I\+ON}}, 
+\mbox{\hyperlink{namespacetgt_1_1_shader_1_1_shader_input_adbbee7d5d125498c428f43f40f766314a6025dba84a9e9f23e0667e0f67aa8f50}{tgt\+::\+Shader\+::\+Shader\+Input\+::\+Shader\+Input\+Type\+::\+P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+UV}}, 
+\mbox{\hyperlink{namespacetgt_1_1_shader_1_1_shader_input_adbbee7d5d125498c428f43f40f766314a36cb6048416408fadc7e178d9c49ab4b}{tgt\+::\+Shader\+::\+Shader\+Input\+::\+Shader\+Input\+Type\+::\+P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+N\+O\+R\+M\+AL}}, 
+\mbox{\hyperlink{namespacetgt_1_1_shader_1_1_shader_input_adbbee7d5d125498c428f43f40f766314a0e7030a0bea26610bf48deb0bbf6a190}{tgt\+::\+Shader\+::\+Shader\+Input\+::\+Shader\+Input\+Type\+::\+P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+UV}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_shader_a0aac0da9e2aa3b511d31d6b7b65a6e3f}{tgt\+::\+Shader\+::add}} (const std\+::string \&name, Shader\+Type type)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_shader_a57056cbc2d6c261fcefe07f0d7d0caf2}{tgt\+::\+Shader\+::remove}} (const std\+::string \&name)
+\item 
+const std\+::string \mbox{\hyperlink{namespacetgt_1_1_shader_aa4c9c66b4f0d0dd4466af3e0e57b08cf}{tgt\+::\+Shader\+::list}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr Shader\+Input\+Stride \mbox{\hyperlink{namespacetgt_1_1_shader_1_1_shader_input_ace3fd15ac60d8df07d52600ce7806f28}{tgt\+::\+Shader\+::\+Shader\+Input\+::\+P\+OS}} = sizeof(float) $\ast$ 3
+\item 
+constexpr Shader\+Input\+Stride \mbox{\hyperlink{namespacetgt_1_1_shader_1_1_shader_input_a52a7e66a77a7032201ce27e47419f564}{tgt\+::\+Shader\+::\+Shader\+Input\+::\+P\+O\+S\+\_\+\+T\+EX}} = P\+OS + sizeof(float) $\ast$ 2
+\item 
+constexpr Shader\+Input\+Stride \mbox{\hyperlink{namespacetgt_1_1_shader_1_1_shader_input_a369238aed88d51cb023d5bd8aafbf683}{tgt\+::\+Shader\+::\+Shader\+Input\+::\+P\+O\+S\+\_\+\+N\+OR}} = P\+OS + sizeof(float) $\ast$ 3
+\item 
+constexpr Shader\+Input\+Stride \mbox{\hyperlink{namespacetgt_1_1_shader_1_1_shader_input_a0aa4227b16584b76ca393b0464f85d52}{tgt\+::\+Shader\+::\+Shader\+Input\+::\+P\+O\+S\+\_\+\+N\+O\+R\+\_\+\+T\+EX}} = P\+O\+S\+\_\+\+N\+OR + sizeof(float) $\ast$ 2
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_shader_a672149cca08eba296febfd9f0d5b27a2}{tgt\+::\+Shader\+::\+S\+H\+A\+D\+E\+R\+\_\+\+E\+X\+T\+E\+N\+S\+I\+ON}} = \char`\"{}.glsl\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_shader_a30c365cc7cfa8f01847ae5fde63757bb}{tgt\+::\+Shader\+::\+S\+H\+A\+D\+E\+R\+\_\+\+S\+U\+B\+F\+O\+L\+D\+ER}} = \char`\"{}Shaders\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_shader_a9031e346a40029f6ed4aa0d0f6e63c08}{tgt\+::\+Shader\+::\+S\+H\+A\+D\+E\+R\+\_\+\+T\+Y\+P\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY}} = \char`\"{}shader\+Type\char`\"{}
+\item 
+constexpr std\+::array \mbox{\hyperlink{namespacetgt_1_1_shader_af546d8960d80749465aacd7291fb6d88}{tgt\+::\+Shader\+::\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+P\+R\+O\+P\+E\+R\+T\+I\+ES}} = \{ S\+H\+A\+D\+E\+R\+\_\+\+T\+Y\+P\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY \}
+\item 
+const auto \mbox{\hyperlink{namespacetgt_1_1_shader_aa9211fd5d0251d7275a5822d7d844416}{tgt\+::\+Shader\+::\+S\+H\+A\+D\+E\+R\+\_\+\+P\+A\+TH}} = fs\+::path(Util\+::\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+L\+O\+C\+A\+T\+I\+ON).append(S\+H\+A\+D\+E\+R\+\_\+\+S\+U\+B\+F\+O\+L\+D\+ER)
+\end{DoxyCompactItemize}

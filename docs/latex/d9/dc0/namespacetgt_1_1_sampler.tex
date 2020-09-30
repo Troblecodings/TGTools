@@ -1,0 +1,232 @@
+\hypertarget{namespacetgt_1_1_sampler}{}\doxysection{tgt\+::Sampler Namespace Reference}
+\label{namespacetgt_1_1_sampler}\index{tgt::Sampler@{tgt::Sampler}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structtgt_1_1_sampler_1_1_sampler_info}{Sampler\+Info}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49}{Sampler\+Address\+Mode}} \{ \newline
+\mbox{\hyperlink{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49a5be68175be14dfaa080165456c2e9555}{Sampler\+Address\+Mode\+::\+R\+E\+P\+E\+AT}} = 0, 
+\mbox{\hyperlink{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49acf6164235e7bfffb5c4c7c4b685f660a}{Sampler\+Address\+Mode\+::\+M\+I\+R\+R\+O\+R\+E\+D\+\_\+\+R\+E\+P\+E\+AT}} = 1, 
+\mbox{\hyperlink{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49aca305cdc5d749d643055111218063f26}{Sampler\+Address\+Mode\+::\+C\+L\+A\+M\+P\+\_\+\+T\+O\+\_\+\+E\+D\+GE}} = 2, 
+\mbox{\hyperlink{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49afcb162090f81b0a56721e5aa01b880c3}{Sampler\+Address\+Mode\+::\+C\+L\+A\+M\+P\+\_\+\+T\+O\+\_\+\+B\+O\+R\+D\+ER}} = 3, 
+\newline
+\mbox{\hyperlink{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49afb1f8f827e6d04848a1c8a93a208cb3c}{Sampler\+Address\+Mode\+::\+M\+I\+R\+R\+O\+R\+\_\+\+C\+L\+A\+M\+P\+\_\+\+T\+O\+\_\+\+E\+D\+GE}} = 4
+ \}
+\item 
+enum \mbox{\hyperlink{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2b}{Sampler\+Filter}} \{ \mbox{\hyperlink{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2baad135772d7cf93dd0ccf9d2474b34e6a}{Sampler\+Filter\+::\+N\+E\+A\+R\+E\+ST}} = 0, 
+\mbox{\hyperlink{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2baaac544aacc3615aada24897a215f5046}{Sampler\+Filter\+::\+L\+I\+N\+E\+AR}} = 1
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_sampler_a8ff6a9da39091f411a66527445a96fd7}{add}} (const std\+::string \&name, const \mbox{\hyperlink{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49}{Sampler\+Address\+Mode}} umode, const \mbox{\hyperlink{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49}{Sampler\+Address\+Mode}} vmode, const \mbox{\hyperlink{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2b}{Sampler\+Filter}} magfilter, const \mbox{\hyperlink{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2b}{Sampler\+Filter}} min\+Filter)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_sampler_a0f2822f675169fb16df770269db966c8}{add}} (const std\+::string \&name, const \mbox{\hyperlink{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49}{Sampler\+Address\+Mode}} mode, const \mbox{\hyperlink{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2b}{Sampler\+Filter}} filter)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_sampler_aedeb3204934571f012ebb4aba552a437}{remove}} (const std\+::string \&name)
+\item 
+const std\+::string \mbox{\hyperlink{namespacetgt_1_1_sampler_a37d4a63a1a8b6c7f63affcefb1f417d0}{list}} ()
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_sampler_a5c03c526317a4026c778c8af10347fc8}{change}} (const std\+::string \&name, const std\+::string \&key, const std\+::string \&value)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_sampler_ac362af4cc1f84e981551586e7bd39c12}{write}} (F\+I\+LE $\ast$file, const js\+::json \&jsonarray)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_sampler_a7be95d7fc3de3e44545ad35f24329e7d}{S\+A\+M\+P\+L\+E\+R\+\_\+\+S\+U\+B\+F\+O\+L\+D\+ER}} = \char`\"{}Sampler\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_sampler_a4b7c64e6d60051cb465a1b2e6814aac1}{U\+M\+O\+D\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY}} = \char`\"{}u\+\_\+address\+\_\+mode\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_sampler_a6b5f81433a33c8e31d82c3e5a05cede4}{V\+M\+O\+D\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY}} = \char`\"{}v\+\_\+address\+\_\+mode\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_sampler_a7350cea9595180b14ba7abcab6167fdd}{M\+A\+G\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+\+P\+R\+O\+P\+E\+R\+TY}} = \char`\"{}magnification\+\_\+filter\char`\"{}
+\item 
+constexpr auto \mbox{\hyperlink{namespacetgt_1_1_sampler_a4d8bcd43868c8c4489cfbef56f93efa2}{M\+I\+N\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+\+P\+R\+O\+P\+E\+R\+TY}} = \char`\"{}minification\+\_\+filter\char`\"{}
+\item 
+const auto \mbox{\hyperlink{namespacetgt_1_1_sampler_aca2d134934a9eaee0a3e2feb6c1d04d2}{S\+A\+M\+P\+L\+E\+R\+\_\+\+P\+A\+TH}} = fs\+::path(\mbox{\hyperlink{namespacetgt_1_1_util_a06d4a40cb8b63cf86024b6843d61ca3f}{Util\+::\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+L\+O\+C\+A\+T\+I\+ON}}).append(\mbox{\hyperlink{namespacetgt_1_1_sampler_a7be95d7fc3de3e44545ad35f24329e7d}{S\+A\+M\+P\+L\+E\+R\+\_\+\+S\+U\+B\+F\+O\+L\+D\+ER}})
+\item 
+constexpr std\+::array \mbox{\hyperlink{namespacetgt_1_1_sampler_aba549ead991e6377e02d2eaae18da7ae}{S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+P\+R\+O\+P\+E\+R\+T\+I\+ES}} = \{\mbox{\hyperlink{namespacetgt_1_1_sampler_a4b7c64e6d60051cb465a1b2e6814aac1}{U\+M\+O\+D\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY}}, \mbox{\hyperlink{namespacetgt_1_1_sampler_a6b5f81433a33c8e31d82c3e5a05cede4}{V\+M\+O\+D\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY}}, \mbox{\hyperlink{namespacetgt_1_1_sampler_a7350cea9595180b14ba7abcab6167fdd}{M\+A\+G\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+\+P\+R\+O\+P\+E\+R\+TY}}, \mbox{\hyperlink{namespacetgt_1_1_sampler_a4d8bcd43868c8c4489cfbef56f93efa2}{M\+I\+N\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+\+P\+R\+O\+P\+E\+R\+TY}}\}
+\item 
+constexpr \mbox{\hyperlink{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49}{Sampler\+Address\+Mode}} \mbox{\hyperlink{namespacetgt_1_1_sampler_a93b81fcdedbd4fd4c395266eab5d373b}{S\+A\+M\+P\+L\+E\+R\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+M\+O\+D\+E\+\_\+\+M\+IN}} = Sampler\+Address\+Mode\+::\+R\+E\+P\+E\+AT
+\item 
+constexpr \mbox{\hyperlink{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49}{Sampler\+Address\+Mode}} \mbox{\hyperlink{namespacetgt_1_1_sampler_abc52b622ca87a772d47f0291444f2375}{S\+A\+M\+P\+L\+E\+R\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+M\+O\+D\+E\+\_\+\+M\+AX}} = \mbox{\hyperlink{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49a5be68175be14dfaa080165456c2e9555}{Sampler\+Address\+Mode\+::\+M\+I\+R\+R\+O\+R\+\_\+\+C\+L\+A\+M\+P\+\_\+\+T\+O\+\_\+\+E\+D\+GE}}
+\item 
+constexpr \mbox{\hyperlink{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2b}{Sampler\+Filter}} \mbox{\hyperlink{namespacetgt_1_1_sampler_aa57d9ee26ea2c7a4fc6d5b432fd1a801}{S\+A\+M\+P\+L\+E\+R\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+\+M\+IN}} = Sampler\+Filter\+::\+N\+E\+A\+R\+E\+ST
+\item 
+constexpr \mbox{\hyperlink{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2b}{Sampler\+Filter}} \mbox{\hyperlink{namespacetgt_1_1_sampler_a8a7c83d26fa35b78ef33f5daae83cae2}{S\+A\+M\+P\+L\+E\+R\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+\+M\+AX}} = \mbox{\hyperlink{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2baad135772d7cf93dd0ccf9d2474b34e6a}{Sampler\+Filter\+::\+L\+I\+N\+E\+AR}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49}\label{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49}} 
+\index{tgt::Sampler@{tgt::Sampler}!SamplerAddressMode@{SamplerAddressMode}}
+\index{SamplerAddressMode@{SamplerAddressMode}!tgt::Sampler@{tgt::Sampler}}
+\doxysubsubsection{\texorpdfstring{SamplerAddressMode}{SamplerAddressMode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49}{tgt\+::\+Sampler\+::\+Sampler\+Address\+Mode}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{REPEAT@{REPEAT}!tgt::Sampler@{tgt::Sampler}}\index{tgt::Sampler@{tgt::Sampler}!REPEAT@{REPEAT}}}\mbox{\Hypertarget{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49a5be68175be14dfaa080165456c2e9555}\label{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49a5be68175be14dfaa080165456c2e9555}} 
+R\+E\+P\+E\+AT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MIRRORED\_REPEAT@{MIRRORED\_REPEAT}!tgt::Sampler@{tgt::Sampler}}\index{tgt::Sampler@{tgt::Sampler}!MIRRORED\_REPEAT@{MIRRORED\_REPEAT}}}\mbox{\Hypertarget{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49acf6164235e7bfffb5c4c7c4b685f660a}\label{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49acf6164235e7bfffb5c4c7c4b685f660a}} 
+M\+I\+R\+R\+O\+R\+E\+D\+\_\+\+R\+E\+P\+E\+AT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CLAMP\_TO\_EDGE@{CLAMP\_TO\_EDGE}!tgt::Sampler@{tgt::Sampler}}\index{tgt::Sampler@{tgt::Sampler}!CLAMP\_TO\_EDGE@{CLAMP\_TO\_EDGE}}}\mbox{\Hypertarget{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49aca305cdc5d749d643055111218063f26}\label{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49aca305cdc5d749d643055111218063f26}} 
+C\+L\+A\+M\+P\+\_\+\+T\+O\+\_\+\+E\+D\+GE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CLAMP\_TO\_BORDER@{CLAMP\_TO\_BORDER}!tgt::Sampler@{tgt::Sampler}}\index{tgt::Sampler@{tgt::Sampler}!CLAMP\_TO\_BORDER@{CLAMP\_TO\_BORDER}}}\mbox{\Hypertarget{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49afcb162090f81b0a56721e5aa01b880c3}\label{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49afcb162090f81b0a56721e5aa01b880c3}} 
+C\+L\+A\+M\+P\+\_\+\+T\+O\+\_\+\+B\+O\+R\+D\+ER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MIRROR\_CLAMP\_TO\_EDGE@{MIRROR\_CLAMP\_TO\_EDGE}!tgt::Sampler@{tgt::Sampler}}\index{tgt::Sampler@{tgt::Sampler}!MIRROR\_CLAMP\_TO\_EDGE@{MIRROR\_CLAMP\_TO\_EDGE}}}\mbox{\Hypertarget{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49afb1f8f827e6d04848a1c8a93a208cb3c}\label{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49afb1f8f827e6d04848a1c8a93a208cb3c}} 
+M\+I\+R\+R\+O\+R\+\_\+\+C\+L\+A\+M\+P\+\_\+\+T\+O\+\_\+\+E\+D\+GE&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2b}\label{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2b}} 
+\index{tgt::Sampler@{tgt::Sampler}!SamplerFilter@{SamplerFilter}}
+\index{SamplerFilter@{SamplerFilter}!tgt::Sampler@{tgt::Sampler}}
+\doxysubsubsection{\texorpdfstring{SamplerFilter}{SamplerFilter}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2b}{tgt\+::\+Sampler\+::\+Sampler\+Filter}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NEAREST@{NEAREST}!tgt::Sampler@{tgt::Sampler}}\index{tgt::Sampler@{tgt::Sampler}!NEAREST@{NEAREST}}}\mbox{\Hypertarget{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2baad135772d7cf93dd0ccf9d2474b34e6a}\label{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2baad135772d7cf93dd0ccf9d2474b34e6a}} 
+N\+E\+A\+R\+E\+ST&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINEAR@{LINEAR}!tgt::Sampler@{tgt::Sampler}}\index{tgt::Sampler@{tgt::Sampler}!LINEAR@{LINEAR}}}\mbox{\Hypertarget{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2baaac544aacc3615aada24897a215f5046}\label{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2baaac544aacc3615aada24897a215f5046}} 
+L\+I\+N\+E\+AR&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacetgt_1_1_sampler_a0f2822f675169fb16df770269db966c8}\label{namespacetgt_1_1_sampler_a0f2822f675169fb16df770269db966c8}} 
+\index{tgt::Sampler@{tgt::Sampler}!add@{add}}
+\index{add@{add}!tgt::Sampler@{tgt::Sampler}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} tgt\+::\+Sampler\+::add (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const \mbox{\hyperlink{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49}{Sampler\+Address\+Mode}}}]{mode,  }\item[{const \mbox{\hyperlink{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2b}{Sampler\+Filter}}}]{filter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+% FIG 0
+\mbox{\Hypertarget{namespacetgt_1_1_sampler_a8ff6a9da39091f411a66527445a96fd7}\label{namespacetgt_1_1_sampler_a8ff6a9da39091f411a66527445a96fd7}} 
+\index{tgt::Sampler@{tgt::Sampler}!add@{add}}
+\index{add@{add}!tgt::Sampler@{tgt::Sampler}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} tgt\+::\+Sampler\+::add (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const \mbox{\hyperlink{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49}{Sampler\+Address\+Mode}}}]{umode,  }\item[{const \mbox{\hyperlink{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49}{Sampler\+Address\+Mode}}}]{vmode,  }\item[{const \mbox{\hyperlink{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2b}{Sampler\+Filter}}}]{magfilter,  }\item[{const \mbox{\hyperlink{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2b}{Sampler\+Filter}}}]{min\+Filter }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{namespacetgt_1_1_sampler_a5c03c526317a4026c778c8af10347fc8}\label{namespacetgt_1_1_sampler_a5c03c526317a4026c778c8af10347fc8}} 
+\index{tgt::Sampler@{tgt::Sampler}!change@{change}}
+\index{change@{change}!tgt::Sampler@{tgt::Sampler}}
+\doxysubsubsection{\texorpdfstring{change()}{change()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} tgt\+::\+Sampler\+::change (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{key,  }\item[{const std\+::string \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{namespacetgt_1_1_sampler_a37d4a63a1a8b6c7f63affcefb1f417d0}\label{namespacetgt_1_1_sampler_a37d4a63a1a8b6c7f63affcefb1f417d0}} 
+\index{tgt::Sampler@{tgt::Sampler}!list@{list}}
+\index{list@{list}!tgt::Sampler@{tgt::Sampler}}
+\doxysubsubsection{\texorpdfstring{list()}{list()}}
+{\footnotesize\ttfamily const std\+::string tgt\+::\+Sampler\+::list (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{namespacetgt_1_1_sampler_aedeb3204934571f012ebb4aba552a437}\label{namespacetgt_1_1_sampler_aedeb3204934571f012ebb4aba552a437}} 
+\index{tgt::Sampler@{tgt::Sampler}!remove@{remove}}
+\index{remove@{remove}!tgt::Sampler@{tgt::Sampler}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} tgt\+::\+Sampler\+::remove (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{namespacetgt_1_1_sampler_ac362af4cc1f84e981551586e7bd39c12}\label{namespacetgt_1_1_sampler_ac362af4cc1f84e981551586e7bd39c12}} 
+\index{tgt::Sampler@{tgt::Sampler}!write@{write}}
+\index{write@{write}!tgt::Sampler@{tgt::Sampler}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} tgt\+::\+Sampler\+::write (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file,  }\item[{const js\+::json \&}]{jsonarray }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+% FIG 6
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacetgt_1_1_sampler_a7350cea9595180b14ba7abcab6167fdd}\label{namespacetgt_1_1_sampler_a7350cea9595180b14ba7abcab6167fdd}} 
+\index{tgt::Sampler@{tgt::Sampler}!MAG\_FILTER\_PROPERTY@{MAG\_FILTER\_PROPERTY}}
+\index{MAG\_FILTER\_PROPERTY@{MAG\_FILTER\_PROPERTY}!tgt::Sampler@{tgt::Sampler}}
+\doxysubsubsection{\texorpdfstring{MAG\_FILTER\_PROPERTY}{MAG\_FILTER\_PROPERTY}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Sampler\+::\+M\+A\+G\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+\+P\+R\+O\+P\+E\+R\+TY = \char`\"{}magnification\+\_\+filter\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_sampler_a4d8bcd43868c8c4489cfbef56f93efa2}\label{namespacetgt_1_1_sampler_a4d8bcd43868c8c4489cfbef56f93efa2}} 
+\index{tgt::Sampler@{tgt::Sampler}!MIN\_FILTER\_PROPERTY@{MIN\_FILTER\_PROPERTY}}
+\index{MIN\_FILTER\_PROPERTY@{MIN\_FILTER\_PROPERTY}!tgt::Sampler@{tgt::Sampler}}
+\doxysubsubsection{\texorpdfstring{MIN\_FILTER\_PROPERTY}{MIN\_FILTER\_PROPERTY}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Sampler\+::\+M\+I\+N\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+\+P\+R\+O\+P\+E\+R\+TY = \char`\"{}minification\+\_\+filter\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_sampler_abc52b622ca87a772d47f0291444f2375}\label{namespacetgt_1_1_sampler_abc52b622ca87a772d47f0291444f2375}} 
+\index{tgt::Sampler@{tgt::Sampler}!SAMPLER\_ADDRESS\_MODE\_MAX@{SAMPLER\_ADDRESS\_MODE\_MAX}}
+\index{SAMPLER\_ADDRESS\_MODE\_MAX@{SAMPLER\_ADDRESS\_MODE\_MAX}!tgt::Sampler@{tgt::Sampler}}
+\doxysubsubsection{\texorpdfstring{SAMPLER\_ADDRESS\_MODE\_MAX}{SAMPLER\_ADDRESS\_MODE\_MAX}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49}{Sampler\+Address\+Mode}} tgt\+::\+Sampler\+::\+S\+A\+M\+P\+L\+E\+R\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+M\+O\+D\+E\+\_\+\+M\+AX = \mbox{\hyperlink{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49a5be68175be14dfaa080165456c2e9555}{Sampler\+Address\+Mode\+::\+M\+I\+R\+R\+O\+R\+\_\+\+C\+L\+A\+M\+P\+\_\+\+T\+O\+\_\+\+E\+D\+GE}}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_sampler_a93b81fcdedbd4fd4c395266eab5d373b}\label{namespacetgt_1_1_sampler_a93b81fcdedbd4fd4c395266eab5d373b}} 
+\index{tgt::Sampler@{tgt::Sampler}!SAMPLER\_ADDRESS\_MODE\_MIN@{SAMPLER\_ADDRESS\_MODE\_MIN}}
+\index{SAMPLER\_ADDRESS\_MODE\_MIN@{SAMPLER\_ADDRESS\_MODE\_MIN}!tgt::Sampler@{tgt::Sampler}}
+\doxysubsubsection{\texorpdfstring{SAMPLER\_ADDRESS\_MODE\_MIN}{SAMPLER\_ADDRESS\_MODE\_MIN}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{namespacetgt_1_1_sampler_afc3e331516af9ea3ad5d32263a979e49}{Sampler\+Address\+Mode}} tgt\+::\+Sampler\+::\+S\+A\+M\+P\+L\+E\+R\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+M\+O\+D\+E\+\_\+\+M\+IN = Sampler\+Address\+Mode\+::\+R\+E\+P\+E\+AT\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_sampler_a8a7c83d26fa35b78ef33f5daae83cae2}\label{namespacetgt_1_1_sampler_a8a7c83d26fa35b78ef33f5daae83cae2}} 
+\index{tgt::Sampler@{tgt::Sampler}!SAMPLER\_FILTER\_MAX@{SAMPLER\_FILTER\_MAX}}
+\index{SAMPLER\_FILTER\_MAX@{SAMPLER\_FILTER\_MAX}!tgt::Sampler@{tgt::Sampler}}
+\doxysubsubsection{\texorpdfstring{SAMPLER\_FILTER\_MAX}{SAMPLER\_FILTER\_MAX}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2b}{Sampler\+Filter}} tgt\+::\+Sampler\+::\+S\+A\+M\+P\+L\+E\+R\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+\+M\+AX = \mbox{\hyperlink{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2baad135772d7cf93dd0ccf9d2474b34e6a}{Sampler\+Filter\+::\+L\+I\+N\+E\+AR}}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_sampler_aa57d9ee26ea2c7a4fc6d5b432fd1a801}\label{namespacetgt_1_1_sampler_aa57d9ee26ea2c7a4fc6d5b432fd1a801}} 
+\index{tgt::Sampler@{tgt::Sampler}!SAMPLER\_FILTER\_MIN@{SAMPLER\_FILTER\_MIN}}
+\index{SAMPLER\_FILTER\_MIN@{SAMPLER\_FILTER\_MIN}!tgt::Sampler@{tgt::Sampler}}
+\doxysubsubsection{\texorpdfstring{SAMPLER\_FILTER\_MIN}{SAMPLER\_FILTER\_MIN}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{namespacetgt_1_1_sampler_a8d3d14873a04c9b47e94fa7694ae5f2b}{Sampler\+Filter}} tgt\+::\+Sampler\+::\+S\+A\+M\+P\+L\+E\+R\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+\+M\+IN = Sampler\+Filter\+::\+N\+E\+A\+R\+E\+ST\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_sampler_aca2d134934a9eaee0a3e2feb6c1d04d2}\label{namespacetgt_1_1_sampler_aca2d134934a9eaee0a3e2feb6c1d04d2}} 
+\index{tgt::Sampler@{tgt::Sampler}!SAMPLER\_PATH@{SAMPLER\_PATH}}
+\index{SAMPLER\_PATH@{SAMPLER\_PATH}!tgt::Sampler@{tgt::Sampler}}
+\doxysubsubsection{\texorpdfstring{SAMPLER\_PATH}{SAMPLER\_PATH}}
+{\footnotesize\ttfamily const auto tgt\+::\+Sampler\+::\+S\+A\+M\+P\+L\+E\+R\+\_\+\+P\+A\+TH = fs\+::path(\mbox{\hyperlink{namespacetgt_1_1_util_a06d4a40cb8b63cf86024b6843d61ca3f}{Util\+::\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+L\+O\+C\+A\+T\+I\+ON}}).append(\mbox{\hyperlink{namespacetgt_1_1_sampler_a7be95d7fc3de3e44545ad35f24329e7d}{S\+A\+M\+P\+L\+E\+R\+\_\+\+S\+U\+B\+F\+O\+L\+D\+ER}})}
+
+\mbox{\Hypertarget{namespacetgt_1_1_sampler_a7be95d7fc3de3e44545ad35f24329e7d}\label{namespacetgt_1_1_sampler_a7be95d7fc3de3e44545ad35f24329e7d}} 
+\index{tgt::Sampler@{tgt::Sampler}!SAMPLER\_SUBFOLDER@{SAMPLER\_SUBFOLDER}}
+\index{SAMPLER\_SUBFOLDER@{SAMPLER\_SUBFOLDER}!tgt::Sampler@{tgt::Sampler}}
+\doxysubsubsection{\texorpdfstring{SAMPLER\_SUBFOLDER}{SAMPLER\_SUBFOLDER}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Sampler\+::\+S\+A\+M\+P\+L\+E\+R\+\_\+\+S\+U\+B\+F\+O\+L\+D\+ER = \char`\"{}Sampler\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_sampler_aba549ead991e6377e02d2eaae18da7ae}\label{namespacetgt_1_1_sampler_aba549ead991e6377e02d2eaae18da7ae}} 
+\index{tgt::Sampler@{tgt::Sampler}!SUPPORTED\_PROPERTIES@{SUPPORTED\_PROPERTIES}}
+\index{SUPPORTED\_PROPERTIES@{SUPPORTED\_PROPERTIES}!tgt::Sampler@{tgt::Sampler}}
+\doxysubsubsection{\texorpdfstring{SUPPORTED\_PROPERTIES}{SUPPORTED\_PROPERTIES}}
+{\footnotesize\ttfamily constexpr std\+::array tgt\+::\+Sampler\+::\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+P\+R\+O\+P\+E\+R\+T\+I\+ES = \{\mbox{\hyperlink{namespacetgt_1_1_sampler_a4b7c64e6d60051cb465a1b2e6814aac1}{U\+M\+O\+D\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY}}, \mbox{\hyperlink{namespacetgt_1_1_sampler_a6b5f81433a33c8e31d82c3e5a05cede4}{V\+M\+O\+D\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY}}, \mbox{\hyperlink{namespacetgt_1_1_sampler_a7350cea9595180b14ba7abcab6167fdd}{M\+A\+G\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+\+P\+R\+O\+P\+E\+R\+TY}}, \mbox{\hyperlink{namespacetgt_1_1_sampler_a4d8bcd43868c8c4489cfbef56f93efa2}{M\+I\+N\+\_\+\+F\+I\+L\+T\+E\+R\+\_\+\+P\+R\+O\+P\+E\+R\+TY}}\}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_sampler_a4b7c64e6d60051cb465a1b2e6814aac1}\label{namespacetgt_1_1_sampler_a4b7c64e6d60051cb465a1b2e6814aac1}} 
+\index{tgt::Sampler@{tgt::Sampler}!UMODE\_PROPERTY@{UMODE\_PROPERTY}}
+\index{UMODE\_PROPERTY@{UMODE\_PROPERTY}!tgt::Sampler@{tgt::Sampler}}
+\doxysubsubsection{\texorpdfstring{UMODE\_PROPERTY}{UMODE\_PROPERTY}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Sampler\+::\+U\+M\+O\+D\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY = \char`\"{}u\+\_\+address\+\_\+mode\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\mbox{\Hypertarget{namespacetgt_1_1_sampler_a6b5f81433a33c8e31d82c3e5a05cede4}\label{namespacetgt_1_1_sampler_a6b5f81433a33c8e31d82c3e5a05cede4}} 
+\index{tgt::Sampler@{tgt::Sampler}!VMODE\_PROPERTY@{VMODE\_PROPERTY}}
+\index{VMODE\_PROPERTY@{VMODE\_PROPERTY}!tgt::Sampler@{tgt::Sampler}}
+\doxysubsubsection{\texorpdfstring{VMODE\_PROPERTY}{VMODE\_PROPERTY}}
+{\footnotesize\ttfamily constexpr auto tgt\+::\+Sampler\+::\+V\+M\+O\+D\+E\+\_\+\+P\+R\+O\+P\+E\+R\+TY = \char`\"{}v\+\_\+address\+\_\+mode\char`\"{}\hspace{0.3cm}{\ttfamily [constexpr]}}
+

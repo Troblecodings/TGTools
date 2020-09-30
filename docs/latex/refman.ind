@@ -1,0 +1,622 @@
+\begin{theindex}
+
+  \item {\_dataHeader}
+    \subitem {tgt::Actor}, \hyperpage{8}
+  \item {\_isAnyOf}
+    \subitem {tgt::Util}, \hyperpage{32}
+  \item {\_validJson}
+    \subitem {tgt::Util}, \hyperpage{32}
+  \item {\_validPath}
+    \subitem {tgt::Util}, \hyperpage{32}
+  \item {\_validPathString}
+    \subitem {tgt::Util}, \hyperpage{32}
+  \item {\_validString}
+    \subitem {tgt::Util}, \hyperpage{32}
+  \item {$\sim$scope\_exit}
+    \subitem {tgt::Util::scope\_exit$<$ T, typename $>$}, 
+		\hyperpage{38}
+
+  \indexspace
+
+  \item {ACTOR\_INDEX\_EXTENSION}
+    \subitem {tgt::Actor}, \hyperpage{9}
+  \item {ACTOR\_PATH}
+    \subitem {tgt::Actor}, \hyperpage{9}
+  \item {ACTOR\_PROPERTY}
+    \subitem {tgt::Map}, \hyperpage{15}
+  \item {ACTOR\_SUBFOLDER}
+    \subitem {tgt::Actor}, \hyperpage{9}
+  \item {ACTOR\_VERTEX\_EXTENSION}
+    \subitem {tgt::Actor}, \hyperpage{10}
+  \item {actorToMapFile}
+    \subitem {tgt::Map}, \hyperpage{13}
+  \item {add}
+    \subitem {tgt::Actor}, \hyperpage{8}
+    \subitem {tgt::Font}, \hyperpage{11}
+    \subitem {tgt::Map}, \hyperpage{13}
+    \subitem {tgt::Material}, \hyperpage{16}
+    \subitem {tgt::Sampler}, \hyperpage{21}
+    \subitem {tgt::Shader}, \hyperpage{24}
+    \subitem {tgt::Texture}, \hyperpage{27}
+  \item {addShader}
+    \subitem {tgt::Pipe}, \hyperpage{19}
+  \item {ALREADY\_EXISTS}
+    \subitem {Result.hpp}, \hyperpage{52}
+  \item {ANIMATION\_PROPERTY}
+    \subitem {tgt::Actor}, \hyperpage{10}
+  \item {animationIndex}
+    \subitem {tgt::Actor::ActorData}, \hyperpage{35}
+
+  \indexspace
+
+  \item {BACK\_BIT}
+    \subitem {tgt::Pipe}, \hyperpage{19}
+  \item {BAD\_ARGUMENTS}
+    \subitem {Result.hpp}, \hyperpage{52}
+  \item {BAD\_STRING}
+    \subitem {Result.hpp}, \hyperpage{52}
+
+  \indexspace
+
+  \item {change}
+    \subitem {tgt::Actor}, \hyperpage{8}
+    \subitem {tgt::Sampler}, \hyperpage{21}
+    \subitem {tgt::Util}, \hyperpage{29}
+  \item {CHECK\_RESULT}
+    \subitem {Map.cpp}, \hyperpage{43}
+  \item {checkDependent}
+    \subitem {tgt::Map}, \hyperpage{13}
+  \item {CLAMP\_TO\_BORDER}
+    \subitem {tgt::Sampler}, \hyperpage{20}
+  \item {CLAMP\_TO\_EDGE}
+    \subitem {tgt::Sampler}, \hyperpage{20}
+  \item {collect}
+    \subitem {tgt::Util}, \hyperpage{30}
+  \item {COLOR\_PROPERTY}
+    \subitem {tgt::Material}, \hyperpage{17}
+  \item {count}
+    \subitem {tgt::Font::TGFHeader}, \hyperpage{38}
+  \item {create}
+    \subitem {tgt::Map}, \hyperpage{14}
+  \item {CullMode}
+    \subitem {tgt::Pipe}, \hyperpage{19}
+
+  \indexspace
+
+  \item {DEFAULT\_COLOR}
+    \subitem {tgt::Material}, \hyperpage{17}
+  \item {DEPENDENT}
+    \subitem {Result.hpp}, \hyperpage{52}
+  \item {DOES\_NOT\_EXIST}
+    \subitem {Result.hpp}, \hyperpage{52}
+  \item {DYNAMIK\_TRANSFORM\_PROPERTY}
+    \subitem {tgt::Actor}, \hyperpage{10}
+
+  \indexspace
+
+  \item {ENUM\_CHECKS}
+    \subitem {Util.hpp}, \hyperpage{56}
+
+  \indexspace
+
+  \item {FILL}
+    \subitem {tgt::Pipe}, \hyperpage{19}
+  \item {find}
+    \subitem {tgt::Util}, \hyperpage{30}
+  \item {Font.cpp}
+    \subitem {STB\_IMAGE\_WRITE\_IMPLEMENTATION}, \hyperpage{42}
+    \subitem {STB\_RECT\_PACK\_IMPLEMENTATION}, \hyperpage{42}
+    \subitem {STB\_TRUETYPE\_IMPLEMENTATION}, \hyperpage{42}
+  \item {FONT\_EXTENSION}
+    \subitem {tgt::Font}, \hyperpage{12}
+  \item {FONT\_PATH}
+    \subitem {tgt::Font}, \hyperpage{12}
+  \item {FONT\_PROPERTY}
+    \subitem {tgt::Map}, \hyperpage{15}
+  \item {FONT\_SUBFOLDER}
+    \subitem {tgt::Font}, \hyperpage{12}
+  \item {FRONT\_AND\_BACK}
+    \subitem {tgt::Pipe}, \hyperpage{19}
+  \item {FRONT\_BIT}
+    \subitem {tgt::Pipe}, \hyperpage{19}
+
+  \indexspace
+
+  \item {GENERAL}
+    \subitem {Result.hpp}, \hyperpage{52}
+  \item {generatefontbitmap}
+    \subitem {tgt::Font}, \hyperpage{11}
+  \item {getData}
+    \subitem {tgt::Actor}, \hyperpage{8}
+  \item {getName}
+    \subitem {Model.cpp}, \hyperpage{45}
+  \item {getResource}
+    \subitem {tgt::Util}, \hyperpage{30}
+
+  \indexspace
+
+  \item {ID\_OF}
+    \subitem {Util.hpp}, \hyperpage{56}
+  \item {ID\_OF\_P}
+    \subitem {Util.hpp}, \hyperpage{57}
+  \item {INDEX\_COUNT}
+    \subitem {tgt::Actor}, \hyperpage{10}
+  \item {indexDrawCount}
+    \subitem {tgt::Actor::ActorData}, \hyperpage{35}
+  \item {instanceOffset}
+    \subitem {tgt::Actor::ActorData}, \hyperpage{35}
+  \item {instanceSize}
+    \subitem {tgt::Actor::ActorData}, \hyperpage{36}
+
+  \indexspace
+
+  \item {JSON}
+    \subitem {tgt::Util}, \hyperpage{32}
+  \item {JSON\_FILTER}
+    \subitem {tgt::Util}, \hyperpage{33}
+  \item {JSON\_LOAD}
+    \subitem {Util.hpp}, \hyperpage{57}
+  \item {JSON\_UPDATE}
+    \subitem {Util.hpp}, \hyperpage{57}
+  \item {JSON\_WRITE}
+    \subitem {Util.hpp}, \hyperpage{57}
+  \item {jsonUpdatet}
+    \subitem {tgt::Util}, \hyperpage{30}
+
+  \indexspace
+
+  \item {layer}
+    \subitem {tgt::Actor::ActorData}, \hyperpage{36}
+  \item {LAYER\_PROPERTY}
+    \subitem {tgt::Actor}, \hyperpage{10}
+  \item {LINE}
+    \subitem {tgt::Pipe}, \hyperpage{19}
+  \item {LINEAR}
+    \subitem {tgt::Sampler}, \hyperpage{21}
+  \item {list}
+    \subitem {tgt::Actor}, \hyperpage{9}
+    \subitem {tgt::Font}, \hyperpage{12}
+    \subitem {tgt::Map}, \hyperpage{14}
+    \subitem {tgt::Material}, \hyperpage{16}
+    \subitem {tgt::Sampler}, \hyperpage{21}
+    \subitem {tgt::Shader}, \hyperpage{24}
+    \subitem {tgt::Texture}, \hyperpage{28}
+  \item {loadGltf}
+    \subitem {tgt::Model}, \hyperpage{18}
+
+  \indexspace
+
+  \item {MAG\_FILTER\_PROPERTY}
+    \subitem {tgt::Sampler}, \hyperpage{22}
+  \item {magfilter}
+    \subitem {tgt::Sampler::SamplerInfo}, \hyperpage{37}
+  \item {make}
+    \subitem {tgt::Map}, \hyperpage{14}
+  \item {Map.cpp}
+    \subitem {CHECK\_RESULT}, \hyperpage{43}
+    \subitem {WRITE\_CHECK}, \hyperpage{43}
+    \subitem {WRITE\_CINT}, \hyperpage{44}
+    \subitem {WRITE\_INT}, \hyperpage{44}
+    \subitem {WRITE\_SIZE}, \hyperpage{44}
+  \item {MAP\_EXTENSION}
+    \subitem {tgt::Map}, \hyperpage{15}
+  \item {MAP\_PATH}
+    \subitem {tgt::Map}, \hyperpage{15}
+  \item {MAP\_SUBFOLDER}
+    \subitem {tgt::Map}, \hyperpage{15}
+  \item {material}
+    \subitem {tgt::Actor::ActorData}, \hyperpage{36}
+  \item {MATERIAL\_PATH}
+    \subitem {tgt::Material}, \hyperpage{17}
+  \item {MATERIAL\_PROPERTY}
+    \subitem {tgt::Actor}, \hyperpage{10}
+    \subitem {tgt::Map}, \hyperpage{15}
+  \item {MATERIAL\_SUBFOLDER}
+    \subitem {tgt::Material}, \hyperpage{17}
+  \item {materialToMapFile}
+    \subitem {tgt::Map}, \hyperpage{14}
+  \item {matrix}
+    \subitem {tgt::Actor::ActorData}, \hyperpage{36}
+  \item {MATRIX\_PROPERTY}
+    \subitem {tgt::Actor}, \hyperpage{10}
+  \item {MIN\_FILTER\_PROPERTY}
+    \subitem {tgt::Sampler}, \hyperpage{22}
+  \item {minfilter}
+    \subitem {tgt::Sampler::SamplerInfo}, \hyperpage{37}
+  \item {MIRROR\_CLAMP\_TO\_EDGE}
+    \subitem {tgt::Sampler}, \hyperpage{20}
+  \item {MIRRORED\_REPEAT}
+    \subitem {tgt::Sampler}, \hyperpage{20}
+  \item {Model.cpp}
+    \subitem {getName}, \hyperpage{45}
+    \subitem {STB\_IMAGE\_IMPLEMENTATION}, \hyperpage{45}
+    \subitem {TINYGLTF\_IMPLEMENTATION}, \hyperpage{45}
+    \subitem {TINYGLTF\_NO\_INCLUDE\_JSON}, \hyperpage{46}
+    \subitem {TINYGLTF\_USE\_CPP14}, \hyperpage{46}
+
+  \indexspace
+
+  \item {NEAREST}
+    \subitem {tgt::Sampler}, \hyperpage{21}
+  \item {NONE}
+    \subitem {tgt::Pipe}, \hyperpage{19}
+
+  \indexspace
+
+  \item {POINT}
+    \subitem {tgt::Pipe}, \hyperpage{19}
+  \item {PolygonMode}
+    \subitem {tgt::Pipe}, \hyperpage{19}
+  \item {POS}
+    \subitem {tgt::Shader::ShaderInput}, \hyperpage{26}
+  \item {POS\_NOR}
+    \subitem {tgt::Shader::ShaderInput}, \hyperpage{26}
+  \item {POS\_NOR\_TEX}
+    \subitem {tgt::Shader::ShaderInput}, \hyperpage{27}
+  \item {POS\_TEX}
+    \subitem {tgt::Shader::ShaderInput}, \hyperpage{27}
+  \item {POSITION}
+    \subitem {tgt::Shader::ShaderInput}, \hyperpage{26}
+  \item {POSITION\_NORMAL}
+    \subitem {tgt::Shader::ShaderInput}, \hyperpage{26}
+  \item {POSITION\_NORMAL\_UV}
+    \subitem {tgt::Shader::ShaderInput}, \hyperpage{26}
+  \item {POSITION\_UV}
+    \subitem {tgt::Shader::ShaderInput}, \hyperpage{26}
+
+  \indexspace
+
+  \item {readFile}
+    \subitem {tgt::Util}, \hyperpage{31}
+  \item {recursive}
+    \subitem {tgt::Model}, \hyperpage{18}
+  \item {remove}
+    \subitem {tgt::Actor}, \hyperpage{9}
+    \subitem {tgt::Font}, \hyperpage{12}
+    \subitem {tgt::Map}, \hyperpage{14}
+    \subitem {tgt::Material}, \hyperpage{16}
+    \subitem {tgt::Sampler}, \hyperpage{21}
+    \subitem {tgt::Shader}, \hyperpage{24}
+    \subitem {tgt::Texture}, \hyperpage{28}
+    \subitem {tgt::Util}, \hyperpage{31}
+  \item {REMOVE\_IF\_FOUND}
+    \subitem {Util.hpp}, \hyperpage{57}
+  \item {REPEAT}
+    \subitem {tgt::Sampler}, \hyperpage{20}
+  \item {RESOURCE\_LOCATION}
+    \subitem {tgt::Util}, \hyperpage{33}
+  \item {Result}
+    \subitem {Result.hpp}, \hyperpage{52}
+  \item {Result.hpp}
+    \subitem {ALREADY\_EXISTS}, \hyperpage{52}
+    \subitem {BAD\_ARGUMENTS}, \hyperpage{52}
+    \subitem {BAD\_STRING}, \hyperpage{52}
+    \subitem {DEPENDENT}, \hyperpage{52}
+    \subitem {DOES\_NOT\_EXIST}, \hyperpage{52}
+    \subitem {GENERAL}, \hyperpage{52}
+    \subitem {Result}, \hyperpage{52}
+    \subitem {SUCCESS}, \hyperpage{52}
+    \subitem {UNSUPPORTED}, \hyperpage{52}
+
+  \indexspace
+
+  \item {SAMPLER\_ADDRESS\_MODE\_MAX}
+    \subitem {tgt::Sampler}, \hyperpage{22}
+  \item {SAMPLER\_ADDRESS\_MODE\_MIN}
+    \subitem {tgt::Sampler}, \hyperpage{22}
+  \item {SAMPLER\_FILTER\_MAX}
+    \subitem {tgt::Sampler}, \hyperpage{22}
+  \item {SAMPLER\_FILTER\_MIN}
+    \subitem {tgt::Sampler}, \hyperpage{23}
+  \item {SAMPLER\_PATH}
+    \subitem {tgt::Sampler}, \hyperpage{23}
+  \item {SAMPLER\_SUBFOLDER}
+    \subitem {tgt::Sampler}, \hyperpage{23}
+  \item {SamplerAddressMode}
+    \subitem {tgt::Sampler}, \hyperpage{20}
+  \item {SamplerFilter}
+    \subitem {tgt::Sampler}, \hyperpage{21}
+  \item {scope\_exit}
+    \subitem {tgt::Util::scope\_exit$<$ T, typename $>$}, 
+		\hyperpage{38}
+  \item {setData}
+    \subitem {tgt::Actor}, \hyperpage{9}
+  \item {SHADER\_EXTENSION}
+    \subitem {tgt::Shader}, \hyperpage{25}
+  \item {SHADER\_PATH}
+    \subitem {tgt::Shader}, \hyperpage{25}
+  \item {SHADER\_SUBFOLDER}
+    \subitem {tgt::Shader}, \hyperpage{25}
+  \item {SHADER\_TYPE\_PROPERTY}
+    \subitem {tgt::Shader}, \hyperpage{25}
+  \item {ShaderInputStride}
+    \subitem {tgt::Shader::ShaderInput}, \hyperpage{26}
+  \item {ShaderInputType}
+    \subitem {tgt::Shader::ShaderInput}, \hyperpage{26}
+  \item {ShaderType}
+    \subitem {tgt::Shader}, \hyperpage{24}
+  \item {startindex}
+    \subitem {tgt::Font::TGFHeader}, \hyperpage{38}
+  \item {STB\_IMAGE\_IMPLEMENTATION}
+    \subitem {Model.cpp}, \hyperpage{45}
+  \item {STB\_IMAGE\_WRITE\_IMPLEMENTATION}
+    \subitem {Font.cpp}, \hyperpage{42}
+  \item {STB\_RECT\_PACK\_IMPLEMENTATION}
+    \subitem {Font.cpp}, \hyperpage{42}
+  \item {STB\_TRUETYPE\_IMPLEMENTATION}
+    \subitem {Font.cpp}, \hyperpage{42}
+  \item {STRING\_CHECKS}
+    \subitem {Util.hpp}, \hyperpage{58}
+  \item {STRING\_CHECKS\_C}
+    \subitem {Util.hpp}, \hyperpage{58}
+  \item {STRING\_SYNTAX\_CHECK}
+    \subitem {Util.hpp}, \hyperpage{58}
+  \item {SUCCESS}
+    \subitem {Result.hpp}, \hyperpage{52}
+  \item {SUPPORTED\_PROPERTIES}
+    \subitem {tgt::Actor}, \hyperpage{10}
+    \subitem {tgt::Material}, \hyperpage{17}
+    \subitem {tgt::Sampler}, \hyperpage{23}
+    \subitem {tgt::Shader}, \hyperpage{25}
+
+  \indexspace
+
+  \item {TEXTURE\_EXTENSION}
+    \subitem {tgt::Texture}, \hyperpage{28}
+  \item {TEXTURE\_PATH}
+    \subitem {tgt::Texture}, \hyperpage{28}
+  \item {TEXTURE\_PROPERTY}
+    \subitem {tgt::Map}, \hyperpage{15}
+    \subitem {tgt::Material}, \hyperpage{17}
+  \item {TEXTURE\_SUBFOLDER}
+    \subitem {tgt::Texture}, \hyperpage{28}
+  \item {textureindex}
+    \subitem {tgt::Font::TGFHeader}, \hyperpage{39}
+  \item {textureToMapFile}
+    \subitem {tgt::Map}, \hyperpage{14}
+  \item {TGF\_HEADER\_VERSION}
+    \subitem {tgt::Font}, \hyperpage{12}
+  \item {tgt}, \hyperpage{7}
+  \item {tgt::Actor}, \hyperpage{7}
+    \subitem {\_dataHeader}, \hyperpage{8}
+    \subitem {ACTOR\_INDEX\_EXTENSION}, \hyperpage{9}
+    \subitem {ACTOR\_PATH}, \hyperpage{9}
+    \subitem {ACTOR\_SUBFOLDER}, \hyperpage{9}
+    \subitem {ACTOR\_VERTEX\_EXTENSION}, \hyperpage{10}
+    \subitem {add}, \hyperpage{8}
+    \subitem {ANIMATION\_PROPERTY}, \hyperpage{10}
+    \subitem {change}, \hyperpage{8}
+    \subitem {DYNAMIK\_TRANSFORM\_PROPERTY}, \hyperpage{10}
+    \subitem {getData}, \hyperpage{8}
+    \subitem {INDEX\_COUNT}, \hyperpage{10}
+    \subitem {LAYER\_PROPERTY}, \hyperpage{10}
+    \subitem {list}, \hyperpage{9}
+    \subitem {MATERIAL\_PROPERTY}, \hyperpage{10}
+    \subitem {MATRIX\_PROPERTY}, \hyperpage{10}
+    \subitem {remove}, \hyperpage{9}
+    \subitem {setData}, \hyperpage{9}
+    \subitem {SUPPORTED\_PROPERTIES}, \hyperpage{10}
+    \subitem {VERTEX\_COUNT}, \hyperpage{11}
+  \item {tgt::Actor::ActorData}, \hyperpage{35}
+    \subitem {animationIndex}, \hyperpage{35}
+    \subitem {indexDrawCount}, \hyperpage{35}
+    \subitem {instanceOffset}, \hyperpage{35}
+    \subitem {instanceSize}, \hyperpage{36}
+    \subitem {layer}, \hyperpage{36}
+    \subitem {material}, \hyperpage{36}
+    \subitem {matrix}, \hyperpage{36}
+    \subitem {transformIndex}, \hyperpage{36}
+    \subitem {vertexCount}, \hyperpage{36}
+  \item {tgt::Font}, \hyperpage{11}
+    \subitem {add}, \hyperpage{11}
+    \subitem {FONT\_EXTENSION}, \hyperpage{12}
+    \subitem {FONT\_PATH}, \hyperpage{12}
+    \subitem {FONT\_SUBFOLDER}, \hyperpage{12}
+    \subitem {generatefontbitmap}, \hyperpage{11}
+    \subitem {list}, \hyperpage{12}
+    \subitem {remove}, \hyperpage{12}
+    \subitem {TGF\_HEADER\_VERSION}, \hyperpage{12}
+  \item {tgt::Font::TGFHeader}, \hyperpage{38}
+    \subitem {count}, \hyperpage{38}
+    \subitem {startindex}, \hyperpage{38}
+    \subitem {textureindex}, \hyperpage{39}
+    \subitem {version}, \hyperpage{39}
+  \item {tgt::Map}, \hyperpage{13}
+    \subitem {ACTOR\_PROPERTY}, \hyperpage{15}
+    \subitem {actorToMapFile}, \hyperpage{13}
+    \subitem {add}, \hyperpage{13}
+    \subitem {checkDependent}, \hyperpage{13}
+    \subitem {create}, \hyperpage{14}
+    \subitem {FONT\_PROPERTY}, \hyperpage{15}
+    \subitem {list}, \hyperpage{14}
+    \subitem {make}, \hyperpage{14}
+    \subitem {MAP\_EXTENSION}, \hyperpage{15}
+    \subitem {MAP\_PATH}, \hyperpage{15}
+    \subitem {MAP\_SUBFOLDER}, \hyperpage{15}
+    \subitem {MATERIAL\_PROPERTY}, \hyperpage{15}
+    \subitem {materialToMapFile}, \hyperpage{14}
+    \subitem {remove}, \hyperpage{14}
+    \subitem {TEXTURE\_PROPERTY}, \hyperpage{15}
+    \subitem {textureToMapFile}, \hyperpage{14}
+  \item {tgt::Material}, \hyperpage{16}
+    \subitem {add}, \hyperpage{16}
+    \subitem {COLOR\_PROPERTY}, \hyperpage{17}
+    \subitem {DEFAULT\_COLOR}, \hyperpage{17}
+    \subitem {list}, \hyperpage{16}
+    \subitem {MATERIAL\_PATH}, \hyperpage{17}
+    \subitem {MATERIAL\_SUBFOLDER}, \hyperpage{17}
+    \subitem {remove}, \hyperpage{16}
+    \subitem {SUPPORTED\_PROPERTIES}, \hyperpage{17}
+    \subitem {TEXTURE\_PROPERTY}, \hyperpage{17}
+  \item {tgt::Model}, \hyperpage{17}
+    \subitem {loadGltf}, \hyperpage{18}
+    \subitem {recursive}, \hyperpage{18}
+  \item {tgt::Pipe}, \hyperpage{18}
+    \subitem {addShader}, \hyperpage{19}
+    \subitem {BACK\_BIT}, \hyperpage{19}
+    \subitem {CullMode}, \hyperpage{19}
+    \subitem {FILL}, \hyperpage{19}
+    \subitem {FRONT\_AND\_BACK}, \hyperpage{19}
+    \subitem {FRONT\_BIT}, \hyperpage{19}
+    \subitem {LINE}, \hyperpage{19}
+    \subitem {NONE}, \hyperpage{19}
+    \subitem {POINT}, \hyperpage{19}
+    \subitem {PolygonMode}, \hyperpage{19}
+  \item {tgt::Sampler}, \hyperpage{19}
+    \subitem {add}, \hyperpage{21}
+    \subitem {change}, \hyperpage{21}
+    \subitem {CLAMP\_TO\_BORDER}, \hyperpage{20}
+    \subitem {CLAMP\_TO\_EDGE}, \hyperpage{20}
+    \subitem {LINEAR}, \hyperpage{21}
+    \subitem {list}, \hyperpage{21}
+    \subitem {MAG\_FILTER\_PROPERTY}, \hyperpage{22}
+    \subitem {MIN\_FILTER\_PROPERTY}, \hyperpage{22}
+    \subitem {MIRROR\_CLAMP\_TO\_EDGE}, \hyperpage{20}
+    \subitem {MIRRORED\_REPEAT}, \hyperpage{20}
+    \subitem {NEAREST}, \hyperpage{21}
+    \subitem {remove}, \hyperpage{21}
+    \subitem {REPEAT}, \hyperpage{20}
+    \subitem {SAMPLER\_ADDRESS\_MODE\_MAX}, \hyperpage{22}
+    \subitem {SAMPLER\_ADDRESS\_MODE\_MIN}, \hyperpage{22}
+    \subitem {SAMPLER\_FILTER\_MAX}, \hyperpage{22}
+    \subitem {SAMPLER\_FILTER\_MIN}, \hyperpage{23}
+    \subitem {SAMPLER\_PATH}, \hyperpage{23}
+    \subitem {SAMPLER\_SUBFOLDER}, \hyperpage{23}
+    \subitem {SamplerAddressMode}, \hyperpage{20}
+    \subitem {SamplerFilter}, \hyperpage{21}
+    \subitem {SUPPORTED\_PROPERTIES}, \hyperpage{23}
+    \subitem {UMODE\_PROPERTY}, \hyperpage{23}
+    \subitem {VMODE\_PROPERTY}, \hyperpage{23}
+    \subitem {write}, \hyperpage{22}
+  \item {tgt::Sampler::SamplerInfo}, \hyperpage{37}
+    \subitem {magfilter}, \hyperpage{37}
+    \subitem {minfilter}, \hyperpage{37}
+    \subitem {umode}, \hyperpage{37}
+    \subitem {vmode}, \hyperpage{37}
+  \item {tgt::Shader}, \hyperpage{23}
+    \subitem {add}, \hyperpage{24}
+    \subitem {list}, \hyperpage{24}
+    \subitem {remove}, \hyperpage{24}
+    \subitem {SHADER\_EXTENSION}, \hyperpage{25}
+    \subitem {SHADER\_PATH}, \hyperpage{25}
+    \subitem {SHADER\_SUBFOLDER}, \hyperpage{25}
+    \subitem {SHADER\_TYPE\_PROPERTY}, \hyperpage{25}
+    \subitem {ShaderType}, \hyperpage{24}
+    \subitem {SUPPORTED\_PROPERTIES}, \hyperpage{25}
+  \item {tgt::Shader::ShaderInput}, \hyperpage{25}
+    \subitem {POS}, \hyperpage{26}
+    \subitem {POS\_NOR}, \hyperpage{26}
+    \subitem {POS\_NOR\_TEX}, \hyperpage{27}
+    \subitem {POS\_TEX}, \hyperpage{27}
+    \subitem {POSITION}, \hyperpage{26}
+    \subitem {POSITION\_NORMAL}, \hyperpage{26}
+    \subitem {POSITION\_NORMAL\_UV}, \hyperpage{26}
+    \subitem {POSITION\_UV}, \hyperpage{26}
+    \subitem {ShaderInputStride}, \hyperpage{26}
+    \subitem {ShaderInputType}, \hyperpage{26}
+  \item {tgt::Texture}, \hyperpage{27}
+    \subitem {add}, \hyperpage{27}
+    \subitem {list}, \hyperpage{28}
+    \subitem {remove}, \hyperpage{28}
+    \subitem {TEXTURE\_EXTENSION}, \hyperpage{28}
+    \subitem {TEXTURE\_PATH}, \hyperpage{28}
+    \subitem {TEXTURE\_SUBFOLDER}, \hyperpage{28}
+  \item {tgt::Util}, \hyperpage{29}
+    \subitem {\_isAnyOf}, \hyperpage{32}
+    \subitem {\_validJson}, \hyperpage{32}
+    \subitem {\_validPath}, \hyperpage{32}
+    \subitem {\_validPathString}, \hyperpage{32}
+    \subitem {\_validString}, \hyperpage{32}
+    \subitem {change}, \hyperpage{29}
+    \subitem {collect}, \hyperpage{30}
+    \subitem {find}, \hyperpage{30}
+    \subitem {getResource}, \hyperpage{30}
+    \subitem {JSON}, \hyperpage{32}
+    \subitem {JSON\_FILTER}, \hyperpage{33}
+    \subitem {jsonUpdatet}, \hyperpage{30}
+    \subitem {readFile}, \hyperpage{31}
+    \subitem {remove}, \hyperpage{31}
+    \subitem {RESOURCE\_LOCATION}, \hyperpage{33}
+    \subitem {writeToFile}, \hyperpage{31}
+  \item {tgt::Util::scope\_exit$<$ T, typename $>$}, \hyperpage{37}
+    \subitem {$\sim$scope\_exit}, \hyperpage{38}
+    \subitem {scope\_exit}, \hyperpage{38}
+  \item {TGTools/TGTools/CMakeLists.txt}, \hyperpage{41}
+  \item {TGTools/TGTools/private/Actor.cpp}, \hyperpage{41}
+  \item {TGTools/TGTools/private/Font.cpp}, \hyperpage{41}
+  \item {TGTools/TGTools/private/Map.cpp}, \hyperpage{43}
+  \item {TGTools/TGTools/private/Material.cpp}, \hyperpage{44}
+  \item {TGTools/TGTools/private/Model.cpp}, \hyperpage{45}
+  \item {TGTools/TGTools/private/Pipe.cpp}, \hyperpage{46}
+  \item {TGTools/TGTools/private/Sampler.cpp}, \hyperpage{46}
+  \item {TGTools/TGTools/private/Shader.cpp}, \hyperpage{47}
+  \item {TGTools/TGTools/private/Texture.cpp}, \hyperpage{47}
+  \item {TGTools/TGTools/public/Actor.hpp}, \hyperpage{48}
+  \item {TGTools/TGTools/public/Font.hpp}, \hyperpage{49}
+  \item {TGTools/TGTools/public/Map.hpp}, \hyperpage{49}
+  \item {TGTools/TGTools/public/Material.hpp}, \hyperpage{50}
+  \item {TGTools/TGTools/public/Model.hpp}, \hyperpage{50}
+  \item {TGTools/TGTools/public/Pipe.hpp}, \hyperpage{51}
+  \item {TGTools/TGTools/public/Result.hpp}, \hyperpage{52}
+  \item {TGTools/TGTools/public/Sampler.hpp}, \hyperpage{52}
+  \item {TGTools/TGTools/public/Shader.hpp}, \hyperpage{53}
+  \item {TGTools/TGTools/public/Texture.hpp}, \hyperpage{54}
+  \item {TGTools/TGTools/public/Util.hpp}, \hyperpage{55}
+  \item {TINYGLTF\_IMPLEMENTATION}
+    \subitem {Model.cpp}, \hyperpage{45}
+  \item {TINYGLTF\_NO\_INCLUDE\_JSON}
+    \subitem {Model.cpp}, \hyperpage{46}
+  \item {TINYGLTF\_USE\_CPP14}
+    \subitem {Model.cpp}, \hyperpage{46}
+  \item {transformIndex}
+    \subitem {tgt::Actor::ActorData}, \hyperpage{36}
+
+  \indexspace
+
+  \item {umode}
+    \subitem {tgt::Sampler::SamplerInfo}, \hyperpage{37}
+  \item {UMODE\_PROPERTY}
+    \subitem {tgt::Sampler}, \hyperpage{23}
+  \item {UNSUPPORTED}
+    \subitem {Result.hpp}, \hyperpage{52}
+  \item {Util.hpp}
+    \subitem {ENUM\_CHECKS}, \hyperpage{56}
+    \subitem {ID\_OF}, \hyperpage{56}
+    \subitem {ID\_OF\_P}, \hyperpage{57}
+    \subitem {JSON\_LOAD}, \hyperpage{57}
+    \subitem {JSON\_UPDATE}, \hyperpage{57}
+    \subitem {JSON\_WRITE}, \hyperpage{57}
+    \subitem {REMOVE\_IF\_FOUND}, \hyperpage{57}
+    \subitem {STRING\_CHECKS}, \hyperpage{58}
+    \subitem {STRING\_CHECKS\_C}, \hyperpage{58}
+    \subitem {STRING\_SYNTAX\_CHECK}, \hyperpage{58}
+
+  \indexspace
+
+  \item {version}
+    \subitem {tgt::Font::TGFHeader}, \hyperpage{39}
+  \item {VERTEX\_COUNT}
+    \subitem {tgt::Actor}, \hyperpage{11}
+  \item {vertexCount}
+    \subitem {tgt::Actor::ActorData}, \hyperpage{36}
+  \item {vmode}
+    \subitem {tgt::Sampler::SamplerInfo}, \hyperpage{37}
+  \item {VMODE\_PROPERTY}
+    \subitem {tgt::Sampler}, \hyperpage{23}
+
+  \indexspace
+
+  \item {write}
+    \subitem {tgt::Sampler}, \hyperpage{22}
+  \item {WRITE\_CHECK}
+    \subitem {Map.cpp}, \hyperpage{43}
+  \item {WRITE\_CINT}
+    \subitem {Map.cpp}, \hyperpage{44}
+  \item {WRITE\_INT}
+    \subitem {Map.cpp}, \hyperpage{44}
+  \item {WRITE\_SIZE}
+    \subitem {Map.cpp}, \hyperpage{44}
+  \item {writeToFile}
+    \subitem {tgt::Util}, \hyperpage{31}
+
+\end{theindex}

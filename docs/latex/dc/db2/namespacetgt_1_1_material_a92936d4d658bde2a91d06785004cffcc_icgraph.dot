@@ -1,0 +1,10 @@
+digraph "tgt::Material::add"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="tgt::Material::add",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="tgt::Model::loadGltf",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d14/namespacetgt_1_1_model.html#a67da2ba50690df5bc931b035c19b03fb",tooltip=" "];
+}

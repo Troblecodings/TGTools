@@ -1,0 +1,18 @@
+digraph "tgt::Model::loadGltf"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="tgt::Model::loadGltf",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="tgt::Material::add",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/db2/namespacetgt_1_1_material.html#a92936d4d658bde2a91d06785004cffcc",tooltip=" "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="tgt::Util::getResource",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/d64/namespacetgt_1_1_util.html#a4e9af614fd94a21454841dedd4e88257",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="tgt::Model::recursive",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d14/namespacetgt_1_1_model.html#a003ae21c2972fdb43559d3c1dece6e47",tooltip=" "];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="tgt::Actor::add",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/dd7/namespacetgt_1_1_actor.html#a816b60d2cc57a64b05c81541779c3b35",tooltip=" "];
+  Node5 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

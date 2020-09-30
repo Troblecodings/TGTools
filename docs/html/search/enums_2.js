@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['input_5fformat_5ft_1356',['input_format_t',['../namespacenlohmann_1_1detail.html#aa554fc6a11519e4f347deb25a9f0db40',1,'nlohmann::detail']]]
+  ['result_354',['Result',['../dc/d80/_result_8hpp.html#a28287671eaf7406afd604bd055ba4066',1,'Result.hpp']]]
 ];

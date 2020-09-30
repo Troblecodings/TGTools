@@ -1,0 +1,69 @@
+\hypertarget{_model_8cpp}{}\doxysection{T\+G\+Tools/\+T\+G\+Tools/private/\+Model.cpp File Reference}
+\label{_model_8cpp}\index{TGTools/TGTools/private/Model.cpp@{TGTools/TGTools/private/Model.cpp}}
+{\ttfamily \#include \char`\"{}../public/\+Model.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../public/\+Texture.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../public/\+Material.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../public/\+Actor.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../../tinygltf/tiny\+\_\+gltf.\+h\char`\"{}}\newline
+Include dependency graph for Model.\+cpp\+:
+% FIG 0
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacetgt}{tgt}}
+\item 
+ \mbox{\hyperlink{namespacetgt_1_1_model}{tgt\+::\+Model}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_model_8cpp_ac203b64c0edef3702d707aed38ab024a}{T\+I\+N\+Y\+G\+L\+T\+F\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}}
+\item 
+\#define \mbox{\hyperlink{_model_8cpp_a6fbf05b709688c8fdb72302527935b70}{T\+I\+N\+Y\+G\+L\+T\+F\+\_\+\+U\+S\+E\+\_\+\+C\+P\+P14}}
+\item 
+\#define \mbox{\hyperlink{_model_8cpp_a18372412ad2fc3ce1e3240b3cf0efe78}{S\+T\+B\+\_\+\+I\+M\+A\+G\+E\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}}
+\item 
+\#define \mbox{\hyperlink{_model_8cpp_aeffb0a6932dd89c58b59f72a3ee110c2}{T\+I\+N\+Y\+G\+L\+T\+F\+\_\+\+N\+O\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+J\+S\+ON}}
+\item 
+\#define \mbox{\hyperlink{_model_8cpp_aed5580ae14d8943b74e024bbe45a3ac8}{get\+Name}}(text)~text.\+name.\+empty() ? fs\+::path(text.\+uri).stem().string() \+: text.\+name
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{namespacetgt_1_1_model_a003ae21c2972fdb43559d3c1dece6e47}{tgt\+::\+Model\+::recursive}} (const tinygltf\+::\+Model \&model, const tinygltf\+::\+Node \&node, const std\+::string \&map=nullptr)
+\item 
+const \mbox{\hyperlink{_result_8hpp_a28287671eaf7406afd604bd055ba4066}{Result}} \mbox{\hyperlink{namespacetgt_1_1_model_a67da2ba50690df5bc931b035c19b03fb}{tgt\+::\+Model\+::load\+Gltf}} (const std\+::string \&path, const std\+::string \&map)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_model_8cpp_aed5580ae14d8943b74e024bbe45a3ac8}\label{_model_8cpp_aed5580ae14d8943b74e024bbe45a3ac8}} 
+\index{Model.cpp@{Model.cpp}!getName@{getName}}
+\index{getName@{getName}!Model.cpp@{Model.cpp}}
+\doxysubsubsection{\texorpdfstring{getName}{getName}}
+{\footnotesize\ttfamily \#define get\+Name(\begin{DoxyParamCaption}\item[{}]{text }\end{DoxyParamCaption})~text.\+name.\+empty() ? fs\+::path(text.\+uri).stem().string() \+: text.\+name}
+
+\mbox{\Hypertarget{_model_8cpp_a18372412ad2fc3ce1e3240b3cf0efe78}\label{_model_8cpp_a18372412ad2fc3ce1e3240b3cf0efe78}} 
+\index{Model.cpp@{Model.cpp}!STB\_IMAGE\_IMPLEMENTATION@{STB\_IMAGE\_IMPLEMENTATION}}
+\index{STB\_IMAGE\_IMPLEMENTATION@{STB\_IMAGE\_IMPLEMENTATION}!Model.cpp@{Model.cpp}}
+\doxysubsubsection{\texorpdfstring{STB\_IMAGE\_IMPLEMENTATION}{STB\_IMAGE\_IMPLEMENTATION}}
+{\footnotesize\ttfamily \#define S\+T\+B\+\_\+\+I\+M\+A\+G\+E\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}
+
+\mbox{\Hypertarget{_model_8cpp_ac203b64c0edef3702d707aed38ab024a}\label{_model_8cpp_ac203b64c0edef3702d707aed38ab024a}} 
+\index{Model.cpp@{Model.cpp}!TINYGLTF\_IMPLEMENTATION@{TINYGLTF\_IMPLEMENTATION}}
+\index{TINYGLTF\_IMPLEMENTATION@{TINYGLTF\_IMPLEMENTATION}!Model.cpp@{Model.cpp}}
+\doxysubsubsection{\texorpdfstring{TINYGLTF\_IMPLEMENTATION}{TINYGLTF\_IMPLEMENTATION}}
+{\footnotesize\ttfamily \#define T\+I\+N\+Y\+G\+L\+T\+F\+\_\+\+I\+M\+P\+L\+E\+M\+E\+N\+T\+A\+T\+I\+ON}
+
+\mbox{\Hypertarget{_model_8cpp_aeffb0a6932dd89c58b59f72a3ee110c2}\label{_model_8cpp_aeffb0a6932dd89c58b59f72a3ee110c2}} 
+\index{Model.cpp@{Model.cpp}!TINYGLTF\_NO\_INCLUDE\_JSON@{TINYGLTF\_NO\_INCLUDE\_JSON}}
+\index{TINYGLTF\_NO\_INCLUDE\_JSON@{TINYGLTF\_NO\_INCLUDE\_JSON}!Model.cpp@{Model.cpp}}
+\doxysubsubsection{\texorpdfstring{TINYGLTF\_NO\_INCLUDE\_JSON}{TINYGLTF\_NO\_INCLUDE\_JSON}}
+{\footnotesize\ttfamily \#define T\+I\+N\+Y\+G\+L\+T\+F\+\_\+\+N\+O\+\_\+\+I\+N\+C\+L\+U\+D\+E\+\_\+\+J\+S\+ON}
+
+\mbox{\Hypertarget{_model_8cpp_a6fbf05b709688c8fdb72302527935b70}\label{_model_8cpp_a6fbf05b709688c8fdb72302527935b70}} 
+\index{Model.cpp@{Model.cpp}!TINYGLTF\_USE\_CPP14@{TINYGLTF\_USE\_CPP14}}
+\index{TINYGLTF\_USE\_CPP14@{TINYGLTF\_USE\_CPP14}!Model.cpp@{Model.cpp}}
+\doxysubsubsection{\texorpdfstring{TINYGLTF\_USE\_CPP14}{TINYGLTF\_USE\_CPP14}}
+{\footnotesize\ttfamily \#define T\+I\+N\+Y\+G\+L\+T\+F\+\_\+\+U\+S\+E\+\_\+\+C\+P\+P14}
+
