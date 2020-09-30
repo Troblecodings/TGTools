@@ -43,7 +43,7 @@ namespace js = nlohmann;
 
 namespace tgt::Util {
 
-	constexpr auto RESOURCE_LOCATION = "./Resource";
+	constexpr auto RESOURCE_LOCATION = "Resource";
 	constexpr auto JSON = ".json";
 
 	constexpr auto JSON_FILTER = [](fs::path path) { return path.extension() == JSON; };

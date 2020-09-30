@@ -18,8 +18,6 @@ namespace tgt::Material {
 
 	const auto MATERIAL_PATH = fs::path(Util::RESOURCE_LOCATION).append(MATERIAL_SUBFOLDER);
 
-	const Result add(const char* name, const char* texture, uint32_t color = DEFAULT_COLOR);
-
 	const Result add(const std::string& name, const std::string& texture, const uint32_t color = DEFAULT_COLOR);
 
 	inline const std::string list() {

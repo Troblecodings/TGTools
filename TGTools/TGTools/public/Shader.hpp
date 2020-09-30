@@ -35,14 +35,12 @@ namespace tgt::Shader {
 
 	const auto SHADER_PATH = fs::path(Util::RESOURCE_LOCATION).append(SHADER_SUBFOLDER);
 
-	const Result add(const char* path, ShaderType type);
-
 	const Result add(const std::string& path, ShaderType type);
-
-	const Result remove(const char* name);
 
 	const Result remove(const std::string& name);
 
-	const std::string list();
+	inline const std::string list() {
+		return Util::collect(SHADER_PATH, [](fs::path path) { return path.extension() == SHADER_EXTENSION; });
+	}
 
 }
