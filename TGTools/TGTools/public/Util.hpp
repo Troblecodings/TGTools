@@ -165,7 +165,7 @@ namespace tgt::Util {
 			}
 			js::json json;
 			JSON_LOAD(name, json);
-			if constexpr (std::is_invocable_v<T, const js::json&, const std::string&>> ) {
+			if constexpr (std::is_invocable_v<T, const js::json&, const std::string&>) {
 				lambda(json, name);
 			} else {
 				lambda(json);
