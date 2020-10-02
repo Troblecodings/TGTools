@@ -10,3 +10,4 @@ set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions")
 # Include sub-projects.
 add_subdirectory ("TGTools")
 add_subdirectory ("TGToolsConsole")
+add_subdirectory ("googletest")

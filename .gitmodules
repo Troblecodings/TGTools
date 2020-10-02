@@ -7,3 +7,6 @@
 [submodule "tinygltf"]
 	path = tinygltf
 	url = https://github.com/syoyo/tinygltf
+[submodule "TGTools/googletest"]
+	path = TGTools/googletest
+	url = https://github.com/google/googletest
