@@ -11,11 +11,7 @@ namespace tgt::Texture {
 
 	const auto TEXTURE_PATH = fs::path(Util::RESOURCE_LOCATION).append(TEXTURE_SUBFOLDER);
 
-	const Result add(const char* path);
-
-	const Result add(const std::string& path);
-
-	const Result remove(const char* name);
+	const Result add(const std::string& path) noexcept;
 
 	const Result remove(const std::string& name);
 

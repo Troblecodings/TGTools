@@ -27,9 +27,9 @@ JSON_WRITE(path, json)
 #define STRING_SYNTAX_CHECK(string) for (char x : string) if (x < 48 || (x > 57 && x < 65) || (x > 90 && x < 97) || x > 122) return Result::BAD_STRING;
 
 #ifndef TGT_NO_CHECKS
-#define STRING_CHECKS_C(string) if(string == nullptr || *string == 0) { printf("String check failed in (%s -> L%i)", __FILE__, __LINE__); return Result::BAD_ARGUMENTS;}
-#define STRING_CHECKS(string) if(string.empty()) { printf("String check failed in (%s -> L%i)", __FILE__, __LINE__); return Result::BAD_ARGUMENTS; }
-#define ENUM_CHECKS(enm, min, max) if(enm >= min && enm <= max) { printf("Enum check failed in (%s -> L%i)", __FILE__, __LINE__); return Result::BAD_ARGUMENTS; }
+#define STRING_CHECKS_C(string) if(string == nullptr || *string == 0) { printf("String check failed in (%s -> L%i)\n", __FILE__, __LINE__); return Result::BAD_ARGUMENTS;}
+#define STRING_CHECKS(string) if(string.empty()) { printf("String check failed in (%s -> L%i)\n", __FILE__, __LINE__); return Result::BAD_ARGUMENTS; }
+#define ENUM_CHECKS(enm, min, max) if(enm >= min && enm <= max) { printf("Enum check failed in (%s -> L%i)\n", __FILE__, __LINE__); return Result::BAD_ARGUMENTS; }
 #else
 #define STRING_CHECKS_C(string)
 #define STRING_CHECKS(string)
@@ -145,6 +145,8 @@ namespace tgt::Util {
 
 	template<class U, typename = std::enable_if_t<std::is_invocable_r_v<bool, U, const fs::path&>>>
 	inline const bool find(const fs::path& path, const U lambda) {
+		if (!fs::exists(path))
+			return false;
 		fs::directory_iterator directory(path);
 		for (auto& entry : directory)
 			if (lambda(entry.path()))
@@ -173,6 +175,8 @@ namespace tgt::Util {
 	template<class T, typename = std::enable_if_t<std::is_invocable_r_v<bool, T, const std::string&> ||
 		std::is_invocable_r_v<bool, T, const fs::path&> || std::is_null_pointer_v<T>>>
 	inline const Result remove(const fs::path& parentpath, const std::string& name, const std::string& filter, T lambda) {
+		STRING_CHECKS(name);
+		STRING_SYNTAX_CHECK(name);
 		auto path = Util::getResource(parentpath, name, filter);
 
 		if constexpr (!std::is_null_pointer_v<T>) {
