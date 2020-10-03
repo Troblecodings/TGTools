@@ -5,7 +5,11 @@ cmake_minimum_required (VERSION 3.8)
 
 project ("TGTools")
 set (CMAKE_CXX_STANDARD 20)
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions /EHa- /EHs-")
+if(CMAKE_HOST_WIN32)
+	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /fp:except-")
+else()
+	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions")
+endif()
 
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 

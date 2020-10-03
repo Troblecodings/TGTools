@@ -24,7 +24,7 @@ JSON_WRITE(path, json)
 	if (name##found)\
 		name##json.erase(name##pred)
 
-#define STRING_SYNTAX_CHECK(string) for (char x : string) if (x < 48 || (x > 57 && x < 65) || (x > 90 && x < 97) || x > 122) return Result::BAD_STRING;
+#define STRING_SYNTAX_CHECK(string) for (char x : string) if ('-' != x && x != '_' && (x < 48 || (x > 57 && x < 65) || (x > 90 && x < 97) || x > 122)) return Result::BAD_STRING;
 
 #ifndef TGT_NO_CHECKS
 #define STRING_CHECKS_C(string) if(string == nullptr || *string == 0) { printf("String check failed in (%s -> L%i)\n", __FILE__, __LINE__); return Result::BAD_ARGUMENTS;}
