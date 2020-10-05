@@ -5,4 +5,3 @@ include_directories("../googletest/googletest/include")
 
 add_executable (TGToolsTest "TGToolsTest.cpp" )
 target_link_libraries(TGToolsTest PUBLIC TGTools gtest_main)
-add_test(NAME TGToolsTest COMMAND TGToolsTest)
