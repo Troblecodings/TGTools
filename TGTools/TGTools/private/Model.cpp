@@ -15,6 +15,8 @@ namespace tgt::Model {
 #define getName(text) text.name.empty() ? fs::path(text.uri).stem().string() : text.name
 
 	static void recursive(const tinygltf::Model& model, const tinygltf::Node& node, const std::string& map = nullptr) {
+		if (node.mesh == -1)
+			return;
 		const tinygltf::Mesh& mesh = model.meshes[node.mesh];
 
 		uint32_t count = 0;
@@ -28,8 +30,12 @@ namespace tgt::Model {
 				count++;
 				Actor::add(actorname, materialname);
 			}
-			const tinygltf::Accessor& accessor = model.accessors[primitive.indices];
-			const tinygltf::BufferView& bufferView = model.bufferViews[accessor.bufferView];
+			if(primitive.indices == -1) {
+				printf("No indicies, currently unsupported!\n");
+			} else {
+				const tinygltf::Accessor& accessor = model.accessors[primitive.indices];
+				const tinygltf::BufferView& bufferView = model.bufferViews[accessor.bufferView];
+			}
 		}
 
 		for (const auto nodeid : node.children) {
@@ -65,14 +71,14 @@ namespace tgt::Model {
 
 		for (auto& texture : model.textures) {
 			if (texture.source < 0) { //TODO
-				printf("Warning texture has no source!");
+				printf("Warning texture has no source!\n");
 				continue;
 			}
 
 			const tinygltf::Image& image = model.images[texture.source];
 
 			if (image.as_is) { //TODO
-				printf("Warning 'as is' not implemented, continuing!");
+				printf("Warning 'as is' not implemented, continuing!\n");
 				continue;
 			}
 
@@ -101,22 +107,23 @@ namespace tgt::Model {
 				| ((uint32_t)(0xFF * color[2]) << 8) | (uint32_t)(0xFF * color[3]);
 
 			if (baseTexture > 0) { // TODO
-				printf("Warning material has no base Texture!");
+				printf("Warning material has no base Texture!\n");
 				continue;
 			}
 
-			const auto& texture = model.textures[0];
-			if (texture.source < 0) { // TODO
-				printf("Warning texture has no source!");
-				continue;
+			for (const auto& texture : model.textures) {
+				if (texture.source < 0) { // TODO
+					printf("Warning texture has no source!\n");
+					continue;
+				}
+
+				const auto& image = model.images[texture.source];
+				const auto textureName = getName(image);
+
+				const Result result = Material::add(material.name, textureName, baseColor);
+				if (result != Result::SUCCESS)
+					printf("Warning couldn't add Material! Error %i!\n", (int)result);
 			}
-
-			const auto& image = model.images[texture.source];
-			const auto textureName = getName(image);
-
-			const Result result = Material::add(material.name, textureName, baseColor);
-			if (result != Result::SUCCESS)
-				printf("Warning couldn't add Material! Error %i!", (int)result);
 		}
 
 		tinygltf::Scene& scene = model.scenes[model.defaultScene];
