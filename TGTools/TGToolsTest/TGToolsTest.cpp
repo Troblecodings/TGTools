@@ -143,7 +143,7 @@ TEST(Map, Remove) {
 
 int main(int argc, char** argv) {
 	fs::remove_all(Util::RESOURCE_LOCATION);
-	constexpr auto file = "../../../../TestFiles/";
+	constexpr auto file = "../../../../../TestFiles/";
 	constexpr auto destination = "TestFiles";
 	if (fs::exists(file)) {
 		fs::remove_all(destination);
