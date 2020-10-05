@@ -39,6 +39,11 @@ namespace tgt::Model {
 	}
 
 	const Result loadGltf(const std::string& path, const std::string& map) {
+		STRING_CHECKS(path);
+
+		if (!fs::exists(path))
+			return Result::DOES_NOT_EXIST;
+
 		tinygltf::Model model;
 		tinygltf::TinyGLTF loader;
 		std::string error;

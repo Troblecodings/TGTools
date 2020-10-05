@@ -5,9 +5,16 @@
 #include <public/Material.hpp>
 #include <public/Actor.hpp>
 #include <public/Font.hpp>
+#include <public/Model.hpp>
 #include <filesystem>
 
 using namespace tgt;
+
+fs::path FILE_PATH;
+
+inline std::string getFile(std::string string) {
+	return fs::path(FILE_PATH).append(string).string();
+}
 
 inline std::string trim(std::string str) {
 	str.erase(std::remove_if(str.begin(), str.end(), [](char c) { return std::isspace(c); }));
@@ -21,8 +28,8 @@ TEST(Texture, EmptyList) {
 TEST(Texture, Add) {
 	ASSERT_EQ(Texture::add(""), Result::BAD_ARGUMENTS);
 	ASSERT_EQ(Texture::add("thisTextureDoesNotExist"), Result::DOES_NOT_EXIST);
-	ASSERT_EQ(Texture::add("TestFiles/test.png"), Result::SUCCESS);
-	ASSERT_EQ(Texture::add("TestFiles/test.png"), Result::ALREADY_EXISTS);
+	ASSERT_EQ(Texture::add(getFile("test.png")), Result::SUCCESS);
+	ASSERT_EQ(Texture::add(getFile("test.png")), Result::ALREADY_EXISTS);
 }
 
 TEST(Texture, List) {
@@ -41,7 +48,7 @@ TEST(Material, EmptyList) {
 }
 
 TEST(Material, Add) {
-	ASSERT_EQ(Texture::add("TestFiles/test.png"), Result::SUCCESS);
+	ASSERT_EQ(Texture::add(getFile("test.png")), Result::SUCCESS);
 	ASSERT_EQ(Material::add("test", ""), Result::BAD_ARGUMENTS);
 	ASSERT_EQ(Material::add("", "test"), Result::BAD_ARGUMENTS);
 	ASSERT_EQ(Material::add("test", "thisDoesNotExist"), Result::DOES_NOT_EXIST);
@@ -98,10 +105,10 @@ TEST(Font, EmptyList) {
 TEST(Font, Add) {
 	ASSERT_EQ(Font::add(""), Result::BAD_ARGUMENTS);
 	ASSERT_EQ(Font::add("thisDoesNotExist"), Result::DOES_NOT_EXIST);
-	ASSERT_EQ(Font::add("TestFiles/LICENSE.txt"), Result::GENERAL);
-	ASSERT_EQ(Font::add("TestFiles/OpenSans-Regular.ttf"), Result::SUCCESS);
+	ASSERT_EQ(Font::add(getFile("LICENSE.txt")), Result::GENERAL);
+	ASSERT_EQ(Font::add(getFile("OpenSans-Regular.ttf")), Result::SUCCESS);
 	ASSERT_TRUE(fs::exists(fs::path(Texture::TEXTURE_PATH).append("OpenSans-Regular.tgx")));
-	ASSERT_EQ(Font::add("TestFiles/OpenSans-Regular.ttf"), Result::ALREADY_EXISTS);
+	ASSERT_EQ(Font::add(getFile("OpenSans-Regular.ttf")), Result::ALREADY_EXISTS);
 }
 
 TEST(Font, List) {
@@ -119,6 +126,33 @@ TEST(Font, Remove) {
 
 TEST(Map, EmptyList) {
 	ASSERT_TRUE(trim(Map::list()).empty());
+}
+
+TEST(Model, Load) {
+	ASSERT_EQ(Model::loadGltf(""), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Model::loadGltf("doesNotExist"), Result::DOES_NOT_EXIST);
+
+	const auto path = fs::path(getFile("glTF-Sample-Models/2.0/model-index.json"));
+	ASSERT_TRUE(fs::exists(path));
+
+	js::json model;
+	JSON_LOAD(path, model);
+	for (const auto& mobj : model) {
+		fs::path mpath = path.parent_path();
+		if (!mobj.contains("name")) {
+			printf("Warning no gltf name found!");
+			continue;
+		}
+		const auto namepath = fs::path(mpath).append(mobj["name"].get<std::string>());
+		const auto variant = mobj["variants"];
+		for (const auto& type : { "gltf", "glTF-Binary", "glTF-Embedded" }) {
+			if (!variant.contains(type))
+				continue;
+			const auto actualpath = fs::path(namepath).append(type).append(variant[type].get<std::string>());
+			printf(actualpath.string().c_str());
+			ASSERT_EQ(Model::loadGltf(actualpath.string()), Result::SUCCESS);
+		}
+	}
 }
 
 TEST(Map, Create) {
@@ -143,13 +177,13 @@ TEST(Map, Remove) {
 
 int main(int argc, char** argv) {
 	fs::remove_all(Util::RESOURCE_LOCATION);
-	constexpr auto file = "../../../../../TestFiles/";
-	constexpr auto destination = "TestFiles";
-	if (fs::exists(file)) {
-		fs::remove_all(destination);
-		fs::copy(file, destination);
-	}
-	if (!fs::exists(destination)) {
+	constexpr auto stpath = "../../../../../TestFiles/";
+	constexpr auto path = "/TestFiles/";
+	if (fs::exists(stpath)) {
+		FILE_PATH = stpath;
+	} else if (fs::exists(path)) {
+		FILE_PATH = path;
+	} else {
 		printf("Testfiles not found");
 		return -1;
 	}
