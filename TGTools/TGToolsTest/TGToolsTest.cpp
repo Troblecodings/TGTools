@@ -145,12 +145,12 @@ TEST(Model, Load) {
 		}
 		const auto namepath = fs::path(mpath).append(mobj["name"].get<std::string>());
 		const auto variant = mobj["variants"];
-		for (const auto& type : { "gltf", "glTF-Binary", "glTF-Embedded" }) {
+		for (const auto& type : { "glTF", "glTF-Binary", "glTF-Embedded" }) {
 			if (!variant.contains(type))
 				continue;
 			const auto actualpath = fs::path(namepath).append(type).append(variant[type].get<std::string>());
-			printf("%s\n", actualpath.string().c_str());
 			ASSERT_EQ(Model::loadGltf(actualpath.string()), Result::SUCCESS);
+			printf("#");
 		}
 	}
 }

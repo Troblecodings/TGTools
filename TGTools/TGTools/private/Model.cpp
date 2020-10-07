@@ -59,12 +59,12 @@ namespace tgt::Model {
 			loader.LoadASCIIFromFile(&model, &error, &warning, path);
 
 		if (!error.empty()) {
-			printf(error.c_str());
+			printf("%s\n", error.c_str());
 			return Result::GENERAL;
 		}
 
 		if (!warning.empty())
-			printf(warning.c_str());
+			printf("%s\n", warning.c_str());
 
 		if (!retuncode)
 			return Result::GENERAL;
@@ -125,6 +125,8 @@ namespace tgt::Model {
 				result = Material::add(actualName, texture, baseColor);
 				identifier++;
 			} while (result == Result::ALREADY_EXISTS);
+			if (result != Result::SUCCESS)
+				printf("Warning couldn't add %s with result %i\n", actualName.c_str(), result);
 		}
 
 		tinygltf::Scene& scene = model.scenes[model.defaultScene];
