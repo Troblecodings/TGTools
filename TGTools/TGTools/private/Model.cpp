@@ -69,24 +69,30 @@ namespace tgt::Model {
 		if (!retuncode)
 			return Result::GENERAL;
 
-		for (auto& texture : model.textures) {
-			if (texture.source < 0) { //TODO
-				printf("Warning texture has no source!\n");
-				continue;
-			}
+		std::vector<std::string> imagenames;
+		imagenames.reserve(model.images.size());
 
-			const tinygltf::Image& image = model.images[texture.source];
-
+		for (auto& image : model.images) {
 			if (image.as_is) { //TODO
 				printf("Warning 'as is' not implemented, continuing!\n");
 				continue;
 			}
 
-			const auto textureName = getName(image);
 			if (!image.image.empty()) {
-				auto texturePath = Util::getResource(Texture::TEXTURE_PATH, textureName, Texture::TEXTURE_EXTENSION).string();
-				if (fs::exists(texturePath))
-					printf("Warning texture already exists overriding!\n");
+				std::string texturePath;
+				uint32_t number = 0;
+				auto textureName = getName(image);
+				if (textureName.empty())
+					textureName = "default";
+
+				std::string actualName;
+				do {
+					actualName = textureName + std::to_string(number);
+					texturePath = Util::getResource(Texture::TEXTURE_PATH, actualName, Texture::TEXTURE_EXTENSION).string();
+					number++;
+				} while (fs::exists(texturePath));
+
+				imagenames.push_back(actualName);
 
 				if (image.component != 4) //TODO
 					printf("Warning less then 4 channels are not supported\n");
@@ -106,24 +112,19 @@ namespace tgt::Model {
 			const uint32_t baseColor = ((uint32_t)(0xFF * color[0]) << 24) | ((uint32_t)(0xFF * color[1]) << 16)
 				| ((uint32_t)(0xFF * color[2]) << 8) | (uint32_t)(0xFF * color[3]);
 
-			if (baseTexture > 0) { // TODO
-				printf("Warning material has no base Texture!\n");
-				continue;
-			}
+			const std::string materialName = (material.name.empty() ? "default":material.name);
 
-			for (const auto& texture : model.textures) {
-				if (texture.source < 0) { // TODO
-					printf("Warning texture has no source!\n");
-					continue;
-				}
+			std::string actualName;
+			uint32_t identifier = 0;
+			Result result = Result::GENERAL;
 
-				const auto& image = model.images[texture.source];
-				const auto textureName = getName(image);
-
-				const Result result = Material::add(material.name, textureName, baseColor);
-				if (result != Result::SUCCESS)
-					printf("Warning couldn't add Material! Error %i!\n", (int)result);
-			}
+			const int source = (baseTexture == -1 ? -1:model.textures[baseTexture].source);
+			const std::string texture = (source == -1 ? "":imagenames[source]);
+			do {
+				actualName = materialName + std::to_string(identifier);
+				result = Material::add(actualName, texture, baseColor);
+				identifier++;
+			} while (result == Result::ALREADY_EXISTS);
 		}
 
 		tinygltf::Scene& scene = model.scenes[model.defaultScene];

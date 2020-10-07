@@ -49,7 +49,6 @@ TEST(Material, EmptyList) {
 
 TEST(Material, Add) {
 	ASSERT_EQ(Texture::add(getFile("test.png")), Result::SUCCESS);
-	ASSERT_EQ(Material::add("test", ""), Result::BAD_ARGUMENTS);
 	ASSERT_EQ(Material::add("", "test"), Result::BAD_ARGUMENTS);
 	ASSERT_EQ(Material::add("test", "thisDoesNotExist"), Result::DOES_NOT_EXIST);
 	ASSERT_EQ(Material::add("test", "test"), Result::SUCCESS);
