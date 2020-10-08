@@ -6,6 +6,7 @@
 #include <public/Actor.hpp>
 #include <public/Font.hpp>
 #include <public/Model.hpp>
+#include <public/Sampler.hpp>
 #include <filesystem>
 
 using namespace tgt;
@@ -121,6 +122,50 @@ TEST(Font, Remove) {
 	ASSERT_EQ(Font::remove("OpenSans-Regular"), Result::DOES_NOT_EXIST);
 	ASSERT_EQ(Font::remove("../"), Result::BAD_STRING);
 	ASSERT_EQ(Font::remove("..\\"), Result::BAD_STRING);
+}
+
+TEST(Sampler, EmptyList) {
+	ASSERT_TRUE(trim(Sampler::list()).empty());
+}
+
+TEST(Sampler, Add) {
+	ASSERT_EQ(Sampler::add("", Sampler::SamplerAddressMode::REPEAT, Sampler::SamplerFilter::LINEAR), Result::BAD_ARGUMENTS);
+
+	ASSERT_EQ(Sampler::add("test", (Sampler::SamplerAddressMode)0xFFFF, Sampler::SamplerAddressMode::REPEAT,
+		Sampler::SamplerFilter::LINEAR, Sampler::SamplerFilter::LINEAR), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Sampler::add("test", Sampler::SamplerAddressMode::REPEAT, (Sampler::SamplerAddressMode)0xFFFF,
+		Sampler::SamplerFilter::LINEAR, Sampler::SamplerFilter::LINEAR), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Sampler::add("test", Sampler::SamplerAddressMode::REPEAT, Sampler::SamplerAddressMode::REPEAT,
+		Sampler::SamplerFilter::LINEAR, (Sampler::SamplerFilter) 0xFFFF), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Sampler::add("test", Sampler::SamplerAddressMode::REPEAT, Sampler::SamplerAddressMode::REPEAT,
+		(Sampler::SamplerFilter) 0xFFFF, Sampler::SamplerFilter::LINEAR), Result::BAD_ARGUMENTS);
+
+	ASSERT_EQ(Sampler::add("test", Sampler::SamplerAddressMode::REPEAT, Sampler::SamplerFilter::LINEAR), Result::SUCCESS);
+	ASSERT_EQ(Sampler::add("test", Sampler::SamplerAddressMode::REPEAT, Sampler::SamplerFilter::LINEAR), Result::ALREADY_EXISTS);
+
+	ASSERT_EQ(Sampler::add("../", Sampler::SamplerAddressMode::REPEAT, Sampler::SamplerFilter::LINEAR), Result::BAD_STRING);
+	ASSERT_EQ(Sampler::add("..\\", Sampler::SamplerAddressMode::REPEAT, Sampler::SamplerFilter::LINEAR), Result::BAD_STRING);
+}
+
+TEST(Sampler, List) {
+	ASSERT_FALSE(trim(Sampler::list()).empty());
+}
+
+TEST(Sampler, Change) {
+	ASSERT_EQ(Sampler::change("test", "doesNotExist", Sampler::SamplerFilter::LINEAR), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Sampler::change("", Sampler::MAG_FILTER_PROPERTY, Sampler::SamplerFilter::LINEAR), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Sampler::change("test", Sampler::MAG_FILTER_PROPERTY, Sampler::SamplerFilter::LINEAR), Result::SUCCESS);
+	ASSERT_EQ(Sampler::change("test", Sampler::MIN_FILTER_PROPERTY, Sampler::SamplerFilter::LINEAR), Result::SUCCESS);
+	ASSERT_EQ(Sampler::change("test", Sampler::UMODE_PROPERTY, Sampler::SamplerAddressMode::REPEAT), Result::SUCCESS);
+	ASSERT_EQ(Sampler::change("test", Sampler::VMODE_PROPERTY, Sampler::SamplerAddressMode::REPEAT), Result::SUCCESS);
+}
+
+TEST(Sampler, Remove) {
+	ASSERT_EQ(Sampler::remove(""), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Sampler::remove("test"), Result::SUCCESS);
+	ASSERT_EQ(Sampler::remove("test"), Result::DOES_NOT_EXIST);
+	ASSERT_EQ(Sampler::remove("../"), Result::BAD_STRING);
+	ASSERT_EQ(Sampler::remove("..\\"), Result::BAD_STRING);
 }
 
 TEST(Map, EmptyList) {

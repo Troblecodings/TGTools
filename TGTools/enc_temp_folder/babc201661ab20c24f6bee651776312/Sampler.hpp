@@ -63,7 +63,7 @@ namespace tgt::Sampler {
 	};
 
 	inline const Result write(FILE* file, const js::json& jsonarray) {
-		return Util::writeToFile(file, jsonarray, [=](const js::json& jsn) {
+		Util::writeToFile(file, jsonarray, [=](const js::json& jsn) {
 			SamplerInfo samplerInfo;
 			samplerInfo.umode = (uint8_t)jsn[UMODE_PROPERTY].get<SamplerAddressMode>();
 			samplerInfo.vmode = (uint8_t)jsn[VMODE_PROPERTY].get<SamplerAddressMode>();

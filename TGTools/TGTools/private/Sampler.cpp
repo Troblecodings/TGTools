@@ -15,12 +15,13 @@ namespace tgt::Sampler {
 			return Result::ALREADY_EXISTS;
 
 		js::json json;
-		json[UMODE_PROPERTY] = umode;
-		json[VMODE_PROPERTY] = vmode;
-		json[MAG_FILTER_PROPERTY] = magfilter;
-		json[MIN_FILTER_PROPERTY] = minFilter;
+		json[UMODE_PROPERTY] = (uint32_t)umode;
+		json[VMODE_PROPERTY] = (uint32_t)vmode;
+		json[MAG_FILTER_PROPERTY] = (uint32_t)magfilter;
+		json[MIN_FILTER_PROPERTY] = (uint32_t)minFilter;
 
 		JSON_WRITE(path, json);
+		return Result::SUCCESS;
 	}
 
 }
