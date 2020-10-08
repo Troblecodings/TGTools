@@ -223,7 +223,7 @@ TEST(Map, Remove) {
 int main(int argc, char** argv) {
 	fs::remove_all(Util::RESOURCE_LOCATION);
 	constexpr auto stpath = "../../../../../TestFiles/";
-	constexpr auto path = "/TestFiles/";
+	constexpr auto path = "TestFiles";
 	if (fs::exists(stpath)) {
 		FILE_PATH = stpath;
 	} else if (fs::exists(path)) {
