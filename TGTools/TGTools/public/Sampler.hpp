@@ -52,6 +52,7 @@ namespace tgt::Sampler {
 
 	template<class T, typename = std::enable_if_t<Util::_isAnyOf<T, SamplerAddressMode, SamplerFilter>>>
 	inline const Result change(const std::string& name, const std::string& key, const T value) {
+		STRING_CHECKS(name);
 		return Util::change(Util::getResource(SAMPLER_PATH, name, Util::JSON), key, (uint32_t)value, SUPPORTED_PROPERTIES);
 	}
 

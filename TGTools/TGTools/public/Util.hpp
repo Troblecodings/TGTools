@@ -29,7 +29,7 @@ JSON_WRITE(path, json)
 #ifndef TGT_NO_CHECKS
 #define STRING_CHECKS_C(string) if(string == nullptr || *string == 0) { printf("String check failed in (%s -> L%i)\n", __FILE__, __LINE__); return Result::BAD_ARGUMENTS;}
 #define STRING_CHECKS(string) if(string.empty()) { printf("String check failed in (%s -> L%i)\n", __FILE__, __LINE__); return Result::BAD_ARGUMENTS; }
-#define ENUM_CHECKS(enm, min, max) if(enm >= min && enm <= max) { printf("Enum check failed in (%s -> L%i)\n", __FILE__, __LINE__); return Result::BAD_ARGUMENTS; }
+#define ENUM_CHECKS(enm, min, max) if(enm < min || enm > max) { printf("Enum check failed in (%s -> L%i)\n", __FILE__, __LINE__); return Result::BAD_ARGUMENTS; }
 #else
 #define STRING_CHECKS_C(string)
 #define STRING_CHECKS(string)

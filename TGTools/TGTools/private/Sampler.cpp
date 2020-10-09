@@ -5,6 +5,7 @@ namespace tgt::Sampler {
 	const Result add(const std::string& name, const SamplerAddressMode umode, const SamplerAddressMode vmode,
 		const SamplerFilter magfilter, const SamplerFilter minFilter) {
 		STRING_CHECKS(name);
+		STRING_SYNTAX_CHECK(name);
 		ENUM_CHECKS(umode, SAMPLER_ADDRESS_MODE_MIN, SAMPLER_ADDRESS_MODE_MAX);
 		ENUM_CHECKS(vmode, SAMPLER_ADDRESS_MODE_MIN, SAMPLER_ADDRESS_MODE_MAX);
 		ENUM_CHECKS(magfilter, SAMPLER_FILTER_MIN, SAMPLER_FILTER_MAX);

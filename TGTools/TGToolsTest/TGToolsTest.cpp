@@ -152,7 +152,7 @@ TEST(Sampler, List) {
 }
 
 TEST(Sampler, Change) {
-	ASSERT_EQ(Sampler::change("test", "doesNotExist", Sampler::SamplerFilter::LINEAR), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Sampler::change("test", "doesNotExist", Sampler::SamplerFilter::LINEAR), Result::UNSUPPORTED);
 	ASSERT_EQ(Sampler::change("", Sampler::MAG_FILTER_PROPERTY, Sampler::SamplerFilter::LINEAR), Result::BAD_ARGUMENTS);
 	ASSERT_EQ(Sampler::change("test", Sampler::MAG_FILTER_PROPERTY, Sampler::SamplerFilter::LINEAR), Result::SUCCESS);
 	ASSERT_EQ(Sampler::change("test", Sampler::MIN_FILTER_PROPERTY, Sampler::SamplerFilter::LINEAR), Result::SUCCESS);
