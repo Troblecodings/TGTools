@@ -172,34 +172,6 @@ TEST(Map, EmptyList) {
 	ASSERT_TRUE(trim(Map::list()).empty());
 }
 
-TEST(Model, Load) {
-	ASSERT_EQ(Model::loadGltf(""), Result::BAD_ARGUMENTS);
-	ASSERT_EQ(Model::loadGltf("doesNotExist"), Result::DOES_NOT_EXIST);
-	ASSERT_EQ(Model::loadGltf(getFile("LICENSE.txt")), Result::GENERAL);
-
-	const auto path = fs::path(getFile("glTF-Sample-Models/2.0/model-index.json"));
-	ASSERT_TRUE(fs::exists(path));
-
-	js::json model;
-	JSON_LOAD(path, model);
-	for (const auto& mobj : model) {
-		fs::path mpath = path.parent_path();
-		if (!mobj.contains("name")) {
-			printf("Warning no gltf name found!\n");
-			continue;
-		}
-		const auto namepath = fs::path(mpath).append(mobj["name"].get<std::string>());
-		const auto variant = mobj["variants"];
-		for (const auto& type : { "glTF", "glTF-Binary", "glTF-Embedded" }) {
-			if (!variant.contains(type))
-				continue;
-			const auto actualpath = fs::path(namepath).append(type).append(variant[type].get<std::string>());
-			ASSERT_EQ(Model::loadGltf(actualpath.string()), Result::SUCCESS);
-			printf("#");
-		}
-	}
-}
-
 TEST(Map, Create) {
 	ASSERT_EQ(Map::create("test"), Result::SUCCESS);
 	ASSERT_EQ(Map::create("test"), Result::ALREADY_EXISTS);

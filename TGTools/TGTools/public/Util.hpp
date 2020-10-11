@@ -170,6 +170,7 @@ namespace tgt::Util {
 		}
 		constexpr auto end = 0xFFFFFFFF;
 		fwrite(&end, 1, sizeof(end), file);
+		return Result::SUCCESS;
 	}
 
 	template<class T, typename = std::enable_if_t<std::is_invocable_r_v<bool, T, const std::string&> ||

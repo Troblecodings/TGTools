@@ -3,6 +3,7 @@
 #include "../public/Texture.hpp"
 #include "../public/Material.hpp"
 #include "../public/Actor.hpp"
+#include "../public/Sampler.hpp"
 
 #define TINYGLTF_IMPLEMENTATION
 #define TINYGLTF_USE_CPP14
@@ -44,6 +45,32 @@ namespace tgt::Model {
 		}
 	}
 
+	inline static Sampler::SamplerAddressMode addressmode(int i) {
+		switch (i) {
+			case TINYGLTF_TEXTURE_WRAP_CLAMP_TO_EDGE:
+				return Sampler::SamplerAddressMode::CLAMP_TO_EDGE;
+			case TINYGLTF_TEXTURE_WRAP_MIRRORED_REPEAT:
+				return Sampler::SamplerAddressMode::MIRRORED_REPEAT;
+			case TINYGLTF_TEXTURE_WRAP_REPEAT:
+			default:
+				return Sampler::SamplerAddressMode::REPEAT;
+		}
+	}
+
+	inline static Sampler::SamplerFilter filter(int i) {
+		switch (i) {
+			case TINYGLTF_TEXTURE_FILTER_NEAREST:
+			case TINYGLTF_TEXTURE_FILTER_NEAREST_MIPMAP_NEAREST:
+			case TINYGLTF_TEXTURE_FILTER_NEAREST_MIPMAP_LINEAR:
+				return Sampler::SamplerFilter::NEAREST;
+			case TINYGLTF_TEXTURE_FILTER_LINEAR:
+			case TINYGLTF_TEXTURE_FILTER_LINEAR_MIPMAP_NEAREST:
+			case TINYGLTF_TEXTURE_FILTER_LINEAR_MIPMAP_LINEAR:
+			default:
+				return Sampler::SamplerFilter::LINEAR;
+		}
+	}
+
 	const Result loadGltf(const std::string& path, const std::string& map) {
 		STRING_CHECKS(path);
 
@@ -68,6 +95,18 @@ namespace tgt::Model {
 
 		if (!retuncode)
 			return Result::GENERAL;
+
+		for (auto& sampler : model.samplers) {
+			std::string name = sampler.name;
+			if (name.empty())
+				name = "default";
+			Result result = Result::GENERAL;
+			uint32_t id = 0;
+			do {
+				result = Sampler::add(name + std::to_string(id), addressmode(sampler.wrapS), addressmode(sampler.wrapT),
+					filter(sampler.magFilter), filter(sampler.minFilter));
+			} while (result == Result::ALREADY_EXISTS);
+		}
 
 		std::vector<std::string> imagenames;
 		imagenames.reserve(model.images.size());
