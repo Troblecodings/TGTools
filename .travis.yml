@@ -18,7 +18,7 @@ script:
   - cmake --build ./
 
 after_script:
-  - travis_wait ctest -C Debug --debug
+  - ctest -C Debug --debug
 
 before_deploy:
   - cd ./TGTools/
