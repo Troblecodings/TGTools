@@ -16,11 +16,15 @@ namespace tgt::Font {
 
 	inline const Result remove(const std::string& name) {
 		STRING_CHECKS(name);
+		STRING_SYNTAX_CHECK(name);
 
 		const auto font = Util::getResource(FONT_PATH, name, FONT_EXTENSION);
 		const auto texture = Util::getResource(Texture::TEXTURE_PATH, name, Texture::TEXTURE_EXTENSION).string();
 
-		if (!fs::remove(font) && !fs::remove(texture))
+		const bool fontremove = fs::remove(font);
+		const bool texremove = fs::remove(texture);
+
+		if (!fontremove && !texremove)
 			return Result::DOES_NOT_EXIST;
 
 		return Result::SUCCESS;

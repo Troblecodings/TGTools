@@ -19,7 +19,7 @@ namespace tgt::Font {
 		uint32_t count;
 	};
 
-	static const Result generatefontbitmap(const fs::path& font, const std::string& resourceLocation, const std::string& texture) {
+	static const Result generatefontbitmap(const fs::path& font, const std::string& resourceLocation, const std::string& texture) noexcept {
 		constexpr auto START_CHAR = 33, END_CHAR = 126, DIFF = END_CHAR - START_CHAR;
 		constexpr auto STRIDE = 1, WIDTH = 64, HEIGHT = 64;
 
@@ -38,6 +38,8 @@ namespace tgt::Font {
 
 		auto fontData = Util::readFile(font.string());
 		Util::scope_exit fexit([=]() { delete[] fontData; });
+		if (!stbtt__isfont((stbtt_uint8*)fontData))
+			return Result::GENERAL;
 
 		stbtt_PackSetOversampling(&packedcontext, 2, 2);
 
@@ -89,6 +91,9 @@ namespace tgt::Font {
 		const auto fontName = fontPath.stem().string();
 		const auto resourceLocation = Util::getResource(FONT_PATH, fontName, FONT_EXTENSION).string();
 		const auto texturelocation = Util::getResource(Texture::TEXTURE_PATH, fontName, Texture::TEXTURE_EXTENSION).string();
+
+		if (fs::exists(resourceLocation))
+			return Result::ALREADY_EXISTS;
 
 		auto result = generatefontbitmap(fontPath, resourceLocation, texturelocation);
 		if (result != Result::SUCCESS) {

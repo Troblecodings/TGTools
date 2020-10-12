@@ -35,6 +35,8 @@ namespace tgt::Map {
 	const Result create(const std::string& mapname);
 
 	inline const Result remove(const std::string& mapname) {
+		STRING_CHECKS(mapname);
+		STRING_SYNTAX_CHECK(mapname);
 		return Util::remove(MAP_PATH, mapname);
 	}
 

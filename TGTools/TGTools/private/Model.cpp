@@ -3,6 +3,7 @@
 #include "../public/Texture.hpp"
 #include "../public/Material.hpp"
 #include "../public/Actor.hpp"
+#include "../public/Sampler.hpp"
 
 #define TINYGLTF_IMPLEMENTATION
 #define TINYGLTF_USE_CPP14
@@ -15,6 +16,8 @@ namespace tgt::Model {
 #define getName(text) text.name.empty() ? fs::path(text.uri).stem().string() : text.name
 
 	static void recursive(const tinygltf::Model& model, const tinygltf::Node& node, const std::string& map = nullptr) {
+		if (node.mesh == -1)
+			return;
 		const tinygltf::Mesh& mesh = model.meshes[node.mesh];
 
 		uint32_t count = 0;
@@ -28,8 +31,12 @@ namespace tgt::Model {
 				count++;
 				Actor::add(actorname, materialname);
 			}
-			const tinygltf::Accessor& accessor = model.accessors[primitive.indices];
-			const tinygltf::BufferView& bufferView = model.bufferViews[accessor.bufferView];
+			if(primitive.indices == -1) {
+				printf("No indicies, currently unsupported!\n");
+			} else {
+				const tinygltf::Accessor& accessor = model.accessors[primitive.indices];
+				const tinygltf::BufferView& bufferView = model.bufferViews[accessor.bufferView];
+			}
 		}
 
 		for (const auto nodeid : node.children) {
@@ -38,7 +45,38 @@ namespace tgt::Model {
 		}
 	}
 
+	inline static Sampler::SamplerAddressMode addressmode(int i) {
+		switch (i) {
+			case TINYGLTF_TEXTURE_WRAP_CLAMP_TO_EDGE:
+				return Sampler::SamplerAddressMode::CLAMP_TO_EDGE;
+			case TINYGLTF_TEXTURE_WRAP_MIRRORED_REPEAT:
+				return Sampler::SamplerAddressMode::MIRRORED_REPEAT;
+			case TINYGLTF_TEXTURE_WRAP_REPEAT:
+			default:
+				return Sampler::SamplerAddressMode::REPEAT;
+		}
+	}
+
+	inline static Sampler::SamplerFilter filter(int i) {
+		switch (i) {
+			case TINYGLTF_TEXTURE_FILTER_NEAREST:
+			case TINYGLTF_TEXTURE_FILTER_NEAREST_MIPMAP_NEAREST:
+			case TINYGLTF_TEXTURE_FILTER_NEAREST_MIPMAP_LINEAR:
+				return Sampler::SamplerFilter::NEAREST;
+			case TINYGLTF_TEXTURE_FILTER_LINEAR:
+			case TINYGLTF_TEXTURE_FILTER_LINEAR_MIPMAP_NEAREST:
+			case TINYGLTF_TEXTURE_FILTER_LINEAR_MIPMAP_LINEAR:
+			default:
+				return Sampler::SamplerFilter::LINEAR;
+		}
+	}
+
 	const Result loadGltf(const std::string& path, const std::string& map) {
+		STRING_CHECKS(path);
+
+		if (!fs::exists(path))
+			return Result::DOES_NOT_EXIST;
+
 		tinygltf::Model model;
 		tinygltf::TinyGLTF loader;
 		std::string error;
@@ -48,34 +86,52 @@ namespace tgt::Model {
 			loader.LoadASCIIFromFile(&model, &error, &warning, path);
 
 		if (!error.empty()) {
-			printf(error.c_str());
+			printf("%s\n", error.c_str());
 			return Result::GENERAL;
 		}
 
 		if (!warning.empty())
-			printf(warning.c_str());
+			printf("%s\n", warning.c_str());
 
 		if (!retuncode)
 			return Result::GENERAL;
 
-		for (auto& texture : model.textures) {
-			if (texture.source < 0) { //TODO
-				printf("Warning texture has no source!");
-				continue;
-			}
+		for (auto& sampler : model.samplers) {
+			std::string name = sampler.name;
+			if (name.empty())
+				name = "default";
+			Result result = Result::GENERAL;
+			uint32_t id = 0;
+			do {
+				result = Sampler::add(name + std::to_string(id), addressmode(sampler.wrapS), addressmode(sampler.wrapT),
+					filter(sampler.magFilter), filter(sampler.minFilter));
+			} while (result == Result::ALREADY_EXISTS);
+		}
 
-			const tinygltf::Image& image = model.images[texture.source];
+		std::vector<std::string> imagenames;
+		imagenames.reserve(model.images.size());
 
+		for (auto& image : model.images) {
 			if (image.as_is) { //TODO
-				printf("Warning 'as is' not implemented, continuing!");
+				printf("Warning 'as is' not implemented, continuing!\n");
 				continue;
 			}
 
-			const auto textureName = getName(image);
 			if (!image.image.empty()) {
-				auto texturePath = Util::getResource(Texture::TEXTURE_PATH, textureName, Texture::TEXTURE_EXTENSION).string();
-				if (fs::exists(texturePath))
-					printf("Warning texture already exists overriding!\n");
+				std::string texturePath;
+				uint32_t number = 0;
+				auto textureName = getName(image);
+				if (textureName.empty())
+					textureName = "default";
+
+				std::string actualName;
+				do {
+					actualName = textureName + std::to_string(number);
+					texturePath = Util::getResource(Texture::TEXTURE_PATH, actualName, Texture::TEXTURE_EXTENSION).string();
+					number++;
+				} while (fs::exists(texturePath));
+
+				imagenames.push_back(actualName);
 
 				if (image.component != 4) //TODO
 					printf("Warning less then 4 channels are not supported\n");
@@ -95,23 +151,21 @@ namespace tgt::Model {
 			const uint32_t baseColor = ((uint32_t)(0xFF * color[0]) << 24) | ((uint32_t)(0xFF * color[1]) << 16)
 				| ((uint32_t)(0xFF * color[2]) << 8) | (uint32_t)(0xFF * color[3]);
 
-			if (baseTexture > 0) { // TODO
-				printf("Warning material has no base Texture!");
-				continue;
-			}
+			const std::string materialName = (material.name.empty() ? "default":material.name);
 
-			const auto& texture = model.textures[0];
-			if (texture.source < 0) { // TODO
-				printf("Warning texture has no source!");
-				continue;
-			}
+			std::string actualName;
+			uint32_t identifier = 0;
+			Result result = Result::GENERAL;
 
-			const auto& image = model.images[texture.source];
-			const auto textureName = getName(image);
-
-			const Result result = Material::add(material.name, textureName, baseColor);
+			const int source = (baseTexture == -1 ? -1:model.textures[baseTexture].source);
+			const std::string texture = (source == -1 ? "":imagenames[source]);
+			do {
+				actualName = materialName + std::to_string(identifier);
+				result = Material::add(actualName, texture, baseColor);
+				identifier++;
+			} while (result == Result::ALREADY_EXISTS);
 			if (result != Result::SUCCESS)
-				printf("Warning couldn't add Material! Error %i!", (int)result);
+				printf("Warning couldn't add %s with result %i\n", actualName.c_str(), result);
 		}
 
 		tinygltf::Scene& scene = model.scenes[model.defaultScene];

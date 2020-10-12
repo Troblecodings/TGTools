@@ -12,12 +12,15 @@ before_install:
   - export CXX_FOR_BUILD=${CXX_FOR_BUILD:-clang++-10}
 
 before_script:
-  - cmake -D CMAKE_CXX_COMPILER=clang++-10 -D CMAKE_CXX_FLAGS="-v -stdlib=libc++ -stdlib++-isystem/usr/lib/llvm-10/include/c++/v1/" ./TGTools/
+  - cmake -D CMAKE_CXX_COMPILER=clang++-10 -D CMAKE_CXX_FLAGS="-v -Wno-unused-command-line-argument -stdlib=libc++ -stdlib++-isystem/usr/lib/llvm-10/include/c++/v1/" ./TGTools/
 
 script:
   - cmake --build ./
 
-before_deploy: 
+after_script:
+  - ctest -C Debug --debug
+
+before_deploy:
   - cd ./TGTools/
   - mv libTGTools.a libTGTools-linux-x64.a
   - cd ../TGToolsConsole/
