@@ -50,8 +50,10 @@ namespace tgt::Sampler {
 		return Util::collect(SAMPLER_PATH, Util::JSON_FILTER);
 	}
 
-	inline const Result change(const std::string& name, const std::string& key, const std::string& value) {
-		return Util::change(Util::getResource(SAMPLER_PATH, name, Util::JSON), key, value, SUPPORTED_PROPERTIES);
+	template<class T, typename = std::enable_if_t<Util::_isAnyOf<T, SamplerAddressMode, SamplerFilter>>>
+	inline const Result change(const std::string& name, const std::string& key, const T value) {
+		STRING_CHECKS(name);
+		return Util::change(Util::getResource(SAMPLER_PATH, name, Util::JSON), key, (uint32_t)value, SUPPORTED_PROPERTIES);
 	}
 
 	struct SamplerInfo {
@@ -62,7 +64,7 @@ namespace tgt::Sampler {
 	};
 
 	inline const Result write(FILE* file, const js::json& jsonarray) {
-		Util::writeToFile(file, jsonarray, [=](const js::json& jsn) {
+		return Util::writeToFile(file, jsonarray, [=](const js::json& jsn) {
 			SamplerInfo samplerInfo;
 			samplerInfo.umode = (uint8_t)jsn[UMODE_PROPERTY].get<SamplerAddressMode>();
 			samplerInfo.vmode = (uint8_t)jsn[VMODE_PROPERTY].get<SamplerAddressMode>();

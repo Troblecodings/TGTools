@@ -7,3 +7,9 @@
 [submodule "tinygltf"]
 	path = tinygltf
 	url = https://github.com/syoyo/tinygltf
+[submodule "TGTools/googletest"]
+	path = TGTools/googletest
+	url = https://github.com/google/googletest
+[submodule "TestFiles/glTF-Sample-Models"]
+	path = TestFiles/glTF-Sample-Models
+	url = https://github.com/KhronosGroup/glTF-Sample-Models
