@@ -11,9 +11,11 @@ namespace tgt::Texture {
 
 	const auto TEXTURE_PATH = fs::path(Util::RESOURCE_LOCATION).append(TEXTURE_SUBFOLDER);
 
-	const Result add(const std::string& path) noexcept;
+	const Result add(const std::string& path);
 
 	const Result remove(const std::string& name);
 
-	const std::string list();
+	inline const std::string list() {
+		return Util::collect(TEXTURE_PATH, [](fs::path path) { return path.extension() == TEXTURE_EXTENSION; });
+	}
 }

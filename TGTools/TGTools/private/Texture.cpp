@@ -29,9 +29,4 @@ namespace tgt::Texture {
 			return foundpath == path;
 		}); });
 	}
-
-	const std::string list() {
-		return Util::collect(TEXTURE_PATH, [](fs::path path) { return path.extension() == TEXTURE_EXTENSION; });
-	}
-
 }
