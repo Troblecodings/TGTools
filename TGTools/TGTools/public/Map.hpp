@@ -3,6 +3,7 @@
 #include "Result.hpp"
 #include <string>
 #include "Util.hpp"
+#include <array>
 
 namespace tgt::Map {
 
@@ -10,9 +11,24 @@ namespace tgt::Map {
 	constexpr auto MAP_EXTENSION = ".tgr";
 
 	constexpr auto TEXTURE_PROPERTY = "textures";
+	constexpr auto SAMPLER_PROPERTY = "sampler";
+	constexpr auto BUFFER_PROPERTY = "buffer";
+	constexpr auto PIPE_PROPERTY = "pipes";
+	constexpr auto SHADER_PROPERTY = "shader";
 	constexpr auto ACTOR_PROPERTY = "actors";
 	constexpr auto MATERIAL_PROPERTY = "materials";
 	constexpr auto FONT_PROPERTY = "fonts";
+
+	constexpr std::array SUPPORTED_PROPERTIES = {
+		TEXTURE_PROPERTY,
+		SAMPLER_PROPERTY,
+		BUFFER_PROPERTY,
+		PIPE_PROPERTY,
+		SHADER_PROPERTY,
+		ACTOR_PROPERTY,
+		MATERIAL_PROPERTY,
+		FONT_PROPERTY
+	};
 
 	const auto MAP_PATH = fs::path(Util::RESOURCE_LOCATION).append(MAP_SUBFOLDER);
 

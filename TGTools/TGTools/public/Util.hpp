@@ -154,7 +154,8 @@ namespace tgt::Util {
 		return false;
 	}
 
-	template<class T, typename = std::enable_if_t<std::is_invocable_v<T, const js::json&>>>
+	template<class T, typename = std::enable_if_t<std::is_invocable_v<T, const js::json&>
+		|| std::is_invocable_v<T, const js::json&, const std::string&>>>
 	inline const Result writeToFile(FILE* file, const js::json& jsonarray, T lambda) {
 		const auto size = jsonarray.size();
 		fwrite(&size, 1, sizeof(uint32_t), file);
@@ -166,7 +167,11 @@ namespace tgt::Util {
 			}
 			js::json json;
 			JSON_LOAD(name, json);
-			lambda(json);
+			if constexpr (std::is_invocable_v<T, const js::json&, const std::string&>) {
+				lambda(json, name);
+			} else {
+				lambda(json);
+			}
 		}
 		constexpr auto end = 0xFFFFFFFF;
 		fwrite(&end, 1, sizeof(end), file);
@@ -202,7 +207,12 @@ namespace tgt::Util {
 		return remove(path, name, Util::JSON, lambda);
 	}
 
-	inline const Result remove(const fs::path& path, const std::string& name) {
-		return remove(path, name, Util::JSON, nullptr);
+	inline const Result remove(const fs::path& path, const std::string& name, const std::string& extension) {
+		return remove(path, name, extension, nullptr);
 	}
+
+	inline const Result remove(const fs::path& path, const std::string& name) {
+		return remove(path, name, Util::JSON);
+	}
+
 }
