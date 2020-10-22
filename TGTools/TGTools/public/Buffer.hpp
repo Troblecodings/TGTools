@@ -21,6 +21,21 @@ namespace tgt::Buffer {
         INDIRECT_BUFFER_BIT = 0x00000100,
 	};
 
+    constexpr size_t allflagsenabled() {
+        return TRANSFER_SRC_BIT |
+            TRANSFER_DST_BIT |
+            UNIFORM_TEXEL_BUFFER_BIT |
+            STORAGE_TEXEL_BUFFER_BIT |
+            UNIFORM_BUFFER_BIT |
+            STORAGE_BUFFER_BIT |
+            INDEX_BUFFER_BIT |
+            VERTEX_BUFFER_BIT |
+            INDIRECT_BUFFER_BIT;
+    }
+
+    constexpr auto BUFFER_TYPE_MAX = allflagsenabled();
+    constexpr auto BUFFER_TYPE_MIN = TRANSFER_SRC_BIT;
+
     constexpr auto BUFFER_SUBFOLDER = "Buffer";
     constexpr auto BUFFER_EXTENSION = ".tgrb";
 
@@ -32,10 +47,14 @@ namespace tgt::Buffer {
 	const Result add(const std::string& name, const BufferTypeFlags type, const size_t size);
 
     inline const Result remove(const std::string& name) {
+        STRING_CHECKS(name);
+        STRING_SYNTAX_CHECK(name);
+
         auto result = Util::remove(BUFFER_PATH, name);
-        if (result != Result::SUCCESS)
+        if (result == Result::DEPENDENT)
             return result;
-        return Util::remove(BUFFER_PATH, name, BUFFER_EXTENSION);
+        if(Util::remove(BUFFER_PATH, name, BUFFER_EXTENSION) == Result::DOES_NOT_EXIST)
+            return result;
     }
 
     inline const std::string list() {

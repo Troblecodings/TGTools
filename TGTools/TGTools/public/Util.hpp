@@ -27,7 +27,6 @@ JSON_WRITE(path, json)
 #define STRING_SYNTAX_CHECK(string) for (char x : string) if ('.' != x && ' ' != x && '-' != x && x != '_' &&  !std::isalnum(x)) return Result::BAD_STRING;
 
 #ifndef TGT_NO_CHECKS
-#define STRING_CHECKS_C(string) if(string == nullptr || *string == 0) { printf("String check failed in (%s -> L%i)\n", __FILE__, __LINE__); return Result::BAD_ARGUMENTS;}
 #define STRING_CHECKS(string) if(string.empty()) { printf("String check failed in (%s -> L%i)\n", __FILE__, __LINE__); return Result::BAD_ARGUMENTS; }
 #define ENUM_CHECKS(enm, min, max) if(enm < min || enm > max) { printf("Enum check failed in (%s -> L%i)\n", __FILE__, __LINE__); return Result::BAD_ARGUMENTS; }
 #else

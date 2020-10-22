@@ -7,6 +7,7 @@
 #include <public/Font.hpp>
 #include <public/Model.hpp>
 #include <public/Sampler.hpp>
+#include <public/Buffer.hpp>
 #include <filesystem>
 
 using namespace tgt;
@@ -166,6 +167,33 @@ TEST(Sampler, Remove) {
 	ASSERT_EQ(Sampler::remove("test"), Result::DOES_NOT_EXIST);
 	ASSERT_EQ(Sampler::remove("../"), Result::BAD_STRING);
 	ASSERT_EQ(Sampler::remove("..\\"), Result::BAD_STRING);
+}
+
+TEST(Buffer, EmptyList) {
+	ASSERT_TRUE(trim(Buffer::list()).empty());
+}
+
+TEST(Buffer, Add) {
+	ASSERT_EQ(Buffer::add("", Buffer::BufferTypeFlags::VERTEX_BUFFER_BIT, 100), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Buffer::add("", Buffer::BufferTypeFlags::VERTEX_BUFFER_BIT, 0), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Buffer::add("test", (Buffer::BufferTypeFlags)0, 100), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Buffer::add("test", (Buffer::BufferTypeFlags)(Buffer::allflagsenabled() + 1), 100), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Buffer::add("test", (Buffer::BufferTypeFlags)Buffer::allflagsenabled(), 100), Result::SUCCESS);
+	ASSERT_EQ(Buffer::add("test", (Buffer::BufferTypeFlags)Buffer::allflagsenabled(), 100), Result::ALREADY_EXISTS);
+	ASSERT_EQ(Buffer::add("../", (Buffer::BufferTypeFlags)Buffer::allflagsenabled(), 100), Result::BAD_STRING);
+	ASSERT_EQ(Buffer::add("..\\", (Buffer::BufferTypeFlags)Buffer::allflagsenabled(), 100), Result::BAD_STRING);
+}
+
+TEST(Buffer, List) {
+	ASSERT_FALSE(trim(Buffer::list()).empty());
+}
+
+TEST(Buffer, Remove) {
+	ASSERT_EQ(Buffer::remove(""), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Buffer::remove("../"), Result::BAD_STRING);
+	ASSERT_EQ(Buffer::remove("..\\"), Result::BAD_STRING);
+	ASSERT_EQ(Buffer::remove("test"), Result::SUCCESS);
+	ASSERT_EQ(Buffer::remove("test"), Result::DOES_NOT_EXIST);
 }
 
 TEST(Map, EmptyList) {
