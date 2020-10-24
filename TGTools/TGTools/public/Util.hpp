@@ -18,6 +18,15 @@ JSON_LOAD(path, json);\
 update \
 JSON_WRITE(path, json)
 
+#define RETURN_ON_FAIL_N(assertion, name) const Result result##name = assertion;\
+if(result##name != Result::SUCCESS) return result##name;
+
+#define RETURN_ON_FAIL(assertion) RETURN_ON_FAIL_N(assertion, test)
+
+#define RETURN_ON_FAIL_N_DEL(assertion, del, name) const Result result##name = assertion;\
+Util::scope_exit sexit##name([=]() {del});\
+if(result##name != Result::SUCCESS) return result##name;
+
 #define REMOVE_IF_FOUND(name, jobj, needle) auto name##json = jobj;\
 	auto name##pred = std::remove(name##json.begin(), name##json.end(), path);\
 	auto name##found = name##pred == name##json.end();\
@@ -117,6 +126,8 @@ namespace tgt::Util {
 	inline const uint8_t* readFile(const std::string& name, size_t* sizeptr = nullptr) {
 		std::ifstream input(name, std::ios_base::binary | std::ios_base::ate | std::ios_base::in);
 		auto size = (size_t)input.tellg();
+		if (size == 0)
+			return nullptr;
 		if (sizeptr != nullptr)
 			*sizeptr = size;
 		uint8_t* data = new uint8_t[size];
@@ -153,8 +164,8 @@ namespace tgt::Util {
 		return false;
 	}
 
-	template<class T, typename = std::enable_if_t<std::is_invocable_v<T, const js::json&>
-		|| std::is_invocable_v<T, const js::json&, const std::string&>>>
+	template<class T, typename = std::enable_if_t<std::is_invocable_r_v<Result, T, const js::json&>
+		|| std::is_invocable_r_v<Result, T, const js::json&, const std::string&>>>
 	inline const Result writeToFile(FILE* file, const js::json& jsonarray, T lambda) {
 		const auto size = jsonarray.size();
 		fwrite(&size, 1, sizeof(uint32_t), file);
@@ -166,10 +177,14 @@ namespace tgt::Util {
 			}
 			js::json json;
 			JSON_LOAD(name, json);
-			if constexpr (std::is_invocable_v<T, const js::json&, const std::string&>) {
-				lambda(json, name);
+			if constexpr (std::is_invocable_r_v<Result, T, const js::json&, const std::string&>) {
+				Result result = lambda(json, name);
+				if (result != Result::SUCCESS)
+					return result;
 			} else {
-				lambda(json);
+				Result result = lambda(json);
+				if (result != Result::SUCCESS)
+					return result;
 			}
 		}
 		constexpr auto end = 0xFFFFFFFF;

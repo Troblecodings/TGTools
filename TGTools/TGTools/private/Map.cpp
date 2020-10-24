@@ -64,41 +64,6 @@ namespace tgt::Map {
 		return Result::SUCCESS;
 	}
 
-	static Result actorToMapFile(FILE* fp, const js::json& map) {
-		auto actorlist = map[ACTOR_PROPERTY];
-		auto size = actorlist.size();
-		WRITE_SIZE(fp);
-		for (const auto& jsonPath : actorlist) {
-			const std::string& stringPath = jsonPath;
-			fs::path stempath(stringPath);
-			stempath.replace_extension(Actor::ACTOR_VERTEX_EXTENSION);
-			uint8_t* vertexdataptr;
-			Result CHECK_RESULT(Actor::getData((const void**)&vertexdataptr, stempath, &size));
-			Util::scope_exit onexit([=]() { delete[] vertexdataptr; });
-			WRITE_SIZE(fp);
-
-			Actor::ActorData data;
-			CHECK_RESULT(Actor::_dataHeader(stringPath, &data));
-			fwrite(&data, sizeof(data), 1, fp);
-
-			uint8_t* indexptr;
-			size_t indexSize = 0;
-			stempath.replace_extension(Actor::ACTOR_INDEX_EXTENSION);
-			CHECK_RESULT(Actor::getData((const void**)&indexptr, stempath, &indexSize));
-
-			if (indexSize != sizeof(uint32_t) * data.indexDrawCount)
-				printf("Warning index size is greater then the actual draw count");
-
-			fwrite(&indexptr, sizeof(uint32_t), data.indexDrawCount, fp);
-			delete[] indexptr;
-
-			fwrite(vertexdataptr, sizeof(uint8_t), size, fp);
-		}
-		WRITE_CHECK(fp);
-
-		return Result::SUCCESS;
-	}
-
 	const Result make(const std::string& mapname) {
 		STRING_CHECKS(mapname);
 
@@ -121,7 +86,7 @@ namespace tgt::Map {
 
 		CHECK_RESULT(materialToMapFile(fp, mapJson));
 
-		CHECK_RESULT(actorToMapFile(fp, mapJson));
+		Actor::write(fp, mapJson[ACTOR_PROPERTY]);
 
 		// TODO
 		constexpr uint32_t zero = 0;

@@ -91,6 +91,15 @@ TEST(Actor, List) {
 	ASSERT_FALSE(trim(Actor::list()).empty());
 }
 
+TEST(Actor, Data) {
+	float testVertices[12] = {
+		0, 0, 0, 0,
+		0, 1, 0, 1,
+		1, 0, 1, 0
+	};
+	ASSERT_EQ(Actor::setData("test", Actor::ActorDataType::VERTEX, testVertices, sizeof(testVertices)), Result::SUCCESS);
+}
+
 TEST(Actor, Remove) {
 	ASSERT_EQ(Actor::remove(""), Result::BAD_ARGUMENTS);
 	ASSERT_EQ(Actor::remove("../"), Result::BAD_STRING);

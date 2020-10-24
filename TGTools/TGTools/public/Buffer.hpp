@@ -77,6 +77,7 @@ namespace tgt::Buffer {
                 fwrite(ptr, sizeof(uint8_t), size, file);
                 delete[] ptr;
             }
+            return Result::SUCCESS;
         });
     }
 }
