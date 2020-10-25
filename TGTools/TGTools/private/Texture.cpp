@@ -4,7 +4,7 @@
 
 namespace tgt::Texture {
 
-	const Result add(const std::string& path) noexcept {
+	const Result add(const std::string& path) {
 		STRING_CHECKS(path);
 		const fs::path texturePath(path);
 

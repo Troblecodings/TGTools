@@ -60,27 +60,47 @@ namespace tgt::Actor {
 		VERTEX
 	};
 
+	constexpr ActorDataType ACTOR_DATA_TYPE_MIN = ActorDataType::INDEX;
+	constexpr ActorDataType ACTOR_DATA_TYPE_MAX = ActorDataType::VERTEX;
+
 	constexpr std::array ACTOR_DATA_TYPE_EXTENSIONS = { ACTOR_INDEX_EXTENSION, ACTOR_VERTEX_EXTENSION };
 
-	inline Result setData(const std::string& name, const ActorDataType datatype, const void* data, const uint32_t byteSize, const bool append = false) {
-		const fs::path pathToActor = Util::getResource(Actor::ACTOR_SUBFOLDER, name);
+	inline const Result setData(const std::string& name, const ActorDataType datatype, const void* data, const uint32_t byteSize, const bool append = false) {
+		STRING_CHECKS(name);
+		STRING_SYNTAX_CHECK(name);
+		ENUM_CHECKS(datatype, ACTOR_DATA_TYPE_MIN, ACTOR_DATA_TYPE_MAX);
+#ifndef TGT_NO_CHECKS
+		if (data == nullptr || byteSize == 0)
+			return Result::BAD_ARGUMENTS;
+#endif
+
+		const fs::path pathToActor = Util::getResource(Actor::ACTOR_PATH, name, Util::JSON);
 		if (!fs::exists(pathToActor))
 			return Result::DOES_NOT_EXIST;
-		const std::string pathToDataSet = Util::getResource(Actor::ACTOR_SUBFOLDER, name, 
+		const std::string pathToDataSet = Util::getResource(Actor::ACTOR_PATH, name,
 			ACTOR_DATA_TYPE_EXTENSIONS[(size_t)datatype]).string();
 		FILE* fp = fopen(pathToDataSet.c_str(), append ? "ab" : "wb");
+		if (fp == nullptr)
+			return Result::GENERAL;
 		fwrite(data, sizeof(uint8_t), byteSize, fp);
 		fclose(fp);
 		return Result::SUCCESS;
 	}
 
 	inline const Result getData(const std::string& name, const ActorDataType datatype, const void** data, size_t* ptr = nullptr) {
-		const fs::path pathToDataSet = Util::getResource(Actor::ACTOR_SUBFOLDER, name,
+		STRING_CHECKS(name);
+		STRING_SYNTAX_CHECK(name);
+		ENUM_CHECKS(datatype, ACTOR_DATA_TYPE_MIN, ACTOR_DATA_TYPE_MAX);
+#ifndef TGT_NO_CHECKS
+		if (data == nullptr)
+			return Result::BAD_ARGUMENTS;
+#endif
+		const fs::path pathToDataSet = Util::getResource(Actor::ACTOR_PATH, name,
 			ACTOR_DATA_TYPE_EXTENSIONS[(size_t)datatype]);
 		if (!fs::exists(pathToDataSet))
 			return Result::DOES_NOT_EXIST;
 		*data = Util::readFile(pathToDataSet.string(), ptr);
-		if (data == nullptr)
+		if (*data == nullptr)
 			return Result::GENERAL;
 		return Result::SUCCESS;
 	}

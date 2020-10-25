@@ -97,7 +97,33 @@ TEST(Actor, Data) {
 		0, 1, 0, 1,
 		1, 0, 1, 0
 	};
+	ASSERT_EQ(Actor::setData("", Actor::ActorDataType::VERTEX, testVertices, sizeof(testVertices)), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Actor::setData("../", Actor::ActorDataType::VERTEX, testVertices, sizeof(testVertices)), Result::BAD_STRING);
+	ASSERT_EQ(Actor::setData("..\\", Actor::ActorDataType::VERTEX, testVertices, sizeof(testVertices)), Result::BAD_STRING);
+	ASSERT_EQ(Actor::setData("test", (Actor::ActorDataType)3, testVertices, sizeof(testVertices)), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Actor::setData("test", Actor::ActorDataType::VERTEX, testVertices, 0), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Actor::setData("test", Actor::ActorDataType::VERTEX, nullptr, sizeof(testVertices)), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Actor::setData("doesNotExist", Actor::ActorDataType::VERTEX, testVertices, sizeof(testVertices)), Result::DOES_NOT_EXIST);
+
+	ASSERT_EQ(Actor::setData("test", Actor::ActorDataType::VERTEX, testVertices, sizeof(testVertices), true), Result::SUCCESS);
 	ASSERT_EQ(Actor::setData("test", Actor::ActorDataType::VERTEX, testVertices, sizeof(testVertices)), Result::SUCCESS);
+	ASSERT_EQ(Actor::setData("test", Actor::ActorDataType::VERTEX, testVertices, sizeof(testVertices), true), Result::SUCCESS);
+
+	float* testVerticesRead;
+	const void** textVerticeDataRead = (const void**)&testVerticesRead;
+	size_t size;
+	ASSERT_EQ(Actor::getData("", Actor::ActorDataType::VERTEX, textVerticeDataRead), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Actor::getData("../", Actor::ActorDataType::VERTEX, textVerticeDataRead), Result::BAD_STRING);
+	ASSERT_EQ(Actor::getData("..\\", Actor::ActorDataType::VERTEX, textVerticeDataRead), Result::BAD_STRING);
+	ASSERT_EQ(Actor::getData("test", (Actor::ActorDataType)3, textVerticeDataRead), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Actor::getData("test", Actor::ActorDataType::VERTEX, nullptr), Result::BAD_ARGUMENTS);
+
+	ASSERT_EQ(Actor::getData("test", Actor::ActorDataType::VERTEX, textVerticeDataRead, &size), Result::SUCCESS);
+	ASSERT_EQ(size, sizeof(testVertices) * 2);
+	ASSERT_NE(testVerticesRead, nullptr);
+	delete[] testVerticesRead;
+	ASSERT_EQ(Actor::getData("test", Actor::ActorDataType::VERTEX, textVerticeDataRead), Result::SUCCESS);
+	ASSERT_NE(testVerticesRead, nullptr);
 }
 
 TEST(Actor, Remove) {
