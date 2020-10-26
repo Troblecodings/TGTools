@@ -165,7 +165,7 @@ namespace tgt::Util {
 	}
 
 	template<class T, typename = std::enable_if_t<std::is_invocable_r_v<Result, T, const js::json&>
-		|| std::is_invocable_r_v<Result, T, const js::json&, const std::string&>>>
+		|| std::is_invocable_r_v<Result, T, const js::json&, const std::string&> || std::is_invocable_r_v<Result, T, const std::string&>>>
 	inline const Result writeToFile(FILE* file, const js::json& jsonarray, T lambda) {
 		const auto size = jsonarray.size();
 		fwrite(&size, 1, sizeof(uint32_t), file);
@@ -175,16 +175,22 @@ namespace tgt::Util {
 				printf("Warning: %s does not exist!", name.c_str());
 				return Result::DOES_NOT_EXIST;
 			}
-			js::json json;
-			JSON_LOAD(name, json);
-			if constexpr (std::is_invocable_r_v<Result, T, const js::json&, const std::string&>) {
-				Result result = lambda(json, name);
+			if constexpr (std::is_invocable_r_v<Result, T, const std::string&>) {
+				Result result = lambda(name);
 				if (result != Result::SUCCESS)
 					return result;
 			} else {
-				Result result = lambda(json);
-				if (result != Result::SUCCESS)
-					return result;
+				js::json json;
+				JSON_LOAD(name, json);
+				if constexpr (std::is_invocable_r_v<Result, T, const js::json&, const std::string&>) {
+					Result result = lambda(json, name);
+					if (result != Result::SUCCESS)
+						return result;
+				} else {
+					Result result = lambda(json);
+					if (result != Result::SUCCESS)
+						return result;
+				}
 			}
 		}
 		constexpr auto end = 0xFFFFFFFF;

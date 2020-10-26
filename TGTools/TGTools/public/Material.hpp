@@ -27,4 +27,14 @@ namespace tgt::Material {
 	inline const Result remove(const std::string& name) {
 		return Util::remove(MATERIAL_PATH, name);
 	}
+
+	inline const Result write(FILE* fp, const js::json& jsonarray, const js::json& textureList) {
+		return Util::writeToFile(fp, jsonarray, [=](const js::json& json) {
+			const uint32_t textureID = (uint32_t)ID_OF(textureList, json[Material::TEXTURE_PROPERTY].get<std::string>());
+			fwrite(&textureID, sizeof(textureID), 1, fp);
+			const uint32_t color = json[Material::COLOR_PROPERTY].get<uint32_t>();
+			fwrite(&color, sizeof(color), 1, fp);
+			return Result::SUCCESS;
+		});
+	}
 }
