@@ -5,6 +5,10 @@
 #include "../public/Font.hpp"
 #include "../public/Texture.hpp"
 #include "../public/Material.hpp"
+#include "../public/Buffer.hpp"
+#include "../public/Sampler.hpp"
+#include "../public/Pipe.hpp"
+#include "../public/Shader.hpp"
 #include <algorithm>
 
 namespace tgt::Map {
@@ -53,6 +57,10 @@ namespace tgt::Map {
 
 		const js::json& textureList = mapJson[TEXTURE_PROPERTY];
 		CHECK_RESULT(Texture::write(fp, textureList));
+
+		CHECK_RESULT(Buffer::write(fp, mapJson[BUFFER_PROPERTY]));
+
+		CHECK_RESULT(Sampler::write(fp, mapJson[SAMPLER_PROPERTY]));
 
 		CHECK_RESULT(Material::write(fp, mapJson[MATERIAL_PROPERTY], textureList));
 

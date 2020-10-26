@@ -1,5 +1,6 @@
 #include "../public/Shader.hpp"
 #include "../public/json.hpp"
+#include "../public/Buffer.hpp"
 #include "../public/Pipe.hpp"
 
 namespace tgt::Shader {
@@ -13,7 +14,7 @@ namespace tgt::Shader {
 			return Result::ALREADY_EXISTS;
 
 		js::json json;
-		json["shaderType"] = type;
+		json[SHADER_TYPE_PROPERTY] = type;
 
 		JSON_WRITE(shader, json);
 
@@ -25,18 +26,31 @@ namespace tgt::Shader {
 	}
 
 	const Result remove(const std::string& name) {
-		STRING_CHECKS(name);
+		const Result result = Util::remove(SHADER_PATH, name, Pipe::checkDependent);
+		if (result == Result::DEPENDENT)
+			return result;
+		if (Util::remove(SHADER_PATH, name, SHADER_EXTENSION) == Result::DOES_NOT_EXIST)
+			return result;
+		return Result::SUCCESS;
+	}
 
-		auto path = Util::getResource(SHADER_PATH, name, SHADER_EXTENSION);
-		auto shader = Util::getResource(SHADER_PATH, name, Util::JSON);
+	const Result addBuffer(const std::string& shader, const std::string& buffer) {
+		STRING_CHECKS(shader);
+		STRING_CHECKS(buffer);
 
-		if (Pipe::checkDependent(name))
-			return Result::DEPENDENT;
-
-		if (!(fs::remove(path) && fs::remove(shader)))
+		const auto path = Util::getResource(SHADER_PATH, shader, Util::JSON);
+		if (!fs::exists(path))
 			return Result::DOES_NOT_EXIST;
 
-		return Result::SUCCESS;
+		const auto bufferPath = Util::getResource(Buffer::BUFFER_PATH, buffer, Util::JSON);
+		if (!fs::exists(bufferPath))
+			return Result::DOES_NOT_EXIST;
+
+		return Util::jsonUpdatet(path, [=](js::json& json) {
+			js::json bufferJson;
+			JSON_LOAD(bufferPath, bufferJson);
+			return Result::SUCCESS;
+		});
 	}
 
 }
