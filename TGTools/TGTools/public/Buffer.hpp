@@ -55,6 +55,7 @@ namespace tgt::Buffer {
             return result;
         if(Util::remove(BUFFER_PATH, name, BUFFER_EXTENSION) == Result::DOES_NOT_EXIST)
             return result;
+        return Result::SUCCESS;
     }
 
     inline const std::string list() {

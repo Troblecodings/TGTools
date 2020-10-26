@@ -97,6 +97,9 @@ TEST(Actor, Data) {
 		0, 1, 0, 1,
 		1, 0, 1, 0
 	};
+
+	uint32_t testIndices[3] = { 0, 1, 2 };
+
 	ASSERT_EQ(Actor::setData("", Actor::ActorDataType::VERTEX, testVertices, sizeof(testVertices)), Result::BAD_ARGUMENTS);
 	ASSERT_EQ(Actor::setData("../", Actor::ActorDataType::VERTEX, testVertices, sizeof(testVertices)), Result::BAD_STRING);
 	ASSERT_EQ(Actor::setData("..\\", Actor::ActorDataType::VERTEX, testVertices, sizeof(testVertices)), Result::BAD_STRING);
@@ -109,6 +112,10 @@ TEST(Actor, Data) {
 	ASSERT_EQ(Actor::setData("test", Actor::ActorDataType::VERTEX, testVertices, sizeof(testVertices)), Result::SUCCESS);
 	ASSERT_EQ(Actor::setData("test", Actor::ActorDataType::VERTEX, testVertices, sizeof(testVertices), true), Result::SUCCESS);
 
+	ASSERT_EQ(Actor::setData("test", Actor::ActorDataType::INDEX, testIndices, sizeof(testIndices), true), Result::SUCCESS);
+	ASSERT_EQ(Actor::setData("test", Actor::ActorDataType::INDEX, testIndices, sizeof(testIndices)), Result::SUCCESS);
+	ASSERT_EQ(Actor::setData("test", Actor::ActorDataType::INDEX, testIndices, sizeof(testIndices), true), Result::SUCCESS);
+
 	float* testVerticesRead;
 	const void** textVerticeDataRead = (const void**)&testVerticesRead;
 	size_t size;
@@ -117,6 +124,7 @@ TEST(Actor, Data) {
 	ASSERT_EQ(Actor::getData("..\\", Actor::ActorDataType::VERTEX, textVerticeDataRead), Result::BAD_STRING);
 	ASSERT_EQ(Actor::getData("test", (Actor::ActorDataType)3, textVerticeDataRead), Result::BAD_ARGUMENTS);
 	ASSERT_EQ(Actor::getData("test", Actor::ActorDataType::VERTEX, nullptr), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Actor::getData("doesNotExist", Actor::ActorDataType::VERTEX, textVerticeDataRead, &size), Result::DOES_NOT_EXIST);
 
 	ASSERT_EQ(Actor::getData("test", Actor::ActorDataType::VERTEX, textVerticeDataRead, &size), Result::SUCCESS);
 	ASSERT_EQ(size, sizeof(testVertices) * 2);
@@ -124,6 +132,29 @@ TEST(Actor, Data) {
 	delete[] testVerticesRead;
 	ASSERT_EQ(Actor::getData("test", Actor::ActorDataType::VERTEX, textVerticeDataRead), Result::SUCCESS);
 	ASSERT_NE(testVerticesRead, nullptr);
+
+	uint32_t* testIndicesRead;
+	const void** textIndicesDataRead = (const void**)&testIndicesRead;
+	size_t sizeIndices;
+	ASSERT_EQ(Actor::getData("test", Actor::ActorDataType::INDEX, textIndicesDataRead, &sizeIndices), Result::SUCCESS);
+	ASSERT_EQ(sizeIndices, sizeof(testIndices) * 2);
+	ASSERT_NE(testIndicesRead, nullptr);
+	delete[] testIndicesRead;
+	ASSERT_EQ(Actor::getData("test", Actor::ActorDataType::INDEX, textIndicesDataRead), Result::SUCCESS);
+	ASSERT_NE(testIndicesRead, nullptr);
+
+	constexpr auto indexElements = sizeof(testIndices) / sizeof(*testIndices);
+	for (size_t x = 0; x < 2; x++)
+		for (size_t i = 0; i < indexElements; i++)
+			ASSERT_EQ(testIndices[i], testIndicesRead[i + x * indexElements]);
+
+	constexpr auto vertexElements = sizeof(testVertices) / sizeof(*testVertices);
+	for (size_t x = 0; x < 2; x++)
+		for (size_t i = 0; i < vertexElements; i++)
+			ASSERT_FLOAT_EQ(testVertices[i], testVerticesRead[i + x * vertexElements]);
+
+	delete[] testVerticesRead;
+	delete[] testIndicesRead;
 }
 
 TEST(Actor, Remove) {
