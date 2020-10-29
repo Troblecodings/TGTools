@@ -7,7 +7,14 @@
 
 namespace tgt::Shader {
 
-	using ShaderType = EShLanguage;
+	enum class ShaderType {
+		VERTEX_BIT = 0x00000001,
+		TESSELLATION_CONTROL_BIT = 0x00000002,
+		TESSELLATION_EVALUATION_BIT = 0x00000004,
+		GEOMETRY_BIT = 0x00000008,
+		FRAGMENT_BIT = 0x00000010,
+		COMPUTE_BIT = 0x00000020
+	};
 
 	namespace ShaderInput {
 
@@ -28,20 +35,12 @@ namespace tgt::Shader {
 
 	enum class DescriptorType {
 		SAMPLER = 0,
-		COMBINED_IMAGE_SAMPLER = 1,
 		SAMPLED_IMAGE = 2,
-		STORAGE_IMAGE = 3,
-		UNIFORM_TEXEL_BUFFER = 4,
-		STORAGE_TEXEL_BUFFER = 5,
-		UNIFORM_BUFFER = 6,
-		STORAGE_BUFFER = 7,
-		UNIFORM_BUFFER_DYNAMIC = 8,
-		STORAGE_BUFFER_DYNAMIC = 9,
-		INPUT_ATTACHMENT = 10
+		UNIFORM_BUFFER = 6
 	};
 
 	constexpr auto DESCRIPTOR_TYPE_MIN = DescriptorType::SAMPLER;
-	constexpr auto DESCRIPTOR_TYPE_MAX = DescriptorType::INPUT_ATTACHMENT;
+	constexpr auto DESCRIPTOR_TYPE_MAX = DescriptorType::UNIFORM_BUFFER;
 
 	constexpr auto SHADER_EXTENSION = ".glsl";
 	constexpr auto SHADER_SUBFOLDER = "Shaders";
@@ -49,13 +48,17 @@ namespace tgt::Shader {
 	constexpr auto SHADER_TYPE_PROPERTY = "shaderType";
 	constexpr auto SHADER_LAYOUT_PROPERTY = "shaderLayouts";
 
+	constexpr auto SHADER_LAYOUT_TYPE_PROPERTY = "shaderLayoutType";
+	constexpr auto SHADER_LAYOUT_BINDING_PROPERTY = "shaderLayoutBinding";
+	constexpr auto SHADER_LAYOUT_RESOURCE_PROPERTY = "shaderLayoutResource";
+
 	constexpr std::array SUPPORTED_PROPERTIES = { SHADER_TYPE_PROPERTY };
 
 	inline const auto SHADER_PATH = fs::path(Util::RESOURCE_LOCATION).append(SHADER_SUBFOLDER);
 
-	const Result add(const std::string& path, ShaderType type);
+	const Result add(const std::string& path, const ShaderType type);
 
-	const Result addBuffer(const std::string& shader, const std::string& buffer);
+	const Result addStaticInput(const std::string& shader, const std::string& resource, const uint32_t binding, const DescriptorType type);
 
 	const Result remove(const std::string& name);
 
@@ -63,25 +66,6 @@ namespace tgt::Shader {
 		return Util::collect(SHADER_PATH, [](fs::path path) { return path.extension() == SHADER_EXTENSION; });
 	}
 
-	inline const Result write(FILE* fp, const js::json& jsonarry) {
-		return Util::writeToFile(fp, jsonarry, [=](const js::json& json, const std::string& name) {
-			const ShaderType type = (ShaderType)json[SHADER_LAYOUT_PROPERTY].get<uint32_t>();
-			fwrite(&type, sizeof(uint32_t), 1, fp);
-			const js::json& layoutarr = json[SHADER_LAYOUT_PROPERTY];
-			const size_t layoutsize = layoutarr.size();
-			fwrite(&layoutsize, sizeof(uint32_t), 1, fp);
-			for (const js::json& jobj : layoutarr) {
-
-			}
-
-			const std::string shaderPath = fs::path(name).replace_extension(SHADER_EXTENSION).string();
-			size_t size;
-			const uint8_t* data = Util::readFile(shaderPath, &size);
-			fwrite(&size, sizeof(uint32_t), 1, fp);
-			fwrite(data, sizeof(uint8_t), size, fp);
-			delete[] data;
-			return Result::SUCCESS;
-		});
-	}
+	const Result write(FILE* fp, const js::json& jsonarry);
 
 }
