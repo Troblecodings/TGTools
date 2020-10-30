@@ -284,12 +284,12 @@ namespace tgt::Shader {
 			}
 
 			const std::string shaderPath = fs::path(name).replace_extension(SHADER_EXTENSION).string();
-			std::vector<unsigned int> spirv;
+			std::vector<uint32_t> spirv;
 			spirv.reserve(1000);
 			Result result = getSPIRV(type, shaderPath, spirv);
 			size_t size = spirv.size();
 			fwrite(&size, sizeof(uint32_t), 1, fp);
-			fwrite(spirv.data(), sizeof(uint8_t), size, fp);
+			fwrite(spirv.data(), sizeof(uint32_t), size, fp);
 			return Result::SUCCESS;
 		});
 	}
