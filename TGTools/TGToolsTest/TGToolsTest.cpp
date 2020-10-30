@@ -9,6 +9,7 @@
 #include <public/Sampler.hpp>
 #include <public/Buffer.hpp>
 #include <filesystem>
+#include "../../glslang/glslang/Public/ShaderLang.h"
 
 using namespace tgt;
 

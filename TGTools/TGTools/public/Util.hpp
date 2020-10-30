@@ -130,9 +130,10 @@ namespace tgt::Util {
 			return nullptr;
 		if (sizeptr != nullptr)
 			*sizeptr = size;
-		uint8_t* data = new uint8_t[size];
+		uint8_t* data = new uint8_t[size + 1];
 		input.seekg(0, std::ios_base::beg);
 		input.read((char*)data, size);
+		data[size] = '\0';
 		return data;
 	}
 

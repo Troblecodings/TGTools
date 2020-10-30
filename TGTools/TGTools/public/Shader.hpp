@@ -3,7 +3,6 @@
 #include "Result.hpp"
 #include <string>
 #include "Util.hpp"
-#include "../../../glslang/glslang/Public/ShaderLang.h"
 
 namespace tgt::Shader {
 
@@ -61,6 +60,8 @@ namespace tgt::Shader {
 	const Result addStaticInput(const std::string& shader, const std::string& resource, const uint32_t binding, const DescriptorType type);
 
 	const Result remove(const std::string& name);
+
+	inline const Result compile(const std::string& name);
 
 	inline const std::string list() {
 		return Util::collect(SHADER_PATH, [](fs::path path) { return path.extension() == SHADER_EXTENSION; });

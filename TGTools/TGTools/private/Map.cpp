@@ -62,6 +62,8 @@ namespace tgt::Map {
 
 		CHECK_RESULT(Sampler::write(fp, mapJson[SAMPLER_PROPERTY]));
 
+		CHECK_RESULT(Shader::write(fp, mapJson[SHADER_PROPERTY]));
+
 		CHECK_RESULT(Material::write(fp, mapJson[MATERIAL_PROPERTY], textureList));
 
 		CHECK_RESULT(Actor::write(fp, mapJson[ACTOR_PROPERTY]));
