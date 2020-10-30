@@ -15,6 +15,9 @@ namespace tgt::Shader {
 		COMPUTE_BIT = 0x00000020
 	};
 
+	constexpr ShaderType SHADER_TYPE_MIN = ShaderType::VERTEX_BIT;
+	constexpr ShaderType SHADER_TYPE_MAX = ShaderType::COMPUTE_BIT;
+
 	namespace ShaderInput {
 
 		using ShaderInputStride = uint32_t;
@@ -61,7 +64,7 @@ namespace tgt::Shader {
 
 	const Result remove(const std::string& name);
 
-	inline const Result compile(const std::string& name);
+	const Result compile(const std::string& name, std::vector<unsigned int>& spirv);
 
 	inline const std::string list() {
 		return Util::collect(SHADER_PATH, [](fs::path path) { return path.extension() == SHADER_EXTENSION; });

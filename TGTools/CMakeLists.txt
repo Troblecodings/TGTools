@@ -14,6 +14,7 @@ endif()
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
 # Include sub-projects.
+add_subdirectory ("glslang")
 add_subdirectory ("TGTools")
 add_subdirectory ("TGToolsConsole")
 add_subdirectory ("googletest")

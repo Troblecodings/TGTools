@@ -1,9 +1,6 @@
 [submodule "stb"]
 	path = stb
 	url = https://github.com/nothings/stb/
-[submodule "glslang"]
-	path = glslang
-	url = https://github.com/KhronosGroup/glslang
 [submodule "tinygltf"]
 	path = tinygltf
 	url = https://github.com/syoyo/tinygltf
@@ -13,3 +10,6 @@
 [submodule "TestFiles/glTF-Sample-Models"]
 	path = TestFiles/glTF-Sample-Models
 	url = https://github.com/KhronosGroup/glTF-Sample-Models
+[submodule "TGTools/glslang"]
+	path = TGTools/glslang
+	url = https://github.com/KhronosGroup/glslang
