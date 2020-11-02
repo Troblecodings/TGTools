@@ -56,6 +56,4 @@ namespace tgt::Pipe {
 		});
 	}
 
-	const Result compile();
-
 }

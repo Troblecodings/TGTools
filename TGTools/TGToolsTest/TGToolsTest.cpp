@@ -315,6 +315,10 @@ TEST(Shader, Compile) {
 	}
 }
 
+TEST(Shader, AddStaticInput) {
+	ASSERT_EQ(Shader::addStaticInput("test", "", 0, Shader::DescriptorType::SAMPLER), Result::SUCCESS);
+}
+
 TEST(Map, EmptyList) {
 	ASSERT_TRUE(trim(Map::list()).empty());
 }
