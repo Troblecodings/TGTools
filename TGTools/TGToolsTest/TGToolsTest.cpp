@@ -306,9 +306,15 @@ constexpr uint8_t GENERAL_DATA[] = {
 
 TEST(Shader, Compile) {
 	std::vector<uint32_t> spirv;
+
+	ASSERT_EQ(Shader::compile("", spirv), Result::BAD_ARGUMENTS);
+	ASSERT_EQ(Shader::compile("doesNotExist", spirv), Result::DOES_NOT_EXIST);
+	ASSERT_EQ(Shader::compile("../", spirv), Result::BAD_STRING);
+	ASSERT_EQ(Shader::compile("..\\", spirv), Result::BAD_STRING);
+
 	ASSERT_EQ(Shader::compile("test", spirv), Result::SUCCESS);
 	uint32_t size = spirv.size() * 4;
-	EXPECT_EQ(size, sizeof(GENERAL_DATA));
+	ASSERT_EQ(size, sizeof(GENERAL_DATA));
 	uint8_t* data = (uint8_t*)spirv.data();
 	for (size_t i = 0; i < size; i++) {
 		EXPECT_EQ(data[i], GENERAL_DATA[i]);

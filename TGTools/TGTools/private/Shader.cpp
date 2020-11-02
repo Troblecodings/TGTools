@@ -230,6 +230,9 @@ namespace tgt::Shader {
 	}
 
 	const Result compile(const std::string& name, std::vector<unsigned int>& spirv) {
+		STRING_CHECKS(name);
+		STRING_SYNTAX_CHECK(name);
+
 		const auto path = Util::getResource(SHADER_PATH, name, SHADER_EXTENSION);
 		if (!fs::exists(path))
 			return Result::DOES_NOT_EXIST;
