@@ -9,7 +9,7 @@
 
 namespace tgt::Shader {
 
-	const TBuiltInResource DefaultTBuiltInResource = {
+	constexpr TBuiltInResource DefaultTBuiltInResource = {
 		/* .MaxLights = */ 32,
 		/* .MaxClipPlanes = */ 6,
 		/* .MaxTextureUnits = */ 32,
@@ -221,10 +221,11 @@ namespace tgt::Shader {
 			printf("%s", program.getInfoLog());
 			return Result::GENERAL;
 		}
+
 		glslang::TIntermediate* intermediate = program.getIntermediate(language);
 		if (intermediate == nullptr)
 			return Result::GENERAL;
-		
+
 		glslang::GlslangToSpv(*intermediate, spirv);
 		return Result::SUCCESS;
 	}
@@ -290,6 +291,9 @@ namespace tgt::Shader {
 			std::vector<uint32_t> spirv;
 			spirv.reserve(1000);
 			Result result = getSPIRV(type, shaderPath, spirv);
+			if (result != Result::SUCCESS)
+				return result;
+
 			size_t size = spirv.size();
 			fwrite(&size, sizeof(uint32_t), 1, fp);
 			fwrite(spirv.data(), sizeof(uint32_t), size, fp);

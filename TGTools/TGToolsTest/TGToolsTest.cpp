@@ -10,6 +10,7 @@
 #include <public/Buffer.hpp>
 #include <public/Shader.hpp>
 #include <filesystem>
+#include <stdio.h>
 
 using namespace tgt;
 
@@ -39,6 +40,28 @@ TEST(Texture, List) {
 	ASSERT_FALSE(trim(Texture::list()).empty());
 }
 
+TEST(Texture, Write) {
+	FILE* ptr = fopen("tmp", "wb+");
+	std::string testtex = Util::getResource(Texture::TEXTURE_PATH, "test", Texture::TEXTURE_EXTENSION).string();
+	js::json js = js::json::array();
+	js.push_back(testtex);
+	ASSERT_EQ(Texture::write(ptr, js), Result::SUCCESS);
+	fflush(ptr);
+	fseek(ptr, 0, SEEK_SET);
+	uint32_t count = 0;
+	size_t size = 0;
+	uint8_t texture[119];
+	uint32_t reserved = 0;
+	fread(&count, sizeof(uint32_t), 1, ptr);
+	fread(&size, sizeof(size_t), 1, ptr);
+	fread(&texture, sizeof(uint8_t), sizeof(texture), ptr);
+	fread(&reserved, sizeof(uint32_t), 1, ptr);
+	fclose(ptr);
+	ASSERT_EQ(count, 1);
+	ASSERT_EQ(size, 119);
+	ASSERT_EQ(reserved, 0xFFFFFFFF);
+}
+
 TEST(Texture, Remove) {
 	ASSERT_EQ(Texture::remove(""), Result::BAD_ARGUMENTS);
 	ASSERT_EQ(Texture::remove("test"), Result::SUCCESS);
@@ -59,6 +82,53 @@ TEST(Material, Add) {
 	ASSERT_EQ(Material::add("testcolor", "test", 0xFF000000), Result::SUCCESS);
 	ASSERT_EQ(Material::add("../", "test"), Result::BAD_STRING);
 	ASSERT_EQ(Material::add("..\\", "test"), Result::BAD_STRING);
+}
+
+TEST(Material, Write) {
+	FILE* ptr = fopen("tmp", "wb+");
+	std::string material1 = Util::getResource(Material::MATERIAL_PATH, "test", Util::JSON).string();
+	std::string material2 = Util::getResource(Material::MATERIAL_PATH, "testcolor", Util::JSON).string();
+
+	js::json materials = js::json::array();
+	materials.push_back(material1);
+	materials.push_back(material2);
+
+	std::string testtex = Util::getResource(Texture::TEXTURE_PATH, "test", Texture::TEXTURE_EXTENSION).string();
+	js::json textures = js::json::array();
+	textures.push_back(testtex);
+
+	ASSERT_EQ(Material::write(ptr, materials, textures), Result::SUCCESS);
+
+	fflush(ptr);
+	fseek(ptr, 0, SEEK_SET);
+
+	uint32_t count = 0;
+
+	uint32_t textureid = 0xFF;
+	uint32_t color = 0;
+
+	uint32_t textureid1 = 0xFF;
+	uint32_t color1 = 0;
+
+	uint32_t reserved = 0;
+
+	fread(&count, sizeof(uint32_t), 1, ptr);
+
+	fread(&textureid, sizeof(uint32_t), 1, ptr);
+	fread(&color, sizeof(uint32_t), 1, ptr);
+
+	fread(&textureid1, sizeof(uint32_t), 1, ptr);
+	fread(&color1, sizeof(uint32_t), 1, ptr);
+
+	fread(&reserved, sizeof(uint32_t), 1, ptr);
+
+	fclose(ptr);
+	ASSERT_EQ(count, 2);
+	ASSERT_EQ(textureid, 0);
+	ASSERT_EQ(textureid1, 0);
+	ASSERT_EQ(color, 0xFFFFFFFF);
+	ASSERT_EQ(color1, 0xFF000000);
+	ASSERT_EQ(reserved, 0xFFFFFFFF);
 }
 
 TEST(Material, Remove) {
@@ -322,7 +392,7 @@ TEST(Shader, Compile) {
 }
 
 TEST(Shader, AddStaticInput) {
-	ASSERT_EQ(Shader::addStaticInput("test", "", 0, Shader::DescriptorType::SAMPLER), Result::SUCCESS);
+	ASSERT_EQ(Shader::addStaticInput("test", "", 0, Shader::DescriptorType::SAMPLED_IMAGE), Result::SUCCESS);
 }
 
 TEST(Map, EmptyList) {

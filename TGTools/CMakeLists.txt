@@ -12,6 +12,7 @@ else()
 endif()
 
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+add_compile_definitions(_CRT_SECURE_NO_WARNINGS)
 
 # Include sub-projects.
 add_subdirectory ("glslang")

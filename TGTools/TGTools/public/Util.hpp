@@ -125,6 +125,9 @@ namespace tgt::Util {
 
 	inline const uint8_t* readFile(const std::string& name, size_t* sizeptr = nullptr) {
 		std::ifstream input(name, std::ios_base::binary | std::ios_base::ate | std::ios_base::in);
+		if (!input)
+			return nullptr;
+
 		auto size = (size_t)input.tellg();
 		if (size == 0)
 			return nullptr;

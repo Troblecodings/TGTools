@@ -21,8 +21,8 @@ namespace tgt::Texture {
 
 	inline const Result write(FILE* fp, const js::json& jsonarray) {
 		return Util::writeToFile(fp, jsonarray, [=](const std::string& name) {
-			uint32_t size;
-			const uint8_t* data = Util::readFile(name, (size_t*)&size);
+			size_t size = 0;
+			const uint8_t* data = Util::readFile(name, &size);
 			if (data == nullptr || size == 0)
 				return Result::DOES_NOT_EXIST;
 			fwrite(&size, sizeof(size_t), 1, fp);
