@@ -114,7 +114,7 @@ TEST(Material, Write) {
 	READ_TEST(uint32_t, color1, 0xFFFFFFFF);
 
 	READ_TEST_D(uint32_t, textureid2, 0, 0xFF);
-	READ_TEST(uint32_t, color2, 0xFFFFFFFF);
+	READ_TEST(uint32_t, color2, 0xFF000000);
 
 	RESERVE_TEST();
 }
@@ -287,7 +287,17 @@ TEST(Sampler, Change) {
 }
 
 TEST(Sampler, Write) {
+	js::json sampler = getArray(Sampler::SAMPLER_PATH, { "test" });
+	WRITE_TEST(Sampler, sampler);
 
+	COUNT_TEST(1);
+
+	READ_TEST(uint8_t, umode, (uint8_t)Sampler::SamplerAddressMode::REPEAT);
+	READ_TEST(uint8_t, vmode, (uint8_t)Sampler::SamplerAddressMode::REPEAT);
+	READ_TEST(uint8_t, magfilter, (uint8_t)Sampler::SamplerFilter::LINEAR);
+	READ_TEST(uint8_t, minfilter, (uint8_t)Sampler::SamplerFilter::LINEAR);
+
+	RESERVE_TEST();
 }
 
 TEST(Sampler, Remove) {
