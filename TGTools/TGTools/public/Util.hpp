@@ -168,7 +168,7 @@ namespace tgt::Util {
 		return false;
 	}
 
-	template<class T, typename = std::enable_if_t<std::is_invocable_r_v<Result, T, const js::json&>
+	template<bool PATH_ONLY = false, class T, typename = std::enable_if_t<std::is_invocable_r_v<Result, T, const js::json&>
 		|| std::is_invocable_r_v<Result, T, const js::json&, const std::string&> || std::is_invocable_r_v<Result, T, const std::string&>>>
 	inline const Result writeToFile(FILE* file, const js::json& jsonarray, T lambda) {
 		const auto size = jsonarray.size();
@@ -179,7 +179,7 @@ namespace tgt::Util {
 				printf("Warning: %s does not exist!", name.c_str());
 				return Result::DOES_NOT_EXIST;
 			}
-			if constexpr (std::is_invocable_r_v<Result, T, const std::string&>) {
+			if constexpr (PATH_ONLY) {
 				Result result = lambda(name);
 				if (result != Result::SUCCESS)
 					return result;
