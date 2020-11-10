@@ -16,6 +16,25 @@ using namespace tgt;
 
 fs::path FILE_PATH;
 
+#define WRITE_TEST(name, parameter...) 	FILE* ptr = fopen("tmp", "wb+");\
+ASSERT_EQ(name::write(ptr, parameter), Result::SUCCESS);\
+fflush(ptr);\
+fseek(ptr, 0, SEEK_SET);
+
+#define READ_TEST_D_S(type, name, result, def, size) type name = def;\
+fread(&name, sizeof(type), size, ptr);\
+EXPECT_EQ(name, result);
+
+#define READ_TEST_D(type, name, result, def) READ_TEST_D_S(type, name, result, def, 1)
+
+#define READ_TEST_S(type, name, result, size) READ_TEST_D_S(type, name, result, 0 size)
+
+#define READ_TEST(type, name, result) READ_TEST_D_S(type, name, result, 0, 1)
+
+#define RESERVE_TEST() READ_TEST(uint32_t, reserved, 0xFFFFFFFF); 	fclose(ptr);
+
+#define COUNT_TEST(c) READ_TEST(uint32_t, count, c)
+
 inline std::string getFile(std::string string) {
 	return fs::path(FILE_PATH).append(string).string();
 }
@@ -23,6 +42,14 @@ inline std::string getFile(std::string string) {
 inline std::string trim(std::string str) {
 	str.erase(std::remove_if(str.begin(), str.end(), [](char c) { return std::isspace(c); }));
 	return str;
+}
+
+inline js::json getArray(fs::path path, std::initializer_list<const char*> names, const char* extension = Util::JSON) {
+	js::json jarr = js::json::array();
+	for (auto cu : names) {
+		jarr.push_back(Util::getResource(path, cu, extension).string());
+	}
+	return jarr;
 }
 
 TEST(Texture, EmptyList) {
@@ -41,25 +68,16 @@ TEST(Texture, List) {
 }
 
 TEST(Texture, Write) {
-	FILE* ptr = fopen("tmp", "wb+");
-	std::string testtex = Util::getResource(Texture::TEXTURE_PATH, "test", Texture::TEXTURE_EXTENSION).string();
-	js::json js = js::json::array();
-	js.push_back(testtex);
-	ASSERT_EQ(Texture::write(ptr, js), Result::SUCCESS);
-	fflush(ptr);
-	fseek(ptr, 0, SEEK_SET);
-	uint32_t count = 0;
-	size_t size = 0;
+	js::json textures = getArray(Texture::TEXTURE_PATH, { "test" }, Texture::TEXTURE_EXTENSION);
+	WRITE_TEST(Texture, textures);
+
+	COUNT_TEST(1);
+	READ_TEST(size_t, size, 119);
+
 	uint8_t texture[119];
-	uint32_t reserved = 0;
-	fread(&count, sizeof(uint32_t), 1, ptr);
-	fread(&size, sizeof(size_t), 1, ptr);
 	fread(&texture, sizeof(uint8_t), sizeof(texture), ptr);
-	fread(&reserved, sizeof(uint32_t), 1, ptr);
-	fclose(ptr);
-	ASSERT_EQ(count, 1);
-	ASSERT_EQ(size, 119);
-	ASSERT_EQ(reserved, 0xFFFFFFFF);
+
+	RESERVE_TEST();
 }
 
 TEST(Texture, Remove) {
@@ -85,50 +103,20 @@ TEST(Material, Add) {
 }
 
 TEST(Material, Write) {
-	FILE* ptr = fopen("tmp", "wb+");
-	std::string material1 = Util::getResource(Material::MATERIAL_PATH, "test", Util::JSON).string();
-	std::string material2 = Util::getResource(Material::MATERIAL_PATH, "testcolor", Util::JSON).string();
+	js::json materials = getArray(Material::MATERIAL_PATH, { "test", "testcolor" });
+	js::json textures = getArray(Texture::TEXTURE_PATH, { "test" }, Texture::TEXTURE_EXTENSION);
 
-	js::json materials = js::json::array();
-	materials.push_back(material1);
-	materials.push_back(material2);
+	WRITE_TEST(Material, materials, textures);
 
-	std::string testtex = Util::getResource(Texture::TEXTURE_PATH, "test", Texture::TEXTURE_EXTENSION).string();
-	js::json textures = js::json::array();
-	textures.push_back(testtex);
+	COUNT_TEST(2);
 
-	ASSERT_EQ(Material::write(ptr, materials, textures), Result::SUCCESS);
+	READ_TEST_D(uint32_t, textureid1, 0, 0xFF);
+	READ_TEST(uint32_t, color1, 0xFFFFFFFF);
 
-	fflush(ptr);
-	fseek(ptr, 0, SEEK_SET);
+	READ_TEST_D(uint32_t, textureid2, 0, 0xFF);
+	READ_TEST(uint32_t, color2, 0xFFFFFFFF);
 
-	uint32_t count = 0;
-
-	uint32_t textureid = 0xFF;
-	uint32_t color = 0;
-
-	uint32_t textureid1 = 0xFF;
-	uint32_t color1 = 0;
-
-	uint32_t reserved = 0;
-
-	fread(&count, sizeof(uint32_t), 1, ptr);
-
-	fread(&textureid, sizeof(uint32_t), 1, ptr);
-	fread(&color, sizeof(uint32_t), 1, ptr);
-
-	fread(&textureid1, sizeof(uint32_t), 1, ptr);
-	fread(&color1, sizeof(uint32_t), 1, ptr);
-
-	fread(&reserved, sizeof(uint32_t), 1, ptr);
-
-	fclose(ptr);
-	ASSERT_EQ(count, 2);
-	ASSERT_EQ(textureid, 0);
-	ASSERT_EQ(textureid1, 0);
-	ASSERT_EQ(color, 0xFFFFFFFF);
-	ASSERT_EQ(color1, 0xFF000000);
-	ASSERT_EQ(reserved, 0xFFFFFFFF);
+	RESERVE_TEST();
 }
 
 TEST(Material, Remove) {
@@ -298,6 +286,10 @@ TEST(Sampler, Change) {
 	ASSERT_EQ(Sampler::change("test", Sampler::VMODE_PROPERTY, Sampler::SamplerAddressMode::REPEAT), Result::SUCCESS);
 }
 
+TEST(Sampler, Write) {
+
+}
+
 TEST(Sampler, Remove) {
 	ASSERT_EQ(Sampler::remove(""), Result::BAD_ARGUMENTS);
 	ASSERT_EQ(Sampler::remove("test"), Result::SUCCESS);
@@ -392,7 +384,7 @@ TEST(Shader, Compile) {
 }
 
 TEST(Shader, AddStaticInput) {
-	ASSERT_EQ(Shader::addStaticInput("test", "", 0, Shader::DescriptorType::SAMPLED_IMAGE), Result::SUCCESS);
+	//ASSERT_EQ(Shader::addStaticInput("test", "", 0, Shader::DescriptorType::SAMPLED_IMAGE), Result::SUCCESS);
 }
 
 TEST(Map, EmptyList) {
