@@ -16,8 +16,8 @@ using namespace tgt;
 
 fs::path FILE_PATH;
 
-#define WRITE_TEST(name, parameter) 	FILE* ptr = fopen("tmp", "wb+");\
-ASSERT_EQ(name::write(ptr, parameter), Result::SUCCESS);\
+#define WRITE_TEST(name, ...) 	FILE* ptr = fopen("tmp", "wb+");\
+ASSERT_EQ(name::write(ptr, __VA_ARGS__), Result::SUCCESS);\
 fflush(ptr);\
 fseek(ptr, 0, SEEK_SET);
 
