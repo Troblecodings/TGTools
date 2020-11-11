@@ -110,9 +110,11 @@ TEST(Material, Write) {
 
 	COUNT_TEST(2);
 
+	READ_TEST(uint32_t, size1, 8);
 	READ_TEST_D(uint32_t, textureid1, 0, 0xFF);
 	READ_TEST(uint32_t, color1, 0xFFFFFFFF);
 
+	READ_TEST(uint32_t, size2, 8);
 	READ_TEST_D(uint32_t, textureid2, 0, 0xFF);
 	READ_TEST(uint32_t, color2, 0xFF000000);
 
