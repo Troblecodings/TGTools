@@ -4,7 +4,7 @@
 
 namespace tgt::Texture {
 
-	const Result add(const std::string& path) noexcept {
+	const Result add(const std::string& path) {
 		STRING_CHECKS(path);
 		const fs::path texturePath(path);
 
@@ -29,9 +29,4 @@ namespace tgt::Texture {
 			return foundpath == path;
 		}); });
 	}
-
-	const std::string list() {
-		return Util::collect(TEXTURE_PATH, [](fs::path path) { return path.extension() == TEXTURE_EXTENSION; });
-	}
-
 }

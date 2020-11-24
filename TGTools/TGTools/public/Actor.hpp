@@ -47,26 +47,63 @@ namespace tgt::Actor {
 		return Util::collect(ACTOR_PATH, Util::JSON_FILTER);
 	}
 
-	template<class T, class U, class V, 
-		typename = std::enable_if_t<Util::_validJson<T> && Util::_validString<V> && Util::_validString<U>>>
-	inline const Result change(V actorname, U key, T value) {
-		auto actor = Util::getResource(ACTOR_PATH, actorname, Util::JSON);
+	template<class T, typename = std::enable_if_t<Util::_validJson<T>>>
+	inline const Result change(const std::string& actorname, const std::string& key, const T& value) {
+		const auto actor = Util::getResource(ACTOR_PATH, actorname, Util::JSON);
 		return Util::change(actor, key, value, SUPPORTED_PROPERTIES);
 	}
 
 	const Result _dataHeader(const fs::path& name, ActorData* data);
 
-	inline void setData(const void* data, const uint32_t byteSize, const std::string& name, bool append = false) {
-		const auto pathToDataSet = Util::getResource(ACTOR_PATH, name).string();
+	enum class ActorDataType {
+		INDEX,
+		VERTEX
+	};
+
+	constexpr ActorDataType ACTOR_DATA_TYPE_MIN = ActorDataType::INDEX;
+	constexpr ActorDataType ACTOR_DATA_TYPE_MAX = ActorDataType::VERTEX;
+
+	constexpr std::array ACTOR_DATA_TYPE_EXTENSIONS = { ACTOR_INDEX_EXTENSION, ACTOR_VERTEX_EXTENSION };
+
+	inline const Result setData(const std::string& name, const ActorDataType datatype, const void* data, const uint32_t byteSize, const bool append = false) {
+		STRING_CHECKS(name);
+		STRING_SYNTAX_CHECK(name);
+		ENUM_CHECKS(datatype, ACTOR_DATA_TYPE_MIN, ACTOR_DATA_TYPE_MAX);
+#ifndef TGT_NO_CHECKS
+		if (data == nullptr || byteSize == 0)
+			return Result::BAD_ARGUMENTS;
+#endif
+
+		const fs::path pathToActor = Util::getResource(Actor::ACTOR_PATH, name, Util::JSON);
+		if (!fs::exists(pathToActor))
+			return Result::DOES_NOT_EXIST;
+		const std::string pathToDataSet = Util::getResource(Actor::ACTOR_PATH, name,
+			ACTOR_DATA_TYPE_EXTENSIONS[(size_t)datatype]).string();
 		FILE* fp = fopen(pathToDataSet.c_str(), append ? "ab" : "wb");
+		if (fp == nullptr)
+			return Result::GENERAL;
 		fwrite(data, sizeof(uint8_t), byteSize, fp);
 		fclose(fp);
-	}
-
-	inline const Result getData(const void** data, const fs::path& name, size_t* ptr = nullptr) {
-		if (!fs::exists(name))
-			return Result::DOES_NOT_EXIST;
-		*data = Util::readFile(name.string(), ptr);
 		return Result::SUCCESS;
 	}
+
+	inline const Result getData(const std::string& name, const ActorDataType datatype, const void** data, size_t* ptr = nullptr) {
+		STRING_CHECKS(name);
+		STRING_SYNTAX_CHECK(name);
+		ENUM_CHECKS(datatype, ACTOR_DATA_TYPE_MIN, ACTOR_DATA_TYPE_MAX);
+#ifndef TGT_NO_CHECKS
+		if (data == nullptr)
+			return Result::BAD_ARGUMENTS;
+#endif
+		const fs::path pathToDataSet = Util::getResource(Actor::ACTOR_PATH, name,
+			ACTOR_DATA_TYPE_EXTENSIONS[(size_t)datatype]);
+		if (!fs::exists(pathToDataSet))
+			return Result::DOES_NOT_EXIST;
+		*data = Util::readFile(pathToDataSet.string(), ptr);
+		if (*data == nullptr)
+			return Result::GENERAL;
+		return Result::SUCCESS;
+	}
+
+	const Result write(FILE* file, const js::json& jsonarray);
 }

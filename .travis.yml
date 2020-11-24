@@ -18,7 +18,7 @@ script:
   - cmake --build ./
 
 after_script:
-  - ctest -C Debug --debug
+  - ctest -R TGToolsTest -C Debug --debug
 
 before_deploy:
   - cd ./TGTools/

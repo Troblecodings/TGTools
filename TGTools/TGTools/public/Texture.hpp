@@ -11,9 +11,25 @@ namespace tgt::Texture {
 
 	const auto TEXTURE_PATH = fs::path(Util::RESOURCE_LOCATION).append(TEXTURE_SUBFOLDER);
 
-	const Result add(const std::string& path) noexcept;
+	const Result add(const std::string& path);
 
 	const Result remove(const std::string& name);
 
-	const std::string list();
+	inline const std::string list() {
+		return Util::collect(TEXTURE_PATH, [](fs::path path) { return path.extension() == TEXTURE_EXTENSION; });
+	}
+
+	inline const Result write(FILE* fp, const js::json& jsonarray) {
+		return Util::writeToFile<true>(fp, jsonarray, [=](const std::string& name) {
+			size_t size = 0;
+			const uint8_t* data = Util::readFile(name, &size);
+			if (data == nullptr || size == 0)
+				return Result::DOES_NOT_EXIST;
+			fwrite(&size, sizeof(size_t), 1, fp);
+			fwrite(data, sizeof(uint8_t), size, fp);
+			delete[] data;
+			return Result::SUCCESS;
+		});
+	}
+
 }

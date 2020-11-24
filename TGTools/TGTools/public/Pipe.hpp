@@ -48,14 +48,12 @@ namespace tgt::Pipe {
 
 	const Result removeShader(const std::string& name, const std::string& shadername);
 
-	const bool checkDependent(const std::string& dependency) {
+	inline bool checkDependent(const std::string& dependency) {
 		return Util::find(PIPE_PATH, [](auto& dependend) {
 			js::json json;
 			JSON_LOAD(dependend, json);
 			return json[SHADER_PROPERTY].contains(dependend);
 		});
 	}
-
-	const Result compile();
 
 }

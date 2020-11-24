@@ -5,6 +5,10 @@
 #include "../public/Font.hpp"
 #include "../public/Texture.hpp"
 #include "../public/Material.hpp"
+#include "../public/Buffer.hpp"
+#include "../public/Sampler.hpp"
+#include "../public/Pipe.hpp"
+#include "../public/Shader.hpp"
 #include <algorithm>
 
 namespace tgt::Map {
@@ -33,72 +37,6 @@ namespace tgt::Map {
 #define WRITE_CHECK(fp) constexpr auto WRITE_CINT(fp, UINT32_MAX);
 #define WRITE_SIZE(fp) WRITE_INT(fp, size)
 
-	static void textureToMapFile(FILE* fp, const js::json& map) {
-		auto textureList = map[TEXTURE_PROPERTY];
-		auto size = textureList.size();
-		fwrite(&size, sizeof(uint32_t), 1, fp);
-		for (const auto& texturePath : textureList) {
-			const uint8_t* data = Util::readFile(texturePath.get<std::string>(), &size);
-			fwrite(&size, sizeof(size_t), 1, fp);
-			fwrite(data, sizeof(uint8_t), size, fp);
-			delete[] data;
-		}
-		WRITE_CHECK(fp);
-	}
-
-	static Result materialToMapFile(FILE* fp, const js::json& map) {
-		auto materialList = map[MATERIAL_PROPERTY];
-		auto textureList = map[TEXTURE_PROPERTY];
-		auto size = materialList.size();
-		WRITE_SIZE(fp);
-		for (const auto& jsonPath : materialList) {
-			js::json json;
-			auto materialPath = jsonPath.get<std::string>();
-			JSON_LOAD(materialPath, json);
-			uint32_t textureID = (uint32_t)ID_OF(textureList, json[Material::TEXTURE_PROPERTY].get<std::string>());
-			WRITE_INT(fp, textureID);
-			auto color = json[Material::COLOR_PROPERTY].get<uint32_t>();
-			WRITE_INT(fp, color);
-		}
-		WRITE_CHECK(fp);
-		return Result::SUCCESS;
-	}
-
-	static Result actorToMapFile(FILE* fp, const js::json& map) {
-		auto actorlist = map[ACTOR_PROPERTY];
-		auto size = actorlist.size();
-		WRITE_SIZE(fp);
-		for (const auto& jsonPath : actorlist) {
-			const std::string& stringPath = jsonPath;
-			fs::path stempath(stringPath);
-			stempath.replace_extension(Actor::ACTOR_VERTEX_EXTENSION);
-			uint8_t* vertexdataptr;
-			Result CHECK_RESULT(Actor::getData((const void**)&vertexdataptr, stempath, &size));
-			Util::scope_exit onexit([=]() { delete[] vertexdataptr; });
-			WRITE_SIZE(fp);
-
-			Actor::ActorData data;
-			CHECK_RESULT(Actor::_dataHeader(stringPath, &data));
-			fwrite(&data, sizeof(data), 1, fp);
-
-			uint8_t* indexptr;
-			size_t indexSize = 0;
-			stempath.replace_extension(Actor::ACTOR_INDEX_EXTENSION);
-			CHECK_RESULT(Actor::getData((const void**)&indexptr, stempath, &indexSize));
-
-			if (indexSize != sizeof(uint32_t) * data.indexDrawCount)
-				printf("Warning index size is greater then the actual draw count");
-
-			fwrite(&indexptr, sizeof(uint32_t), data.indexDrawCount, fp);
-			delete[] indexptr;
-
-			fwrite(vertexdataptr, sizeof(uint8_t), size, fp);
-		}
-		WRITE_CHECK(fp);
-
-		return Result::SUCCESS;
-	}
-
 	const Result make(const std::string& mapname) {
 		STRING_CHECKS(mapname);
 
@@ -117,11 +55,18 @@ namespace tgt::Map {
 		Result result;
 		Util::scope_exit onexit([=, rs = &result]() { fclose(fp); if(*rs != Result::SUCCESS) fs::remove(map); });
 
-		textureToMapFile(fp, mapJson);
+		const js::json& textureList = mapJson[TEXTURE_PROPERTY];
+		CHECK_RESULT(Texture::write(fp, textureList));
 
-		CHECK_RESULT(materialToMapFile(fp, mapJson));
+		CHECK_RESULT(Buffer::write(fp, mapJson[BUFFER_PROPERTY]));
 
-		CHECK_RESULT(actorToMapFile(fp, mapJson));
+		CHECK_RESULT(Sampler::write(fp, mapJson[SAMPLER_PROPERTY]));
+
+		CHECK_RESULT(Shader::write(fp, mapJson[SHADER_PROPERTY]));
+
+		CHECK_RESULT(Material::write(fp, mapJson[MATERIAL_PROPERTY], textureList));
+
+		CHECK_RESULT(Actor::write(fp, mapJson[ACTOR_PROPERTY]));
 
 		// TODO
 		constexpr uint32_t zero = 0;

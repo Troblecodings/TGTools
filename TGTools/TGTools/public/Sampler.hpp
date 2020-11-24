@@ -71,6 +71,7 @@ namespace tgt::Sampler {
 			samplerInfo.magfilter = (uint8_t)jsn[MAG_FILTER_PROPERTY].get<SamplerFilter>();
 			samplerInfo.minfilter = (uint8_t)jsn[MIN_FILTER_PROPERTY].get<SamplerFilter>();
 			fwrite(&samplerInfo, 1, sizeof(SamplerInfo), file);
+			return Result::SUCCESS;
 		});
 	}
 

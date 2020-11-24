@@ -50,7 +50,7 @@ namespace tgt::Map {
 
 	const Result remove(const std::string& mapname, const std::string& name);
 
-	inline const bool checkDependent(const std::string& dependency) {
+	inline bool checkDependent(const std::string& dependency) {
 		return Util::find(MAP_PATH, [=](auto directory) {
 			js::json json;
 			JSON_LOAD(directory, json);
